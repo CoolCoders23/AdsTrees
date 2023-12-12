@@ -1,4 +1,4 @@
-![AdsTrees](../../public/Favicon32.ico)
+![AdsTrees](./image/Logo/Logo128x128.png)
 
 ## Title:
 Engaging with Eco-Focused Advertisement Platform
