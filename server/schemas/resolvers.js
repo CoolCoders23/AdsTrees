@@ -84,6 +84,24 @@ const resolvers = {
             return { token, user };
         },
         // ==================================================================
+
+        // Resolver to add preferences to a user
+        // ==================================================================
+        addPreferences: async (parent, { username, preferences }, context) => {
+            // Check if the user is authenticated
+            if (context.user) {
+            // Update the user's preferences by adding new ones
+            const updatedUser = await User.findOneAndUpdate(
+                { username }, 
+                { $push: { preferences: { $each: preferences } } }, // add multiple values to preferences array
+                { new: true }
+            );
+            // Return the updated user details
+            return updatedUser;   
+        }
+        throw AuthenticationError;
+        },
+        // ==================================================================
     },
     // ==================================================================
 }
