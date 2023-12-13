@@ -23,9 +23,17 @@ const resolvers = {
             }
         },
         // ==================================================================
-    },
-    // ==================================================================
+
+        // Resolver to fetch a single user by username or email
+        // ==================================================================
+        user: async (parent, { username, email }) => {
+            // Determine search criteria based on provided arguments
+            const params = username ? { username } : { email };
+            return await User.findOne(params);
+        },
+        // ==================================================================
 }
+
 // ==================================================================
 
 // Export the resolvers
