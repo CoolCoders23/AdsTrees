@@ -20,6 +20,8 @@ import { Outlet } from 'react-router-dom';
 // ============================================================
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ThemeComponent from './components/ThemeComponent';
+import ThemeProvider from './utils/ThemeContext';
 // ============================================================
 
 // Create an error link
@@ -79,9 +81,12 @@ function App() {
 
     return (
         <ApolloProvider client={client}>
-            <Header />
-            <Outlet />
-            <Footer />
+            <ThemeProvider>
+                <Header />
+                <ThemeComponent />
+                <Outlet />
+                <Footer />
+            </ThemeProvider>
         </ApolloProvider>
     );
 }
