@@ -102,6 +102,16 @@ const resolvers = {
         throw AuthenticationError;
         },
         // ==================================================================
+
+        // Resolver to remove preferences from a user
+        // ==================================================================
+        removeUser: async (parent, args, context) => {
+            if (context.user) {
+              return Profile.findOneAndDelete({ _id: context.user._id });
+            }
+            throw AuthenticationError;
+        },
+        // ==================================================================
     },
     // ==================================================================
 }
