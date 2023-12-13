@@ -33,12 +33,22 @@ const auth = {
     // Function to get the user data from the token
     // ================================================================
     getUserData: () => {
-        const token = auth.getToken(); // Retrieve the JWT token
+        const token = auth.getToken();
 
         if (token) {
             return jwtDecode(token).data; // If a token exists, decode it to extract user data
         }
         return null;
+    },
+    // ================================================================
+
+    // Function to check if the user is logged in
+    // ================================================================
+    isLoggedIn: () => {
+        const token = auth.getToken();
+
+        // Check if token is not null and is not expired
+        return !!token && !auth.isTokenExpired(token);
     },
     // ================================================================
 };
