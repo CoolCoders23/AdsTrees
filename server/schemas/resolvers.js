@@ -32,6 +32,22 @@ const resolvers = {
             return await User.findOne(params);
         },
         // ==================================================================
+
+        // Resolver to fetch the currently authenticated user
+        // ==================================================================
+        me: async (parent, args, context) => {
+            // Check if user is authenticated
+            if (context.user) {
+                // Extract username from the user context
+                const { username } = context.user;
+                // Find the user and return their data, excluding the password
+                return await User.findOne({ username }).select('-password');
+            }
+            throw AuthenticationError;
+        },
+        // ==================================================================
+    },
+    // ==================================================================
 }
 
 // ==================================================================
