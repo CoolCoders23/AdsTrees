@@ -112,6 +112,21 @@ const resolvers = {
             throw AuthenticationError;
         },
         // ==================================================================
+        
+        // Resolver to remove preferences from a user
+        // ==================================================================
+        removePreferences: async (parent, { username, preferences }, context) => {
+            if (context.user) {
+            const updatedUser = await User.findOneAndUpdate(
+                { username },
+                { $pullAll: { preferences } },
+                { new: true }
+            );
+            return updatedUser;
+            }
+            throw AuthenticationError;
+        },
+        // ==================================================================
     },
     // ==================================================================
 }
