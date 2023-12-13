@@ -14,6 +14,10 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      preferences {
+        _id
+        name
+      }
     }
   }
   `;
