@@ -14,6 +14,13 @@ const auth = {
         window.location.assign('/'); // Redirect user to main page
     },
     // ================================================================
+
+    // Function to get the token from localStorage
+    // ================================================================
+    getToken: () => {
+        return localStorage.getItem('id_token'); // Retrieve the JWT token from local storage
+    },
+    // ================================================================
 };
 
 export default auth;
