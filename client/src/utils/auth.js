@@ -25,8 +25,20 @@ const auth = {
     // Function to remove the token from localStorage
     // ================================================================
     removeToken: () => {
-        localStorage.removeItem('id_token'); // Remove the JWT token from local storage
-        window.location.reload(); // Reload the page and reset the state of the application
+        localStorage.removeItem('id_token');
+        window.location.reload();
+    },
+    // ================================================================
+
+    // Function to get the user data from the token
+    // ================================================================
+    getUserData: () => {
+        const token = auth.getToken(); // Retrieve the JWT token
+
+        if (token) {
+            return jwtDecode(token).data; // If a token exists, decode it to extract user data
+        }
+        return null;
     },
     // ================================================================
 };
