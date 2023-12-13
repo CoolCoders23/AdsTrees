@@ -63,6 +63,27 @@ const resolvers = {
             return { token, user };
         },
         // ==================================================================
+
+        // Resolver for user login
+        // ==================================================================
+        login: async (parent, { email, password }) => {
+            // Find the user by email
+            const user = await User.findOne({ email });
+            if (!user) {
+                throw AuthenticationError;
+            }
+            
+            // Check if the provided password is correct
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw AuthenticationError;
+            }
+
+            const token = signToken(user);
+            return { token, user };
+        },
+        // ==================================================================
     },
     // ==================================================================
 }
