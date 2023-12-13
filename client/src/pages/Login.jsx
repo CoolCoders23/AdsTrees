@@ -35,6 +35,12 @@ const Login = () => {
         } catch (e) {
             console.log(e);
         }
+
+        // clear form values
+        setFormState({
+            email: '',
+            password: '',
+        });
     };
     // ==========================================================
 
