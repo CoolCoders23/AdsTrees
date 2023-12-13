@@ -46,7 +46,7 @@ const SigninForm = ({ error, formState, handleFormSubmit, handleChange }) => {
                         ) : null}
                         <div>
                             <button type="submit" style={{ cursor: 'pointer' }}>
-                              Login
+                                Login
                             </button>
                         </div>
                     </form>
