@@ -51,6 +51,21 @@ const auth = {
         return !!token && !auth.isTokenExpired(token);
     },
     // ================================================================
+
+    // Function to check if a token is expired
+    // ================================================================
+    isTokenExpired: (token) => {
+        try {
+            // Decode the JWT token
+            const decoded = jwtDecode(token);
+            // Check if the expiration time of the token has passed
+            return decoded.exp < Date.now() / 1000;
+        } catch (err) {
+            console.error('Error decoding token:', err);
+            return false;
+        }
+    }
+    // ================================================================
 };
 
 export default auth;
