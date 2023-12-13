@@ -33,4 +33,33 @@ module.exports = {
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },
     // ==================================================================
+
+    // Middleware function to authenticate requests using JWT
+    // ==================================================================
+    authMiddleware: function ({ req }) {
+        // Extract the token from the request body, query, or headers
+        let token = req.body.token || req.query.token || req.headers.authorization;
+
+        // If the token is present and formatted as 'Bearer <token>', extract the actual token
+        if (token && token.startsWith('Bearer ')) {
+            token = token.split(' ')[1];
+        }
+
+        // If no token is present, return the request as is
+        if (!token) {
+            return req;
+        }
+
+        try {
+            // Verify the token with the secret and maxAge
+            const decoded = jwt.verify(token, secret, { maxAge: expiration });
+            // Attach the decoded user data to the request object
+            req.user = decoded.data;
+        } catch (e) {
+            console.error('Invalid token');
+        }
+        // Return the modified request object so it can be passed to the resolver
+        return req;
+    },
+    // ==================================================================
 };
