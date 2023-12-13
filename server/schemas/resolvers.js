@@ -48,6 +48,23 @@ const resolvers = {
         // ==================================================================
     },
     // ==================================================================
+
+    // Resolvers for Mutations
+    // ==================================================================
+    Mutation: {
+        // Resolver to add a new user
+        // ==================================================================
+        addUser: async (parent, { username, email, password }) => {
+            // Create a new user with the provided credentials
+            const user = await User.create({ username, email, password });
+            // Sign a JWT token for the new user
+            const token = signToken(user);
+            // Return the token and user details
+            return { token, user };
+        },
+        // ==================================================================
+    },
+    // ==================================================================
 }
 
 // ==================================================================
