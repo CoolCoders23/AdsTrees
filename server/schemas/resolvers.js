@@ -1,34 +1,8 @@
 // Desc: This file contains the graphql resolvers for the AdsTrees application.
 // ==================================================================
 
-// Dependencies
+// Import necessary modules and utilities
 // ==================================================================
-const { GraphQLError } = require('graphql');
+const { signToken, AuthenticationError } = require('../utils/auth');
 const { User } = require('../models');
-// ==================================================================
-
-// Define the resolvers
-// ==================================================================
-const resolvers = {
-    Query: {
-        users: async () => {
-            try {
-                return await User.find();
-            } catch (err) {
-                throw new GraphQLError(`Failed to fetch users: ${err.message}`, {
-                    extensions: {
-                        code: 'BAD_USER_INPUT',
-                    },
-                });
-            }
-        },
-    },
-
-    Mutation: {},
-};
-// ==================================================================
-
-// Export the resolvers
-// ==================================================================
-module.exports = resolvers;
 // ==================================================================
