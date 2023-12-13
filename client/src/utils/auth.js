@@ -18,7 +18,15 @@ const auth = {
     // Function to get the token from localStorage
     // ================================================================
     getToken: () => {
-        return localStorage.getItem('id_token'); // Retrieve the JWT token from local storage
+        return localStorage.getItem('id_token');
+    },
+    // ================================================================
+
+    // Function to remove the token from localStorage
+    // ================================================================
+    removeToken: () => {
+        localStorage.removeItem('id_token'); // Remove the JWT token from local storage
+        window.location.reload(); // Reload the page and reset the state of the application
     },
     // ================================================================
 };
