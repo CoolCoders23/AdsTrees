@@ -6,10 +6,10 @@
 import { jwtDecode } from 'jwt-decode';
 // ================================================================
 
-const auth = {
+const Auth = {
     // Function to set token to localStorage
     // ================================================================
-    setToken: (token) => {
+    login: (token) => {
         localStorage.setItem('id_token', token); // Store the JWT token in local storage under the key 'id_token' 
         window.location.assign('/'); // Redirect user to main page
     },
@@ -24,7 +24,7 @@ const auth = {
 
     // Function to remove the token from localStorage
     // ================================================================
-    removeToken: () => {
+    logout: () => {
         localStorage.removeItem('id_token');
         window.location.reload();
     },
@@ -33,7 +33,7 @@ const auth = {
     // Function to get the user data from the token
     // ================================================================
     getUserData: () => {
-        const token = auth.getToken();
+        const token = Auth.getToken();
 
         if (token) {
             return jwtDecode(token).data; // If a token exists, decode it to extract user data
@@ -45,10 +45,10 @@ const auth = {
     // Function to check if the user is logged in
     // ================================================================
     isLoggedIn: () => {
-        const token = auth.getToken();
+        const token = Auth.getToken();
 
         // Check if token is not null and is not expired
-        return !!token && !auth.isTokenExpired(token);
+        return !!token && !Auth.isTokenExpired(token);
     },
     // ================================================================
 
@@ -68,4 +68,4 @@ const auth = {
     // ================================================================
 };
 
-export default auth;
+export default Auth;
