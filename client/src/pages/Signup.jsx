@@ -1,5 +1,4 @@
 // Desc: This page contains the logic for Signup the user
-// I will create a formState, handleChange, and handleFormSubmit using the useState() Hook. then will pass them to signupForm component as props.
 // ============================================================
 
 // Import dependencies
