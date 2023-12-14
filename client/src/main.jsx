@@ -16,6 +16,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
+import ContactUs from './pages/ContactUs';
 // ============================================================
 
 // Create a browser router
@@ -46,6 +47,10 @@ const routes = [
                 path: '/about',
                 element: <About />
             },
+            {
+                path: '/contact',
+                element: <ContactUs />
+            }
         ]
     },
 ];

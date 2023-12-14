@@ -1,4 +1,4 @@
-![AdsTrees](./image/Logo/Logo128x128.png)
+![AdsTrees](./image/LogoMain/AdsTrees_Logo_128.svg)
 
 ## Title:
 Engaging with Eco-Focused Advertisement Platform
