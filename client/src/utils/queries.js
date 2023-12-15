@@ -6,7 +6,7 @@
 import { gql } from '@apollo/client';
 // ================================================================
 
-// Creating User queries
+// To query the user's preferences
 // ================================================================
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -20,5 +20,22 @@ export const QUERY_USER = gql`
       }
     }
   }
-  `;
+`;
+// ================================================================
+
+// To query userProfile
+// ================================================================
+export const QUERY_USER_PROFILE = gql`
+  query userProfile {
+    userProfile {
+      _id
+      username
+      email
+      preferences {
+        _id
+        name
+      }
+    }
+  }
+`;
 // ================================================================
