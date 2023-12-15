@@ -49,6 +49,25 @@ userSchema.pre('save', async function (next) {
 });
 // ==================================================================
 
+// set up the pre-update middleware to update a User
+// ==================================================================
+userSchema.pre('findOneAndUpdate', async function (next) {
+    if (this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+    next();
+});
+// ==================================================================
+
+// set up the pre-remove middleware to remove a User's associated preferences
+// ==================================================================
+userSchema.pre('remove', async function (next) {
+    await this.model('Preference').deleteMany({ user: this._id });
+    next();
+});
+// ==================================================================
+
 // Compare the incoming password with the hashed password
 // ==================================================================
 userSchema.methods.isCorrectPassword = async function (password) {
