@@ -14,7 +14,7 @@ const userCount = 10;
 
 // Define the number of Preferences to seed
 // ==================================================================
-const preferenceCount = 10;
+const preferenceCountPerUser = 3;
 // ==================================================================
 
 // Define the Users to seed
@@ -24,24 +24,22 @@ const userData = [];
 for (let i = 0; i < userCount; i += 1) {
     const username = faker.internet.userName();
     const email = faker.internet.email();
-    const password = faker.internet.password();
+    const password = faker.internet.password(8);
+    const profilePicture = {
+        url: faker.image.avatar(),
+        altText: faker.random.words(5),
+    };
+    const preferences = [];
 
-    userData.push({ username, email, password });
-}
-// ==================================================================
+    for (let j = 0; j < preferenceCountPerUser; j += 1) {
+        preferences.push(faker.commerce.department());
+    }
 
-// Define the Preferences to seed
-// ==================================================================
-const preferenceData = [];
-
-for (let i = 0; i < preferenceCount; i += 1) {
-    const name = faker.commerce.department();
-
-    preferenceData.push({ name });
+    userData.push({ username, email, password, profilePicture, preferences });
 }
 // ==================================================================
 
 // Export the Users and Preferences to seed
 // ==================================================================
-module.exports = { userData, preferenceData };
+module.exports = { userData };
 // ==================================================================
