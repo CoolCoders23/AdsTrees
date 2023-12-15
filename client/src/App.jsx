@@ -20,7 +20,6 @@ import { Outlet } from 'react-router-dom';
 // ============================================================
 import Header from './components/Header';
 import Footer from './components/Footer';
-import ThemeComponent from './components/ThemeComponent';
 import ThemeProvider from './utils/ThemeContext';
 // ============================================================
 
@@ -83,7 +82,6 @@ function App() {
         <ApolloProvider client={client}>
             <ThemeProvider>
                 <Header />
-                <ThemeComponent />
                 <Outlet />
                 <Footer />
             </ThemeProvider>

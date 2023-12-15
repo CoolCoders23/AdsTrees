@@ -6,6 +6,7 @@
 // ==========================================================
 import { useTheme } from '../utils/useTheme';
 // ==========================================================
+// TODO: Check the button functionality
 
 // Make the ThemeComponent
 // ==========================================================
@@ -35,6 +36,15 @@ const ThemeComponent = () => {
                     darkTheme: {darkTheme.toString()}
                 </code>
             </section>
+            <button
+                type='button'
+                onClick={() => {
+                    const body = document.querySelector('body');
+                    body.classList.toggle('dark-mode');
+                }}
+            >
+                <i className='fas fa-moon'></i>
+            </button>
             <div style={themeStyles}>
                 <h1>Theme Component</h1>
             </div>
