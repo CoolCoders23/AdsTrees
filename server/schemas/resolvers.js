@@ -28,7 +28,7 @@ const resolvers = {
         user: async (parent, { username }) => {
 
             try {
-                return await User.findOne({ username }).populate('preferences');
+                return await User.findOne({ username });
             } catch (err) {
                 throw new GraphQLError(`Failed to fetch user: ${err.message}`, {
                     extensions: {
@@ -43,7 +43,7 @@ const resolvers = {
 
             if (context.user) {
                 try {
-                    const user = await User.findOne({ _id: context.user._id }).populate('preferences');
+                    const user = await User.findOne({ _id: context.user._id });
                     return user;
                 } catch (err) {
                     throw new AuthenticationError(`Failed to fetch user profile: ${err.message}, make sure you are logged in.`);
@@ -91,11 +91,10 @@ const resolvers = {
         removeUser: async (parent, { userId }) => {
 
             try {
-                const user = await User.findOne({ _id: userId });
+                const user = await User.findOneAndDelete({ _id: userId });
                 if (!user) {
                     throw new Error('User not found');
                 }
-                await user.remove();
                 return user;
             } catch (err) {
                 throw new GraphQLError(`Failed to delete user: ${err.message}`, {
@@ -106,17 +105,34 @@ const resolvers = {
             }
         },
 
-        updateUser: async (parent, { username, email, password }) => {
+        updateUser: async (parent, {
+            _id,
+            username,
+            email,
+            password,
+            profilePicture
+        }) => {
             try {
-                const user = await User.findOneAndUpdate(
-                    { username },
-                    { username, email, password },
-                    { new: true }
-                );
+                const user = await User.findById(_id);
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                if (username !== undefined) {
+                    user.username = username;
+                }
+                if (email !== undefined) {
+                    user.email = email;
+                }
+                if (password !== undefined) {
+                    user.password = password;
+                }
+                if (profilePicture !== undefined) {
+                    user.profilePicture = profilePicture;
+                }
+                await user.save();
                 const token = signToken(user);
                 return { token, user };
             } catch (err) {
-
                 throw new AuthenticationError(`Failed to update user: ${err.message}, make sure you are logged in.`);
             }
         },
