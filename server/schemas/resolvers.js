@@ -74,6 +74,39 @@ const resolvers = {
             return { token, user };
         },
 
+        removeUser: async (parent, { userId }) => {
+
+            try {
+                const user = await User.findOne({ _id: userId });
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                await user.remove();
+                return user;
+            } catch (err) {
+                throw new GraphQLError(`Failed to delete user: ${err.message}`, {
+                    extensions: {
+                        code: 'BAD_USER_INPUT',
+                    },
+                });
+            }
+        },
+
+        updateUser: async (parent, { username, email, password }) => {
+            try {
+                const user = await User.findOneAndUpdate(
+                    { username },
+                    { username, email, password },
+                    { new: true }
+                );
+                const token = signToken(user);
+                return { token, user };
+            } catch (err) {
+
+                throw AuthenticationError(`Failed to update user: ${err.message}, make sure you are logged in.`);
+            }
+        },
+
     },
 };
 // ==================================================================

@@ -20,7 +20,7 @@ const typeDefs = `
     username: String!
     email: String! @cacheControl(maxAge: 0, scope: PRIVATE)
     password: String! @cacheControl(maxAge: 0, scope: PRIVATE)
-    preferences: [Preference] @cacheControl(maxAge: 60, scope: PRIVATE)
+    preferences: [Preference] @cacheControl(maxAge: 60)
   }
 
   type Auth @cacheControl(maxAge: 0, scope: PRIVATE) {
@@ -30,12 +30,14 @@ const typeDefs = `
 
   type Query {
     users: [User]
-    user(username: String!): User @cacheControl(maxAge: 40, scope: PRIVATE)
+    user(username: String!): User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth @cacheControl(maxAge: 0, scope: PRIVATE)
     login(email: String!, password: String!): Auth @cacheControl(maxAge: 0, scope: PRIVATE)
+    removeUser(userId: ID!): User
+    updateUser(username: String!, email: String!, password: String!): Auth @cacheControl(maxAge: 0, scope: PRIVATE)
   }
 
 `;
