@@ -40,7 +40,7 @@ const routes = [
                 element: <Dashboard />
             },
             {
-                path: '/profile/:username',
+                path: '/user-profile',
                 element: <Profile />
             },
             {

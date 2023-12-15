@@ -104,11 +104,11 @@ const Header = () => {
                                     </li>
                                     <li>
                                         <Link
-                                            className={`nav-link ${path.startsWith('/profile')
+                                            className={`nav-link ${path === '/user-profile'
                                                 ? 'active'
                                                 : 'text-dark'
                                             }`}
-                                            to={`/profile/${username}`}
+                                            to='/user-profile'
                                         >
                                             {username}&apos;s profile
                                         </Link>
