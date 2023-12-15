@@ -14,11 +14,11 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      preferences {
-        _id
-        name
+      profilePicture {
+        url
+        altText
       }
-    }
+      preferences
   }
 `;
 // ================================================================
@@ -31,11 +31,11 @@ export const QUERY_USER_PROFILE = gql`
       _id
       username
       email
-      preferences {
-        _id
-        name
+      profilePicture {
+        url
+        altText
       }
-    }
+      preferences
   }
 `;
 // ================================================================

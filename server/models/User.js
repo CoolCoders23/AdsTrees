@@ -29,12 +29,23 @@ const userSchema = new Schema({
         required: true,
         minlength: [5, 'Password must be at least 5 characters long.']
     },
+    profilePicture: {
+        url: {
+            type: String,
+            required: false,
+        },
+        altText: {
+            type: String,
+            required: false,
+        },
+    },
     preferences: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'Preference'
+            type: String,
+            required: false,
+            trim: true,
         }
-    ]
+    ],
 });
 // ==================================================================
 
@@ -45,25 +56,6 @@ userSchema.pre('save', async function (next) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
     }
-    next();
-});
-// ==================================================================
-
-// set up the pre-update middleware to update a User
-// ==================================================================
-userSchema.pre('findOneAndUpdate', async function (next) {
-    if (this.isModified('password')) {
-        const saltRounds = 10;
-        this.password = await bcrypt.hash(this.password, saltRounds);
-    }
-    next();
-});
-// ==================================================================
-
-// set up the pre-remove middleware to remove a User's associated preferences
-// ==================================================================
-userSchema.pre('remove', async function (next) {
-    await this.model('Preference').deleteMany({ user: this._id });
     next();
 });
 // ==================================================================

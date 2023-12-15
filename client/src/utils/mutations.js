@@ -16,7 +16,7 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
-        email
+        profilePicture
       }
     }
   }
@@ -26,14 +26,21 @@ export const LOGIN_USER = gql`
 // Add a new User
 // ================================================================
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password)
+  mutation addUser(
+    $username: String!,
+    $email: String!,
+    $password: String!)
+    {
+    addUser(
+      username: $username,
+      email: $email,
+      password: $password
+      )
     {
       token
       user {
         _id
         username
-        email
       }
     }
   }
@@ -44,11 +51,11 @@ export const ADD_USER = gql`
 // ================================================================
 export const REMOVE_USER = gql`
   mutation removeUser($userId: ID!) {
-    removeUser(userId: $userId)
-    {
-      _id
-      username
-      email
+    removeUser(userId: $userId) {
+      user{
+        _id
+        username
+      }
     }
   }
 `;
@@ -57,14 +64,24 @@ export const REMOVE_USER = gql`
 // Update a User
 // ================================================================
 export const UPDATE_USER = gql`
-  mutation updateUser($username: String!, $email: String!, $password: String!) {
-    updateUser(username: $username, email: $email, password: $password)
+  mutation updateUser(
+    $userId: ID!,
+    $username: String,
+    $email: String,
+    $password: String,
+    $profilePicture: ImageInput,) {
+    updateUser(
+      userId: $userId,
+      username: $username,
+      email: $email,
+      password: $password,
+      profilePicture: $profilePicture,)
     {
       token
       user {
         _id
         username
-        email
+        profilePicture
       }
     }
   }
