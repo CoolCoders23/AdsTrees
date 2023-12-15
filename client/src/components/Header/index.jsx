@@ -77,16 +77,6 @@ const Header = () => {
                                     About us
                                 </Link>
                             </li>
-                            <li>
-                                <Link
-                                    className={`nav-link ${
-                                        path === '/contact' ? 'active' : 'text-dark'
-                                    }`}
-                                    to='/contact'
-                                >
-                                    Contact us
-                                </Link>
-                            </li>
                         </ul>
                         <ul>
                             {Auth.loggedIn() && username !== '' ? (
