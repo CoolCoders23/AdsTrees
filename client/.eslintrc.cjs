@@ -16,7 +16,7 @@ module.exports = {
     'dist',
     'README.md',
     'workFlow.md',
-    '.hintrc'
+    '.hintrc',
   ],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },

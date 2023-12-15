@@ -7,6 +7,12 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // ============================================================
 
+// Importing styles
+// ============================================================
+import './styles.css';
+import './vars.css';
+// ============================================================
+
 // Importing components
 // ============================================================
 import App from './App.jsx';

@@ -15,11 +15,12 @@ const typeDefs = `
     scope: CacheControlScope
   ) on FIELD_DEFINITION | OBJECT | INTERFACE | UNION
 
-  type User @cacheControl(maxAge: 0, scope: PRIVATE) {
-    _id: ID
+  type User {
+    _id: ID!
     username: String!
-    email: String!
-    password: String!
+    email: String! @cacheControl(maxAge: 0, scope: PRIVATE)
+    password: String! @cacheControl(maxAge: 0, scope: PRIVATE)
+    preferences: [Preference] @cacheControl(maxAge: 60, scope: PRIVATE)
   }
 
   type Auth @cacheControl(maxAge: 0, scope: PRIVATE) {
@@ -28,10 +29,15 @@ const typeDefs = `
   }
 
   type Query {
+    users: [User]
+    user(username: String!): User @cacheControl(maxAge: 40, scope: PRIVATE)
   }
 
   type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth @cacheControl(maxAge: 0, scope: PRIVATE)
+    login(email: String!, password: String!): Auth @cacheControl(maxAge: 0, scope: PRIVATE)
   }
+
 `;
 // ==================================================================
 
@@ -39,3 +45,5 @@ const typeDefs = `
 // ==================================================================
 module.exports = typeDefs;
 // ==================================================================
+
+
