@@ -42,7 +42,7 @@ module.exports = {
 
         // If the token is present and formatted as 'Bearer <token>', extract the actual token
         if (token && token.startsWith('Bearer ')) {
-            token = token.split(' ')[1];
+            token = token.split(' ').pop().trim();
         }
 
         // If no token is present, return the request as is
