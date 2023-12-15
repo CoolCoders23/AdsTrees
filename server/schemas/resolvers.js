@@ -37,6 +37,20 @@ const resolvers = {
                 });
             }
         },
+
+        // Defined to fetch the logged in user's profile
+        userProfile: async (parent, args, context) => {
+
+            if (context.user) {
+                try {
+                    const user = await User.findOne({ _id: context.user._id }).populate('preferences');
+                    return user;
+                } catch (err) {
+                    throw new AuthenticationError(`Failed to fetch user profile: ${err.message}, make sure you are logged in.`);
+                }
+            }
+
+        },
     },
 
     Mutation: {
@@ -103,7 +117,7 @@ const resolvers = {
                 return { token, user };
             } catch (err) {
 
-                throw AuthenticationError(`Failed to update user: ${err.message}, make sure you are logged in.`);
+                throw new AuthenticationError(`Failed to update user: ${err.message}, make sure you are logged in.`);
             }
         },
 

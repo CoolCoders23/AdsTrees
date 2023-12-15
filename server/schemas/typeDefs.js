@@ -31,6 +31,7 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!): User
+    userProfile: User @cacheControl(scope: PRIVATE)
   }
 
   type Mutation {
