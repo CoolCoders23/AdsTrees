@@ -18,6 +18,12 @@ import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
 // ============================================================
 
+// Importing styles
+// ============================================================
+import './styles.css';
+import './vars.css';
+// ============================================================
+
 // Create a browser router
 // ============================================================
 const routes = [
