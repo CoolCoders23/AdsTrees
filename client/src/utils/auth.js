@@ -13,7 +13,14 @@ class Auth {
     // Getting the user's profile data from the token
     // ================================================================
     getProfile() {
-        return jwtDecode(this.getToken());
+        const token = this.getToken();
+        if (token === null) {
+            return null;
+        }
+        if (typeof token !== 'string') {
+            throw new Error('Token must be a string');
+        }
+        return jwtDecode(token);
     }
     // ================================================================
 

@@ -4,7 +4,6 @@
 // Importing Dependencies
 // ============================================================
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import ThemeComponent from './components/ThemeComponent';
 // ============================================================
 // TODO: check if the modes are working
 
@@ -60,8 +59,6 @@ const Footer = () => {
                                 &larr; Go Back
                             </button>
                         )}
-
-                        <ThemeComponent />
 
                     </div>
                 </div>

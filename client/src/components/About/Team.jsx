@@ -11,7 +11,7 @@ import { Box, Flex, Text, Image, Button } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin, FaBriefcase } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import { motion } from 'framer-motion';
-import { pageAnimation } from './pageAnimation';
+import pageAnimation from './pageAnimation';
 import teamData from '../../utils/teamData';
 // ============================================================
 
