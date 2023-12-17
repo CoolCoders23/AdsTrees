@@ -20,8 +20,12 @@ import { Outlet } from 'react-router-dom';
 // ============================================================
 import Header from './components/Header';
 import Footer from './components/Footer';
-import ThemeProvider from './utils/ThemeContext';
 // ============================================================
+
+// Import the custom hook
+// ==========================================================
+import { useTheme } from './utils/useTheme';
+// ==========================================================
 
 // Create an error link
 // Used (https://www.apollographql.com/docs/react/get-started/#error-handling) as a reference
@@ -78,14 +82,39 @@ const client = new ApolloClient({
 // ============================================================
 function App() {
 
+    // Pluck values from ThemeContext
+    const { darkTheme, toggleTheme } = useTheme();
+
+    const themeStyles = {
+        background: darkTheme
+            ? '-webkit-linear-gradient(top left, #150C17, #535353)'
+            : '-webkit-linear-gradient(bottom, #FFFFFF, #EDBAAB)',
+        padding: '10rem',
+        margin: '10rem',
+        borderRadius: '30px',
+        color: darkTheme ? '#FAFAFA' : '#363537',
+    };
+
     return (
+
+
         <ApolloProvider client={client}>
-            <ThemeProvider>
+            <div style={themeStyles}>
                 <Header />
+                <button id="button" onClick={toggleTheme} className="btn" type="button">
+                Toggle dark theme
+                </button>
+                <section className="text-center">
+                The current value of{' '}
+                    <code style={{ fontWeight: 'bold' }}>
+                    darkTheme: {darkTheme.toString()}
+                    </code>
+                </section>
                 <Outlet />
                 <Footer />
-            </ThemeProvider>
+            </div>
         </ApolloProvider>
+
     );
 }
 // ============================================================
