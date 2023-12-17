@@ -6,7 +6,6 @@
 
 // Importing Dependencies
 // ============================================================
-import { Link } from 'react-router-dom';
 import { Box, Flex, Text, Image, Button } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin, FaBriefcase } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
@@ -80,9 +79,10 @@ const Team = () => {
                                     leftIcon={<FaGithub />}
                                     colorScheme='teal'
                                     variant='outline'
-                                    as={Link}
-                                    to={{ pathname: member.github }}
-                                    isExternal
+                                    as='a'
+                                    href={ member.github }
+                                    target='_blank'
+                                    rel='noopener noreferrer'
                                     aria-label="Github"
                                 >
                                     Github
@@ -91,9 +91,10 @@ const Team = () => {
                                     leftIcon={<FaLinkedin />}
                                     colorScheme='teal'
                                     variant='outline'
-                                    as={Link}
-                                    to={{ pathname: member.linkedIn }}
-                                    isExternal
+                                    as='a'
+                                    href={ member.linkedIn }
+                                    target='_blank'
+                                    rel='noopener noreferrer'
                                     aria-label="LinkedIn"
                                 >
                                     LinkedIn
@@ -102,9 +103,10 @@ const Team = () => {
                                     leftIcon={<FaBriefcase />}
                                     colorScheme='teal'
                                     variant='outline'
-                                    as={Link}
-                                    to={{ pathname: member.portfolio }}
-                                    isExternal
+                                    as='a'
+                                    href={ member.portfolio }
+                                    target='_blank'
+                                    rel='noopener noreferrer'
                                     aria-label="Portfolio"
                                 >
                                     Portfolio
@@ -113,9 +115,10 @@ const Team = () => {
                                     leftIcon={<SiGmail />}
                                     colorScheme='teal'
                                     variant='outline'
-                                    as={Link}
-                                    to={{ pathname: `mailto:${member.email}` }}
-                                    isExternal
+                                    as='a'
+                                    href={ `mailto:${member.email}` }
+                                    target='_blank'
+                                    rel='noopener noreferrer'
                                     aria-label="Email"
                                 >
                                     Email
