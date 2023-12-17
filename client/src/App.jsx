@@ -83,16 +83,18 @@ const client = new ApolloClient({
 function App() {
 
     // Pluck values from ThemeContext
-    const { darkTheme, toggleTheme } = useTheme();
+    const { darkTheme, toggleTheme, theme } = useTheme();
 
     const themeStyles = {
         background: darkTheme
-            ? '-webkit-linear-gradient(top left, #150C17, #535353)'
-            : '-webkit-linear-gradient(bottom, #FFFFFF, #EDBAAB)',
-        padding: '10rem',
-        margin: '10rem',
-        borderRadius: '30px',
-        color: darkTheme ? '#FAFAFA' : '#363537',
+            ? theme.colors.light.greenDark
+            : theme.colors.light.greyLight,
+        color: darkTheme
+            ? theme.colors.light.greyLight
+            : theme.colors.light.greenDark,
+        transition: '0.3s ease',
+        height: '100vh',
+        width: '100vw'
     };
 
     return (
@@ -104,12 +106,6 @@ function App() {
                 <button id="button" onClick={toggleTheme} className="btn" type="button">
                 Toggle dark theme
                 </button>
-                <section className="text-center">
-                The current value of{' '}
-                    <code style={{ fontWeight: 'bold' }}>
-                    darkTheme: {darkTheme.toString()}
-                    </code>
-                </section>
                 <Outlet />
                 <Footer />
             </div>
