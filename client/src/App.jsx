@@ -83,7 +83,7 @@ const client = new ApolloClient({
 function App() {
 
     // Pluck values from ThemeContext
-    const { darkTheme, toggleTheme, theme } = useTheme();
+    const { darkTheme, theme } = useTheme();
 
     const themeStyles = {
         background: darkTheme
@@ -103,9 +103,6 @@ function App() {
         <ApolloProvider client={client}>
             <div style={themeStyles}>
                 <Header />
-                <button id="button" onClick={toggleTheme} className="btn" type="button">
-                Toggle dark theme
-                </button>
                 <Outlet />
                 <Footer />
             </div>

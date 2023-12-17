@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 // Desc: This file contains the Theme Provider component which
 // is used to provide the theme to the child components
+// Used the following as a reference:
+// https://chakra-ui.com/getting-started/cra-guide#chakraprovider-props
 // ============================================================
 
 // Importing libraries and packages

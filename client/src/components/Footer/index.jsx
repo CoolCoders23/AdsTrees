@@ -4,12 +4,16 @@
 // Importing Dependencies
 // ============================================================
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useTheme } from '../../utils/useTheme';
 // ============================================================
 // TODO: check if the modes are working
 
 // Define the Footer component
 // ============================================================
 const Footer = () => {
+
+    // Define the toggleTheme hook
+    const { toggleTheme } = useTheme();
 
     // Define the path
     const location = useLocation();
@@ -59,6 +63,10 @@ const Footer = () => {
                                 &larr; Go Back
                             </button>
                         )}
+
+                        <button id="button" onClick={toggleTheme} className="btn" type="button">
+                                Toggle dark theme
+                        </button>
 
                     </div>
                 </div>
