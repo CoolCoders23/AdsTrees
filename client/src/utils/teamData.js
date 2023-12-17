@@ -32,12 +32,12 @@ const teamData = [
         title: 'Full Stack Developer',
         name: 'Jide Tidjani-Serpos',
         bio:
-          '',
+          'He is a dedicated product designer driven by the desire to craft experiences tailored to meet the needs of individuals while achieving ambitious business objectives.',
         image: Jide,
-        linkedIn: '',
-        github: '',
-        portfolio: '',
-        email: '',
+        linkedIn: 'https://www.linkedin.com/in/jidetidjaniserpos/',
+        github: 'https://github.com/JideTS',
+        portfolio: 'https://uxfol.io/jts2023',
+        email: 'jide@tidjani-Serpos.com',
     },
 
     {
@@ -56,12 +56,12 @@ const teamData = [
         title: 'Full Stack Developer',
         name: 'Yega Cho',
         bio:
-          '',
+          'He is a software engineer with a strong background in generating data-driven business insights and designing intuitive user experiences. He aspires to leverage his creativity and skillset to build scalable, world changing solutions.',
         image: Yega,
-        linkedIn: '',
-        github: '',
-        portfolio: '',
-        email: '',
+        linkedIn: 'https://www.linkedin.com/in/yega-cho-4238681a6/',
+        github: 'https://github.com/yega1009',
+        portfolio: 'https://yega-cho-porQolio.netlify.app/',
+        email: 'yega1009@gmail.com',
     },
 
 ];
