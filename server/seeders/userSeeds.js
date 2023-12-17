@@ -4,7 +4,7 @@
 
 // Dependencies
 // ==================================================================
-const faker = require('@faker-js/faker');
+const faker = require('faker');
 // ==================================================================
 
 // Define the number of Users to seed
