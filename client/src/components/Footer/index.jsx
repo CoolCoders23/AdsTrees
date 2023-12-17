@@ -4,6 +4,8 @@
 // Importing Dependencies
 // ============================================================
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
+import { FaGithub } from 'react-icons/fa';
 import { useTheme } from '../../utils/useTheme';
 // ============================================================
 // TODO: check if the modes are working
@@ -40,12 +42,18 @@ const Footer = () => {
                             </p>
                         </div>
 
-                        <button
-                            type='button'
-                            onClick={() => window.open('https://github.com/CoolCoders23')}
+                        <Button
+                            leftIcon={<FaGithub />}
+                            colorScheme='whatsapp'
+                            variant= 'outline'
+                            as='a'
+                            href='https://github.com/CoolCoders23'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            aria-label="Github"
                         >
-                            <i className='fab fa-github'></i>
-                        </button>
+                                    Github
+                        </Button>
 
                         <div>
                             <Link

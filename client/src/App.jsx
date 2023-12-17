@@ -93,7 +93,7 @@ function App() {
             ? theme.colors.light.greyLight
             : theme.colors.light.greenDark,
         transition: '0.3s ease',
-        height: '100vh',
+        height: 'auto',
         width: '100vw'
     };
 
