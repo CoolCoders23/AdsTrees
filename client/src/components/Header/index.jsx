@@ -32,7 +32,10 @@ const Header = () => {
     // Define the username
     let username = '';
     try {
-        username = Auth.getProfile().data.username;
+        const profile = Auth.getProfile();
+        if (profile !== null) {
+            username = profile.data.username;
+        }
     } catch (error) {
         console.error('Failed to get username', error);
     }

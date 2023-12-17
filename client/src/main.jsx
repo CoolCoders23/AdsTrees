@@ -17,6 +17,7 @@ import Login from './pages/Login';
 // import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
 // import ContactUs from './pages/ContactUs';
+import ThemeProvider from './utils/ThemeContext';
 // ============================================================
 
 // Create a browser router
@@ -67,6 +68,8 @@ const root = createRoot(rootElement);
 // Render the app
 // ============================================================
 root.render(
-    <RouterProvider router={router} />
+    <ThemeProvider>
+        <RouterProvider router={router} />
+    </ThemeProvider>
 );
 // ============================================================
