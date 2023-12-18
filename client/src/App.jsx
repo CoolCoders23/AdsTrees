@@ -94,7 +94,7 @@ function App() {
                 bg={darkTheme ? theme.colors.light.greenDark : theme.colors.light.greyLight}
                 color={darkTheme ? theme.colors.light.greyLight : theme.colors.light.greenDark}
                 transition="0.3s ease"
-                height="auto"
+                height="fit-content"
                 width="100vw"
             >
                 <Header />

@@ -26,11 +26,12 @@ const Team = () => {
             exit='exit'
         >
             <Flex
-                direction='column'
-                align='center'
+                direction={{ base: 'column', md: 'row' }}
+                align='stretch'
                 justify='center'
                 minH='100vh'
-                bg='gray.100'
+                bg='inherit'
+                flexWrap='wrap'
             >
                 {teamData.map((member, index) => (
                     <Box
@@ -43,6 +44,7 @@ const Team = () => {
                         bg='white'
                         p='6'
                         m='6'
+                        flexBasis={{ base: '100%', md: '45%' }}
                     >
                         <Image
                             src={member.image}
@@ -51,7 +53,12 @@ const Team = () => {
                             h='auto'
                         />
                         <Box p='6'>
-                            <Box d='flex' alignItems='baseline'>
+                            <Box
+                                d='flex'
+                                alignItems='baseline'
+                                justifyContent={{ base: 'center', md: 'flex-start' }}
+                                flexWrap='wrap'
+                            >
                                 <Text
                                     color='gray.500'
                                     fontWeight='semibold'
@@ -64,7 +71,12 @@ const Team = () => {
                                 </Text>
                             </Box>
 
-                            <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight'>
+                            <Box
+                                mt='1'
+                                fontWeight='semibold'
+                                as='h4'
+                                lineHeight='tight'
+                            >
                                 {member.name}
                             </Box>
 
@@ -74,7 +86,14 @@ const Team = () => {
                                 </Text>
                             </Box>
 
-                            <Box d='flex' mt='2' alignItems='center'>
+                            <Box
+                                d='flex'
+                                m='2'
+                                p='2'
+                                alignItems='center'
+                                justifyContent={{ base: 'center', md: 'flex-start' }}
+                                flexWrap='wrap'
+                            >
                                 <Button
                                     leftIcon={<FaGithub />}
                                     colorScheme='teal'
@@ -84,6 +103,7 @@ const Team = () => {
                                     target='_blank'
                                     rel='noopener noreferrer'
                                     aria-label="Github"
+                                    m={2}
                                 >
                                     Github
                                 </Button>
@@ -108,6 +128,7 @@ const Team = () => {
                                     target='_blank'
                                     rel='noopener noreferrer'
                                     aria-label="Portfolio"
+                                    m={2}
                                 >
                                     Portfolio
                                 </Button>

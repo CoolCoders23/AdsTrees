@@ -21,7 +21,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Auth from '../../utils/auth';
-import logo from '../../assets/image/LogoMain/AdsTrees_Logo_64.svg';
+import logo from '../../assets/image/LogoMain/AdsTrees_Logo_48.svg';
 import { useTheme } from '../../utils/useTheme';
 // ============================================================
 
@@ -70,7 +70,7 @@ const Header = () => {
             >
                 <Text
                     fontSize={['xs', 'sm', 'md', 'lg', 'xl']}
-                    fontFamily={'Arial'}
+                    textStyle="mainlogofont"
                 >
                     {children}
                 </Text>
@@ -126,19 +126,17 @@ const Header = () => {
     );
 
     return (
-        <Box borderBottomWidth={1} mb={4} pb={2} p={4}>
+        <Box mx={{ base: 4, md: 80 }} p={8} >
             <Flex
                 align={'center'}
                 justify={'space-between'}
-                direction={['column', 'row']}
+                direction={{ base: 'column', md: 'row' }}
                 spacing={4}
             >
                 <Flex align={'center'}>
                     <img
                         src={logo}
                         alt="logo"
-                        width="100"
-                        height="100"
                     />
                     <Link
                         as={RouterLink}
@@ -147,7 +145,12 @@ const Header = () => {
                         fontWeight={'bold'}
                         ml={2}
                     >
-                        AdsTrees
+                        <Text
+                            fontSize={['lg', 'xl']}
+                            textStyle="mainlogofont"
+                        >
+                            AdsTrees
+                        </Text>
                     </Link>
                 </Flex>
                 <NavItems />
