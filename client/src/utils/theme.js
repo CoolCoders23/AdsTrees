@@ -1,4 +1,6 @@
 // Desc: This file acts as the theme configuration file for the app
+// Used the following as a reference:
+// https://chakra-ui.com/docs/styled-system/customize-theme
 // ============================================================
 
 // Import the extendTheme function
@@ -57,6 +59,38 @@ const theme = extendTheme({
     },
     shadows: {
         dropShadowButtons: '0px 4px 61px 0px rgba(45, 106, 79, 0.40)',
+    },
+    components: {
+        button: {
+            // The styles all button have in common
+            baseStyle: {
+                fontWeight: 'semibold',
+            },
+            // The variant and colorScheme options
+            variants: {
+                solid: (props) => ({
+                    bg: props.colorMode === 'dark' ? 'dark.purple' : 'light.greenMedium',
+                    color: 'white',
+                    _hover: {
+                        bg: props.colorMode === 'dark' ? 'dark.purple' : 'light.greenDark',
+                    },
+                }),
+                outline: (props) => ({
+                    color: props.colorMode === 'dark' ? 'dark.greenMedium' : 'light.greenMedium',
+                    border: '1px solid',
+                    borderColor: props.colorMode === 'dark' ? 'dark.greenMedium' : 'light.greenMedium',
+                    _hover: {
+                        bg: props.colorMode === 'dark' ? 'dark.greenDark' : 'light.greenDark',
+                        color: 'white',
+                    },
+                }),
+            },
+            defaultProps: {
+                colorScheme: 'teal',
+                variant: 'solid',
+                size: 'md',
+            },
+        },
     },
 });
 // ============================================================
