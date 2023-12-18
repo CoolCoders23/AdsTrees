@@ -43,15 +43,20 @@ const Contact = () => {
             return;
         }
 
-        // Sending email using emailjs with the service ID, template ID, form data, and user ID
-        emailjs.send('service_sjt7w8f', 'template_q8n7a4d', formData, 'oKEdEQ6TyUxYqsIip')
+        // Set up the email template
+        const templateParams = {
+            from_name: formData.user_name,
+            from_email: formData.user_email,
+            message: formData.message
+        };
+
+        // Sending email using emailjs with the service ID, template ID, email template, and user ID
+        emailjs.send('service_sjt7w8f', 'template_q8n7a4d', templateParams, 'oKEdEQ6TyUxYqsIip')
             .then((result) => {
-                console.log(result.text);
                 setMessage('Message sent successfully!');
                 setFormData({ user_name: '', user_email: '', message: '' });
             }, (error) => {
-                console.log(error.text); 
-                setMessage('Failed to send the message, please try again.'); 
+                setMessage('Failed to send the message, please try again.');
             });
     };
     // ============================================================
