@@ -55,6 +55,40 @@ const Contact = () => {
             });
     };
     // ============================================================
+
+    return (
+        <div>
+            <h2>Contact Us</h2>
+            <form onSubmit={sendEmail}>
+                {/* Form fields for name, email, and message with handleChange event */}
+                <input
+                    type="text"
+                    name="user_name"
+                    placeholder="Your Name"
+                    value={formData.user_name}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="email"
+                    name="user_email"
+                    placeholder="Your Email"
+                    value={formData.user_email}
+                    onChange={handleChange}
+                    required
+                />
+                <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit">Send Message</button> {/* Submit button */}
+            </form>
+            {message && <p>{message}</p>} {/* Display message below the form */}
+        </div>
+    );
 };
 
 export default Contact; // Exporting the Contact component
