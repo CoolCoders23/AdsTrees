@@ -17,7 +17,14 @@ const Contact = () => {
     // State for managing messages to the user (like success or error messages)
     const [message, setMessage] = useState('');
     // ============================================================
+
+    // Function to handle changes in the form input fields
+    // ============================================================
+    const handleChange = (event) => {
+        // Updating formData state with new values when input changes
+        setFormData({ ...formData, [event.target.name]: event.target.value });
     };
     // ============================================================
+};
 
 export default Contact; // Exporting the Contact component
