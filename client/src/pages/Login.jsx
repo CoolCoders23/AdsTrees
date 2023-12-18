@@ -32,6 +32,12 @@ const Login = () => {
             const mutationResponse = await login({ variables: { email: formState.email, password: formState.password } });
             const token = mutationResponse.data.login.token;
             Auth.login(token);
+            // clear form values
+            setFormState({
+                email: '',
+                password: '',
+            });
+
         } catch (e) {
             console.log(e);
         }
