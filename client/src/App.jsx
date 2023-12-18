@@ -14,6 +14,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 import { Outlet } from 'react-router-dom';
+import { Box } from '@chakra-ui/react';
 // ============================================================
 
 // Importing components
@@ -85,27 +86,21 @@ function App() {
     // Pluck values from ThemeContext
     const { darkTheme, theme } = useTheme();
 
-    const themeStyles = {
-        background: darkTheme
-            ? theme.colors.light.greenDark
-            : theme.colors.light.greyLight,
-        color: darkTheme
-            ? theme.colors.light.greyLight
-            : theme.colors.light.greenDark,
-        transition: '0.3s ease',
-        height: 'auto',
-        width: '100vw'
-    };
-
     return (
 
 
         <ApolloProvider client={client}>
-            <div style={themeStyles}>
+            <Box
+                bg={darkTheme ? theme.colors.light.greenDark : theme.colors.light.greyLight}
+                color={darkTheme ? theme.colors.light.greyLight : theme.colors.light.greenDark}
+                transition="0.3s ease"
+                height="auto"
+                width="100vw"
+            >
                 <Header />
                 <Outlet />
                 <Footer />
-            </div>
+            </Box>
         </ApolloProvider>
 
     );
