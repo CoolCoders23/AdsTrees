@@ -25,6 +25,36 @@ const Contact = () => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     };
     // ============================================================
+
+    // Function to handle email sending on form submission
+    // ============================================================
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        // Check if the user is logged in, if not, set a message
+        if (!Auth.loggedIn()) {
+            setMessage('You must be logged in to send a message.');
+            return;
+        }
+
+         // Validate the email address
+         if (!validateEmail(formData.user_email)) {
+            setMessage('Please enter a valid email address.');
+            return;
+        }
+
+        // Sending email using emailjs with the service ID, template ID, form data, and user ID
+        emailjs.send('service_sjt7w8f', 'template_q8n7a4d', formData, 'oKEdEQ6TyUxYqsIip')
+            .then((result) => {
+                console.log(result.text);
+                setMessage('Message sent successfully!');
+                setFormData({ user_name: '', user_email: '', message: '' });
+            }, (error) => {
+                console.log(error.text); 
+                setMessage('Failed to send the message, please try again.'); 
+            });
+    };
+    // ============================================================
 };
 
 export default Contact; // Exporting the Contact component
