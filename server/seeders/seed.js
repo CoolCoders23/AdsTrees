@@ -4,9 +4,8 @@
 // Import the database connection and models
 // =================================================================
 const db = require('../config/connection');
-const { User, Ad } = require('../models');
-const userSeeds = require('./userSeeds');
-const adSeeds = require('./adSeeds');
+const { User } = require('../models');
+const { userData } = require('./userSeeds');
 const cleanDB = require('./cleanDB');
 // =================================================================
 
@@ -18,16 +17,9 @@ db.on('error', (err) => console.log(`An error occurred while connecting to the d
 // Seed the database
 // =================================================================
 const connectAndSeed = async () => {
-
     try {
-        await cleanDB('Ad', 'ads');
-
         await cleanDB('User', 'users');
-
-        await User.create(userSeeds);
-
-        await Ad.create(adSeeds);
-
+        await User.create(userData);
     } catch (err) {
         console.error(err);
         process.exit(1);

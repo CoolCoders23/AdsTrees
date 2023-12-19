@@ -10,12 +10,16 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Importing components
 // ============================================================
 import App from './App.jsx';
-import Dashboard from './pages/Dashboard';
+// import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Profile from './pages/Profile';
+// import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
+
+// import ContactUs from './pages/ContactUs';
+import ThemeProvider from './utils/ThemeContext';
+
 import Contact from './pages/Contact';
 // ============================================================
 
@@ -23,6 +27,7 @@ import Contact from './pages/Contact';
 // ============================================================
 import './styles.css';
 import './vars.css';
+
 // ============================================================
 
 // Create a browser router
@@ -41,22 +46,24 @@ const routes = [
                 path: '/signup',
                 element: <Signup />
             },
-            {
-                path: '/dashboard/:username',
-                element: <Dashboard />
-            },
-            {
-                path: '/profile/:username',
-                element: <Profile />
-            },
+            // {
+            //     path: '/dashboard/:username',
+            //     element: <Dashboard />
+            // },
+            // {
+            //     path: '/user-profile',
+            //     element: <Profile />
+            // },
             {
                 path: '/about',
                 element: <About />
             },
+
             {
                 path: '/contact',
                 element: <Contact />
             }
+
         ]
     },
 ];
@@ -73,6 +80,8 @@ const root = createRoot(rootElement);
 // Render the app
 // ============================================================
 root.render(
-    <RouterProvider router={router} />
+    <ThemeProvider>
+        <RouterProvider router={router} />
+    </ThemeProvider>
 );
 // ============================================================

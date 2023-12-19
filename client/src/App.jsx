@@ -14,6 +14,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 import { Outlet } from 'react-router-dom';
+import { Box } from '@chakra-ui/react';
 // ============================================================
 
 // Importing components
@@ -21,6 +22,11 @@ import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 // ============================================================
+
+// Import the custom hook
+// ==========================================================
+import { useTheme } from './utils/useTheme';
+// ==========================================================
 
 // Create an error link
 // Used (https://www.apollographql.com/docs/react/get-started/#error-handling) as a reference
@@ -77,12 +83,26 @@ const client = new ApolloClient({
 // ============================================================
 function App() {
 
+    // Pluck values from ThemeContext
+    const { darkTheme, theme } = useTheme();
+
     return (
+
+
         <ApolloProvider client={client}>
-            <Header />
-            <Outlet />
-            <Footer />
+            <Box
+                bg={darkTheme ? theme.colors.light.greenDark : theme.colors.light.greyLight}
+                color={darkTheme ? theme.colors.light.greyLight : theme.colors.light.greenDark}
+                transition="0.3s ease"
+                height="fit-content"
+                width="100vw"
+            >
+                <Header />
+                <Outlet />
+                <Footer />
+            </Box>
         </ApolloProvider>
+
     );
 }
 // ============================================================
