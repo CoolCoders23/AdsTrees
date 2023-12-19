@@ -1,9 +1,9 @@
 // Importing useState hook from React and emailjs library
 // ============================================================
 import { useState } from 'react';
-import emailjs from 'emailjs/browser';
+import emailjs from '@emailjs/browser';
 import Auth from '../utils/auth';
-import { validateEmail } from '../utils/validateEmail';
+import { validateEmail } from '../utils/validation';
 // ============================================================
 
 // Contact component
@@ -30,7 +30,7 @@ const Contact = () => {
 
     // Function to handle email sending on form submission
     // ============================================================
-    const sendEmail = (e) => {
+    const sendEmail = async (e) => {
         e.preventDefault();
 
         // Check if the user is logged in, if not, set a message
@@ -45,6 +45,18 @@ const Contact = () => {
             return;
         }
 
+        // Check if the message is empty, if so, set a message
+        if (!formData.message) {
+            setMessage('Please enter a message.');
+            return;
+        }
+
+        // check if the username is empty, if so, set a message
+        if (!formData.user_name) {
+            setMessage('Please enter a name.');
+            return;
+        }
+
         // Set up the email template
         const templateParams = {
             from_name: formData.user_name,
@@ -52,12 +64,20 @@ const Contact = () => {
             message: formData.message
         };
 
-        // Sending email using emailjs with the service ID, template ID, email template, and user ID
-        emailjs.send('service_sjt7w8f', 'template_q8n7a4d', templateParams, 'oKEdEQ6TyUxYqsIip')
+        // Sending email using emailjs with the service ID,
+        // template ID, email template, and user ID
+        emailjs.send(
+            'service_sjt7w8f',
+            'template_q8n7a4d',
+            templateParams,
+            'oKEdEQ6TyUxYqsIip'
+        )
             .then((result) => {
+                console.log( result.status, result.text);
                 setMessage('Message sent successfully!');
                 setFormData({ user_name: '', user_email: '', message: '' });
             }, (error) => {
+                console.log(error.text);
                 setMessage('Failed to send the message, please try again.');
             });
     };
