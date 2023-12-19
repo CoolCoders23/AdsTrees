@@ -55,12 +55,11 @@ const resolvers = {
     },
 
     Mutation: {
-        addUser: async (parent, { username, email, password }) => {
-
+        addUser: async (parent, { user }) => {
             try {
-                const user = await User.create({ username, email, password });
-                const token = signToken(user);
-                return { token, user };
+                const newUser = await User.create(user);
+                const token = signToken(newUser);
+                return { token, user: newUser };
             } catch (err) {
                 throw new GraphQLError(`Failed to create user: ${err.message}`, {
                     extensions: {
@@ -106,36 +105,30 @@ const resolvers = {
             }
         },
 
-        updateUser: async (parent, {
-            _id,
-            username,
-            email,
-            password,
-            profilePicture
-        }) => {
+        updateUser: async (parent, { user }) => {
             try {
-                const user = await User.findById(_id);
-                if (!user) {
+                const updatedUser = await User.findById(user._id);
+                if (!updatedUser) {
                     throw new Error('User not found');
                 }
-                if (username !== undefined) {
-                    user.username = username;
+                if (user.username !== undefined) {
+                    updatedUser.username = user.username;
                 }
-                if (email !== undefined) {
-                    user.email = email;
+                if (user.email !== undefined) {
+                    updatedUser.email = user.email;
                 }
-                if (password !== undefined) {
-                    user.password = password;
+                if (user.password !== undefined) {
+                    updatedUser.password = user.password;
                 }
-                if (profilePicture !== undefined) {
-                    if (!validator.isURL(profilePicture)) {
+                if (user.profilePicture !== undefined) {
+                    if (!validator.isURL(user.profilePicture.url)) {
                         throw new Error('Profile picture is not a valid URL');
                     }
-                    user.profilePicture = profilePicture;
+                    updatedUser.profilePicture = user.profilePicture.url;
                 }
-                await user.save();
-                const token = signToken(user);
-                return { token, user };
+                await updatedUser.save();
+                const token = signToken(updatedUser);
+                return { token, user: updatedUser };
             } catch (err) {
                 throw new AuthenticationError(`Failed to update user: ${err.message}, make sure you are logged in.`);
             }
