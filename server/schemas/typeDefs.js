@@ -30,7 +30,6 @@ const typeDefs = `
   }
 
   type Image {
-    _id: ID!
     url: String
     altText: String
   }
@@ -42,18 +41,22 @@ const typeDefs = `
   }
 
   type Mutation {
+
     addUser(
       username: String!,
       email: String!,
       password: String!):
       Auth
       @cacheControl(maxAge: 0, scope: PRIVATE)
+
     login(
       email: String!,
       password: String!):
       Auth
       @cacheControl(maxAge: 0, scope: PRIVATE)
+
     removeUser(userId: ID!): User
+
     updateUser(
       _id: ID!,
       username: String,

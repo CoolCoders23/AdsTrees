@@ -5,12 +5,11 @@
 // ==================================================================
 const jwt = require('jsonwebtoken');
 const { GraphQLError } = require('graphql');
-require('dotenv').config();
 // ==================================================================
 
 // define secret based on environment SECRET_KEY
 // ==================================================================
-const secret = process.env.SECRET_KEY || 'mmmmysecretkeyyyyy';
+const secret = process.env.SECRET_KEY;
 const expiration = Math.floor(Date.now() / 1000) + (60 * 60 * 2);// 2 hours
 // ==================================================================
 
