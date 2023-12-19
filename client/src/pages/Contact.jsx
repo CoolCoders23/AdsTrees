@@ -6,6 +6,8 @@ import Auth from '../utils/auth';
 import { validateEmail } from '../utils/validateEmail';
 // ============================================================
 
+// Contact component
+// ============================================================
 const Contact = () => {
     // State for managing form data with initial values
     // ============================================================
@@ -37,8 +39,8 @@ const Contact = () => {
             return;
         }
 
-         // Validate the email address
-         if (!validateEmail(formData.user_email)) {
+        // Validate the email address
+        if (!validateEmail(formData.user_email)) {
             setMessage('Please enter a valid email address.');
             return;
         }
@@ -95,5 +97,9 @@ const Contact = () => {
         </div>
     );
 };
+// ============================================================
 
-export default Contact; // Exporting the Contact component
+// Exporting the Contact component
+// ============================================================
+export default Contact;
+// ============================================================

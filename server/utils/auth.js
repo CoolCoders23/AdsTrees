@@ -5,12 +5,10 @@
 // ==================================================================
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
-const { GraphQLError } = require('graphql');
 // ==================================================================
 
 // Define a secret key and set the expiration time for JWT
 // ==================================================================
-
 const secret = process.env.SECRET_KEY;
 const expiration = Math.floor(Date.now() / 1000) + (60 * 60 * 2);// 2 hours
 // ==================================================================

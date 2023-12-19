@@ -1,3 +1,6 @@
+// Desc: This file contains the validation functions for Email
+// ================================================================
+
 // Email validation
 // ================================================================
 const validateEmail = (email) => {

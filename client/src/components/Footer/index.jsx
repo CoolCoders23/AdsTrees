@@ -8,7 +8,6 @@ import { Button } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 import { useTheme } from '../../utils/useTheme';
 // ============================================================
-// TODO: check if the modes are working
 
 // Define the Footer component
 // ============================================================
