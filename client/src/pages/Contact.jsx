@@ -67,8 +67,8 @@ const Contact = () => {
         // Sending email using emailjs with the service ID,
         // template ID, email template, and user ID
         emailjs.send(
-            'service_sjt7w8f',
-            'template_q8n7a4d',
+            'service_oc1f1go',
+            'template_owzfx8o',
             templateParams,
             'oKEdEQ6TyUxYqsIip'
         )
