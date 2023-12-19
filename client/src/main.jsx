@@ -16,6 +16,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
+import Contact from './pages/Contact';
 // ============================================================
 
 // Importing styles
@@ -52,6 +53,10 @@ const routes = [
                 path: '/about',
                 element: <About />
             },
+            {
+                path: '/contact',
+                element: <Contact />
+            }
         ]
     },
 ];
