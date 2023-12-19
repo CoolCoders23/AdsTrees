@@ -6,6 +6,7 @@
 const { GraphQLError } = require('graphql');
 const { User } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const validator = require('validator');
 // ==================================================================
 
 // Define the resolvers
@@ -127,6 +128,9 @@ const resolvers = {
                     user.password = password;
                 }
                 if (profilePicture !== undefined) {
+                    if (!validator.isURL(profilePicture)) {
+                        throw new Error('Profile picture is not a valid URL');
+                    }
                     user.profilePicture = profilePicture;
                 }
                 await user.save();
