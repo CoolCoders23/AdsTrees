@@ -6,6 +6,7 @@
 import { jwtDecode } from 'jwt-decode';
 // ================================================================
 
+
 // Creating a class for the authentication
 // ================================================================
 class Auth {

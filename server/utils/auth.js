@@ -1,14 +1,16 @@
 // Desc: This file contains the logic for the user Authentication.
 // ==================================================================
 
-// Dependencies
+// Import necessary dependencies
 // ==================================================================
+const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 const { GraphQLError } = require('graphql');
 // ==================================================================
 
-// define secret based on environment SECRET_KEY
+// Define a secret key and set the expiration time for JWT
 // ==================================================================
+
 const secret = process.env.SECRET_KEY;
 const expiration = Math.floor(Date.now() / 1000) + (60 * 60 * 2);// 2 hours
 // ==================================================================
