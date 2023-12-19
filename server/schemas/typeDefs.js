@@ -20,7 +20,7 @@ const typeDefs = `
     username: String!
     email: String! @cacheControl(maxAge: 0, scope: PRIVATE)
     password: String! @cacheControl(maxAge: 0, scope: PRIVATE)
-    profilePicture: Image @cacheControl(maxAge: 40)
+    profilePicture: ImageInput @cacheControl(maxAge: 40)
     preferences: [String] @cacheControl(maxAge: 60)
   }
 
@@ -29,9 +29,23 @@ const typeDefs = `
     user: User
   }
 
-  type Image {
+  input ImageInput {
     url: String
     altText: String
+  }
+
+  input UserInput {
+    username: String!
+    email: String!
+    password: String!
+  }
+
+  input UpdateUserInput {
+    _id: ID!
+    username: String
+    email: String
+    password: String
+    profilePicture: ImageInput
   }
 
   type Query {
@@ -42,29 +56,15 @@ const typeDefs = `
 
   type Mutation {
 
-    addUser(
-      username: String!,
-      email: String!,
-      password: String!):
-      Auth
+    addUser( user: UserInput! ): Auth
       @cacheControl(maxAge: 0, scope: PRIVATE)
 
-    login(
-      email: String!,
-      password: String!):
-      Auth
+    login(email: String!,password: String!): Auth
       @cacheControl(maxAge: 0, scope: PRIVATE)
 
     removeUser(userId: ID!): User
 
-    updateUser(
-      _id: ID!,
-      username: String,
-      email: String,
-      password: String,
-      profilePicture: String
-      ):
-      Auth
+    updateUser(user: UpdateUserInput): Auth
       @cacheControl(maxAge: 0, scope: PRIVATE)
   }
 
