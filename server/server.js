@@ -56,6 +56,9 @@ const startApolloServer = async () => {
 
         await server.start();
 
+        express.urlencoded({ extended: false }),
+        express.json(),
+
         app.use(
             '/graphql',
             // Used (https://www.apollographql.com/docs/apollo-server/security/cors/) as a reference
@@ -69,8 +72,6 @@ const startApolloServer = async () => {
             //     },
             //     credentials: true
             // }),
-            express.urlencoded({ extended: false }),
-            express.json(),
             expressMiddleware(
                 server,
                 {context: authMiddleware}
