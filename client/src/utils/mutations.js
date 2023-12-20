@@ -29,17 +29,8 @@ export const LOGIN_USER = gql`
 // Add a new User
 // ================================================================
 export const ADD_USER = gql`
-  mutation addUser(
-    $username: String!,
-    $email: String!,
-    $password: String!)
-    {
-    addUser(
-      username: $username,
-      email: $email,
-      password: $password
-      )
-    {
+  mutation addUser($user: UserInput!) {
+    addUser(user: $user) {
       token
       user {
         _id
@@ -67,24 +58,13 @@ export const REMOVE_USER = gql`
 // Update a User
 // ================================================================
 export const UPDATE_USER = gql`
-  mutation updateUser(
-    $userId: ID!,
-    $username: String,
-    $email: String,
-    $password: String,
-    $profilePicture: ImageInput,) {
-    updateUser(
-      userId: $userId,
-      username: $username,
-      email: $email,
-      password: $password,
-      profilePicture: $profilePicture,)
-    {
+  mutation updateUser($user: UpdateUserInput!) {
+    updateUser(user: $user) {
       token
       user {
         _id
         username
-        profilePicture{
+        profilePicture {
           url
           altText
         }

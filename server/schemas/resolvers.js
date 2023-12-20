@@ -124,7 +124,7 @@ const resolvers = {
                     if (!validator.isURL(user.profilePicture.url)) {
                         throw new Error('Profile picture is not a valid URL');
                     }
-                    updatedUser.profilePicture = user.profilePicture.url;
+                    updatedUser.profilePicture = { url: user.profilePicture.url, altText: user.profilePicture.altText };
                 }
                 await updatedUser.save();
                 const token = signToken(updatedUser);

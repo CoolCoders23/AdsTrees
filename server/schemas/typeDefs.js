@@ -20,13 +20,18 @@ const typeDefs = `
     username: String!
     email: String! @cacheControl(maxAge: 0, scope: PRIVATE)
     password: String! @cacheControl(maxAge: 0, scope: PRIVATE)
-    profilePicture: ImageInput @cacheControl(maxAge: 40)
+    profilePicture: Image @cacheControl(maxAge: 40)
     preferences: [String] @cacheControl(maxAge: 60)
   }
 
   type Auth @cacheControl(maxAge: 0, scope: PRIVATE) {
     token: ID!
     user: User
+  }
+
+  type Image {
+    url: String
+    altText: String
   }
 
   input ImageInput {

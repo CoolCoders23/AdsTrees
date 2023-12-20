@@ -36,9 +36,11 @@ const Signup = () => {
         try {
             const mutationResponse = await addUser({
                 variables: {
-                    username: formState.username,
-                    email: formState.email,
-                    password: formState.password
+                    user: {
+                        username: formState.username,
+                        email: formState.email,
+                        password: formState.password
+                    }
                 }
             });
             const token = mutationResponse.data.addUser.token;

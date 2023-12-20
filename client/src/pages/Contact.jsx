@@ -67,10 +67,10 @@ const Contact = () => {
         // Sending email using emailjs with the service ID,
         // template ID, email template, and user ID
         emailjs.send(
-            'service_oc1f1go',
-            'template_owzfx8o',
+            'service_d60z75l',
+            'template_r1x5e6m',
             templateParams,
-            'oKEdEQ6TyUxYqsIip'
+            'g89omQwAW_K878FaC'
         )
             .then((result) => {
                 console.log( result.status, result.text);
