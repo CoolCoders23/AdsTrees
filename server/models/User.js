@@ -5,6 +5,7 @@
 // ==================================================================
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const validator = require('validator');
 // ==================================================================
 
 // Create the User Schema with preferences
@@ -22,7 +23,7 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        match: [/.+@.+\..+/, 'Please enter a valid e-mail address.']
+        validate: [validator.isEmail, 'Please enter a valid e-mail address.']
     },
     password: {
         type: String,
@@ -68,21 +69,25 @@ const userSchema = new Schema({
 // Get total number of trees donated by user
 // ==================================================================
 userSchema.methods.getTotalDonations = async function () {
-    const user = await this.model('User').findById(this._id).populate({
-        path: 'purchases',
-        populate: {
-            path: 'donations',
-        },
-    });
+    try {
+        const user = await this.model('User').findById(this._id).populate({
+            path: 'purchases',
+            populate: {
+                path: 'donations',
+            },
+        });
 
-    let totalDonations = 0;
-    for (const purchase of user.purchases) {
-        for (const donation of purchase.donations) {
-            totalDonations += donation.donationAmount;
+        let totalDonations = 0;
+        for (const purchase of user.purchases) {
+            for (const donation of purchase.donations) {
+                totalDonations += donation.donationAmount;
+            }
         }
-    }
 
-    return totalDonations;
+        return totalDonations;
+    } catch (err) {
+        console.log(err);
+    }
 };
 // ==================================================================
 

@@ -4,11 +4,11 @@
 // Import all models
 // ==================================================================
 const User = require('./User');
-const DonateTree = require('./DonateTree');
+const Donation = require('./Donation');
 const Purchase = require('./Purchase');
 // ==================================================================
 
 // Export all models
 // ==================================================================
-module.exports = { User, DonateTree, Purchase };
+module.exports = { User, Donation, Purchase };
 // ==================================================================
