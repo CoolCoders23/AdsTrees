@@ -46,7 +46,44 @@ const userSchema = new Schema({
             trim: true,
         }
     ],
-});
+    purchases: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Purchase'
+        }
+    ],
+},
+
+{
+    toJSON: {
+        virtuals: true
+    },
+
+    id: false
+},
+
+);
+// ==================================================================
+
+// Get total number of trees donated by user
+// ==================================================================
+userSchema.methods.getTotalDonations = async function () {
+    const user = await this.model('User').findById(this._id).populate({
+        path: 'purchases',
+        populate: {
+            path: 'donations',
+        },
+    });
+
+    let totalDonations = 0;
+    for (const purchase of user.purchases) {
+        for (const donation of purchase.donations) {
+            totalDonations += donation.donationAmount;
+        }
+    }
+
+    return totalDonations;
+};
 // ==================================================================
 
 // Set up pre-save middleware to create password
