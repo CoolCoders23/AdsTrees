@@ -34,8 +34,9 @@ for (let i = 0; i < userCount; i += 1) {
     for (let j = 0; j < preferenceCountPerUser; j += 1) {
         preferences.push(faker.commerce.department());
     }
+    const purchases = [];
 
-    userData.push({ username, email, password, profilePicture, preferences });
+    userData.push({ username, email, password, profilePicture, preferences, purchases });
 }
 // ==================================================================
 
