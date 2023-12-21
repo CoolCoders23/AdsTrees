@@ -87,6 +87,7 @@ userSchema.methods.getTotalDonations = async function () {
         return totalDonations;
     } catch (err) {
         console.log(err);
+        throw err;
     }
 };
 // ==================================================================
