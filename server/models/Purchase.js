@@ -28,12 +28,14 @@ const PurchaseSchema = new Schema({
     // The user's purchase status
     purchaseStatus: {
         type: String,
-        default: 'Pending'
+        default: 'Pending',
+        enum: ['Pending', 'Completed']
     },
     donations: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Donation'
+            ref: 'Donation',
+            required: true
         }
     ]
 });
