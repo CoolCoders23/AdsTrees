@@ -22,11 +22,32 @@ const typeDefs = `
     password: String! @cacheControl(maxAge: 0, scope: PRIVATE)
     profilePicture: Image @cacheControl(maxAge: 40)
     preferences: [String] @cacheControl(maxAge: 60)
+    purchases: [Purchase] @cacheControl(maxAge: 60)
+    totalDonations: Int @cacheControl(maxAge: 60)
   }
 
   type Auth @cacheControl(maxAge: 0, scope: PRIVATE) {
     token: ID!
     user: User
+  }
+
+  type Checkout {
+    session: ID!
+  }
+
+  type Purchase @cacheControl(maxAge: 60) {
+    _id: ID!
+    purchaseDate: String
+    purchaseStatus: String
+    donations: [Donation!]!
+  }
+
+  type Donation @cacheControl(maxAge: 60) {
+    _id: ID!
+    donationType: String!
+    description: String
+    donationAmount: Int!
+    price: Float!
   }
 
   type Image {
@@ -35,7 +56,7 @@ const typeDefs = `
   }
 
   input ImageInput {
-    url: String
+    url: String!
     altText: String
   }
 
@@ -53,10 +74,31 @@ const typeDefs = `
     profilePicture: ImageInput
   }
 
+  input DonationInput {
+    donationType: String!
+    description: String
+    donationAmount: Int!
+    price: Float!
+  }
+
   type Query {
-    users: [User]
     user(username: String!): User
-    userProfile: User @cacheControl(scope: PRIVATE)
+
+    userProfile: User
+      @cacheControl(scope: PRIVATE)
+
+    donations(donationType: String): [Donation]
+      @cacheControl(scope: PUBLIC)
+
+    purchases(donationType: String): [Purchase]
+      @cacheControl(scope: PUBLIC)
+
+    purchase(_id: ID!): Purchase
+      @cacheControl(scope: PUBLIC)
+
+    checkout(donations: [DonationInput!]!): Checkout
+      @cacheControl(scope: PRIVATE)
+
   }
 
   type Mutation {
@@ -69,8 +111,15 @@ const typeDefs = `
 
     removeUser(userId: ID!): User
 
-    updateUser(user: UpdateUserInput): Auth
+    updateUser(user: UpdateUserInput): User
       @cacheControl(maxAge: 0, scope: PRIVATE)
+
+    addPurchase(donations: [ID!]!): Purchase
+      @cacheControl(maxAge: 0, scope: PRIVATE)
+
+    updatePurchase(purchaseId: ID!, purchaseStatus: String!): Purchase
+      @cacheControl(maxAge: 0, scope: PRIVATE)
+
   }
 
 `;
