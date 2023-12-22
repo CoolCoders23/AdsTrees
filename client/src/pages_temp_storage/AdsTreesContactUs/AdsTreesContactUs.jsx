@@ -1,11 +1,12 @@
 /* Code generated with AutoHTML Plugin for Figma */
+
 import './AdsTreesContactUs.css';
 
 export const AdsTreesContactUs = ({
-    contactUsMessage = '',
-    contactUsLastName = '',
-    contactUsFirstName = '',
-    contactUsEmail = '',
+    contactUsMessage = '   Please type your message here',
+    contactUsLastName = '   Doe',
+    contactUsFirstName = '   John',
+    contactUsEmail = '   Email',
     className,
     ...props
 }) => {

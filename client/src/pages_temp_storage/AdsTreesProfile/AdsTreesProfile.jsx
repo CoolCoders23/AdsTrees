@@ -3,13 +3,13 @@ import './AdsTreesProfile.css';
 import { CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse } from './CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse/CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse.jsx';
 
 export const AdsTreesProfile = ({
-    profilePasswordConfirmation = '',
-    profilePassword = '',
-    publicProfileBaseline = '',
-    publicProfileFirstName = '',
-    privateProfileEmail = '',
-    profileNewPassword = '',
-    publicProfileLastName = '',
+    profilePasswordConfirmation = '    ',
+    profilePassword = '   •••••••••••••••••••••••••••',
+    publicProfileBaseline = '   Trees lover',
+    publicProfileFirstName = '   John',
+    privateProfileEmail = '   Email',
+    profileNewPassword = '    ',
+    publicProfileLastName = '   Doe',
     className,
     ...props
 }) => {
