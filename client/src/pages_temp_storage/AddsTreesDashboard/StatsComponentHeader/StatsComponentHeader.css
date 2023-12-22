@@ -1,0 +1,38 @@
+.stats-component-header,
+.stats-component-header * {
+  box-sizing: border-box;
+}
+.stats-component-header {
+  border-radius: 8px;
+  padding: 0px 4px 0px 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.stats-component-header .stats-component-header-title {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 240px;
+  max-width: 280px;
+  position: relative;
+}
+.stats-component-header .stats-component-header-label {
+  color: var(--green-dark, #081c15);
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+}
