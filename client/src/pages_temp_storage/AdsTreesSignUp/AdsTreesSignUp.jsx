@@ -1,15 +1,16 @@
 /* Code generated with AutoHTML Plugin for Figma */
-import './AdsTreesSignIn.css';
+import './AdsTreesSignUp.css';
 
-export const AdsTreesSignIn = ({
-    signInPassword = '   Password',
-    signInEmail = '   Email',
+export const AdsTreesSignUp = ({
+    signUpPasswordConfirmation = '   Confirm password',
+    signUpEmail = '   Email',
+    signUpPassword = '   Password',
     className,
     ...props
 }) => {
     return (
-        <div className={'ads-trees-sign-in ' + className}>
-            <div className="sign-in-body">
+        <div className={'ads-trees-sign-up ' + className}>
+            <div className="sign-up-body">
                 <div className="home-text">
                     <div className="hook-text-frame">
                         <div className="hook-text">
@@ -20,10 +21,10 @@ export const AdsTreesSignIn = ({
                         </div>
                     </div>
                 </div>
-                <div className="sign-in-form">
-                    <div className="sign-in-form-holder">
-                        <div className="sign-in-title">Sign in </div>
-                        <div className="sign-in-input-holder">
+                <div className="sign-up-form">
+                    <div className="sign-up-form-holder">
+                        <div className="sign-up-title">Sign up </div>
+                        <div className="sign-up-input-holder">
                             <div className="input-group">
                                 <div className="input">
                                     <input className="email" value="   Email" />
@@ -34,16 +35,24 @@ export const AdsTreesSignIn = ({
                                     <input className="password" value="   Password" />
                                 </div>
                             </div>
+                            <div className="input-group">
+                                <div className="input">
+                                    <input
+                                        className="password-confirmation"
+                                        value="   Confirm password"
+                                    />
+                                </div>
+                            </div>
                         </div>
                         <button className="button">
-                            <div className="children">Login </div>
+                            <div className="children">Register </div>
                         </button>
-                        <div className="call-to-register">
+                        <div className="call-to-login">
                             <div className="instruction">
                                 <div className="instruction-text">Otherwise, please </div>
                             </div>
                             <div className="link">
-                                <button className="register-here-link">Register here </button>
+                                <button className="login-here-link">Login here </button>
                             </div>
                         </div>
                     </div>
