@@ -9,7 +9,7 @@ import {
     InMemoryCache,
     ApolloProvider,
     createHttpLink,
-    from
+    from,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
@@ -27,6 +27,7 @@ import Footer from './components/Footer';
 // ==========================================================
 import { useTheme } from './utils/useTheme';
 // ==========================================================
+
 
 // Create an error link
 // Used (https://www.apollographql.com/docs/react/get-started/#error-handling) as a reference
@@ -55,7 +56,6 @@ const httpLink = createHttpLink({
 // Construct AuthLink to attach token to every request
 // ============================================================
 const authLink = setContext((_, { headers }) => {
-
     // get the authentication token from local storage if it exists
     const token = localStorage.getItem('id_token');
     // return the headers to the context so httpLink can read them
@@ -82,28 +82,48 @@ const client = new ApolloClient({
 // Main App component
 // ============================================================
 function App() {
-
     // Pluck values from ThemeContext
     const { darkTheme, theme } = useTheme();
 
+
+    // https://stackoverflow.com/questions/72945686/how-to-make-sure-content-stays-below-when-using-react-router-and-outlet START
+    // ============================================================
+
     return (
-
-
         <ApolloProvider client={client}>
+
             <Box
-                bg={darkTheme ? theme.colors.light.greenDark : theme.colors.light.greyLight}
-                color={darkTheme ? theme.colors.light.greyLight : theme.colors.light.greenDark}
+                bg={
+                    darkTheme
+                        ? theme.colors.light.greenDark
+                        : theme.colors.light.greyLight
+                }
+                color={
+                    darkTheme
+                        ? theme.colors.light.greyLight
+                        : theme.colors.light.greenDark
+                }
                 transition="0.3s ease"
                 height="fit-content"
                 width="100vw"
             >
-                <Header />
-                <Outlet />
-                <Footer />
+                <div className="outer-container">
+                    <Header />
+                    <div className="page">
+                        <Outlet />
+                    </div>
+
+                    <Footer />
+                </div>
+
+
+
             </Box>
         </ApolloProvider>
-
     );
+
+    // https://stackoverflow.com/questions/72945686/how-to-make-sure-content-stays-below-when-using-react-router-and-outlet END
+
 }
 // ============================================================
 

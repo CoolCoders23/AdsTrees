@@ -1,0 +1,18 @@
+.checkbox-control-size-sm-color-scheme-blue-is-checked-true-is-disabled-false-is-indeterminate-false,
+.checkbox-control-size-sm-color-scheme-blue-is-checked-true-is-disabled-false-is-indeterminate-false
+  * {
+  box-sizing: border-box;
+}
+.checkbox-control-size-sm-color-scheme-blue-is-checked-true-is-disabled-false-is-indeterminate-false {
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  overflow: visible;
+}

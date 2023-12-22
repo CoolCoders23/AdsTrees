@@ -349,3 +349,19 @@ template {
 [hidden] {
   display: none;
 }
+
+/* https://stackoverflow.com/questions/72945686/how-to-make-sure-content-stays-below-when-using-react-router-and-outlet START 
+    ========================================================================== */
+
+.outer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.page {
+  flex: 1;
+}
+
+/* https://stackoverflow.com/questions/72945686/how-to-make-sure-content-stays-below-when-using-react-router-and-outlet END */
+

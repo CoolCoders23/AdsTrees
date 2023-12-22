@@ -1,0 +1,31 @@
+.picto-display-wood,
+.picto-display-wood * {
+  box-sizing: border-box;
+}
+.picto-display-wood {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+.picto-display-wood .frame-37266 {
+  background: var(--green-light, #d8f3dc);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.picto-display-wood .top-of-a-hill {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  overflow: visible;
+}
