@@ -1,9 +1,9 @@
 /* Code generated with AutoHTML Plugin for Figma */
 import './AdsTreesDonateSection1.css';
-import { PictoDisplayGarden } from '../../components_temp_storage/PictoDisplayGarden/PictoDisplayGarden.jsx';
-import { PictoDisplayWood } from '../../components_temp_storage/PictoDisplayWood/PictoDisplayWood.jsx';
+import { PictoDisplayGarden } from '../../components/PictoDisplayGarden/PictoDisplayGarden.jsx';
+import { PictoDisplayWood } from '../../components/PictoDisplayWood/PictoDisplayWood.jsx';
 import { PricingCard } from './PricingCard/PricingCard.jsx';
-import { PictoDisplayForest } from '../../components_temp_storage/PictoDisplayForest/PictoDisplayForest.jsx';
+import { PictoDisplayForest } from '../../components/PictoDisplayForest/PictoDisplayForest.jsx';
 
 export const AdsTreesDonateSection1 = ({ className, ...props }) => {
     return (
