@@ -1,15 +1,15 @@
 /* Code generated with AutoHTML Plugin for Figma */
 import './Header.css';
-import { MainNavigationButtonTargetDashboardStatusActive } from './MainNavigationButtonTargetDashboardStatusActive/MainNavigationButtonTargetDashboardStatusActive.jsx';
-import { MainNavigationButtonTargetDashboardStatusInactive } from './MainNavigationButtonTargetDashboardStatusInactive/MainNavigationButtonTargetDashboardStatusInactive.jsx';
+import { MainNavigationButtonTargetDashboardStatusActive } from './MainNavigationButtonTargetDashboardStatusActive/MainNavigationButtonTargetDashboardStatusActive.js';
+import { MainNavigationButtonTargetDashboardStatusInactive } from './MainNavigationButtonTargetDashboardStatusInactive/MainNavigationButtonTargetDashboardStatusInactive.js';
 import { MainNavigationButtonTargetProfileStatusActive } from './MainNavigationButtonTargetProfileStatusActive/MainNavigationButtonTargetProfileStatusActive.jsx';
 import { MainNavigationButtonTargetProfileStatusInactive } from './MainNavigationButtonTargetProfileStatusInactive/MainNavigationButtonTargetProfileStatusInactive.jsx';
 
 export const Header = ({
-    showMainNavigationProfileButtonInactive = true,
+    showMainNavigationProfileButtonInactive = false,
     showMainNavigationProfileButtonActive = true,
     showLogoFrame = true,
-    showMainNavigationDashboardButtonInactive = true,
+    showMainNavigationDashboardButtonInactive = false,
     showMainNavigation = true,
     showMainNavigationDashboardButtonActive = true,
     className,
