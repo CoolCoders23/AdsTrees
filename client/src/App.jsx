@@ -28,6 +28,7 @@ import Footer from './components/Footer';
 import { useTheme } from './utils/useTheme';
 // ==========================================================
 
+
 // Create an error link
 // Used (https://www.apollographql.com/docs/react/get-started/#error-handling) as a reference
 // ============================================================
@@ -90,6 +91,7 @@ function App() {
 
     return (
         <ApolloProvider client={client}>
+
             <Box
                 bg={
                     darkTheme

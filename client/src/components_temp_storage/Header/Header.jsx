@@ -1,9 +1,9 @@
 /* Code generated with AutoHTML Plugin for Figma */
-import "./Header.css";
-import { MainNavigationButtonTargetDashboardStatusActive } from "./MainNavigationButtonTargetDashboardStatusActive/MainNavigationButtonTargetDashboardStatusActive.jsx";
-import { MainNavigationButtonTargetDashboardStatusInactive } from "./MainNavigationButtonTargetDashboardStatusInactive/MainNavigationButtonTargetDashboardStatusInactive.jsx";
-import { MainNavigationButtonTargetProfileStatusActive } from "./MainNavigationButtonTargetProfileStatusActive/MainNavigationButtonTargetProfileStatusActive.jsx";
-import { MainNavigationButtonTargetProfileStatusInactive } from "./MainNavigationButtonTargetProfileStatusInactive/MainNavigationButtonTargetProfileStatusInactive.jsx";
+import './Header.css';
+import { MainNavigationButtonTargetDashboardStatusActive } from './MainNavigationButtonTargetDashboardStatusActive/MainNavigationButtonTargetDashboardStatusActive.jsx';
+import { MainNavigationButtonTargetDashboardStatusInactive } from './MainNavigationButtonTargetDashboardStatusInactive/MainNavigationButtonTargetDashboardStatusInactive.jsx';
+import { MainNavigationButtonTargetProfileStatusActive } from './MainNavigationButtonTargetProfileStatusActive/MainNavigationButtonTargetProfileStatusActive.jsx';
+import { MainNavigationButtonTargetProfileStatusInactive } from './MainNavigationButtonTargetProfileStatusInactive/MainNavigationButtonTargetProfileStatusInactive.jsx';
 
 export const Header = ({
     showMainNavigationProfileButtonInactive = true,
@@ -16,7 +16,7 @@ export const Header = ({
     ...props
 }) => {
     return (
-        <header className={"header " + className}>
+        <header className={'header ' + className}>
             {showLogoFrame && (
                 <>
                     <div className="logo-frame">
