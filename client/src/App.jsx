@@ -3,29 +3,29 @@
 
 // Importing libraries and packages
 // ============================================================
-import "./App.css";
+import './App.css';
 import {
     ApolloClient,
     InMemoryCache,
     ApolloProvider,
     createHttpLink,
     from,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
-import { onError } from "@apollo/client/link/error";
-import { Outlet } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { onError } from '@apollo/client/link/error';
+import { Outlet } from 'react-router-dom';
+import { Box } from '@chakra-ui/react';
 // ============================================================
 
 // Importing components
 // ============================================================
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from './components/Header';
+import Footer from './components/Footer';
 // ============================================================
 
 // Import the custom hook
 // ==========================================================
-import { useTheme } from "./utils/useTheme";
+import { useTheme } from './utils/useTheme';
 // ==========================================================
 
 // Create an error link
@@ -48,7 +48,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 // Construct main GraphQL API endpoint
 // ============================================================
 const httpLink = createHttpLink({
-    uri: "/graphql",
+    uri: '/graphql',
 });
 // ============================================================
 
@@ -56,12 +56,12 @@ const httpLink = createHttpLink({
 // ============================================================
 const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
-    const token = localStorage.getItem("id_token");
+    const token = localStorage.getItem('id_token');
     // return the headers to the context so httpLink can read them
     return {
         headers: {
             ...headers,
-            authorization: token ? `Bearer ${token}` : "",
+            authorization: token ? `Bearer ${token}` : '',
         },
     };
 });
@@ -74,7 +74,7 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
     link: from([errorLink, authLink.concat(httpLink)]),
     cache: new InMemoryCache(),
-    credentials: "include",
+    credentials: 'include',
 });
 // ============================================================
 
