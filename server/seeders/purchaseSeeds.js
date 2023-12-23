@@ -1,5 +1,6 @@
 // This file contains the data for the purchase
 // collection to be used in the seed file.
+// Used(https://fakerjs.dev/api/) as a reference for faker.js
 // ===================================================
 
 // Require faker.js
