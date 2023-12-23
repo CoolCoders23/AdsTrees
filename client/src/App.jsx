@@ -21,11 +21,12 @@ import { Box } from '@chakra-ui/react';
 // ============================================================
 import Header from './components/Header';
 import Footer from './components/Footer';
+import StateProvider from './utils/payment-logic/StateProvider';
 // ============================================================
 
 // Import the custom hook
 // ==========================================================
-import { useTheme } from './utils/useTheme';
+import { useTheme } from './utils/theme/useTheme';
 // ==========================================================
 
 // Create an error link
@@ -90,17 +91,19 @@ function App() {
 
 
         <ApolloProvider client={client}>
-            <Box
-                bg={darkTheme ? theme.colors.light.greenDark : theme.colors.light.greyLight}
-                color={darkTheme ? theme.colors.light.greyLight : theme.colors.light.greenDark}
-                transition="0.3s ease"
-                height="fit-content"
-                width="100vw"
-            >
-                <Header />
-                <Outlet />
-                <Footer />
-            </Box>
+            <StateProvider>
+                <Box
+                    bg={darkTheme ? theme.colors.light.greenDark : theme.colors.light.greyLight}
+                    color={darkTheme ? theme.colors.light.greyLight : theme.colors.light.greenDark}
+                    transition="0.3s ease"
+                    height="fit-content"
+                    width="100vw"
+                >
+                    <Header />
+                    <Outlet />
+                    <Footer />
+                </Box>
+            </StateProvider>
         </ApolloProvider>
 
     );

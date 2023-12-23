@@ -16,7 +16,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 // import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
-import ThemeProvider from './utils/ThemeContext';
+import ThemeProvider from './utils/theme/ThemeContext.jsx';
 import Contact from './pages/Contact';
 // ============================================================
 

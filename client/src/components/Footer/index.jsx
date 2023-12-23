@@ -6,7 +6,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
-import { useTheme } from '../../utils/useTheme';
+import { useTheme } from '../../utils/theme/useTheme';
 // ============================================================
 
 // Define the Footer component

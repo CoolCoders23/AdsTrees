@@ -22,7 +22,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import logo from '../../assets/image/LogoMain/AdsTrees_Logo_48.svg';
-import { useTheme } from '../../utils/useTheme';
+import { useTheme } from '../../utils/theme/useTheme';
 // ============================================================
 
 // Create Header component
