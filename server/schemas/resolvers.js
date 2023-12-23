@@ -261,10 +261,17 @@ const resolvers = {
 
             try {
 
-                const user = await User.findOneAndDelete({ _id: userId });
+                const user = await User.findOne({ _id: userId });
+
                 if (!user) {
                     throw new Error('User not found');
                 }
+
+                // Remove all purchases associated with the user
+                await Purchase.deleteMany({ _id: { $in: user.purchases } });
+
+                await User.deleteOne({ _id: userId });
+
                 return user;
 
             } catch (err) {
