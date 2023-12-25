@@ -38,7 +38,6 @@ const typeDefs = `
   type Purchase @cacheControl(maxAge: 60) {
     _id: ID!
     purchaseDate: String
-    purchaseStatus: String
     donations: [Donation!]!
   }
 
@@ -115,9 +114,6 @@ const typeDefs = `
       @cacheControl(maxAge: 0, scope: PRIVATE)
 
     addPurchase(donations: [ID!]!): Purchase
-      @cacheControl(maxAge: 0, scope: PRIVATE)
-
-    updatePurchase(purchaseId: ID!, purchaseStatus: String!): Purchase
       @cacheControl(maxAge: 0, scope: PRIVATE)
 
   }

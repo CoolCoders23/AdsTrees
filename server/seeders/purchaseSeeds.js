@@ -18,12 +18,10 @@ const purchaseData = [];
 
 for (let i = 0; i < 20; i += 1) {
     const purchaseDate = faker.date.past();
-    const purchaseStatus = faker.random.arrayElement(['Pending', 'Completed']);
     const donations = [];
 
     purchaseData.push({
         purchaseDate,
-        purchaseStatus,
         donations
     });
 }

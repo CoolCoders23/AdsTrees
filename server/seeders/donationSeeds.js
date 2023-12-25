@@ -17,9 +17,9 @@ const donationData = [];
 // ===================================================
 
 for (let i = 0; i < 35; i += 1) {
-    const donationType = faker.random.arrayElement(['Garden', 'Wood', 'Forest', 'Jungle']);
+    const donationType = faker.random.arrayElement(['Garden', 'Wood', 'Forest']);
     const description = faker.lorem.paragraph();
-    const donationAmount = faker.random.arrayElement([1, 10, 50, 100]);
+    const donationAmount = faker.random.arrayElement([1, 10, 100]);
     const price = donationAmount * 0.99;
 
     donationData.push({

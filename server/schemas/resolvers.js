@@ -97,16 +97,13 @@ const resolvers = {
                     const user = await User.findById(context.user._id).populate({
                         path: 'purchases',
                         match: { donations: { $in: donationIds } },
+                        options: { sort: { purchaseDate: -1 } },
                         populate: {
                             path: 'donations',
                         },
                     });
 
-                    return user.purchases.filter((purchase) => {
-                        if (purchase.purchaseStatus === 'Completed') {
-                            return purchase;
-                        }
-                    }).sort({ purchaseDate: -1 });
+                    return user.purchases;
 
                 } catch (err) {
                     throw new GraphQLError(`Failed to fetch purchases: ${err.message}`, {
@@ -346,38 +343,6 @@ const resolvers = {
             } catch (err) {
 
                 throw new GraphQLError(`Failed to create purchase: ${err.message}`, {
-                    extensions: {
-                        code: 'BAD_USER_INPUT',
-                    },
-                });
-
-            }
-
-        },
-
-        updatePurchase: async (parent, { purchaseId, purchaseStatus }, context) => {
-
-            if (!context.user) {
-                throw AuthenticationError;
-            }
-
-            try {
-
-                if (purchaseStatus === 'Pending') {
-                    throw new Error('Purchase status cannot be set to Pending');
-                }
-
-                const purchase = await Purchase.findByIdAndUpdate(purchaseId, { purchaseStatus }, { new: true });
-
-                if (!purchase) {
-                    throw new Error('Purchase not found');
-                }
-
-                return purchase;
-
-            } catch (err) {
-
-                throw new GraphQLError(`Failed to update purchase: ${err.message}`, {
                     extensions: {
                         code: 'BAD_USER_INPUT',
                     },

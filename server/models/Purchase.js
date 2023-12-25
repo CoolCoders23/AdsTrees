@@ -25,12 +25,7 @@ const PurchaseSchema = new Schema({
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp)
     },
-    // The user's purchase status
-    purchaseStatus: {
-        type: String,
-        default: 'Pending',
-        enum: ['Pending', 'Completed']
-    },
+
     donations: [
         {
             type: Schema.Types.ObjectId,

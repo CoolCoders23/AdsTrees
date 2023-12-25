@@ -1,8 +1,7 @@
 // Desc: This file contains the model for the Donation
-// collection, defining this collection's schema for four
+// collection, defining this collection's schema for three
 // types of donations that we have: (1) Garden-- -> One Tree,
-// (2) Wood-- -> 10 Trees(3) Forest-- -> 50 Trees, and(4)
-// Jungle-- -> 100 Trees.
+// (2) Wood-- -> 10 Trees(3) Forest-- -> 100 Trees.
 // ===================================================
 
 // Require mongoose
@@ -23,7 +22,7 @@ const DonationSchema = new Schema({
         type: String,
         required: true,
         // The donation type must be one of the following
-        enum: ['Garden', 'Wood', 'Forest', 'Jungle'],
+        enum: ['Garden', 'Wood', 'Forest'],
         trim : true
     },
     description: {
@@ -33,7 +32,7 @@ const DonationSchema = new Schema({
     donationAmount: {
         type: Number,
         required: true,
-        enum: [1, 10, 50, 100],
+        enum: [1, 10, 100],
         min: 1
     },
     price: {
