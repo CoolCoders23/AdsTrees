@@ -9,9 +9,7 @@ import StateContext from './StateContext';
 
 // Create the custom hook
 // ========================================================
-const useStateContext = () => {
-    return useContext(StateContext);
-};
+const useStateContext = () => useContext(StateContext);
 // ========================================================
 
 // Export the Provider and custom hook

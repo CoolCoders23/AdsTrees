@@ -3,7 +3,8 @@ import {
     REMOVE_FROM_CART,
     CLEAR_CART,
     TOGGLE_CART,
-    UPDATE_PURCHASE_STATUS
+    UPDATE_DONATIONS,
+    UPDATE_Current_STATUS
 } from './actions';
 
 const reducer = (state, action) => {
@@ -56,10 +57,16 @@ const reducer = (state, action) => {
             cartOpen: !state.cartOpen
         };
 
-    case UPDATE_PURCHASE_STATUS:
+    case UPDATE_DONATIONS:
         return {
             ...state,
-            currentStatus: action.purchaseStatus
+            donations: [...action.donations],
+        };
+
+    case UPDATE_Current_STATUS:
+        return {
+            ...state,
+            currentStatus: action.currentStatus
         };
 
     default:
@@ -72,3 +79,4 @@ const reducer = (state, action) => {
 // Export the reducer
 // ========================================================
 export { reducer };
+// ========================================================
