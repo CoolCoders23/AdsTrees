@@ -38,13 +38,14 @@ const typeDefs = `
   type Purchase @cacheControl(maxAge: 60) {
     _id: ID!
     purchaseDate: String
-    donations: [Donation!]!
+    donations: [Donation]
   }
 
   type Donation @cacheControl(maxAge: 60) {
     _id: ID!
     donationType: String!
     description: String
+    image: String
     donationAmount: Int!
     price: Float!
   }
@@ -74,22 +75,25 @@ const typeDefs = `
   }
 
   input DonationInput {
+    _id: ID!
     donationType: String!
     description: String
+    image: String
     donationAmount: Int!
     price: Float!
   }
 
   type Query {
+    
     user(username: String!): User
 
     userProfile: User
       @cacheControl(scope: PRIVATE)
 
-    donations(donationType: String): [Donation]
+    donations: [Donation]
       @cacheControl(scope: PUBLIC)
 
-    purchases(donationType: String): [Purchase]
+    purchases(userId: ID!): [Purchase]
       @cacheControl(scope: PUBLIC)
 
     purchase(_id: ID!): Purchase

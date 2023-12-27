@@ -1,4 +1,9 @@
 // Desc: This file contains the graphql resolvers for the AdsTrees application.
+// Used following links as reference:
+// https://www.apollographql.com/docs/apollo-server/data/resolvers/
+// https://stripe.com/docs/payments/checkout/how-checkout-works
+// https://stripe.com/docs/api/checkout/sessions/create
+// https://stripe.com/docs/payments/checkout/customization
 // ==================================================================
 
 // Dependencies
@@ -31,16 +36,6 @@ const resolvers = {
 
         },
 
-        User: {
-            totalDonations: async (parent) => {
-                try {
-                    return await parent.getTotalDonations();
-                } catch (err) {
-                    throw new Error(`Failed to get total donations: ${err.message}`);
-                }
-            },
-        },
-
         // Defined to fetch the logged in user's profile
         userProfile: async (parent, args, context) => {
 
@@ -62,15 +57,11 @@ const resolvers = {
         },
 
         // Define to fetch all donations
-        donations: async (parent, { donationType }) => {
-
-            const params = donationType ? { donationType } : {};
+        donations: async () => {
 
             try {
 
-                return await Donation
-                    .find(params)
-                    .sort({ donationAmount: 1 });
+                return await Donation.find({});
 
             } catch (err) {
                 throw new GraphQLError(`Failed to fetch donations: ${err.message}`, {
@@ -83,25 +74,20 @@ const resolvers = {
         },
 
         // Define to fetch all purchases
-        purchases: async (parent, { donationType }, context) => {
+        purchases: async (parent, { userId }, context) => {
 
             if (context.user) {
                 try {
 
-                    // Find all donations with the specified donationType
-                    const donations = await Donation.find({ donationType });
-
-                    // Extract the IDs of these donations
-                    const donationIds = donations.map(donation => donation._id);
-
-                    const user = await User.findById(context.user._id).populate({
-                        path: 'purchases',
-                        match: { donations: { $in: donationIds } },
-                        options: { sort: { purchaseDate: -1 } },
-                        populate: {
-                            path: 'donations',
-                        },
-                    });
+                    const user = await User
+                        .findById(userId)
+                        .populate({
+                            path: 'purchases',
+                            options: { sort: { purchaseDate: -1 } },
+                            populate: {
+                                path: 'donations',
+                            },
+                        });
 
                     return user.purchases;
 
@@ -114,7 +100,6 @@ const resolvers = {
                 }
 
             } else {
-
                 throw AuthenticationError;
             }
 
@@ -157,31 +142,24 @@ const resolvers = {
             if (context.user) {
 
                 const url = new URL(context.headers.referer).origin;
-                const purchase = new Purchase({ donations: args.donations });
+                await Purchase.create({ donations: args.donations.map(({ _id }) => _id)});
 
                 try {
 
-                    const { donations } = await purchase.populate('donations').execPopulate();
-
                     const line_items = [];
 
-                    for (let i = 0; i < donations.length; i++) {
-
-                        const donation = await stripe.prices.create({
-
-                            product_data: {
-                                name: donations[i].donationType,
-                                description: donations[i].description,
-                                images: [`${url}/images/${donations[i].donationType.toLowerCase()}.jpg`],
-                            },
-                            unit_amount: donations[i].price * 100,
-                            currency: 'usd',
-
-                        });
-
+                    for (const donation of args.donations) {
                         line_items.push({
-                            price: donation.id,
-                            quantity: donations[i].donationAmount,
+                            price_data: {
+                                currency: 'usd',
+                                product_data: {
+                                    name: donation.donationType,
+                                    description: donation.description,
+                                    images: [`${url}/images/${donation.image}`],
+                                },
+                                unit_amount: donation.price * 100,
+                            },
+                            quantity: donation.donationAmount,
                         });
                     }
 
@@ -193,13 +171,10 @@ const resolvers = {
                         cancel_url: `${url}/`,
                     });
 
-                    // Save the purchase to the database
-                    await purchase.save();
-
-                    // Add the purchase to the user's purchases
-                    const user = await User.findById(context.user._id);
-                    user.purchases.push(purchase);
-                    await user.save();
+                    // Setting a session expire time of 15 minutes
+                    setTimeout(async () => {
+                        await stripe.checkout.sessions.expire(session.id);
+                    }, 15 * 60 * 1000);
 
                     return { session: session.id };
 
@@ -214,6 +189,16 @@ const resolvers = {
 
         },
 
+    },
+
+    User: {
+        totalDonations: async (parent) => {
+            try {
+                return await parent.getTotalDonations();
+            } catch (err) {
+                throw new Error(`Failed to get total donations: ${err.message}`);
+            }
+        },
     },
 
     Mutation: {
