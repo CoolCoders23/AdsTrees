@@ -4,7 +4,7 @@ import {
     CLEAR_CART,
     TOGGLE_CART,
     UPDATE_DONATIONS,
-    UPDATE_Current_STATUS
+    UPDATE_CURRENT_STATUS
 } from './actions';
 
 const reducer = (state, action) => {
@@ -39,7 +39,7 @@ const reducer = (state, action) => {
             ...state,
             cartOpen: newState.length > 0,
             cart: newState,
-            currentStatus: newState.length > 0 ? 'Pending' : 'Completed'
+            currentStatus: 'Canceled'
         };
     }
 
@@ -48,7 +48,7 @@ const reducer = (state, action) => {
             ...state,
             cartOpen: false,
             cart: [],
-            currentStatus: 'Completed'
+            currentStatus: 'Pending'
         };
 
     case TOGGLE_CART:
@@ -63,7 +63,7 @@ const reducer = (state, action) => {
             donations: [...action.donations],
         };
 
-    case UPDATE_Current_STATUS:
+    case UPDATE_CURRENT_STATUS:
         return {
             ...state,
             currentStatus: action.currentStatus

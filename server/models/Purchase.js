@@ -30,7 +30,6 @@ const PurchaseSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: 'Donation',
-            required: true
         }
     ]
 });

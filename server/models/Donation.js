@@ -25,7 +25,12 @@ const DonationSchema = new Schema({
         enum: ['Garden', 'Wood', 'Forest'],
         trim : true
     },
+
     description: {
+        type: String,
+    },
+
+    image: {
         type: String,
     },
     // The user's donation amount
@@ -35,6 +40,7 @@ const DonationSchema = new Schema({
         enum: [1, 10, 100],
         min: 1
     },
+
     price: {
         type: Number,
         required: true,
