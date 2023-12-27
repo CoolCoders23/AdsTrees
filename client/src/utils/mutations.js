@@ -83,26 +83,14 @@ export const ADD_PURCHASE = gql`
     addPurchase(donations: $donations) {
       _id
       purchaseDate
-      purchaseStatus
       donations {
         _id
         donationType
         description
+        image
         donationAmount
         price
       }
-    }
-  }
-`;
-// ================================================================
-
-// Update a Purchase
-// ================================================================
-export const UPDATE_PURCHASE = gql`
-  mutation updatePurchase($purchaseId: ID!, $purchaseStatus: String!) {
-    updatePurchase(purchaseId: $purchaseId, purchaseStatus: $purchaseStatus) {
-      _id
-      purchaseStatus
     }
   }
 `;
