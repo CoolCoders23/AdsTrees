@@ -9,7 +9,7 @@ const faker = require('faker');
 
 // Define the number of Users to seed
 // ==================================================================
-const userCount = 10;
+const userCount = 5;
 // ==================================================================
 
 // Define the number of Preferences to seed
@@ -42,5 +42,5 @@ for (let i = 0; i < userCount; i += 1) {
 
 // Export the Users and Preferences to seed
 // ==================================================================
-module.exports = { userData };
+module.exports = userData;
 // ==================================================================

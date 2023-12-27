@@ -16,7 +16,7 @@ const purchaseData = [];
 // Create a for loop to create 20 instances of data
 // ===================================================
 
-for (let i = 0; i < 20; i += 1) {
+for (let i = 0; i < 5; i += 1) {
     const purchaseDate = faker.date.past();
     const donations = [];
 
