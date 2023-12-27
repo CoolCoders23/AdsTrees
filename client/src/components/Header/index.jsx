@@ -93,27 +93,39 @@ const Header = () => {
                 About us
             </NavLink>
 
+            <NavLink
+                to='/donations'
+                isActive={path === '/donations'}
+            >
+                Donations
+            </NavLink>
+
             {Auth.loggedIn() && username !== '' ? (
                 <>
+
                     <NavLink
                         to={`/dashboard/${username}`}
                         isActive={path.startsWith('/dashboard')}
                     >
                         Dashboard
                     </NavLink>
+
                     <NavLink
                         to='/user-profile'
                         isActive={path === '/user-profile'}
                     >
                         {username}&apos;s profile
                     </NavLink>
+
                     <Button
                         as={RouterLink}
                         to="/" onClick={logout}
                     >
                         Logout
                     </Button>
+
                 </>
+
             ) : (
                 path !== '/'
                     &&

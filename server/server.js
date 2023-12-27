@@ -59,6 +59,8 @@ const startApolloServer = async () => {
         express.urlencoded({ extended: false }),
         express.json(),
 
+        app.use('/images', express.static(path.join(__dirname, '../client/images')));
+
         app.use(
             '/graphql',
             // Used (https://www.apollographql.com/docs/apollo-server/security/cors/) as a reference

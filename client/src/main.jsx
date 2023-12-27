@@ -18,6 +18,7 @@ import Login from './pages/Login';
 import ErrorPage from './pages/ErrorPage';
 import ThemeProvider from './utils/theme/ThemeContext.jsx';
 import Contact from './pages/Contact';
+import Donations from './pages/Donations';
 // ============================================================
 
 // Create a browser router
@@ -52,7 +53,12 @@ const routes = [
             {
                 path: '/contact',
                 element: <Contact />
-            }
+            },
+
+            {
+                path: '/donations',
+                element: <Donations />
+            },
 
         ]
     },
