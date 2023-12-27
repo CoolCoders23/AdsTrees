@@ -1,34 +1,34 @@
 // Desc: This file contains the data for the Donation
 // collection to be used in the seed file.
-// Used(https://fakerjs.dev/api/) as a reference for faker.js
 // ===================================================
 
-// Require faker.js
-// ===================================================
-const faker = require('faker');
+// Create donation data
 // ===================================================
 
-// Create an empty array to push the data into
-// ===================================================
-const donationData = [];
-// ===================================================
+const donationData = [
+    {
+        donationType: 'Garden',
+        description: 'Plant a tree in a garden.',
+        image: 'garden.svg',
+        donationAmount: 1,
+        price: 0.99
+    },
+    {
+        donationType: 'Wood',
+        description: 'Plant ten trees in a wood.',
+        image: 'wood.svg',
+        donationAmount: 10,
+        price: 9.99
+    },
+    {
+        donationType: 'Forest',
+        description: 'Plant one hundred trees in a forest.',
+        image: 'forest.svg',
+        donationAmount: 100,
+        price: 99.99
+    },
+];
 
-// Create a for loop to create 20 instances of data
-// ===================================================
-
-for (let i = 0; i < 35; i += 1) {
-    const donationType = faker.random.arrayElement(['Garden', 'Wood', 'Forest']);
-    const description = faker.lorem.paragraph();
-    const donationAmount = faker.random.arrayElement([1, 10, 100]);
-    const price = donationAmount * 0.99;
-
-    donationData.push({
-        donationType,
-        description,
-        donationAmount,
-        price
-    });
-}
 // ===================================================
 
 // Export the donationData array
