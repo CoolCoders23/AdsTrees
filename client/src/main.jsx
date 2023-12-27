@@ -19,6 +19,7 @@ import ErrorPage from './pages/ErrorPage';
 import ThemeProvider from './utils/theme/ThemeContext.jsx';
 import Contact from './pages/Contact';
 import Donations from './pages/Donations';
+import Success from './pages/Success';
 // ============================================================
 
 // Create a browser router
@@ -58,6 +59,11 @@ const routes = [
             {
                 path: '/donations',
                 element: <Donations />
+            },
+
+            {
+                path: '/success',
+                element: <Success />
             },
 
         ]
