@@ -44,15 +44,15 @@ const DonationList = () => {
         } else if (!loading) {
 
             // If offline, get data from IndexedDB
-            idbPromise('donations', 'get').then((donations) => {
+            idbPromise('donations', 'get')
 
+                .then((donations) => {
                 // Store data retrieved from IndexedDB in global state object
-                dispatch({
-                    type: UPDATE_DONATIONS,
-                    donations: donations
+                    dispatch({
+                        type: UPDATE_DONATIONS,
+                        donations: donations
+                    });
                 });
-
-            });
 
         }
 
@@ -69,8 +69,10 @@ const DonationList = () => {
                         <DonationItem
                             key={donation._id}
                             _id={donation._id}
-                            donationType={donation.donationType}
+                            name={donation.donationType}
                             description={donation.description}
+                            image={donation.image}
+                            quantity={donation.donationAmount}
                             price={donation.price}
                         />
                     ))}

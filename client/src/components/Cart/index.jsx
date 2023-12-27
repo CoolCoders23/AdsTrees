@@ -1,5 +1,6 @@
 // Desc: This file contains the Cart component which is responsible
 // for rendering the cart and the cart items
+// Used BTS Exercise Module 22 as a guide
 // ========================================================
 
 // Import dependencies
@@ -12,6 +13,7 @@ import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import { useStateContext } from '../../utils/payment-logic/UseStateContext';
 import { TOGGLE_CART } from '../../utils/payment-logic/actions';
+import { CLEAR_CART } from '../../utils/payment-logic/actions';
 import './style.css';
 // ========================================================
 
@@ -31,25 +33,40 @@ const Cart = () => {
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
     useEffect(() => {
+
         if (data) {
             stripePromise.then((res) => {
                 res.redirectToCheckout({ sessionId: data.checkout.session });
             });
         }
+
     }, [data]);
 
     function toggleCart() {
         dispatch({ type: TOGGLE_CART });
     }
 
-    function submitCheckout() {
+    // Define submitCheckout async function to handle
+    // the checkout process and then clear the cart
+    const submitCheckout = async (event) => {
 
-        getCheckout({
-            variables: {
-                donations: [...state.cart],
-            },
-        });
-    }
+        event.preventDefault();
+
+        try {
+
+            await getCheckout({
+                variables: {
+                    donations: [...state.cart],
+                },
+            })
+                .then(() => {
+                    dispatch({ type: CLEAR_CART });
+                });
+
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     if (!state.cartOpen) {
         return (

@@ -18,9 +18,11 @@ const DonationItem = (item) => {
 
     // Destructure item prop
     const {
+        image,
+        name,
         _id,
-        donationType,
         description,
+        quantity,
         price,
     } = item;
 
@@ -46,10 +48,19 @@ const DonationItem = (item) => {
     // Return JSX
     return (
         <div>
-            <p>{donationType}</p>
-            <h3>{description}</h3>
             <div>
+                <img
+                    src={`/images/${image}`}
+                    alt={name}
+                />
+                <p>{name}</p>
+                <h3>{description}</h3>
+            </div>
+            <div>
+                <h4>Planting Trees: {quantity}</h4>
                 <span>${price}</span>
+            </div>
+            <div>
                 <button onClick={addToCart}>Add to cart</button>
             </div>
         </div>
