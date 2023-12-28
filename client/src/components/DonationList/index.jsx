@@ -69,10 +69,10 @@ const DonationList = () => {
                         <DonationItem
                             key={donation._id}
                             _id={donation._id}
-                            name={donation.donationType}
+                            donationType={donation.donationType}
                             description={donation.description}
                             image={donation.image}
-                            quantity={donation.donationAmount}
+                            donationAmount={donation.donationAmount}
                             price={donation.price}
                         />
                     ))}

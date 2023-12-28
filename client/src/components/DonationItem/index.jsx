@@ -19,10 +19,10 @@ const DonationItem = (item) => {
     // Destructure item prop
     const {
         image,
-        name,
+        donationType,
         _id,
         description,
-        quantity,
+        donationAmount,
         price,
     } = item;
 
@@ -51,13 +51,13 @@ const DonationItem = (item) => {
             <div>
                 <img
                     src={`/images/${image}`}
-                    alt={name}
+                    alt={donationType}
                 />
-                <p>{name}</p>
+                <p>{donationType}</p>
                 <h3>{description}</h3>
             </div>
             <div>
-                <h4>Planting Trees: {quantity}</h4>
+                <h4>Planting Trees: {donationAmount}</h4>
                 <span>${price}</span>
             </div>
             <div>

@@ -32,7 +32,7 @@ const typeDefs = `
   }
 
   type Checkout {
-    session: ID!
+    session: ID
   }
 
   type Purchase @cacheControl(maxAge: 60) {

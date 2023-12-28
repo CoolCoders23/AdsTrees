@@ -48,9 +48,7 @@ const Cart = () => {
 
     // Define submitCheckout async function to handle
     // the checkout process and then clear the cart
-    const submitCheckout = async (event) => {
-
-        event.preventDefault();
+    const submitCheckout = async () => {
 
         try {
 

@@ -31,11 +31,13 @@ const CartItem = ({ item }) => {
                 <div>
                     <img
                         src={`/images/${item.image}`}
-                        alt={item.name}
+                        alt={item.donationType}
                     />
                     <p>{item.description}</p>
                     <div>
-                        {item.name}, ${item.price}
+                        <p>Type: {item.donationType}</p>
+                        <p>Donating: {item.donationAmount} Trees</p>
+                        <p>Price: ${item.price}</p>
                     </div>
                 </div>
                 <div>
