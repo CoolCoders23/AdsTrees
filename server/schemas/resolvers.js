@@ -76,10 +76,12 @@ const resolvers = {
         // Define to fetch all purchases
         purchases: async (parent, { userId }, context) => {
 
-            if (context.user) {
-                try {
+            if (!context.user) {
+                throw AuthenticationError;
+            }
+            try {
 
-                    const user = await User
+                const user = await User
                         .findById(userId)
                         .populate({
                             path: 'purchases',
@@ -89,18 +91,14 @@ const resolvers = {
                             },
                         });
 
-                    return user.purchases;
+                return user.purchases;
 
-                } catch (err) {
-                    throw new GraphQLError(`Failed to fetch purchases: ${err.message}`, {
-                        extensions: {
-                            code: 'BAD_USER_INPUT',
-                        },
-                    });
-                }
-
-            } else {
-                throw AuthenticationError;
+            } catch (err) {
+                throw new GraphQLError(`Failed to fetch purchases: ${err.message}`, {
+                    extensions: {
+                        code: 'BAD_USER_INPUT',
+                    },
+                });
             }
 
         },
@@ -190,16 +188,6 @@ const resolvers = {
 
         },
 
-    },
-
-    User: {
-        totalDonations: async (parent) => {
-            try {
-                return await parent.getTotalDonations();
-            } catch (err) {
-                throw new Error(`Failed to get total donations: ${err.message}`);
-            }
-        },
     },
 
     Mutation: {
@@ -317,12 +305,20 @@ const resolvers = {
             try {
 
                 const newPurchase = await Purchase.create({ donations });
-
-                const user = await User.findByIdAndUpdate(context.user._id, { $push: { purchases: newPurchase } }, { new: true });
+                const donationAmount = donations.donationAmount;
+                const user = await User.findById(context.user._id);
 
                 if (!user) {
                     throw new Error('User not found');
                 }
+
+                // Update total donations
+                await user.addDonation(donationAmount);
+
+                // Add the new purchase to the user's purchases
+                user.purchases.push(newPurchase);
+
+                await user.save();
 
                 return newPurchase;
 
