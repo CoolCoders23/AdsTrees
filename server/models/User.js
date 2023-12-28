@@ -12,6 +12,7 @@ const validator = require('validator');
 // ==================================================================
 
 const userSchema = new Schema({
+
     username: {
         type: String,
         required: true,
@@ -19,17 +20,20 @@ const userSchema = new Schema({
         trim: true,
         minlength: [3, 'Username must be at least 3 characters long.']
     },
+
     email: {
         type: String,
         required: true,
         unique: true,
         validate: [validator.isEmail, 'Please enter a valid e-mail address.']
     },
+
     password: {
         type: String,
         required: true,
         minlength: [5, 'Password must be at least 5 characters long.']
     },
+
     profilePicture: {
         url: {
             type: String,
@@ -40,6 +44,12 @@ const userSchema = new Schema({
             required: false,
         },
     },
+
+    totalDonations: {
+        type: Number,
+        default: 0,
+    },
+
     preferences: [
         {
             type: String,
@@ -47,12 +57,14 @@ const userSchema = new Schema({
             trim: true,
         }
     ],
+
     purchases: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Purchase'
         }
     ],
+
 },
 
 {
@@ -66,29 +78,11 @@ const userSchema = new Schema({
 );
 // ==================================================================
 
-// Get total number of trees donated by user
+// Update totalDonations when a donation is made
 // ==================================================================
-userSchema.methods.getTotalDonations = async function () {
-    try {
-        const user = await this.model('User').findById(this._id).populate({
-            path: 'purchases',
-            populate: {
-                path: 'donations',
-            },
-        });
-
-        let totalDonations = 0;
-        for (const purchase of user.purchases) {
-            for (const donation of purchase.donations) {
-                totalDonations += donation.donationAmount;
-            }
-        }
-
-        return totalDonations;
-    } catch (err) {
-        console.log(err);
-        throw err;
-    }
+userSchema.methods.addDonation = async function(donationAmount) {
+    this.totalDonations += donationAmount;
+    return this.save();
 };
 // ==================================================================
 

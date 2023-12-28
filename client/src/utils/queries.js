@@ -18,6 +18,7 @@ export const QUERY_USER = gql`
         url
         altText
       }
+      totalDonations
       preferences
       purchases {
         _id
@@ -31,7 +32,6 @@ export const QUERY_USER = gql`
           price
         }
       }
-      totalDonations
     }
   }
 `;
@@ -49,6 +49,7 @@ export const QUERY_USER_PROFILE = gql`
         url
         altText
       }
+      totalDonations
       preferences
       purchases {
         _id
