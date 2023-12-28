@@ -11,7 +11,7 @@ import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
-import { useStateContext } from '../../utils/payment-logic/UseStateContext';
+import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { TOGGLE_CART } from '../../utils/payment-logic/actions';
 import { CLEAR_CART } from '../../utils/payment-logic/actions';
 import './style.css';
@@ -81,7 +81,7 @@ const Cart = () => {
     return (
         <div className="cart">
             <div className="close" onClick={toggleCart}>
-                [close]
+                close
             </div>
             <h2>Donation Cart</h2>
             {state.cart.length ? (
