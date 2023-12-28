@@ -8,10 +8,23 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_PURCHASES, QUERY_USER } from '../../utils/queries';
 import idbPromise from '../../utils/payment-logic/idbHelper';
-import spinner from '../../assets/image/spinner.gif';
 import { UPDATE_CURRENT_STATUS } from '../../utils/payment-logic/actions';
 import useStateContext from '../../utils/payment-logic/UseStateContext';
 import Auth from '../../utils/auth';
+import {
+    Box,
+    Heading,
+    Text,
+    Image,
+    Table,
+    Thead,
+    Tbody,
+    Tr,
+    Th,
+    Td,
+    Spinner,
+    useColorModeValue
+} from '@chakra-ui/react';
 // =========================================================
 
 // Define DonationHistory component
@@ -50,46 +63,50 @@ const DonationHistory = () => {
 
     }
 
+    const bg = useColorModeValue('gray.200', 'gray.700');
+    const color = useColorModeValue('black', 'white');
+
     return (
-        <div>
-            <h2>Donation History</h2>
+        <Box bg={bg} color={color} p={5} shadow="md" borderWidth="1px" borderRadius="md">
+            <Heading as="h2" size="lg" mb={5}>Donation History</Heading>
             {purchases.map((purchase) => (
-                <div key={purchase._id}>
-                    <h3>
-                        {purchase.purchaseDate}
-                    </h3>
-                    <div>
-                        {purchase.donations.map(({ image, donationType, donationAmount, price }, index) => (
-                            <div key={index}>
-                                <h3>{donationType}</h3>
-                                <div>
-                                    <img
-                                        alt={donationType}
-                                        src={`/images/${image}`}
-                                    />
-                                </div>
-                                <div>
-                                    <p>Donated Trees: {donationAmount}</p>
-                                    <p>${price}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div>
-                        Status:{' '}
+                <Box key={purchase._id} mb={5}>
+                    <Heading as="h3" size="md" mb={3}>{purchase.purchaseDate}</Heading>
+                    <Table variant="simple">
+                        <Thead>
+                            <Tr>
+                                <Th>Donation Type</Th>
+                                <Th>Image</Th>
+                                <Th>Donated Trees</Th>
+                                <Th>Price</Th>
+                            </Tr>
+                        </Thead>
+                        <Tbody>
+                            {purchase.donations.map(({ image, donationType, donationAmount, price }, index) => (
+                                <Tr key={index}>
+                                    <Td>{donationType}</Td>
+                                    <Td><Image boxSize="50px" src={`/images/${image}`} alt={donationType} /></Td>
+                                    <Td>{donationAmount}</Td>
+                                    <Td>${price}</Td>
+                                </Tr>
+                            ))}
+                        </Tbody>
+                    </Table>
+                    <Text mt={3}>
+                      Status:{' '}
                         {state.currentStatus === 'completed' ? (
-                            <span className="text-success">Completed</span>
+                            <Text as="span" color="green.500">Completed</Text>
                         ) : (
-                            <span className="text-danger">Pending</span>
+                            <Text as="span" color="red.500">Pending</Text>
                         )}
-                    </div>
-                </div>
+                    </Text>
+                </Box>
             ))}
-            <div>
-                <strong>Total Donated Trees: {totalDonations}</strong>
-            </div>
-            {loading ? <img src={spinner} alt="loading" /> : null}
-        </div>
+            <Box>
+                <Text as="strong" fontSize="lg">Total Donated Trees: {totalDonations}</Text>
+            </Box>
+            {loading ? <Spinner size="xl" /> : null}
+        </Box>
     );
 };
 // =========================================================

@@ -89,7 +89,6 @@ function App() {
 
     return (
 
-
         <ApolloProvider client={client}>
             <StateProvider>
                 <Box
