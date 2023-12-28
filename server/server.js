@@ -56,8 +56,9 @@ const startApolloServer = async () => {
 
         await server.start();
 
-        express.urlencoded({ extended: false }),
-        express.json(),
+        // Use express middleware for body parsing
+        app.use(express.urlencoded({ extended: false }));
+        app.use(express.json());
 
         app.use('/images', express.static(path.join(__dirname, '../client/images')));
 

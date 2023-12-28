@@ -61,7 +61,9 @@ const resolvers = {
 
             try {
 
-                return await Donation.find({});
+                return await Donation
+                    .find({})
+                    .sort({ donationAmount: 1 });
 
             } catch (err) {
                 throw new GraphQLError(`Failed to fetch donations: ${err.message}`, {

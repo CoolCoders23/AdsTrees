@@ -36,7 +36,7 @@ for (let i = 0; i < userCount; i += 1) {
     }
     const purchases = [];
 
-    const totalDonations = faker.random.number(1000);
+    const totalDonations = faker.datatype.number(1000);
 
     userData.push({ username, email, password, profilePicture, preferences, purchases, totalDonations });
 }

@@ -99,7 +99,7 @@ const typeDefs = `
     purchase(_id: ID!): Purchase
       @cacheControl(scope: PUBLIC)
 
-    checkout(donations: [DonationInput!]!): Checkout
+    checkout(donations: [DonationInput]): Checkout
       @cacheControl(scope: PRIVATE)
 
   }

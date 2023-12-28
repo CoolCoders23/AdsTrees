@@ -21,17 +21,7 @@ const reducer = (state, action) => {
 
     case REMOVE_FROM_CART: {
 
-        if (!action.donation || !action.donation._id) {
-            console.error('action.donation or action.donation._id is undefined');
-            return state;
-        }
-
         let newState = state.cart.filter(donation => {
-            if (!donation._id) {
-                console.error('donation._id is undefined');
-                return true;
-            }
-
             return donation._id !== action._id;
         });
 
@@ -39,7 +29,7 @@ const reducer = (state, action) => {
             ...state,
             cartOpen: newState.length > 0,
             cart: newState,
-            currentStatus: 'Canceled'
+            // currentStatus: 'Canceled'
         };
     }
 
