@@ -4,7 +4,7 @@
 
 // Import dependencies
 // ========================================================
-import { UseStateContext} from '../../utils/payment-logic/UseStateContext';
+import UseStateContext from '../../utils/payment-logic/UseStateContext';
 import { REMOVE_FROM_CART } from '../../utils/payment-logic/actions';
 import { idbPromise } from '../../utils/payment-logic/idbHelper';
 // ========================================================
@@ -39,13 +39,13 @@ const CartItem = ({ item }) => {
                     </div>
                 </div>
                 <div>
-                    <p>Remove from cart</p>
                     <span
                         role="img"
                         aria-label="trash"
+                        style={{ cursor: 'pointer' }}
                         onClick={() => removeFromCart(item)}
                     >
-                        🗑️
+                        🗑️ <p>Remove from cart</p>
                     </span>
                 </div>
             </div>

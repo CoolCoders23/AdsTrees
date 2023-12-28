@@ -4,7 +4,7 @@
 
 // Import Dependencies
 // ========================================================
-import { useReducer } from 'react';
+import React, { useReducer } from 'react';
 import StateContext from './StateContext';
 import { reducer } from './reducers';
 // ========================================================

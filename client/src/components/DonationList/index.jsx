@@ -5,7 +5,7 @@
 // Import dependencies
 // =========================================================
 import { useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { QUERY_DONATIONS } from '../../utils/queries';
 import { idbPromise } from '../../utils/payment-logic/idbHelper';
 import useStateContext from '../../utils/payment-logic/UseStateContext';

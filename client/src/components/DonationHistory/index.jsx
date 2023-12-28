@@ -7,7 +7,7 @@
 // =========================================================
 import { useQuery } from '@apollo/client';
 import { QUERY_PURCHASES, QUERY_USER } from '../../utils/queries';
-import idbPromise from '../../utils/payment-logic/idbHelper';
+import { idbPromise } from '../../utils/payment-logic/idbHelper';
 import { UPDATE_CURRENT_STATUS } from '../../utils/payment-logic/actions';
 import useStateContext from '../../utils/payment-logic/UseStateContext';
 import Auth from '../../utils/auth';
@@ -93,7 +93,7 @@ const DonationHistory = () => {
                         </Tbody>
                     </Table>
                     <Text mt={3}>
-                      Status:{' '}
+                        Status:{' '}
                         {state.currentStatus === 'completed' ? (
                             <Text as="span" color="green.500">Completed</Text>
                         ) : (

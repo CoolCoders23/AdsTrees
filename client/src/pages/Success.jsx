@@ -10,7 +10,7 @@ import Auth from '../utils/auth';
 import { ADD_PURCHASE } from '../utils/mutations';
 import { idbPromise } from '../utils/payment-logic/idbHelper';
 import { UPDATE_CURRENT_STATUS } from '../utils/payment-logic/actions';
-import { useStateContext } from '../utils/payment-logic/UseStateContext';
+import useStateContext from '../utils/payment-logic/UseStateContext';
 import checkIcon from '../assets/image/check-icon.svg';
 // ======================================================
 
