@@ -1,31 +1,54 @@
 // Desc: this file is the entry point for the server
 // ================================================================
-// TODO: Enable CORS for production mode
 
-// import Dependencies
+// Import Dependencies
 // ================================================================
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
-// Importing the Apollo Server Plugin for Cache Control
 const { ApolloServerPluginCacheControl } = require('@apollo/server/plugin/cacheControl');
-const responseCachePlugin = require ('@apollo/server-plugin-response-cache').default;
+const responseCachePlugin = require('@apollo/server-plugin-response-cache').default;
 const { expressMiddleware } = require('@apollo/server/express4');
-// const cors = require('cors');
+const cors = require('cors'); // CORS middleware
 require('dotenv').config();
 const path = require('path');
 // ================================================================
 
-// import local Dependencies
+
+// Import local Dependencies
 // ================================================================
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 // ================================================================
 
-// Defining the PORT and server
+
+// Define the PORT and server
 // ================================================================
 const PORT = process.env.PORT || 3001;
 const app = express();
+// ================================================================
+
+// Configuring CORS options
+// ================================================================
+const corsOptions = {
+    origin: function (origin, callback) {
+        // Define allowed origins for production
+        const whitelist = ['http://localhost:3000', 'http://localhost:3001'];
+        if (!origin || whitelist.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+};
+// ================================================================
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
+// Create an instance of ApolloServer
+// ================================================================
 const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -35,64 +58,43 @@ const server = new ApolloServer({
     plugins: [
         ApolloServerPluginCacheControl({ defaultMaxAge: 20 }),
         responseCachePlugin({
-            sessionId: (requestContext) =>
-                requestContext.request.http.headers.get('session-id') || null,
+            sessionId: (requestContext) => requestContext.request.http.headers.get('session-id') || null,
         })
     ],
+    context: authMiddleware, // Add authentication middleware to Apollo Server context
 });
 // ================================================================
 
-// Defining the whitelist for CORS
-// ================================================================
-// Add trusted origins here
-// const whitelist = ['http://localhost:3000', 'http://localhost:3001'];
-// ================================================================
-
-//Create a new instance of ApolloServer and pass it the imported schema data
+// Define a function to start the Apollo Server
 // ================================================================
 const startApolloServer = async () => {
-
-    try{
-
+    try {
         await server.start();
 
-        // Use express middleware for body parsing
         app.use(express.urlencoded({ extended: false }));
         app.use(express.json());
 
-        app.use('/images', express.static(path.join(__dirname, '../client/images')));
+        app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
-        app.use(
-            '/graphql',
-            // Used (https://www.apollographql.com/docs/apollo-server/security/cors/) as a reference
-            // cors({
-            //     origin: function (origin, callback) {
-            //         if (!origin || whitelist.includes(origin)) {
-            //             callback(null, true);
-            //         } else {
-            //             callback(new Error('Not allowed by CORS'));
-            //         }
-            //     },
-            //     credentials: true
-            // }),
-            expressMiddleware(
-                server,
-                {context: authMiddleware}
-            ),
-        );
+        // Apply Apollo Middleware using expressMiddleware
+        app.use('/graphql', expressMiddleware(server, {
+            context: authMiddleware, // Add context
+            cors: corsOptions, // Apply CORS options
+        }));
 
+        // Serve static files in production mode
         if (process.env.NODE_ENV === 'production') {
             app.use(express.static(path.join(__dirname, '../client/dist')));
-
             app.get('*', (req, res) => {
                 res.sendFile(path.join(__dirname, '../client/dist/index.html'));
             });
         }
 
+        // Start listening on the defined PORT
         db.once('open', () => {
             app.listen(PORT, () => {
                 console.log(`API server running on port ${PORT}!`);
-                console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+                console.log(`GraphQL at http://localhost:${PORT}/graphql`);
             });
         });
         db.on('error', (error) => {
@@ -100,14 +102,16 @@ const startApolloServer = async () => {
         });
     } catch (error) {
         console.error(`Failed to start server: ${error.message}`);
-        if (error.stack) {
-            console.error(error.stack);
-        }
     }
 };
 // ================================================================
 
-// Start the Apollo server
+// Initializing the Apollo Server
 // ================================================================
 startApolloServer();
+// ================================================================
+
+// Exporting the Express app for use elsewhere in the project
+// ================================================================
+module.exports = app;
 // ================================================================
