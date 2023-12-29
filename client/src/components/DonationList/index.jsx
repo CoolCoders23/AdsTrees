@@ -11,7 +11,7 @@ import { idbPromise } from '../../utils/payment-logic/idbHelper';
 import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { UPDATE_DONATIONS } from '../../utils/payment-logic/actions';
 import DonationItem from '../DonationItem';
-import spinner from '../../assets/image/spinner.gif';
+import { Spinner } from '@chakra-ui/react';
 // =========================================================
 
 // Define component
@@ -80,7 +80,7 @@ const DonationList = () => {
             ) : (
                 !loading && <h3>No donations yet!</h3>
             )}
-            {loading ? <img src={spinner} alt="loading" /> : null}
+            {loading ? <Spinner size="xl" /> : null}
         </div>
     );
 

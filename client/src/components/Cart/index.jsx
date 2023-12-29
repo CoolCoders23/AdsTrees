@@ -13,7 +13,6 @@ import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { TOGGLE_CART } from '../../utils/payment-logic/actions';
-import { CLEAR_CART } from '../../utils/payment-logic/actions';
 import './style.css';
 // ========================================================
 
@@ -56,10 +55,7 @@ const Cart = () => {
                 variables: {
                     donations: [...state.cart],
                 },
-            })
-                .then(() => {
-                    dispatch({ type: CLEAR_CART });
-                });
+            });
 
         } catch (err) {
             console.error(err);
@@ -95,7 +91,7 @@ const Cart = () => {
                             <button onClick={submitCheckout}>Checkout</button>
                         ) : (
                             <span>(log in to check out)</span>
-                        )}
+                        )};
                     </div>
                 </div>
             ) : (

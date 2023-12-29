@@ -47,7 +47,7 @@ const CartItem = ({ item }) => {
                         style={{ cursor: 'pointer' }}
                         onClick={() => removeFromCart(item)}
                     >
-                        🗑️ <p>Remove from cart</p>
+                        <p>Remove from cart</p> 🗑️
                     </span>
                 </div>
             </div>
