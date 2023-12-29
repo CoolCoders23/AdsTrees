@@ -43,11 +43,11 @@ const typeDefs = `
 
   type Donation @cacheControl(maxAge: 60) {
     _id: ID!
-    donationType: String!
+    donationType: String
     description: String
     image: String
-    donationAmount: Int!
-    price: Float!
+    donationAmount: Int
+    price: Float
   }
 
   type Image {
@@ -117,8 +117,8 @@ const typeDefs = `
     updateUser(user: UpdateUserInput): User
       @cacheControl(maxAge: 0, scope: PRIVATE)
 
-    addPurchase(donations: [ID!]!): Purchase
-      @cacheControl(maxAge: 0, scope: PRIVATE)
+    addPurchase(donations: [ID]!): Purchase
+      @cacheControl(scope: PRIVATE)
 
   }
 

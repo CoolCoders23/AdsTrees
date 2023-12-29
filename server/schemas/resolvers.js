@@ -142,26 +142,22 @@ const resolvers = {
             if (context.user) {
 
                 const url = new URL(context.headers.referer).origin;
+                console.log(url);
                 await Purchase.create({ donations: args.donations.map(({ _id }) => _id)});
 
                 try {
 
-                    const line_items = [];
-
-                    for (const donation of args.donations) {
-                        line_items.push({
-                            price_data: {
-                                currency: 'usd',
-                                product_data: {
-                                    name: donation.donationType,
-                                    description: donation.description,
-                                    images: [`${url}/images/${donation.image}`],
-                                },
-                                unit_amount: donation.price * 100,
+                    const line_items = args.donations.map(donation => ({
+                        price_data: {
+                            currency: 'usd',
+                            product_data: {
+                                name: donation.donationType,
+                                description: donation.description,
                             },
-                            quantity: donation.donationAmount,
-                        });
-                    }
+                            unit_amount: 99,
+                        },
+                        quantity: donation.donationAmount,
+                    }));
 
                     const session = await stripe.checkout.sessions.create({
                         payment_method_types: ['card'],
@@ -170,11 +166,6 @@ const resolvers = {
                         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
                         cancel_url: `${url}/`,
                     });
-
-                    // Setting a session expire time of 15 minutes
-                    setTimeout(async () => {
-                        await stripe.checkout.sessions.expire(session.id);
-                    }, 15 * 60 * 1000);
 
                     return { session: session.id };
 
@@ -306,7 +297,16 @@ const resolvers = {
             try {
 
                 const newPurchase = await Purchase.create({ donations });
-                const donationAmount = donations.donationAmount;
+
+                // Fetch the actual donation objects from the database
+                const donationObjects = await Donation.find({
+                    _id: { $in: donations },
+                });
+
+                // Calculate the total donation amount
+                const donationAmount = donationObjects.reduce(
+                    (total, donation) => total + donation.donationAmount, 0);
+
                 const user = await User.findById(context.user._id);
 
                 if (!user) {
