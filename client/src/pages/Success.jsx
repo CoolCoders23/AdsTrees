@@ -5,12 +5,8 @@
 // ======================================================
 import { useEffect } from 'react';
 import { useMutation } from '@apollo/client';
-import { Link } from 'react-router-dom';
-import Auth from '../utils/auth';
 import { ADD_PURCHASE } from '../utils/mutations';
 import { idbPromise } from '../utils/payment-logic/idbHelper';
-import { UPDATE_CURRENT_STATUS } from '../utils/payment-logic/actions';
-import useStateContext from '../utils/payment-logic/UseStateContext';
 import checkIcon from '../assets/image/check-icon.svg';
 // ======================================================
 
@@ -18,7 +14,6 @@ import checkIcon from '../assets/image/check-icon.svg';
 // ======================================================
 const Success = () => {
 
-    const [, dispatch] = useStateContext();
     const [addPurchase] = useMutation(ADD_PURCHASE);
 
     useEffect(() => {
@@ -39,17 +34,15 @@ const Success = () => {
 
             }
 
-            dispatch({ type: UPDATE_CURRENT_STATUS, currentStatus: 'Completed' });
-
             setTimeout(() => {
-                window.location.assign('/');
-            }, 3000);
+                window.location.assign('/user-profile');
+            }, 5000);
 
         }
 
         saveOrder();
 
-    }, [addPurchase, dispatch]);
+    }, [addPurchase]);
 
     return (
 
@@ -63,16 +56,6 @@ const Success = () => {
                 <img src={checkIcon} alt="checkmark" aria-label='checkmark' />
                 <p>We will do great things together</p>
             </div>
-
-            {Auth.loggedIn() ? (
-                <div>
-                    <Link to="/dashboard">Go to Dashboard</Link>
-                </div>
-            ) : (
-                <div>
-                    <Link to="/">Go to Login</Link>
-                </div>
-            )}
 
         </div>
 
