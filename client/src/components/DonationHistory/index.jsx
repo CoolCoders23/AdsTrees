@@ -7,9 +7,6 @@
 // =========================================================
 import { useQuery } from '@apollo/client';
 import { QUERY_PURCHASES, QUERY_USER } from '../../utils/queries';
-import { idbPromise } from '../../utils/payment-logic/idbHelper';
-import { UPDATE_CURRENT_STATUS } from '../../utils/payment-logic/actions';
-import useStateContext from '../../utils/payment-logic/UseStateContext';
 import Auth from '../../utils/auth';
 import {
     Box,
@@ -31,40 +28,39 @@ import {
 // =========================================================
 const DonationHistory = () => {
 
-    const [state, dispatch] = useStateContext();
+    const bg = useColorModeValue('gray.200', 'gray.700');
+    const color = useColorModeValue('black', 'white');
 
     const profile = Auth.getProfile();
-    const userId = profile?.data._id || profile ? profile.is : null;
-    const username = profile?.data.username || profile ? profile.username : null;
+    // console.log(profile);
+    const userId = profile?.data._id;
+    // console.log(userId);
+    const username = profile?.data.username;
+    // console.log(username);
 
     const { loading, data } = useQuery(QUERY_PURCHASES, {
         variables: { userId: userId },
+        skip: !Auth.loggedIn()
     });
+    console.log(data);
 
     const { data: userData } = useQuery(QUERY_USER, {
         variables: { username: username },
+        skip: !Auth.loggedIn()
     });
+    console.log(userData);
+
+    if (!Auth.loggedIn()) {
+        return (
+            <Box bg={bg} color={color} p={5} shadow="md" borderWidth="1px" borderRadius="md">
+                <Heading as="h2" size="lg" mb={5}>Donation History</Heading>
+                <Text as="strong" fontSize="lg">Please log in to see your donation history.</Text>
+            </Box>
+        );
+    }
 
     const totalDonations = userData?.user.totalDonations || 0;
     const purchases = data?.purchases || [];
-
-    if (!loading) {
-
-        idbPromise('donations', 'get').then((donations) => {
-
-            if (donations.length > 0 && donations[0].status) {
-                dispatch({
-                    type: UPDATE_CURRENT_STATUS,
-                    currentStatus: donations[0].status
-                });
-            }
-        });
-
-
-    }
-
-    const bg = useColorModeValue('gray.200', 'gray.700');
-    const color = useColorModeValue('black', 'white');
 
     return (
         <Box bg={bg} color={color} p={5} shadow="md" borderWidth="1px" borderRadius="md">
@@ -78,11 +74,11 @@ const DonationHistory = () => {
                                 <Th>Donation Type</Th>
                                 <Th>Image</Th>
                                 <Th>Donated Trees</Th>
-                                <Th>Price</Th>
+                                <Th>Amount</Th>
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {purchase.donations.map(({ image, donationType, donationAmount, price }, index) => (
+                            {purchase.donations?.map(({ image, donationType, donationAmount, price }, index) => (
                                 <Tr key={index}>
                                     <Td>{donationType}</Td>
                                     <Td><Image boxSize="50px" src={`/images/${image}`} alt={donationType} /></Td>
@@ -92,14 +88,6 @@ const DonationHistory = () => {
                             ))}
                         </Tbody>
                     </Table>
-                    <Text mt={3}>
-                        Status:{' '}
-                        {state.currentStatus === 'completed' ? (
-                            <Text as="span" color="green.500">Completed</Text>
-                        ) : (
-                            <Text as="span" color="red.500">Pending</Text>
-                        )}
-                    </Text>
                 </Box>
             ))}
             <Box>
