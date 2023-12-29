@@ -21,7 +21,6 @@ const StateProvider = ({ value = [], ...props }) => {
         donations: [],
         cart: [],
         cartOpen: false,
-        currentStatus: '',
     });
 
     return <Provider value={[state, dispatch]} {...props} />;

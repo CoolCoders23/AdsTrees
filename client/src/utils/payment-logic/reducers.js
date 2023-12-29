@@ -1,12 +1,19 @@
+// Desc: This file contains the reducer function for the payment logic
+// ========================================================
+
+// Import dependencies
+// ========================================================
 import {
     ADD_TO_CART,
     REMOVE_FROM_CART,
     CLEAR_CART,
     TOGGLE_CART,
     UPDATE_DONATIONS,
-    UPDATE_CURRENT_STATUS
 } from './actions';
+// ========================================================
 
+// Define the reducer function
+// ========================================================
 const reducer = (state, action) => {
 
     switch (action.type) {
@@ -16,7 +23,6 @@ const reducer = (state, action) => {
             ...state,
             cartOpen: true,
             cart: [...state.cart, action.donation],
-            currentStatus: 'Pending'
         };
 
     case REMOVE_FROM_CART: {
@@ -29,7 +35,6 @@ const reducer = (state, action) => {
             ...state,
             cartOpen: newState.length > 0,
             cart: newState,
-            // currentStatus: 'Canceled'
         };
     }
 
@@ -38,7 +43,6 @@ const reducer = (state, action) => {
             ...state,
             cartOpen: false,
             cart: [],
-            currentStatus: 'Pending'
         };
 
     case TOGGLE_CART:
@@ -51,12 +55,6 @@ const reducer = (state, action) => {
         return {
             ...state,
             donations: [...action.donations],
-        };
-
-    case UPDATE_CURRENT_STATUS:
-        return {
-            ...state,
-            currentStatus: action.currentStatus
         };
 
     default:
