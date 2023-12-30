@@ -18,8 +18,7 @@ import {
     Text,
     Stack,
 } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import logo from '../../assets/image/LogoMain/AdsTrees_Logo_48.svg';
 import { useTheme } from '../../utils/theme/useTheme';
@@ -49,8 +48,9 @@ const Header = () => {
         console.error('Failed to get username', error);
     }
 
-    const NavLink = ({ to, children, isActive }) => {
+    const NavLink = ({ to, children}) => {
 
+        const isActive = path === to || (to !== '/' && path.startsWith(to));
         const colorMode = darkTheme ? 'dark' : 'light';
         const buttonColor = colorMode === 'dark'
             ? theme.colors.dark.greenMedium
@@ -63,10 +63,10 @@ const Header = () => {
                 px={2}
                 py={1}
                 rounded={'md'}
-                bg={isActive ? undefined : 'transparent'}
+                bg={isActive ? 'gray.200' : 'transparent'}
+                color={isActive ? 'black' : buttonColor}
+                variant={isActive ? 'solid' : 'outline'}
                 transition="0.3s"
-                color={buttonColor}
-                variant="outline"
             >
                 <Text
                     fontSize={['xs', 'sm', 'md', 'lg', 'xl']}
@@ -86,52 +86,23 @@ const Header = () => {
             justify="space-between"
             spacing={4}
         >
-            <NavLink
-                to='/about'
-                isActive={path === '/about'}
-            >
-                About us
-            </NavLink>
+            <NavLink to='/about'>About us</NavLink>
 
-            <NavLink
-                to='/donations'
-                isActive={path === '/donations'}
-            >
-                Donations
-            </NavLink>
+            <NavLink to='/donations'>Donations</NavLink>
 
             {Auth.loggedIn() && username !== '' ? (
                 <>
 
-                    <NavLink
-                        to={`/dashboard/${username}`}
-                        isActive={path.startsWith('/dashboard')}
-                    >
-                        Dashboard
-                    </NavLink>
+                    <NavLink to={`/dashboard/${username}`}>Dashboard</NavLink>
 
-                    <NavLink
-                        to='/user-profile'
-                        isActive={path === '/user-profile'}
-                    >
-                        {username}&apos;s profile
-                    </NavLink>
+                    <NavLink to='/user-profile'>{username}&apos;s profile</NavLink>
 
-                    <Button
-                        as={RouterLink}
-                        to="/" onClick={logout}
-                    >
-                        Logout
-                    </Button>
+                    <Button as={RouterLink} to="/" onClick={logout}>Logout</Button>
 
                 </>
 
             ) : (
-                path !== '/'
-                    &&
-                    <NavLink to='/' isActive={path === '/'}>
-                            Login
-                    </NavLink>
+                <NavLink to='/'>Login</NavLink>
             )}
 
         </Stack>
