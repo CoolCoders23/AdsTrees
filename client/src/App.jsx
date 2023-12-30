@@ -104,19 +104,18 @@ function App() {
                             : theme.colors.light.greenDark
                     }
                     transition="0.3s ease"
-                    height="fit-content"
+                    minHeight="100vh"
                     width="100vw"
+                    display="flex"
+                    flexDirection="column"
                 >
+                    <Header />
 
-                    <div className="outer-container">
-                        <Header />
-                        <div className="page">
-                            <Outlet />
-                        </div>
+                    <Box flex="1">
+                        <Outlet />
+                    </Box>
 
-                        <Footer />
-                    </div>
-
+                    <Footer />
                 </Box>
             </StateProvider>
         </ApolloProvider>
