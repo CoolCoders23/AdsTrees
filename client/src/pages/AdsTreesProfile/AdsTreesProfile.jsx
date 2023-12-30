@@ -1,6 +1,7 @@
 /* Code generated with AutoHTML Plugin for Figma */
 import './AdsTreesProfile.css';
-import { CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse } from './CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse/CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse.jsx';
+import { CategoriesCheckboxes } from './CheckboxGroup/CheckboxGroup.jsx';
+import React from 'react';
 
 export const AdsTreesProfile = ({
     profilePasswordConfirmation = '    ',
@@ -156,119 +157,11 @@ export const AdsTreesProfile = ({
                             </div>
                             <div className="private-profile-content-preference-input">
                                 <div className="component-title-label">
-                  Content preferences{' '}
+                    Content preferences{' '}
                                 </div>
+
                                 <div className="checkboxes-input-group">
-                                    <div className="health-and-fitness">
-                                        <CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse
-                                            isChecked="true"
-                                            isDisabled="false"
-                                            isIndeterminate="false"
-                                            size="sm"
-                                            colorScheme="blue"
-                                            className="control-instance"
-                                        />
-                                        <input className="children" value="Health and fitness" />
-                                    </div>
-                                    <div className="technology">
-                                        <CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse
-                                            isChecked="true"
-                                            isDisabled="false"
-                                            isIndeterminate="false"
-                                            size="sm"
-                                            colorScheme="blue"
-                                            className="control-instance2"
-                                        />
-                                        <div className="children">Technology </div>
-                                    </div>
-                                    <div className="fashion-and-beauty">
-                                        <CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse
-                                            isChecked="true"
-                                            isDisabled="false"
-                                            isIndeterminate="false"
-                                            size="sm"
-                                            colorScheme="blue"
-                                            className="control-instance3"
-                                        />
-                                        <div className="children">Fashion and beauty </div>
-                                    </div>
-                                    <div className="home-and-garden">
-                                        <CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse
-                                            isChecked="true"
-                                            isDisabled="false"
-                                            isIndeterminate="false"
-                                            size="sm"
-                                            colorScheme="blue"
-                                            className="control-instance4"
-                                        />
-                                        <div className="children">Home and garden </div>
-                                    </div>
-                                    <div className="travel-and-tourism">
-                                        <CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse
-                                            isChecked="true"
-                                            isDisabled="false"
-                                            isIndeterminate="false"
-                                            size="sm"
-                                            colorScheme="blue"
-                                            className="control-instance5"
-                                        />
-                                        <div className="children">Travel and tourism </div>
-                                    </div>
-                                    <div className="food-and-beverages">
-                                        <CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse
-                                            isChecked="true"
-                                            isDisabled="false"
-                                            isIndeterminate="false"
-                                            size="sm"
-                                            colorScheme="blue"
-                                            className="control-instance6"
-                                        />
-                                        <div className="children">Food and beverages </div>
-                                    </div>
-                                    <div className="financial-services">
-                                        <CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse
-                                            isChecked="true"
-                                            isDisabled="false"
-                                            isIndeterminate="false"
-                                            size="sm"
-                                            colorScheme="blue"
-                                            className="control-instance7"
-                                        />
-                                        <div className="children">Financial services </div>
-                                    </div>
-                                    <div className="education-and-learning">
-                                        <CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse
-                                            isChecked="true"
-                                            isDisabled="false"
-                                            isIndeterminate="false"
-                                            size="sm"
-                                            colorScheme="blue"
-                                            className="control-instance8"
-                                        />
-                                        <div className="children">Education and learning </div>
-                                    </div>
-                                    <div className="entertainment-and-media">
-                                        <CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse
-                                            isChecked="true"
-                                            isDisabled="false"
-                                            isIndeterminate="false"
-                                            size="sm"
-                                            colorScheme="blue"
-                                            className="control-instance9"
-                                        />
-                                        <div className="children">Entertainment and media </div>
-                                    </div>
-                                    <div className="automotive-industry">
-                                        <CheckboxControlSizeSmColorSchemeBlueIsCheckedTrueIsDisabledFalseIsIndeterminateFalse
-                                            isChecked="true"
-                                            isDisabled="false"
-                                            isIndeterminate="false"
-                                            size="sm"
-                                            colorScheme="blue"
-                                            className="control-instance10"
-                                        />
-                                        <div className="children">Automotive industry </div>
-                                    </div>
+                                    <CategoriesCheckboxes />
                                 </div>
                             </div>
                         </div>
