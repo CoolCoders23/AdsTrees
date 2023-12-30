@@ -9,7 +9,7 @@ const faker = require('faker');
 
 // Define the number of Users to seed
 // ==================================================================
-const userCount = 10;
+const userCount = 5;
 // ==================================================================
 
 // Define the number of Preferences to seed
@@ -34,12 +34,15 @@ for (let i = 0; i < userCount; i += 1) {
     for (let j = 0; j < preferenceCountPerUser; j += 1) {
         preferences.push(faker.commerce.department());
     }
+    const purchases = [];
 
-    userData.push({ username, email, password, profilePicture, preferences });
+    const totalDonations = faker.datatype.number(1000);
+
+    userData.push({ username, email, password, profilePicture, preferences, purchases, totalDonations });
 }
 // ==================================================================
 
 // Export the Users and Preferences to seed
 // ==================================================================
-module.exports = { userData };
+module.exports = userData;
 // ==================================================================

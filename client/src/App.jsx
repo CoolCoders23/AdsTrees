@@ -21,11 +21,12 @@ import { Box } from '@chakra-ui/react';
 // ============================================================
 import Header from './components/Header';
 import Footer from './components/Footer';
+import StateProvider from './utils/payment-logic/StateProvider';
 // ============================================================
 
 // Import the custom hook
 // ==========================================================
-import { useTheme } from './utils/useTheme';
+import { useTheme } from './utils/theme/useTheme';
 // ==========================================================
 
 
@@ -85,40 +86,39 @@ function App() {
     // Pluck values from ThemeContext
     const { darkTheme, theme } = useTheme();
 
-
     // https://stackoverflow.com/questions/72945686/how-to-make-sure-content-stays-below-when-using-react-router-and-outlet START
     // ============================================================
 
     return (
         <ApolloProvider client={client}>
+            <StateProvider>
+                <Box
+                    bg={
+                        darkTheme
+                            ? theme.colors.light.greenDark
+                            : theme.colors.light.greyLight
+                    }
+                    color={
+                        darkTheme
+                            ? theme.colors.light.greyLight
+                            : theme.colors.light.greenDark
+                    }
+                    transition="0.3s ease"
+                    height="fit-content"
+                    width="100vw"
+                >
 
-            <Box
-                bg={
-                    darkTheme
-                        ? theme.colors.light.greenDark
-                        : theme.colors.light.greyLight
-                }
-                color={
-                    darkTheme
-                        ? theme.colors.light.greyLight
-                        : theme.colors.light.greenDark
-                }
-                transition="0.3s ease"
-                height="fit-content"
-                width="100vw"
-            >
-                <div className="outer-container">
-                    <Header />
-                    <div className="page">
-                        <Outlet />
+                    <div className="outer-container">
+                        <Header />
+                        <div className="page">
+                            <Outlet />
+                        </div>
+
+                        <Footer />
                     </div>
 
-                    <Footer />
-                </div>
-
-
-
-            </Box>
+                </Box>
+            </StateProvider>
         </ApolloProvider>
     );
 

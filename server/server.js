@@ -45,7 +45,9 @@ const corsOptions = {
 // ================================================================
 
 // Apply CORS middleware
+// ================================================================
 app.use(cors(corsOptions));
+// ================================================================
 
 // Create an instance of ApolloServer
 // ================================================================
@@ -53,7 +55,7 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     plugins: [
-        ApolloServerPluginCacheControl({ defaultMaxAge: 20 }),
+        ApolloServerPluginCacheControl({ defaultMaxAge: 30 }),
         responseCachePlugin({
             sessionId: (requestContext) => requestContext.request.http.headers.get('session-id') || null,
         })
@@ -71,6 +73,8 @@ const startApolloServer = async () => {
         app.use(express.urlencoded({ extended: false }));
         app.use(express.json());
 
+        app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
+
         // Apply Apollo Middleware using expressMiddleware
         app.use('/graphql', expressMiddleware(server, {
             context: authMiddleware, // Add context
@@ -80,7 +84,6 @@ const startApolloServer = async () => {
         // Serve static files in production mode
         if (process.env.NODE_ENV === 'production') {
             app.use(express.static(path.join(__dirname, '../client/dist')));
-
             app.get('*', (req, res) => {
                 res.sendFile(path.join(__dirname, '../client/dist/index.html'));
             });
@@ -103,7 +106,11 @@ const startApolloServer = async () => {
 // ================================================================
 
 // Initializing the Apollo Server
+// ================================================================
 startApolloServer();
+// ================================================================
 
 // Exporting the Express app for use elsewhere in the project
+// ================================================================
 module.exports = app;
+// ================================================================

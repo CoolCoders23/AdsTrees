@@ -5,12 +5,14 @@
 // ==================================================================
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const validator = require('validator');
 // ==================================================================
 
 // Create the User Schema with preferences
 // ==================================================================
 
 const userSchema = new Schema({
+
     username: {
         type: String,
         required: true,
@@ -18,17 +20,20 @@ const userSchema = new Schema({
         trim: true,
         minlength: [3, 'Username must be at least 3 characters long.']
     },
+
     email: {
         type: String,
         required: true,
         unique: true,
-        match: [/.+@.+\..+/, 'Please enter a valid e-mail address.']
+        validate: [validator.isEmail, 'Please enter a valid e-mail address.']
     },
+
     password: {
         type: String,
         required: true,
         minlength: [5, 'Password must be at least 5 characters long.']
     },
+
     profilePicture: {
         url: {
             type: String,
@@ -39,6 +44,12 @@ const userSchema = new Schema({
             required: false,
         },
     },
+
+    totalDonations: {
+        type: Number,
+        default: 0,
+    },
+
     preferences: [
         {
             type: String,
@@ -46,7 +57,33 @@ const userSchema = new Schema({
             trim: true,
         }
     ],
-});
+
+    purchases: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Purchase'
+        }
+    ],
+
+},
+
+{
+    toJSON: {
+        virtuals: true
+    },
+
+    id: false
+},
+
+);
+// ==================================================================
+
+// Update totalDonations when a donation is made
+// ==================================================================
+userSchema.methods.addDonation = async function(donationAmount) {
+    this.totalDonations += donationAmount;
+    return this.save();
+};
 // ==================================================================
 
 // Set up pre-save middleware to create password

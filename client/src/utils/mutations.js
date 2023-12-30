@@ -35,6 +35,7 @@ export const ADD_USER = gql`
       user {
         _id
         username
+        email
       }
     }
   }
@@ -64,10 +65,31 @@ export const UPDATE_USER = gql`
       user {
         _id
         username
+        email
         profilePicture {
           url
           altText
         }
+      }
+    }
+  }
+`;
+// ================================================================
+
+// Add a new Purchase
+// ================================================================
+export const ADD_PURCHASE = gql`
+  mutation addPurchase($donations: [ID]!) {
+    addPurchase(donations: $donations) {
+      _id
+      purchaseDate
+      donations {
+        _id
+        donationType
+        description
+        image
+        donationAmount
+        price
       }
     }
   }
