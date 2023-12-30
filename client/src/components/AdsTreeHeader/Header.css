@@ -1,0 +1,80 @@
+.header,
+.header * {
+  box-sizing: border-box;
+}
+.header {
+  background: var(--white-pure, #081c15);
+  padding: 8px 16px 8px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.header .logo-frame {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  height: 48px;
+  min-width: 192px;
+  position: relative;
+}
+.header .logo {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.header .icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  overflow: visible;
+}
+.header .wording {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: var(
+    --main-logo-font-font-family,
+    "Montserrat-Regular",
+    sans-serif
+  );
+  font-size: var(--main-logo-font-font-size, 24px);
+  font-weight: var(--main-logo-font-font-weight, 400);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.header .main-navigation {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.header .main-navigation-dashboard-button-active-instance {
+  flex-shrink: 0 !important;
+}
+.header .main-navigation-dashboard-button-inactive-instance {
+  flex-shrink: 0 !important;
+}
+.header .main-navigation-profile-button-active-instance {
+  flex-shrink: 0 !important;
+}
+.header .main-navigation-profile-button-inactive-instance {
+  flex-shrink: 0 !important;
+}

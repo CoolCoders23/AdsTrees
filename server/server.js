@@ -45,18 +45,17 @@ const corsOptions = {
 // ================================================================
 
 // Apply CORS middleware
+// ================================================================
 app.use(cors(corsOptions));
+// ================================================================
 
 // Create an instance of ApolloServer
 // ================================================================
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    // Setting up the Apollo Server Plugin for Cache
-    // Control to set the default max age to 20 seconds
-    // Used (https://www.apollographql.com/docs/apollo-server/performance/caching) as a reference
     plugins: [
-        ApolloServerPluginCacheControl({ defaultMaxAge: 20 }),
+        ApolloServerPluginCacheControl({ defaultMaxAge: 30 }),
         responseCachePlugin({
             sessionId: (requestContext) => requestContext.request.http.headers.get('session-id') || null,
         })

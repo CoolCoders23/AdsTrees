@@ -1,0 +1,36 @@
+.main-navigation-button-target-profile-status-active,
+.main-navigation-button-target-profile-status-active * {
+  box-sizing: border-box;
+}
+.main-navigation-button-target-profile-status-active {
+  background: var(--white-pure, #081c15);
+  border-radius: 21px;
+  border-style: solid;
+  border-color: var(--green-dark, #e8f5f1);
+  border-width: 1px;
+  padding: 6px 8px 6px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.main-navigation-button-target-profile-status-active .vector {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.main-navigation-button-target-profile-status-active .profile {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: var(--menu-item-font-font-family, "Poppins-Medium", sans-serif);
+  font-size: var(--menu-item-font-font-size, 14px);
+  font-weight: var(--menu-item-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

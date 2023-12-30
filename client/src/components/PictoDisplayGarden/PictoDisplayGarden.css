@@ -1,0 +1,22 @@
+.picto-display-garden,
+.picto-display-garden * {
+  box-sizing: border-box;
+}
+.picto-display-garden {
+  background: var(--green-light, #d8f3dc);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+.picto-display-garden .trees {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  overflow: visible;
+}
