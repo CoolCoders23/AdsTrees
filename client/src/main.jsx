@@ -5,6 +5,7 @@
 // ============================================================
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { registerSW } from 'virtual:pwa-register'; // Import PWA registration
 // ============================================================
 
 // Importing components
@@ -20,6 +21,16 @@ import ThemeProvider from './utils/theme/ThemeContext.jsx';
 import Contact from './pages/Contact';
 import Donations from './pages/Donations';
 import Success from './pages/Success';
+// ============================================================
+
+// Register Service Worker for PWA
+// ============================================================
+const updateSW = registerSW({
+    onNeedRefresh() {
+        updateSW();
+    },
+    onOfflineReady() {},
+});
 // ============================================================
 
 // Create a browser router
