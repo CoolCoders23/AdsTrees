@@ -11,6 +11,7 @@ import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { UPDATE_DONATIONS } from '../../utils/payment-logic/actions';
 import { QUERY_PURCHASES, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth';
+import { useTheme } from '../../utils/theme/useTheme';
 import {
     Box,
     Heading,
@@ -35,6 +36,7 @@ const DonationHistory = () => {
 
     const bg = useColorModeValue('gray.200', 'gray.700');
     const color = useColorModeValue('black', 'white');
+    const theme = useTheme();
 
     const client = useApolloClient();
     const [state, dispatch] = useStateContext();
@@ -108,11 +110,34 @@ const DonationHistory = () => {
     }
 
     return (
-        <Box bg={bg} color={color} p={5} shadow="md" borderWidth="1px" borderRadius="md">
-            <Heading as="h2" size="lg" mb={5}>Donation History</Heading>
+        <Box
+            bg={bg}
+            p={5}
+            shadow="md"
+            borderWidth="1px"
+            borderRadius="md"
+            fontFamily={theme.theme.fonts.body}
+            fontWeight={'hairline'}
+            color={theme.theme.colors.light.orange}
+        >
+            <Heading
+                as="h2"
+                size="lg"
+                mb={5}
+                fontWeight={'light'}
+            >
+                Donation History
+            </Heading>
             {purchases.map((purchase) => (
-                <Box key={purchase._id} mb={5}>
-                    <Heading as="h3" size="md" mb={3}>{purchase.purchaseDate}</Heading>
+                <Box key={purchase._id} mb={4}>
+                    <Heading
+                        as="h3"
+                        size="xs"
+                        mb={4}
+                        fontWeight={'light'}
+                    >
+                        {purchase.purchaseDate}
+                    </Heading>
                     <Table variant="simple">
                         <Thead>
                             <Tr>
@@ -126,7 +151,12 @@ const DonationHistory = () => {
                             {purchase.donations?.map(({ image, donationType, donationAmount, price }, index) => (
                                 <Tr key={index}>
                                     <Td>{donationType}</Td>
-                                    <Td><Image boxSize="50px" src={`/images/${image}`} alt={donationType} /></Td>
+                                    <Td>
+                                        <Image
+                                            boxSize="50px"
+                                            src={`/images/${image}`}
+                                            alt={donationType} />
+                                    </Td>
                                     <Td>{donationAmount}</Td>
                                     <Td>${price}</Td>
                                 </Tr>
