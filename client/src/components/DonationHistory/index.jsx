@@ -32,11 +32,8 @@ const DonationHistory = () => {
     const color = useColorModeValue('black', 'white');
 
     const profile = Auth.getProfile();
-    // console.log(profile);
     const userId = profile?.data._id;
-    // console.log(userId);
     const username = profile?.data.username;
-    // console.log(username);
 
     const { loading, data } = useQuery(QUERY_PURCHASES, {
         variables: { userId: userId },

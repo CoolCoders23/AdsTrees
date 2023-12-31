@@ -57,6 +57,7 @@ const Header = () => {
             : theme.colors.light.greenMedium;
 
         return (
+
             <Button
                 as={RouterLink}
                 to={to}
@@ -68,45 +69,65 @@ const Header = () => {
                 variant={isActive ? 'solid' : 'outline'}
                 transition="0.3s"
             >
+
                 <Text
                     fontSize={['xs', 'sm', 'md', 'lg', 'xl']}
                     textStyle="mainlogofont"
                 >
                     {children}
                 </Text>
+
             </Button>
+
         );
     };
 
-    const NavItems = () => (
+    const NavItems = () => {
 
-        <Stack
-            direction={['column', 'row']}
-            align="center"
-            justify="space-between"
-            spacing={4}
-        >
-            <NavLink to='/about'>About us</NavLink>
+        const colorMode = darkTheme ? 'dark' : 'light';
+        const buttonColor = colorMode === 'dark'
+            ? theme.colors.dark.greenMedium
+            : theme.colors.light.greenMedium;
 
-            <NavLink to='/donations'>Donations</NavLink>
+        return (
 
-            {Auth.loggedIn() && username !== '' ? (
-                <>
+            <Stack
+                direction={['column', 'row']}
+                align="center"
+                justify="space-between"
+                spacing={4}
+            >
+                <NavLink to='/about'>About us</NavLink>
 
-                    <NavLink to={`/dashboard/${username}`}>Dashboard</NavLink>
+                <NavLink to='/donations'>Donations</NavLink>
 
-                    <NavLink to='/user-profile'>{username}&apos;s profile</NavLink>
+                {Auth.loggedIn() && username !== '' ? (
+                    <>
 
-                    <Button as={RouterLink} to="/" onClick={logout}>Logout</Button>
+                        <NavLink to={`/dashboard/${username}`}>Dashboard</NavLink>
 
-                </>
+                        <NavLink to='/user-profile'>{username}&apos;s profile</NavLink>
 
-            ) : (
-                <NavLink to='/'>Login</NavLink>
-            )}
+                        <Button
+                            as={RouterLink}
+                            to="/"
+                            onClick={logout}
+                            color={buttonColor}
+                            fontSize={['xs', 'sm', 'md', 'lg', 'xl']}
+                            textStyle="mainlogofont"
+                        >
+                            Logout
+                        </Button>
 
-        </Stack>
-    );
+                    </>
+
+                ) : (
+                    <NavLink to='/'>Login</NavLink>
+                )}
+
+            </Stack>
+        );
+    };
 
     return (
         <Box mx={{ base: 4, md: 80 }} p={8} >

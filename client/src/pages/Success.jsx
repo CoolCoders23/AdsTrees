@@ -36,7 +36,7 @@ const Success = () => {
 
             setTimeout(() => {
                 window.location.assign('/user-profile');
-            }, 5000);
+            }, 4000);
 
         }
 
