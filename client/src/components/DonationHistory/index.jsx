@@ -5,7 +5,10 @@
 
 // import dependencies
 // =========================================================
-import { useQuery } from '@apollo/client';
+import { useApolloClient } from '@apollo/client';
+import { useEffect, useState } from 'react';
+import useStateContext from '../../utils/payment-logic/UseStateContext';
+import { UPDATE_DONATIONS } from '../../utils/payment-logic/actions';
 import { QUERY_PURCHASES, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth';
 import {
@@ -20,7 +23,9 @@ import {
     Th,
     Td,
     Spinner,
-    useColorModeValue
+    useColorModeValue,
+    Alert,
+    AlertIcon
 } from '@chakra-ui/react';
 // =========================================================
 
@@ -31,21 +36,67 @@ const DonationHistory = () => {
     const bg = useColorModeValue('gray.200', 'gray.700');
     const color = useColorModeValue('black', 'white');
 
+    const client = useApolloClient();
+    const [state, dispatch] = useStateContext();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [totalDonations, setTotalDonations] = useState(0);
+
     const profile = Auth.getProfile();
     const userId = profile?.data._id;
     const username = profile?.data.username;
 
-    const { loading, data } = useQuery(QUERY_PURCHASES, {
-        variables: { userId: userId },
-        skip: !Auth.loggedIn()
-    });
-    console.log(data);
+    useEffect(() => {
 
-    const { data: userData } = useQuery(QUERY_USER, {
-        variables: { username: username },
-        skip: !Auth.loggedIn()
-    });
-    console.log(userData);
+        const fetchData = async () => {
+
+            try {
+
+                setLoading(true);
+                setError(null);
+
+                const { data } = await client.query({
+                    query: QUERY_PURCHASES,
+                    variables: { userId: userId },
+                });
+
+                const { data: userData } = await client.query({
+                    query: QUERY_USER,
+                    variables: { username: username },
+                });
+
+                setTotalDonations(userData?.user?.totalDonations || 0);
+
+                dispatch({
+                    type: UPDATE_DONATIONS,
+                    donations: data?.purchases || [],
+                });
+
+            } catch (err) {
+                setError(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+
+    }, [client, userId, username, dispatch]);
+
+    const purchases = state.donations;
+
+    if (loading) {
+        return <Spinner size="xl" />;
+    }
+
+    if (error) {
+        return (
+            <Alert status="error">
+                <AlertIcon />
+                There was an error processing your request.
+            </Alert>
+        );
+    }
 
     if (!Auth.loggedIn()) {
         return (
@@ -55,9 +106,6 @@ const DonationHistory = () => {
             </Box>
         );
     }
-
-    const totalDonations = userData?.user.totalDonations || 0;
-    const purchases = data?.purchases || [];
 
     return (
         <Box bg={bg} color={color} p={5} shadow="md" borderWidth="1px" borderRadius="md">
@@ -90,7 +138,6 @@ const DonationHistory = () => {
             <Box>
                 <Text as="strong" fontSize="lg">Total Donated Trees: {totalDonations}</Text>
             </Box>
-            {loading ? <Spinner size="xl" /> : null}
         </Box>
     );
 };
