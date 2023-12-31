@@ -135,6 +135,8 @@ const DonationHistory = () => {
                         size="xs"
                         mb={4}
                         fontWeight={'light'}
+                        borderTopWidth={2}
+                        pt={3}
                     >
                         {purchase.purchaseDate}
                     </Heading>
@@ -165,7 +167,7 @@ const DonationHistory = () => {
                     </Table>
                 </Box>
             ))}
-            <Box>
+            <Box borderTopWidth={2} pt={3}>
                 <Text as="strong" fontSize="lg">Total Donated Trees: {totalDonations}</Text>
             </Box>
         </Box>
