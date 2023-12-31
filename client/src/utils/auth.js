@@ -58,7 +58,7 @@ class Auth {
     // ================================================================
     login(idToken) {
         localStorage.setItem('id_token', idToken);
-        window.location.assign('/about');
+        window.location.assign('/user-profile');
     }
     // ================================================================
 
@@ -66,7 +66,7 @@ class Auth {
     // ================================================================
     logout() {
         localStorage.removeItem('id_token');
-        window.location.reload();
+        window.location.assign('/');
     }
     // ================================================================
 

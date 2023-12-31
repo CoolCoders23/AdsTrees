@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Desc: This page contains the logic for Signup the user
 // ============================================================
 
