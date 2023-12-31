@@ -11,7 +11,6 @@ import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { UPDATE_DONATIONS } from '../../utils/payment-logic/actions';
 import { QUERY_PURCHASES, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth';
-import { useTheme } from '../../utils/theme/useTheme';
 import {
     Box,
     Heading,
@@ -36,7 +35,6 @@ const DonationHistory = () => {
 
     const bg = useColorModeValue('gray.200', 'gray.700');
     const color = useColorModeValue('black', 'white');
-    const theme = useTheme();
 
     const client = useApolloClient();
     const [state, dispatch] = useStateContext();
@@ -116,9 +114,9 @@ const DonationHistory = () => {
             shadow="md"
             borderWidth="1px"
             borderRadius="md"
-            fontFamily={theme.theme.fonts.body}
+            fontFamily="Roboto, system-ui, sans-serif"
             fontWeight={'hairline'}
-            color={theme.theme.colors.light.orange}
+            color="#f5a61d"
         >
             <Heading
                 as="h2"

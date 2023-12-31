@@ -18,20 +18,14 @@ import {
     Text,
     Stack,
 } from '@chakra-ui/react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import logo from '../../assets/image/LogoMain/AdsTrees_Logo_48.svg';
-import { useTheme } from '../../utils/theme/useTheme';
 // ============================================================
 
 // Create Header component
 // ============================================================
 const Header = () => {
-
-    const { theme, darkTheme } = useTheme();
-
-    const location = useLocation();
-    const path = location.pathname;
 
     const logout = (event) => {
         event.preventDefault();
@@ -50,12 +44,6 @@ const Header = () => {
 
     const NavLink = ({ to, children}) => {
 
-        const isActive = path === to || (to !== '/' && path.startsWith(to));
-        const colorMode = darkTheme ? 'dark' : 'light';
-        const buttonColor = colorMode === 'dark'
-            ? theme.colors.dark.greenMedium
-            : theme.colors.light.greenMedium;
-
         return (
 
             <Button
@@ -64,15 +52,12 @@ const Header = () => {
                 px={2}
                 py={1}
                 rounded={'md'}
-                bg={isActive ? 'gray.200' : 'transparent'}
-                color={isActive ? 'black' : buttonColor}
-                variant={isActive ? 'solid' : 'outline'}
                 transition="0.3s"
             >
 
                 <Text
                     fontSize={['xs', 'sm', 'md', 'lg', 'xl']}
-                    textStyle="mainlogofont"
+                    fontFamily={'Poppins, Georgia, serif'}
                 >
                     {children}
                 </Text>
@@ -84,11 +69,6 @@ const Header = () => {
 
     const NavItems = () => {
 
-        const colorMode = darkTheme ? 'dark' : 'light';
-        const buttonColor = colorMode === 'dark'
-            ? theme.colors.dark.greenMedium
-            : theme.colors.light.greenMedium;
-
         return (
 
             <Stack
@@ -97,9 +77,6 @@ const Header = () => {
                 justify="space-between"
                 spacing={4}
             >
-                <NavLink to='/about'>About us</NavLink>
-
-                <NavLink to='/donations'>Donations</NavLink>
 
                 {Auth.loggedIn() && username !== '' ? (
                     <>
@@ -112,18 +89,15 @@ const Header = () => {
                             as={RouterLink}
                             to="/"
                             onClick={logout}
-                            color={buttonColor}
                             fontSize={['xs', 'sm', 'md', 'lg', 'xl']}
-                            textStyle="mainlogofont"
+                            fontFamily={'Poppins, Georgia, serif'}
                         >
                             Logout
                         </Button>
 
                     </>
 
-                ) : (
-                    <NavLink to='/'>Login</NavLink>
-                )}
+                ) : null}
 
             </Stack>
         );
@@ -151,7 +125,7 @@ const Header = () => {
                     >
                         <Text
                             fontSize={['lg', 'xl']}
-                            textStyle="mainlogofont"
+                            fontFamily={'Poppins, Georgia, serif'}
                         >
                             AdsTrees
                         </Text>

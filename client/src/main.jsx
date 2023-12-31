@@ -12,12 +12,10 @@ import { registerSW } from 'virtual:pwa-register'; // Import PWA registration
 // ============================================================
 import App from './App.jsx';
 // import Dashboard from './pages/Dashboard';
-import About from './pages/About';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
-import ThemeProvider from './utils/theme/ThemeContext.jsx';
 import Contact from './pages/Contact';
 import Donations from './pages/Donations';
 import Success from './pages/Success';
@@ -63,11 +61,6 @@ const routes = [
             },
 
             {
-                path: '/about',
-                element: <About />
-            },
-
-            {
                 path: '/contact',
                 element: <Contact />
             },
@@ -98,8 +91,6 @@ const root = createRoot(rootElement);
 // Render the app
 // ============================================================
 root.render(
-    <ThemeProvider>
-        <RouterProvider router={router} />
-    </ThemeProvider>
+    <RouterProvider router={router} />
 );
 // ============================================================

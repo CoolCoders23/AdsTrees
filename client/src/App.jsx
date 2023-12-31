@@ -14,7 +14,6 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 import { Outlet } from 'react-router-dom';
-import { Box } from '@chakra-ui/react';
 // ============================================================
 
 // Importing components
@@ -23,12 +22,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import StateProvider from './utils/payment-logic/StateProvider';
 // ============================================================
-
-// Import the custom hook
-// ==========================================================
-import { useTheme } from './utils/theme/useTheme';
-// ==========================================================
-
 
 // Create an error link
 // Used (https://www.apollographql.com/docs/react/get-started/#error-handling) as a reference
@@ -81,47 +74,23 @@ const client = new ApolloClient({
 // ============================================================
 
 // Main App component
+// https://stackoverflow.com/questions/72945686/how-to-make-sure-content-stays-below-when-using-react-router-and-outlet END
 // ============================================================
 function App() {
-    // Pluck values from ThemeContext
-    const { darkTheme, theme } = useTheme();
-
-    // https://stackoverflow.com/questions/72945686/how-to-make-sure-content-stays-below-when-using-react-router-and-outlet START
-    // ============================================================
 
     return (
         <ApolloProvider client={client}>
             <StateProvider>
-                <Box
-                    bg={
-                        darkTheme
-                            ? theme.colors.light.greenDark
-                            : theme.colors.light.greyLight
-                    }
-                    color={
-                        darkTheme
-                            ? theme.colors.light.greyLight
-                            : theme.colors.light.greenDark
-                    }
-                    transition="0.3s ease"
-                    minHeight="100vh"
-                    width="100vw"
-                    display="flex"
-                    flexDirection="column"
-                >
+                <div className="outer-container">
                     <Header />
-
-                    <Box flex="1">
+                    <div className="page">
                         <Outlet />
-                    </Box>
-
+                    </div>
                     <Footer />
-                </Box>
+                </div>
             </StateProvider>
         </ApolloProvider>
     );
-
-    // https://stackoverflow.com/questions/72945686/how-to-make-sure-content-stays-below-when-using-react-router-and-outlet END
 
 }
 // ============================================================
