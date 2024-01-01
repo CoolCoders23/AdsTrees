@@ -1,4 +1,10 @@
 // Desc: Vite config file
+// Used the followings as reference:
+// https://vitejs.dev/config/
+// https://vite-pwa-org.netlify.app/guide/
+//https://developer.mozilla.org/en-US/docs/Web/Manifest
+//https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
+//https://developer.chrome.com/docs/workbox/modules/workbox-build/#which-mode-to-use
 // ===================================================
 
 // import libraries
@@ -8,7 +14,6 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 // ===================================================
 
-// https://vitejs.dev/config/
 // ===================================================
 export default defineConfig({
     plugins: [
