@@ -14,15 +14,9 @@ export default defineConfig({
     plugins: [
         react(),
         VitePWA({
-            registerType: 'autoUpdate',
-            // to be used only for development mode
-            devOptions: {
-                enabled: true
-            },
+            registerType: 'prompt',
             injectRegister: 'auto',
-            workbox: {
-                globPatterns: ['**/*.{js,css,html,ico,png,svg}']
-            },
+            strategies: 'generateSW',
             includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
             manifest: {
                 name: 'AdsTrees',
@@ -60,6 +54,14 @@ export default defineConfig({
                         purpose: 'maskable'
                     }
                 ],
+            },
+            workbox: {
+                sourcemap: true,
+                globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+            },
+            // to be used only for development mode
+            devOptions: {
+                enabled: false,
             },
         }),
     ],
