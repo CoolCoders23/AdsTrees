@@ -3,7 +3,7 @@
 
 // Importing libraries
 // ============================================================
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Import PWA registration
@@ -40,18 +40,29 @@ const Main = () => {
     const [isRefreshModalOpen, setRefreshModalOpen] = useState(false);
     const [isOfflineModalOpen, setOfflineModalOpen] = useState(false);
 
-    const updateSW = registerSW({
-        onNeedRefresh() {
-            setRefreshModalOpen(true);
-        },
-        onOfflineReady() {
-            setOfflineModalOpen(true);
-        },
-    });
+    // Define updateSW function
+    const updateSW = async () => {
+        const registration = await registerSW({
+            onNeedRefresh() {
+                setRefreshModalOpen(true);
+            },
+            onOfflineReady() {
+                setOfflineModalOpen(true);
+            },
+        });
+
+        return registration.update();
+    };
+
+    useEffect(() => {
+        updateSW();
+    }, []);
 
     const handleRefresh = () => {
         updateSW().then(() => {
             window.location.reload();
+        }).catch((error) => {
+            console.error('Error updating service worker:', error);
         });
     };
 
