@@ -30,6 +30,7 @@ export default defineConfig({
                 name: 'AdsTrees',
                 short_name: 'AdsTrees',
                 description: 'AdsTrees',
+                start_url: '/index.html',
                 theme_color: '#4CAF50',
                 background_color: '#ffffff',
                 display: 'standalone',
@@ -66,7 +67,18 @@ export default defineConfig({
             workbox: {
                 sourcemap: true,
                 // precaching
-                globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+                globPatterns: [
+                    'src/**/*.{js,jsx,css,html,ico,png,jpg,jpeg,svg,gif}', // Common file types
+                    'index.html',// Precache the entry point
+                    'public/images/**' // Precache images in public
+                ],
+                globIgnores: [
+                    '**/node_modules/**/*',
+                    'sw.js',
+                    'workbox-*.js',
+                    'dev-dist/**/*',
+                    'src/assets/workFlow.md'
+                ],
                 runtimeCaching: [
                     {
                         urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
