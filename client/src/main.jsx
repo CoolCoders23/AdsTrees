@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 //Desc: Entry point of the app
 // ============================================================
 
@@ -41,18 +42,14 @@ const Main = () => {
     const [isOfflineModalOpen, setOfflineModalOpen] = useState(false);
 
     // Define updateSW function
-    const updateSW = async () => {
-        const registration = await registerSW({
-            onNeedRefresh() {
-                setRefreshModalOpen(true);
-            },
-            onOfflineReady() {
-                setOfflineModalOpen(true);
-            },
-        });
-
-        return registration.update();
-    };
+    const updateSW = registerSW({
+        onNeedRefresh() {
+            setRefreshModalOpen(true);
+        },
+        onOfflineReady() {
+            setOfflineModalOpen(true);
+        },
+    });
 
     useEffect(() => {
         updateSW();
