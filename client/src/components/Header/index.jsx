@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import Auth from '../../utils/auth';
-import logo from '../../assets/image/LogoMain/AdsTrees_Logo_48.svg';
+import logo from '../../assets/image/AdsTrees_Logo_48.svg';
 // ============================================================
 
 // Create Header component
