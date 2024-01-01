@@ -17,7 +17,15 @@ export default defineConfig({
             registerType: 'prompt',
             injectRegister: 'auto',
             strategies: 'generateSW',
-            includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+            includeAssets: [
+                'favicon.ico',
+                'favicon.svg',
+                'apple-touch-icon.png',
+                'robots.txt',
+                'pwa-64x64.png',
+                'pwa-192x192.png',
+                'pwa-512x512.png'
+            ],
             manifest: {
                 name: 'AdsTrees',
                 short_name: 'AdsTrees',
@@ -57,11 +65,43 @@ export default defineConfig({
             },
             workbox: {
                 sourcemap: true,
-                globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+                // precaching
+                globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+                runtimeCaching: [
+                    {
+                        urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+                        handler: 'CacheFirst',
+                        options: {
+                            cacheName: 'google-fonts-cache',
+                            expiration: {
+                                maxEntries: 10,
+                                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200]
+                            }
+                        }
+                    },
+                    {
+                        urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+                        handler: 'CacheFirst',
+                        options: {
+                            cacheName: 'gstatic-fonts-cache',
+                            expiration: {
+                                maxEntries: 10,
+                                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200]
+                            },
+                        }
+                    }
+                ]
             },
             // to be used only for development mode
             devOptions: {
-                enabled: false,
+                enabled: true,
+                navigateFallbackAllowlist: []
             },
         }),
     ],
