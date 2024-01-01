@@ -41,6 +41,9 @@ const Main = () => {
     const [isRefreshModalOpen, setRefreshModalOpen] = useState(false);
     const [isOfflineModalOpen, setOfflineModalOpen] = useState(false);
 
+    const [isInstallPromptOpen, setInstallPromptOpen] = useState(false);
+    const [deferredPrompt, setDeferredPrompt] = useState(null);
+
     // Define updateSW function
     const updateSW = registerSW({
         onNeedRefresh() {
@@ -52,7 +55,18 @@ const Main = () => {
     });
 
     useEffect(() => {
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            setDeferredPrompt(e);
+            // Update UI notify the user they can install the PWA
+            setInstallPromptOpen(true);
+        });
+
         updateSW();
+
     }, []);
 
     const handleRefresh = () => {
@@ -62,6 +76,23 @@ const Main = () => {
             console.error('Error updating service worker:', error);
         });
     };
+
+    const handleInstallClick = () => {
+        // Hide the app provided install promotion
+        setInstallPromptOpen(false);
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+            } else {
+                console.log('User dismissed the install prompt');
+            }
+            setDeferredPrompt(null);
+        });
+    };
+
 
     // Create a browser router
     const routes = [
@@ -114,7 +145,25 @@ const Main = () => {
 
     return (
         <ChakraProvider>
+
             <RouterProvider router={router} />
+
+            {/* Install Modal */}
+            <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Install AdsTrees</ModalHeader>
+                    <ModalBody>
+                        Do you want to install AdsTrees on your device?
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button colorScheme="blue" mr={3} onClick={handleInstallClick}>
+                            Install
+                        </Button>
+                        <Button variant="ghost" onClick={() => setInstallPromptOpen(false)}>Cancel</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
 
             {/* Refresh Modal */}
             <Modal isOpen={isRefreshModalOpen} onClose={() => setRefreshModalOpen(false)}>
