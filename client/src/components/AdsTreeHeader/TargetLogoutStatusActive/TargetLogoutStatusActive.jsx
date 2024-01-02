@@ -1,14 +1,14 @@
 /* Code generated with AutoHTML Plugin for Figma */
-import "./TargetLogoutStatusActive.css";
+import './TargetLogoutStatusActive.css';
 
 export const TargetLogoutStatusActive = ({
-    target = "dashboard",
-    status = "inactive",
+    target = 'dashboard',
+    status = 'inactive',
     className,
     ...props
 }) => {
     return (
-        <div className={"target-logout-status-active " + className}>
+        <div className={'target-logout-status-active ' + className}>
             <svg
                 className="logout-icon"
                 width="16"

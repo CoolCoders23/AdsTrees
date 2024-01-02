@@ -7,24 +7,39 @@ export const Footer = ({ className }) => {
         <footer className={'footer ' + className}>
             <div className="footer-content">
                 <div className="copyright-frame">
-                    <div className="copyright">© {new Date().getFullYear()} AdsTrees </div>
+                    <div className="copyright">
+                        © {new Date().getFullYear()} AdsTrees
+                    </div>
                 </div>
                 <div className="footer-links">
 
-                    <Link
-                        className="privacy-link-label"
-                        to='/privacy'>Privacy</Link>
+                    <span className="privacy-link-label">
+                        Privacy
+                    </span>
 
-                    <Link
-                        className="terms-link-label"
-                        to='/terms'>Terms</Link>
+                    <span className="terms-link-label">
+                        Terms
+                    </span>
 
                     <Link
                         className="donate-link-label"
-                        to='/donations'>Donations</Link>
+                        to='/donations'>
+                        Donations
+                    </Link>
 
+                    <Link
+                        className="donate-link-label"
+                        to='/contact'>
+                        Contact US
+                    </Link>
 
-
+                    <a
+                        className="donate-link-label"
+                        href='https://github.com/CoolCoders23/AdsTrees'
+                        target='_blank'
+                        rel='noopener noreferrer'>
+                        GitHub
+                    </a>
 
                 </div>
             </div>
