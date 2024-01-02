@@ -1,7 +1,50 @@
 /* Code generated with AutoHTML Plugin for Figma */
-import './AdsTreesDonateSection3.css';
+// Desc: This file contains the Success page component
+// ======================================================
 
-export const AdsTreesDonateSection3 = ({ className, ...props }) => {
+// Import Components and Packages
+// ======================================================
+import './index.css';
+import { useEffect } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_PURCHASE } from '../../utils/mutations';
+import { idbPromise } from '../../utils/payment-logic/idbHelper';
+// ======================================================
+
+// Component Function
+// ======================================================
+const Success = ({ className, ...props }) => {
+
+    const [addPurchase] = useMutation(ADD_PURCHASE);
+
+    useEffect(() => {
+
+        async function saveOrder() {
+
+            const cart = await idbPromise('cart', 'get');
+            const donations = cart.map((item) => item._id);
+
+            if (donations.length) {
+
+                const { data } = await addPurchase({ variables: { donations } });
+                const donationData = data.addPurchase.donations;
+
+                donationData.forEach((item) => {
+                    idbPromise('cart', 'delete', item);
+                });
+
+            }
+
+            setTimeout(() => {
+                window.location.assign('/user-profile');
+            }, 4000);
+
+        }
+
+        saveOrder();
+
+    }, [addPurchase]);
+
     return (
         <div className={'ads-trees-donate-section-3 ' + className}>
             <div className="body">
@@ -51,7 +94,7 @@ export const AdsTreesDonateSection3 = ({ className, ...props }) => {
                         <div className="headline">
                             <div className="you-are-awesome">You are awesome </div>
                             <div className="thank-you-for-your-payment">
-                Thank you for your payment.{' '}
+                                Thank you for your payment.{' '}
                             </div>
                         </div>
                     </div>
@@ -86,16 +129,19 @@ export const AdsTreesDonateSection3 = ({ className, ...props }) => {
                             </div>
                             <div className="feedback">
                                 <div className="feedback-text">
-                  We will do great things together{' '}
+                                    We will do great things together{' '}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button className="button">
-                        <div className="children">Go to Dashboard </div>
-                    </button>
                 </div>
             </div>
         </div>
     );
 };
+// ======================================================
+
+// Export Component
+// ======================================================
+export default Success;
+// ======================================================

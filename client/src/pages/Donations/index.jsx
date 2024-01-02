@@ -21,7 +21,7 @@ import { PictoDisplayForest } from '../../components/PictoDisplayForest/PictoDis
 
 // Define component
 // =========================================================
-export const Donations = ({ className, ...props }) => {
+const Donations = ({ className, ...props }) => {
 
     // Destructure state and dispatch from context
     const [state, dispatch] = useStateContext();
@@ -148,4 +148,9 @@ export const Donations = ({ className, ...props }) => {
         </main>
     );
 };
+// =========================================================
+
+// Export component
+// =========================================================
+export default Donations;
 // =========================================================
