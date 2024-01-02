@@ -18,8 +18,8 @@ import { Outlet } from 'react-router-dom';
 
 // Importing components
 // ============================================================
-import { Header } from './components/AdsTreeHeader';
-import { Footer } from './components/AdsTreeFooter';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 import StateProvider from './utils/payment-logic/StateProvider';
 // ============================================================
 
