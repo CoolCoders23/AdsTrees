@@ -18,9 +18,13 @@ import { Outlet } from 'react-router-dom';
 
 // Importing components
 // ============================================================
-import Header from './components/Header';
-import Footer from './components/Footer';
+//import Header from './components/Header';
+import { Header } from './components/AdsTreeHeader';
+import { Footer } from './components/AdsTreeFooter';
+//import Footer from './components/Footer';
 import StateProvider from './utils/payment-logic/StateProvider';
+
+
 // ============================================================
 
 // Create an error link
