@@ -8,7 +8,7 @@ export const MainNavigationButtonTargetProfileStatusActive = ({
     ...props
 }) => {
     return (
-        <button
+        <div
             className={
                 'main-navigation-button-target-profile-status-active ' + className
             }
@@ -28,6 +28,6 @@ export const MainNavigationButtonTargetProfileStatusActive = ({
             </svg>
 
             <div className="profile">Profile </div>
-        </button>
+        </div>
     );
 };
