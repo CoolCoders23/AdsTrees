@@ -5,6 +5,7 @@
 
 // Import dependencies
 // ========================================================
+import './cart.css';
 import { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
@@ -13,10 +14,8 @@ import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { TOGGLE_CART } from '../../utils/payment-logic/actions';
-import './style.css';
+import ShopingCart from '../../assets/image/ShoppingCart.svg';
 // ========================================================
-
-// TODO: modify the style
 
 // Define Stripe promise
 // ========================================================
@@ -65,9 +64,7 @@ const Cart = () => {
     if (!state.cartOpen) {
         return (
             <div className="cart-closed" onClick={toggleCart}>
-                <span role="img" aria-label="trash">
-                    🛒
-                </span>
+                <img src={ShopingCart} alt="Shopping Cart" aria-label="trash" />
             </div>
         );
     }

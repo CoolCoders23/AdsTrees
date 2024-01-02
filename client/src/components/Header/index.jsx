@@ -1,4 +1,8 @@
 /* Code generated with AutoHTML Plugin for Figma */
+// =====================================================
+
+// Importing dependencies
+// =====================================================
 import './Header.css';
 import { MainNavigationButtonTargetDashboardStatusActive } from './MainNavigationButtonTargetDashboardStatusActive/MainNavigationButtonTargetDashboardStatusActive.jsx';
 import { MainNavigationButtonTargetProfileStatusActive } from './MainNavigationButtonTargetProfileStatusActive/MainNavigationButtonTargetProfileStatusActive.jsx';
@@ -6,7 +10,11 @@ import { TargetLogoutStatusActive } from './TargetLogoutStatusActive/TargetLogou
 import { Link } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import Cart from '../Cart';
+// =====================================================
 
+// Define Header component
+// =====================================================
 export const Header = ({
     showMainNavigationProfileButtonActive = true,
     showLogoFrame = true,
@@ -117,9 +125,15 @@ export const Header = ({
                                 </Link>
                             </>
                         )}
+
+                        <>
+                            <Cart />
+                        </>
+
                     </div>
                 </>
             ) : null}
         </header>
     );
 };
+// =====================================================
