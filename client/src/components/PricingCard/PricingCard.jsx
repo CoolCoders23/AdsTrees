@@ -24,6 +24,8 @@ export const PricingCard = (item) => {
         donationType,
         _id,
         description,
+        donationAmount,
+        imageComponent,
         price,
         className
     } = item;
@@ -38,11 +40,14 @@ export const PricingCard = (item) => {
         if (itemInCart) {
             idbPromise('cart', 'put', { ...itemInCart });
         } else {
+            const itemToStore = { ...item };
+            delete itemToStore.imageComponent;
+            delete itemToStore.className;
             dispatch({
                 type: ADD_TO_CART,
-                donation: { ...item }
+                donation: itemToStore
             });
-            idbPromise('cart', 'put', { ...item });
+            idbPromise('cart', 'put', itemToStore);
         }
 
     };
@@ -53,7 +58,7 @@ export const PricingCard = (item) => {
                 <div className="content">
                     <div className="card-header">
                         <div className="card-subheader">
-                            <div className="icon">{image}</div>
+                            <div className="icon">{imageComponent}</div>
                             <div className="offer-name">
                                 <div className="title">{donationType}</div>
                             </div>

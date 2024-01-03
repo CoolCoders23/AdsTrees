@@ -8,7 +8,7 @@
 import './index.css';
 import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_DONATIONS } from '../../utils/queries';
+import { QUERY_DONATIONS } from '../../utils/queries.js';
 import { idbPromise } from '../../utils/payment-logic/idbHelper';
 import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { UPDATE_DONATIONS } from '../../utils/payment-logic/actions';
@@ -132,9 +132,11 @@ const Donations = ({ className, ...props }) => {
                                     _id={donation._id}
                                     donationType={donation.donationType}
                                     description={donation.description}
-                                    image={ImageComponent
+                                    donationAmount={donation.donationAmount}
+                                    imageComponent={ImageComponent
                                         ? <ImageComponent className="picto" display={donation.donationType}/>
                                         : null}
+                                    image={donation.image}
                                     price={donation.price}
                                     className="pricing-card-instance"
                                 />
