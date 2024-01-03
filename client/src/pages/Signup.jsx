@@ -1,39 +1,40 @@
 /* eslint-disable no-unused-vars */
-// Desc: This page contains the logic for Signup the user
-// ============================================================
+// Description: This file contains the logic for the user signup process.
 
-// Import dependencies
-// ============================================================
+// Importing React hooks and other dependencies.
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-// ============================================================
+import './AdsTreesSignUp/AdsTreesSignUp.css'; // Importing custom CSS for styling.
+import { Input } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
 
-// Import components
-// ============================================================
-import SignupForm from '../components/SignupForm';
-// ============================================================
+// Signup component definition.
+const Signup = ({ className = '' }) => {
 
-// Define the Signup function
-// ============================================================
-const Signup = () => {
-
-    // Define the state for the Signup component
-    // ==========================================================
+    // State variables to hold form input data and error messages.
     const [formState, setFormState] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     });
     const [addUser, { error }] = useMutation(ADD_USER);
     const [errorMessage, setErrorMessage] = useState('');
-    // ==========================================================
+    const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
-    // Define the function to handle the form submit
-    // ==========================================================
+    // Function to handle form submission.
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+
+        // Check if passwords match
+        if (formState.password !== formState.confirmPassword) {
+            setConfirmPasswordError("Passwords do not match.");
+            return;
+        }
+
+        // Attempting to add user using Apollo GraphQL mutation.
         try {
             const mutationResponse = await addUser({
                 variables: {
@@ -45,52 +46,107 @@ const Signup = () => {
                 }
             });
             const token = mutationResponse.data.addUser.token;
-            Auth.login(token);
+            Auth.login(token); // Logging in the user on successful signup.
         } catch (e) {
-            setErrorMessage(e.message);
+            setErrorMessage(e.message); // Setting error message on failure.
         }
-
-        setFormState({
-            username: '',
-            email: '',
-            password: '',
-        });
     };
-    // ============================================================
 
-    // Define the function to handle the form change
-    // ============================================================
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    // Function to handle changes in form inputs.
+    const handleChange = (name, value) => {
         setFormState({ ...formState, [name]: value });
     };
-    // ============================================================
 
-    // Return the Login component
-    // ==========================================================
+    // Rendering the signup form.
     return (
-        <main>
-            <div>
-                <pre>
-                    Engage with Your Interests,
-                    Embrace a Greener World,
-                    Your Views Turn Ads into Forests.
-                </pre>
+        <div className={'ads-trees-sign-up ' + className}>
+            <div className="sign-up-body">
+                <div className="home-text">
+                    <div className="hook-text-frame">
+                        <div className="hook-text">
+                            <div className="plant-trees-for-free">Plant trees for free </div>
+                            <div className="make-the-planet-better">
+                Make the planet better{' '}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="sign-up-form">
+                    <div className="sign-up-form-holder">
+                        <div className="sign-up-title">Sign up</div>
+                        <form onSubmit={handleFormSubmit} class="sign-up-form2">
+                            <div className="sign-up-input-holder">
+                                <div className="input-group">
+                                    <div className="input">
+                                        <Input
+                                            className="username"
+                                            type="username"
+                                            value={formState.username}
+                                            onChange={(event) => handleChange('username', event.target.value)}
+                                            placeholder="Username"
+                                            _placeholder={{ color: 'green.900' }}
+                                            size='lg'
+                                        />
+                                    </div>
+                                </div>
+                                <div className="input-group">
+                                    <div className="input">
+                                        <Input
+                                            className="email"
+                                            type="email"
+                                            value={formState.email}
+                                            onChange={(event) => handleChange('email', event.target.value)}
+                                            placeholder="Email"
+                                            _placeholder={{ color: 'green.900' }}
+                                            size='lg'
+                                        />
+                                    </div>
+                                </div>
+                                <div className="input-group">
+                                    <div className="input">
+                                        <Input
+                                            className="password"
+                                            type="password"
+                                            value={formState.password}
+                                            onChange={(event) => handleChange('password', event.target.value)}
+                                            placeholder="Password"
+                                            _placeholder={{ color: 'green.900' }}
+                                            size='lg'
+                                        />
+                                    </div>
+                                </div>
+                                <div className="input-group">
+                                    <div className="input">
+                                        <Input
+                                            className="password-confirmation"
+                                            type="password"
+                                            value={formState.confirmPassword}
+                                            onChange={(event) => handleChange('confirmPassword', event.target.value)}
+                                            placeholder="Confirm password"
+                                            _placeholder={{ color: 'green.900' }}
+                                            size='lg'
+                                        />
+                                    </div>
+                                </div>
+
+                                <button type="submit" className="button">
+                                    <div className="children">Register </div>
+                                </button>
+                                {errorMessage && <div className="error">{errorMessage}</div>}
+                                {confirmPasswordError && <div className="error">{confirmPasswordError}</div>}
+                            </div>
+                        </form>
+
+                        <div className="call-to-login">
+                            <div className="instruction-text">Otherwise, please </div>
+                            <Link to="/" className="login-here-link">Login here</Link>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <SignupForm
-                error={errorMessage}
-                formState={formState}
-                handleFormSubmit={handleFormSubmit}
-                handleChange={handleChange}
-            />
-        </main>
+        </div>
     );
-    // ==========================================================
-
 };
-// ============================================================
 
-// Export the Signup function
-// ============================================================
+// Exporting the Signup component.
 export default Signup;
-// ============================================================
