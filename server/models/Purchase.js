@@ -13,12 +13,12 @@ const dateFormat = require('../utils/dateFormat');
 
 // Create Schema class
 // ===================================================
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 // ===================================================
 
 // Create Purchase schema
 // ===================================================
-const PurchaseSchema = new Schema({
+const purchaseSchema = new Schema({
     // The user's purchase date
     purchaseDate: {
         type: Date,
@@ -35,9 +35,9 @@ const PurchaseSchema = new Schema({
 });
 // ===================================================
 
-// Create the Purchase model with the PurchaseSchema
+// Create the Purchase model with the purchaseSchema
 // ===================================================
-const Purchase = mongoose.model('Purchase', PurchaseSchema);
+const Purchase = model('Purchase', purchaseSchema);
 // ===================================================
 
 // Export the Purchase model

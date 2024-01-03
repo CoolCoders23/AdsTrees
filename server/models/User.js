@@ -45,11 +45,6 @@ const userSchema = new Schema({
         },
     },
 
-    totalDonations: {
-        type: Number,
-        default: 0,
-    },
-
     preferences: [
         {
             type: String,
@@ -64,6 +59,58 @@ const userSchema = new Schema({
             ref: 'Purchase'
         }
     ],
+
+    ads: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Ad'
+        }
+    ],
+
+    totalDonations: {
+        type: Number,
+        default: 0,
+    },
+
+    totalWatched: {
+        type: Number,
+        default: 0,
+    },
+
+    totalTreesPlanted: {
+        type: Number,
+        default: 0,
+    },
+
+    watchedToday: {
+        type: Number,
+        default: 0,
+    },
+
+    watchedInWeek: {
+        type: Number,
+        default: 0,
+    },
+
+    watchedInMonth: {
+        type: Number,
+        default: 0,
+    },
+
+    treesPlantedInWeek: {
+        type: Number,
+        default: 0,
+    },
+
+    treesPlantedInYear: {
+        type: Number,
+        default: 0,
+    },
+
+    bestWeek: {
+        type: Number,
+        default: 0,
+    },
 
 },
 

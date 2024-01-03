@@ -11,12 +11,12 @@ const mongoose = require('mongoose');
 
 // Create Schema class
 // ===================================================
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 // ===================================================
 
 // Create DonateTree schema
 // ===================================================
-const DonationSchema = new Schema({
+const donationSchema = new Schema({
     // The user's donation type
     donationType: {
         type: String,
@@ -49,9 +49,9 @@ const DonationSchema = new Schema({
 });
 // ===================================================
 
-// Create the Donation model with the DonationSchema
+// Create the Donation model with the donationSchema
 // ===================================================
-const Donation = mongoose.model('Donation', DonationSchema);
+const Donation = model('Donation', donationSchema);
 // ===================================================
 
 // Export the DonateTree model
