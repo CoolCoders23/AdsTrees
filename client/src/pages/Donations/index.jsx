@@ -63,10 +63,12 @@ const Donations = ({ className, ...props }) => {
 
     }, [data, loading, dispatch]);
 
-    const imageComponents = {
-        garden: <PictoDisplayGarden className="picto" display="garden" />,
-        wood: <PictoDisplayWood className="picto" display="wood" />,
-        forest: <PictoDisplayForest className="picto2" display="forest" />,
+    //create a mapping object for donation types
+    // and their corresponding image components
+    const donationTypeToImageComponent = {
+        Garden: PictoDisplayGarden,
+        Wood: PictoDisplayWood,
+        Forest: PictoDisplayForest,
     };
 
     return (
@@ -122,22 +124,22 @@ const Donations = ({ className, ...props }) => {
 
                 {state.donations.length ? (
                     <div className="pricing">
-                        {state.donations.map((donation) => (
-                            <PricingCard
-                                key={donation._id}
-                                _id={donation._id}
-                                donationType={donation.donationType}
-                                description={donation.description}
-                                image={
-                                    donation.image
-                                        ? imageComponents[donation.donationType]
-                                        : donation.image
-                                }
-                                donationAmount={donation.donationAmount}
-                                price={donation.price}
-                                className="pricing-card-instance"
-                            />
-                        ))}
+                        {state.donations.map((donation) => {
+                            const ImageComponent = donationTypeToImageComponent[donation.donationType];
+                            return (
+                                <PricingCard
+                                    key={donation._id}
+                                    _id={donation._id}
+                                    donationType={donation.donationType}
+                                    description={donation.description}
+                                    image={ImageComponent
+                                        ? <ImageComponent className="picto" display={donation.donationType}/>
+                                        : null}
+                                    price={donation.price}
+                                    className="pricing-card-instance"
+                                />
+                            );
+                        })}
                     </div>
                 ) : (
                     !loading && <h3>No donations yet!</h3>

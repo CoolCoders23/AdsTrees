@@ -24,7 +24,6 @@ export const PricingCard = (item) => {
         donationType,
         _id,
         description,
-        donationAmount,
         price,
         className
     } = item;
@@ -48,26 +47,13 @@ export const PricingCard = (item) => {
 
     };
 
-    // Define renderImage function to extract
-    // correct type of image from props
-    const renderImage = () => {
-        if (typeof image === 'string') {
-            return <img src={`/images/${image}`} alt={donationType} />;
-        }
-
-        // If image is a React component, render it directly
-        return image;
-    };
-
     return (
         <div className={'pricing-card ' + className}>
             <div className="pricing-wrapper">
                 <div className="content">
                     <div className="card-header">
                         <div className="card-subheader">
-                            <div className="icon">
-                                {renderImage()}
-                            </div>
+                            <div className="icon">{image}</div>
                             <div className="offer-name">
                                 <div className="title">{donationType}</div>
                             </div>
@@ -75,9 +61,6 @@ export const PricingCard = (item) => {
                     </div>
                     <div className="offer-description">
                         <div className="tradeoff">{description}</div>
-                    </div>
-                    <div className="offer-name">
-                        <div className="title">Planting Trees: {donationAmount}</div>
                     </div>
                     <div className="pricing">
                         <div className="price-tag">
