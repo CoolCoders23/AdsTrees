@@ -33,7 +33,14 @@ const app = express();
 const corsOptions = {
     origin: function (origin, callback) {
         // Define allowed origins for production
-        const whitelist = ['http://localhost:3000', 'http://localhost:3001'];
+        const whitelist = [
+            'http://localhost:3000',
+            'http://localhost:3001',
+            'https://checkout.stripe.com/c/pay',
+            'https://github.com/CoolCoders23/AdsTrees',
+            'https://fonts.googleapis.com',
+            'https://fonts.gstatic.com'
+        ];
         if (!origin || whitelist.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
             callback(null, true);
         } else {

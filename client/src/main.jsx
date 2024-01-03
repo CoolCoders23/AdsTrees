@@ -27,11 +27,13 @@ import App from './App.jsx';
 // import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+// import About from './pages/About';
 import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
 import Contact from './pages/Contact';
 import Donations from './pages/Donations';
 import Success from './pages/Success';
+import StateProvider from './utils/payment-logic/StateProvider';
 // ============================================================
 
 // Main function
@@ -113,7 +115,7 @@ const Main = () => {
                 },
 
                 // {
-                //     path: '/dashboard/:username',
+                //     path: '/dashboard',
                 //     element: <Dashboard />
                 // },
 
@@ -126,6 +128,11 @@ const Main = () => {
                     path: '/contact',
                     element: <Contact />
                 },
+
+                // {
+                //     path: '/about',
+                //     element: <About />
+                // },
 
                 {
                     path: '/donations',
@@ -146,7 +153,9 @@ const Main = () => {
     return (
         <ChakraProvider>
 
-            <RouterProvider router={router} />
+            <StateProvider>
+                <RouterProvider router={router} />
+            </StateProvider>
 
             {/* Install Modal */}
             <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>

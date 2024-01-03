@@ -2,8 +2,8 @@
 import './MainNavigationButtonTargetDashboardStatusActive.css';
 
 export const MainNavigationButtonTargetDashboardStatusActive = ({
-    target = 'dashboard',
-    status = 'inactive',
+    target,
+    status,
     className,
     ...props
 }) => {

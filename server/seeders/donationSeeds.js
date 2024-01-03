@@ -8,21 +8,21 @@
 const donationData = [
     {
         donationType: 'Garden',
-        description: 'Plant a tree in a garden.',
+        description: 'Plant 1 tree',
         image: 'garden.svg',
         donationAmount: 1,
         price: 0.99
     },
     {
         donationType: 'Wood',
-        description: 'Plant ten trees in a wood.',
+        description: 'Plant 10 trees',
         image: 'wood.svg',
         donationAmount: 10,
         price: 9.99
     },
     {
         donationType: 'Forest',
-        description: 'Plant one hundred trees in a forest.',
+        description: 'Plant 100 trees',
         image: 'forest.svg',
         donationAmount: 100,
         price: 99.99
