@@ -17,6 +17,7 @@ const Contact = ({ className = '' }) => {
     // ============================================================
     const [formData, setFormData] = useState({
         user_name: '',
+        user_last_name: '',
         user_email: '',
         message: ''
     });
@@ -29,7 +30,7 @@ const Contact = ({ className = '' }) => {
     // ============================================================
     const handleChange = (event) => {
         // Updating formData state with new values when input changes
-        setFormData({ ...formData, [event.target.name]: event.target.value });
+        setFormData({ ...formData, [event.target.name]: event.target.value || '' });
     };
     // ============================================================
 
@@ -105,7 +106,7 @@ const Contact = ({ className = '' }) => {
                                         <Input
                                             className="first-name"
                                             name="user_name"
-                                            value={formData.user_name}
+                                            value={formData.user_name || ''}
                                             onChange={handleChange}
                                             placeholder=""
                                             _placeholder={{ color: 'green.900' }}
@@ -120,7 +121,7 @@ const Contact = ({ className = '' }) => {
                                             <Input
                                                 className="last-name"
                                                 name="user_last_name"
-                                                value={formData.user_last_name}
+                                                value={formData.user_last_name || ''}
                                                 onChange={handleChange}
                                                 placeholder=""
                                                 _placeholder={{ color: 'green.900' }}
@@ -136,7 +137,7 @@ const Contact = ({ className = '' }) => {
                                         className="email"
                                         name="user_email"
                                         type="email"
-                                        value={formData.user_email}
+                                        value={formData.user_email || ''}
                                         onChange={handleChange}
                                         placeholder=""
                                         _placeholder={{ color: 'green.900' }}
@@ -149,7 +150,7 @@ const Contact = ({ className = '' }) => {
                                     <Textarea
                                         className="message"
                                         name="message"
-                                        value={formData.message}
+                                        value={formData.message || ''}
                                         onChange={handleChange}
                                         placeholder=""
                                         _placeholder={{ color: 'green.900' }}
