@@ -41,6 +41,12 @@ export const Footer = ({ className }) => {
                         GitHub
                     </a>
 
+                    <Link
+                        className="donate-link-label"
+                        to='/about'>
+                        About
+                    </Link>
+
                 </div>
             </div>
         </footer>

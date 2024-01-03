@@ -32,6 +32,9 @@ import ErrorPage from './pages/ErrorPage';
 import Contact from './pages/Contact';
 import Donations from './pages/Donations';
 import Success from './pages/Success';
+import { About } from './pages/About/About';
+
+
 // ============================================================
 
 // Main function
@@ -136,6 +139,13 @@ const Main = () => {
                     path: '/success',
                     element: <Success />
                 },
+
+                {
+                    path: '/about',
+                    element: <About />
+                },
+
+
 
             ]
         },
