@@ -4,11 +4,12 @@ import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Auth from '../utils/auth';
 import { validateEmail } from '../utils/validation';
+import './AdsTreesContactUs/AdsTreesContactUs.css'; // Importing the CSS
 // ============================================================
 
 // Contact component
 // ============================================================
-const Contact = () => {
+const Contact = ({ className = '' }) => {
     // State for managing form data with initial values
     // ============================================================
     const [formData, setFormData] = useState({
@@ -82,38 +83,73 @@ const Contact = () => {
             });
     };
     // ============================================================
-
     return (
-        <div>
-            <h2>Contact Us</h2>
-            <form onSubmit={sendEmail}>
-                {/* Form fields for name, email, and message with handleChange event */}
-                <input
-                    type="text"
-                    name="user_name"
-                    placeholder="Your Name"
-                    value={formData.user_name}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="email"
-                    name="user_email"
-                    placeholder="Your Email"
-                    value={formData.user_email}
-                    onChange={handleChange}
-                    required
-                />
-                <textarea
-                    name="message"
-                    placeholder="Your Message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                />
-                <button type="submit">Send Message</button> {/* Submit button */}
-            </form>
-            {message && <p>{message}</p>} {/* Display message below the form */}
+        <div className={'ads-trees-contact-us ' + className}>
+            <div className="contact-us-body">
+                <div className="contact-us-sub-body">
+                    <div className="contact-us-title-frame">
+                        <div className="contact-us-title">Contact us</div>
+                    </div>
+                    <div className="message-frame">
+                        <form onSubmit={sendEmail} className="client-contact-input-frame">
+                            <div className="contact-us-name-input">
+                                <div className="contact-us-first-name-input">
+                                    <div className="field-title-label">First name</div>
+                                    <div className="input-group">
+                                        <input 
+                                            className="first-name"
+                                            name="user_name"
+                                            value={formData.user_name}
+                                            onChange={handleChange}
+                                            placeholder="First Name"
+                                        />
+                                    </div>
+                                </div>
+                                {/* Last Name Input */}
+                                <div className="contact-us-last-name-input">
+                                    <div className="field-title-label">Last name</div>
+                                    <div className="input-group">
+                                        <input 
+                                            className="last-name"
+                                            name="user_last_name"
+                                            value={formData.user_last_name}
+                                            onChange={handleChange}
+                                            placeholder="Last Name"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="contact-us-email-input">
+                                <div className="field-title-label">Email</div>
+                                <div className="input-group">
+                                    <input 
+                                        className="email"
+                                        name="user_email"
+                                        type="email"
+                                        value={formData.user_email}
+                                        onChange={handleChange}
+                                        placeholder="Email"
+                                    />
+                                </div>
+                            </div>
+                            <div className="contact-us-message-input">
+                                <div className="field-title-label">Message</div>
+                                <div className="input-group2">
+                                    <textarea 
+                                        className="message"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        placeholder="Message"
+                                    />
+                                </div>
+                            </div>
+                            <button type="submit" className="button">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {message && <p>{message}</p>}
         </div>
     );
 };

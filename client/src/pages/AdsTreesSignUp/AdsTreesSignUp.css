@@ -80,10 +80,16 @@
   gap: 10px;
   align-items: center;
   justify-content: flex-start;
-  flex: 1;
+  flex-grow: 1;
   min-width: 288px;
   max-width: 480px;
   position: relative;
+}
+
+.ads-trees-sign-up .sign-up-form2 {
+  position: relative;
+  align-self: stretch;
+ 
 }
 .ads-trees-sign-up .sign-up-form-holder {
   display: flex;
@@ -110,7 +116,7 @@
   align-items: flex-start;
   justify-content: center;
   align-self: stretch;
-  flex-shrink: 0;
+  flex-grow: 1;
   position: relative;
 }
 .ads-trees-sign-up .input-group {
@@ -122,7 +128,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
-  flex-shrink: 0;
+  flex-grow: 1;
   position: relative;
 }
 .ads-trees-sign-up .input {
@@ -131,7 +137,7 @@
   border-style: solid;
   border-color: var(--green-light, #d0ffd7);
   border-width: 1px;
-  padding: 0px 2px 0px 2px;
+  padding: 0px 0px 0px 0px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -155,6 +161,20 @@
   justify-content: flex-start;
 }
 .ads-trees-sign-up .password {
+  color: var(--constant-green-dark, #081c15);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.ads-trees-sign-up .username {
   color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
@@ -266,3 +286,4 @@
   font-weight: var(--link-medium-font-font-weight, 600);
   position: relative;
 }
+
