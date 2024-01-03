@@ -7,7 +7,7 @@ export const PictoDisplayForest = ({
 }) => {
     return (
 
-        display === 'forest' ? (
+        display === 'Forest' ? (
 
             <div className={'picto-display-forest ' + className}>
                 <div className="frame-37266">

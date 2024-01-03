@@ -7,7 +7,7 @@ export const PictoDisplayWood = ({
 }) => {
     return (
 
-        display === 'wood' ? (
+        display === 'Wood' ? (
 
             <div className={'picto-display-wood ' + className}>
                 <div className="frame-37266">

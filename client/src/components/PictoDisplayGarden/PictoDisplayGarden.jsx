@@ -7,7 +7,7 @@ export const PictoDisplayGarden = ({
 }) => {
     return (
 
-        display === 'garden' ? (
+        display === 'Garden' ? (
 
             <div className={'picto-display-garden ' + className}>
                 <svg
