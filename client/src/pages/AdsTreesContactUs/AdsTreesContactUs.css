@@ -15,7 +15,7 @@
   position: relative;
 }
 .ads-trees-contact-us .contact-us-body {
-  padding: 48px 0px 48px 0px;
+  padding: 0px 0px 0px 0px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -121,11 +121,11 @@
 }
 .ads-trees-contact-us .input {
   background: var(--green-light, #d0ffd7);
-  border-radius: 4px;
+  border-radius: 8px;
   border-style: solid;
   border-color: var(--green-light, #d0ffd7);
   border-width: 1px;
-  padding: 0px 2px 0px 2px;
+  padding: 0px 0px 0px 0px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -213,7 +213,7 @@
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 167px;
+  height: auto;
   position: relative;
 }
 .ads-trees-contact-us .input2 {
@@ -222,7 +222,7 @@
   border-style: solid;
   border-color: var(--green-light, #d0ffd7);
   border-width: 1px;
-  padding: 0px 2px 0px 2px;
+  padding: 0px 0px 0px 0px;
   display: flex;
   flex-direction: column;
   gap: 10px;

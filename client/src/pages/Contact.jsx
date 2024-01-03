@@ -5,6 +5,8 @@ import emailjs from '@emailjs/browser';
 import Auth from '../utils/auth';
 import { validateEmail } from '../utils/validation';
 import './AdsTreesContactUs/AdsTreesContactUs.css'; // Importing the CSS
+import { Input } from '@chakra-ui/react';
+import { Textarea } from '@chakra-ui/react';
 // ============================================================
 
 // Contact component
@@ -96,12 +98,13 @@ const Contact = ({ className = '' }) => {
                                 <div className="contact-us-first-name-input">
                                     <div className="field-title-label">First name</div>
                                     <div className="input-group">
-                                        <input 
+                                        <Input
                                             className="first-name"
                                             name="user_name"
                                             value={formData.user_name}
                                             onChange={handleChange}
-                                            placeholder="First Name"
+                                            placeholder=""
+                                            _placeholder={{ color: 'green.900' }}
                                         />
                                     </div>
                                 </div>
@@ -109,42 +112,49 @@ const Contact = ({ className = '' }) => {
                                 <div className="contact-us-last-name-input">
                                     <div className="field-title-label">Last name</div>
                                     <div className="input-group">
-                                        <input 
-                                            className="last-name"
-                                            name="user_last_name"
-                                            value={formData.user_last_name}
-                                            onChange={handleChange}
-                                            placeholder="Last Name"
-                                        />
+                                        <div className="input">
+                                            <Input
+                                                className="last-name"
+                                                name="user_last_name"
+                                                value={formData.user_last_name}
+                                                onChange={handleChange}
+                                                placeholder=""
+                                                _placeholder={{ color: 'green.900' }}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="contact-us-email-input">
                                 <div className="field-title-label">Email</div>
                                 <div className="input-group">
-                                    <input 
+                                    <Input
                                         className="email"
                                         name="user_email"
                                         type="email"
                                         value={formData.user_email}
                                         onChange={handleChange}
-                                        placeholder="Email"
+                                        placeholder=""
+                                        _placeholder={{ color: 'green.900' }}
                                     />
                                 </div>
                             </div>
                             <div className="contact-us-message-input">
                                 <div className="field-title-label">Message</div>
                                 <div className="input-group2">
-                                    <textarea 
+                                    <Textarea
                                         className="message"
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
-                                        placeholder="Message"
+                                        placeholder=""
+                                        _placeholder={{ color: 'green.900' }}
                                     />
                                 </div>
                             </div>
-                            <button type="submit" className="button">Send Message</button>
+                            <button type="submit" className="button">=
+                                <div className="children">Send Message</div>
+                            </button>
                         </form>
                     </div>
                 </div>
