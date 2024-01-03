@@ -74,7 +74,7 @@ const Signup = ({ className = '' }) => {
                 <div className="sign-up-form">
                     <div className="sign-up-form-holder">
                         <div className="sign-up-title">Sign up</div>
-                        <form onSubmit={handleFormSubmit} class="sign-up-form2">
+                        <form onSubmit={handleFormSubmit} className="sign-up-form2">
                             <div className="sign-up-input-holder">
                                 <div className="input-group">
                                     <div className="input">
