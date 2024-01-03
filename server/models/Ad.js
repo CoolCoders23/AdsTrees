@@ -12,8 +12,6 @@ const adSchema = new Schema({
 
     title: {
         type: String,
-        required: true,
-        unique: true,
         trim: true,
         minlength: [3, 'Title must be at least 3 characters long.']
     },

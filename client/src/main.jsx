@@ -24,7 +24,7 @@ import {
 // Importing components
 // ============================================================
 import App from './App.jsx';
-// import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 // import About from './pages/About';
@@ -114,10 +114,10 @@ const Main = () => {
                     element: <Signup />
                 },
 
-                // {
-                //     path: '/dashboard',
-                //     element: <Dashboard />
-                // },
+                {
+                    path: '/dashboard',
+                    element: <Dashboard />
+                },
 
                 {
                     path: '/user-profile',
