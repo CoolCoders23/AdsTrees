@@ -8,37 +8,63 @@ import { useQuery, useMutation } from '@apollo/client';
 import ReactPlayer from 'react-player';
 import { QUERY_YOUTUBE } from '../utils/queries';
 import { ADD_WATCHED_AD } from '../utils/mutations';
+import { QUERY_USER } from '../utils/queries';
 import moment from 'moment';
+import Auth from '../utils/auth';
 import './Dashboard.css';
 
 const Dashboard = ({ user }) => {
+
     const { loading: queryLoading, error: queryError, data } = useQuery(QUERY_YOUTUBE);
-    const [addWatchedAd, { loading: mutationLoading, data: mutationData }] = useMutation(ADD_WATCHED_AD);
+    console.log(data);
+    const [addWatchedAd, { loading: mutationLoading }] = useMutation(ADD_WATCHED_AD);
     const [currentVideo, setCurrentVideo] = useState(null);
+    // const [userData, setUserData] = useState(null);
     const [playing, setPlaying] = useState(false);
+    const [player, setPlayer] = useState(null);
+    const [holdStartTime, setHoldStartTime]= useState(null);
     const playerRef = useRef(null);
+    let timerRef = useRef(null);
+
+    const profile = Auth.getProfile();
+    const username = profile?.data.username;
+
+    const { loading: userLoading, error: userError, data: userData, refetch: refetchUser } = useQuery(QUERY_USER, {
+        variables: { username: username },
+    });
 
     useEffect(() => {
         if (data && data.youtube && data.youtube.length > 0) {
             setCurrentVideo(data.youtube[0]);
         }
     }, [data]);
+    console.log(currentVideo);
 
-    const handleWatchVideo = () => {
+    const handleWatchVideo = async () => {
         if (currentVideo) {
-            addWatchedAd({
-                variables: {
-                    ad: {
-                        _id: currentVideo._id,
-                        title: currentVideo.title,
-                        watched: true,
-                        duration: currentVideo.duration,
-                        date: moment().toISOString(),
-                    },
-                },
-            });
+            const ad = {
+
+                title: currentVideo.title,
+                watched: true,
+                duration: currentVideo.duration,
+                date: moment().toISOString(),
+
+            };
+
+            try {
+                await addWatchedAd({
+                    variables: { ad: ad },
+                });
+                await refetchUser();
+            } catch (e) {
+                console.error('Error executing mutation:', e);
+            }
         }
     };
+
+    // const onReady = (e) => {
+    //     setPlayer(e.target);
+    // };
 
     const handleEnd = () => {
         handleWatchVideo();
@@ -52,11 +78,18 @@ const Dashboard = ({ user }) => {
     };
 
     const handleMouseDown = () => {
-        setPlaying(true);
+        if (player) {
+            setPlaying(true);
+            setHoldStartTime(Date.now());
+            player.playVideo();
+        }
     };
 
     const handleMouseUp = () => {
-        setPlaying(false);
+        if (player) {
+            setPlaying(false);
+            player.pauseVideo();
+        }
     };
 
     const handleKeyDown = (event) => {
@@ -70,6 +103,34 @@ const Dashboard = ({ user }) => {
             setPlaying(false);
         }
     };
+
+    useEffect(() => {
+        console.log('use is in effect');
+        if (playing && player && data && data.youtube && data.youtube.length > 0) {
+            const videoDuration = player.getDuration() * 1000;
+            timerRef.current = setTimeout(() => {
+                if (playing) {
+                    const currentIndex = data.youtube.findIndex((video) => video._id === currentVideo._id);
+                    const nextIndex = (currentIndex + 1) % data.youtube.length;
+                    setCurrentVideo(nextIndex);
+                    alert(`you watched ${nextIndex} out of ${data.youtube.length} ads`);
+                }
+            }, videoDuration);
+        }
+        return () => clearTimeout(timerRef.current);
+    }, [playing, player, currentVideo, data, timerRef]);
+
+    useEffect(() => {
+        // if the button is released before the end of the video clear the timeout
+        //console.log('use was stopped')
+        if (playing && holdStartTime && player) {
+            const holdDuration = Date.now() - holdStartTime;
+            const videoDuration = player.getDuration() * 1000;
+            if (holdDuration < videoDuration){
+                clearTimeout(timerRef.current);
+            }
+        }
+    }, [playing, holdStartTime, player, timerRef]);
 
     if (queryLoading || mutationLoading) {
         return 'Loading...';
@@ -102,13 +163,13 @@ const Dashboard = ({ user }) => {
                     <button className="white-button" onClick={handleEnd}>Next</button>
                 </>
             )}
-            {mutationData && mutationData.addWatchedAd && (
+            {userData && userData.user && (
                 <div>
                     <h3>Your Statistics</h3>
-                    <p>Total Watched: {mutationData.addWatchedAd.totalWatched}</p>
-                    <p>Total Trees Planted: {mutationData.addWatchedAd.totalTreesPlanted}</p>
-                    <p>Watched Today: {mutationData.addWatchedAd.watchedToday}</p>
-                    {/* Add more statistics as needed */}
+                    <p>Total Watched: {userData.user.totalWatched}</p>
+                    <p>Total Trees Planted: {userData.user.totalTreesPlanted}</p>
+                    <p>Watched Today: {userData.user.watchedToday}</p>
+                    {/* Add more statistics */}
                 </div>
             )}
         </div>
