@@ -375,7 +375,10 @@ const resolvers = {
                 const user = await User.findById(context.user._id);
                 await user.updateWatched(newAd);
 
-                return user;
+                user.ads.push(newAd._id);
+                await user.save();
+
+                return newAd;
             }
 
             throw new AuthenticationError('You need to be logged in!');

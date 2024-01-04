@@ -13,12 +13,11 @@ const adSchema = new Schema({
     title: {
         type: String,
         trim: true,
-        minlength: [3, 'Title must be at least 3 characters long.']
+        minlength: [5, 'Title must be at least 3 characters long.']
     },
 
     watched: {
         type: Boolean,
-        required: true,
         default: false,
     },
 

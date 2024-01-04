@@ -33,10 +33,6 @@ export const QUERY_USER = gql`
       }
       ads {
         _id
-        title
-        watched
-        duration
-        date
       }
       totalDonations
       totalWatched
@@ -83,10 +79,6 @@ export const QUERY_USER_PROFILE = gql`
       }
       ads {
         _id
-        title
-        watched
-        duration
-        date
       }
       totalDonations
       totalWatched

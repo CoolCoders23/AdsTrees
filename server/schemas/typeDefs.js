@@ -56,7 +56,7 @@ const typeDefs = `
   type Ad {
     _id: ID!
     title: String
-    watched: Boolean!
+    watched: Boolean
     duration: Int!
     date: String!
   }
@@ -111,7 +111,7 @@ const typeDefs = `
   }
 
   input AdInput {
-    _id: ID!
+    _id: ID
     title: String
     watched: Boolean!
     duration: Int!
@@ -149,7 +149,7 @@ const typeDefs = `
       @cacheControl(maxAge: 0, scope: PRIVATE)
     addPurchase(donations: [ID]!): Purchase
       @cacheControl(scope: PRIVATE)
-    addWatchedAd(ad: AdInput!): User
+    addWatchedAd(ad: AdInput!): Ad
       @cacheControl(scope: PRIVATE)
 
   }
