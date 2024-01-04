@@ -12,22 +12,25 @@ import { Textarea } from '@chakra-ui/react';
 // Contact component
 // ============================================================
 const Contact = ({ className = '' }) => {
+
     // State for managing form data with initial values
     // ============================================================
     const [formData, setFormData] = useState({
         user_name: '',
+        user_last_name: '',
         user_email: '',
         message: ''
     });
+    // ============================================================
+
     // State for managing messages to the user (like success or error messages)
     const [message, setMessage] = useState('');
-    // ============================================================
 
     // Function to handle changes in the form input fields
     // ============================================================
     const handleChange = (event) => {
         // Updating formData state with new values when input changes
-        setFormData({ ...formData, [event.target.name]: event.target.value });
+        setFormData({ ...formData, [event.target.name]: event.target.value || '' });
     };
     // ============================================================
 
@@ -85,6 +88,8 @@ const Contact = ({ className = '' }) => {
             });
     };
     // ============================================================
+
+    // Rendering the contact form
     return (
         <div className={'ads-trees-contact-us ' + className}>
             <div className="contact-us-body">
@@ -101,7 +106,7 @@ const Contact = ({ className = '' }) => {
                                         <Input
                                             className="first-name"
                                             name="user_name"
-                                            value={formData.user_name}
+                                            value={formData.user_name || ''}
                                             onChange={handleChange}
                                             placeholder=""
                                             _placeholder={{ color: 'green.900' }}
@@ -116,7 +121,7 @@ const Contact = ({ className = '' }) => {
                                             <Input
                                                 className="last-name"
                                                 name="user_last_name"
-                                                value={formData.user_last_name}
+                                                value={formData.user_last_name || ''}
                                                 onChange={handleChange}
                                                 placeholder=""
                                                 _placeholder={{ color: 'green.900' }}
@@ -132,7 +137,7 @@ const Contact = ({ className = '' }) => {
                                         className="email"
                                         name="user_email"
                                         type="email"
-                                        value={formData.user_email}
+                                        value={formData.user_email || ''}
                                         onChange={handleChange}
                                         placeholder=""
                                         _placeholder={{ color: 'green.900' }}
@@ -145,7 +150,7 @@ const Contact = ({ className = '' }) => {
                                     <Textarea
                                         className="message"
                                         name="message"
-                                        value={formData.message}
+                                        value={formData.message || ''}
                                         onChange={handleChange}
                                         placeholder=""
                                         _placeholder={{ color: 'green.900' }}
@@ -163,9 +168,6 @@ const Contact = ({ className = '' }) => {
         </div>
     );
 };
-// ============================================================
 
 // Exporting the Contact component
-// ============================================================
 export default Contact;
-// ============================================================

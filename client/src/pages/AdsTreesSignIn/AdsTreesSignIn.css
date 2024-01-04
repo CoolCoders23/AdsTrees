@@ -25,8 +25,8 @@
   align-self: stretch;
   flex: 1;
   position: relative;
-
 }
+
 .ads-trees-sign-in .home-text {
   display: flex;
   flex-direction: column;
@@ -147,8 +147,19 @@
   height: 40px;
   position: relative;
  
-
-
+}
+.ads-trees-sign-in .email {
+  color: var(--constant-green-dark, #081c15);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .ads-trees-sign-in .email {
   color: var(--constant-green-dark, #081c15);
@@ -176,7 +187,6 @@
   align-items: center;
   justify-content: flex-start;
 }
-
 
 .ads-trees-sign-in .button {
     background: var(--cards-main-color, #f4fbf9);

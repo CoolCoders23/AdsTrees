@@ -1,32 +1,50 @@
+// Importing necessary React hooks and other dependencies.
+// ============================================================
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-import './AdsTreesSignIn/AdsTreesSignIn.css'; // Importing the CSS
-import { Link } from 'react-router-dom'; // Import for the Link component
-import { Input } from '@chakra-ui/react';
+import './AdsTreesSignIn/AdsTreesSignIn.css'; // Importing custom CSS for styling.
+import { Link } from 'react-router-dom'; // Importing Link for routing.
+import { Input } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
+// ============================================================
 
+// Login component definition.
+// ============================================================
 const Login = ({ className = '' }) => {
+
+    // State variables for managing form inputs and errors.
+    // ============================================================
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [login, { error }] = useMutation(LOGIN_USER);
+    // ============================================================
+
+    // Function to handle the login form submission.
+    // ============================================================
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
+            // Attempting to login the user using Apollo GraphQL mutation.
             const mutationResponse = await login({
                 variables: { email: formState.email, password: formState.password }
             });
             const token = mutationResponse.data.login.token;
-            Auth.login(token);
+            Auth.login(token); // Logging in the user on successful authentication.
         } catch (e) {
-            console.log(e);
+            console.log(e); 
         }
     };
+    // ============================================================
 
+    // Function to handle changes in input fields.
+    // ============================================================
     const handleChange = (event, fieldName) => {
         const { value } = event.target;
         setFormState({ ...formState, [fieldName]: value });
     };
+    // ============================================================
 
+    // Rendering the login form.
     return (
         <div className={'ads-trees-sign-in ' + className}>
             <div className="sign-in-body" >
@@ -87,4 +105,5 @@ const Login = ({ className = '' }) => {
     );
 };
 
+// Exporting the Login component.
 export default Login;

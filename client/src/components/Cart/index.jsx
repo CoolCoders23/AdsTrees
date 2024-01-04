@@ -5,6 +5,7 @@
 
 // Import dependencies
 // ========================================================
+import './cart.css';
 import { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
@@ -12,11 +13,7 @@ import { QUERY_CHECKOUT } from '../../utils/queries';
 import CartItem from '../CartItem';
 import Auth from '../../utils/auth';
 import useStateContext from '../../utils/payment-logic/UseStateContext';
-import { TOGGLE_CART } from '../../utils/payment-logic/actions';
-import './style.css';
 // ========================================================
-
-// TODO: modify the style
 
 // Define Stripe promise
 // ========================================================
@@ -26,9 +23,9 @@ const stripePromise = loadStripe(
 
 // Define Cart component
 // ========================================================
-const Cart = () => {
+const Cart = ({ toggleCart }) => {
 
-    const [state, dispatch] = useStateContext();
+    const [state] = useStateContext();
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
     useEffect(() => {
@@ -40,10 +37,6 @@ const Cart = () => {
         }
 
     }, [data]);
-
-    function toggleCart() {
-        dispatch({ type: TOGGLE_CART });
-    }
 
     // Define submitCheckout async function to handle
     // the checkout process and then clear the cart
@@ -62,16 +55,6 @@ const Cart = () => {
         }
     };
 
-    if (!state.cartOpen) {
-        return (
-            <div className="cart-closed" onClick={toggleCart}>
-                <span role="img" aria-label="trash">
-                    🛒
-                </span>
-            </div>
-        );
-    }
-
     return (
         <div className="cart">
             <div className="close" onClick={toggleCart}>
@@ -88,19 +71,19 @@ const Cart = () => {
 
                         {/* Check to see if the user is logged in. If so render a button to check out */}
                         {Auth.loggedIn() ? (
-                            <button onClick={submitCheckout}>Checkout</button>
+                            <button className="checkout" onClick={submitCheckout}>Checkout</button>
                         ) : (
-                            <span>(log in to check out)</span>
+                            <span className="message">log in to check out!</span>
                         )};
                     </div>
                 </div>
             ) : (
-                <h3>
+                <h2>
                     <span role="img" aria-label="shocked">
                         😱
                     </span>
                         You haven&apos;t added anything to your cart yet!
-                </h3>
+                </h2>
             )}
         </div>
     );

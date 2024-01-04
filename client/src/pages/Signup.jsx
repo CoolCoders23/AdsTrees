@@ -1,12 +1,19 @@
+/* eslint-disable no-unused-vars */
+// Description: This file contains the logic for the user signup process.
+
+// Importing React hooks and other dependencies.
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-import './AdsTreesSignUp/AdsTreesSignUp.css';
-import { Input } from '@chakra-ui/react';
+import './AdsTreesSignUp/AdsTreesSignUp.css'; // Importing custom CSS for styling.
+import { Input } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
 
+// Signup component definition.
 const Signup = ({ className = '' }) => {
+
+    // State variables to hold form input data and error messages.
     const [formState, setFormState] = useState({
         username: '',
         email: '',
@@ -17,15 +24,17 @@ const Signup = ({ className = '' }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
+    // Function to handle form submission.
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         // Check if passwords match
         if (formState.password !== formState.confirmPassword) {
-            setConfirmPasswordError("Passwords do not match.");
+            setConfirmPasswordError('Passwords do not match.');
             return;
         }
 
+        // Attempting to add user using Apollo GraphQL mutation.
         try {
             const mutationResponse = await addUser({
                 variables: {
@@ -37,16 +46,18 @@ const Signup = ({ className = '' }) => {
                 }
             });
             const token = mutationResponse.data.addUser.token;
-            Auth.login(token);
+            Auth.login(token); // Logging in the user on successful signup.
         } catch (e) {
-            setErrorMessage(e.message);
+            setErrorMessage(e.message); // Setting error message on failure.
         }
     };
 
+    // Function to handle changes in form inputs.
     const handleChange = (name, value) => {
         setFormState({ ...formState, [name]: value });
     };
 
+    // Rendering the signup form.
     return (
         <div className={'ads-trees-sign-up ' + className}>
             <div className="sign-up-body">
@@ -63,15 +74,13 @@ const Signup = ({ className = '' }) => {
                 <div className="sign-up-form">
                     <div className="sign-up-form-holder">
                         <div className="sign-up-title">Sign up</div>
-
-
-                        <form onSubmit={handleFormSubmit} class="sign-up-form2">
+                        <form onSubmit={handleFormSubmit} className="sign-up-form2">
                             <div className="sign-up-input-holder">
                                 <div className="input-group">
                                     <div className="input">
                                         <Input
                                             className="username"
-                                            type="text"
+                                            type="username"
                                             value={formState.username}
                                             onChange={(event) => handleChange('username', event.target.value)}
                                             placeholder="Username"
@@ -139,4 +148,5 @@ const Signup = ({ className = '' }) => {
     );
 };
 
+// Exporting the Signup component.
 export default Signup;

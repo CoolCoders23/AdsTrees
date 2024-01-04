@@ -1,60 +1,48 @@
-// Desc: This file contains the Footer component of the application
-// ============================================================
-
-// Importing Dependencies
-// ============================================================
+/* Code generated with AutoHTML Plugin for Figma */
+import './Footer.css';
 import { Link } from 'react-router-dom';
-import { Button } from '@chakra-ui/react';
-import { FaGithub } from 'react-icons/fa';
-// ============================================================
 
-// Define the Footer component
-// ============================================================
-const Footer = () => {
-
-    // Return the JSX for the Footer component
+export const Footer = ({ className }) => {
     return (
-        <div>
-            <footer>
-                <div>
-                    <div>
-
-                        <div>
-                            <p>
-                                &copy; {new Date().getFullYear()} AdsTrees, Inc . Privacy . Terms . Donate
-                            </p>
-                        </div>
-
-                        <Button
-                            leftIcon={<FaGithub />}
-                            colorScheme='whatsapp'
-                            variant= 'outline'
-                            as='a'
-                            href='https://github.com/CoolCoders23'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            aria-label="Github"
-                        >
-                                    Github
-                        </Button>
-
-                        <div>
-                            <Link to='/contact'>Contact us</Link>
-                        </div>
-
-                        <div>
-                            <Link to='/donations'>Donations</Link>
-                        </div>
-
+        <footer className={'footer ' + className}>
+            <div className="footer-content">
+                <div className="copyright-frame">
+                    <div className="copyright">
+                        © {new Date().getFullYear()} AdsTrees
                     </div>
                 </div>
-            </footer>
-        </div>
+                <div className="footer-links">
+
+                    <span className="privacy-link-label">
+                        Privacy
+                    </span>
+
+                    <span className="terms-link-label">
+                        Terms
+                    </span>
+
+                    <Link
+                        className="donate-link-label"
+                        to='/donations'>
+                        Donations
+                    </Link>
+
+                    <Link
+                        className="donate-link-label"
+                        to='/contact'>
+                        Contact US
+                    </Link>
+
+                    <a
+                        className="donate-link-label"
+                        href='https://github.com/CoolCoders23/AdsTrees'
+                        target='_blank'
+                        rel='noopener noreferrer'>
+                        GitHub
+                    </a>
+
+                </div>
+            </div>
+        </footer>
     );
 };
-// ============================================================
-
-// Export the Footer component
-// ============================================================
-export default Footer;
-// ============================================================

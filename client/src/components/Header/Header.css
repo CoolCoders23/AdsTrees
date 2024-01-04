@@ -26,7 +26,6 @@
   min-width: 192px;
   position: relative;
   text-decoration: none !important;
-
 }
 .header .logo {
   display: flex;
@@ -36,7 +35,6 @@
   justify-content: flex-start;
   flex-shrink: 0;
   position: relative;
-
 }
 .header .icon {
   flex-shrink: 0;
@@ -86,14 +84,17 @@
 .header .logo_link  {
   text-decoration: none !important;
 }
+.header .cart-icon-active-instance {
+  flex-shrink: 0 !important;
+}
+
 .header .dashboard_link {
   text-decoration: none;
 }
 
-.header .logout_link  {
+.header .logout_link {
   text-decoration: none;
 }
 .header .profile_link {
   text-decoration: none;
 }
-

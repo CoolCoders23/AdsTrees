@@ -2,8 +2,8 @@
 import './TargetLogoutStatusActive.css';
 
 export const TargetLogoutStatusActive = ({
-    target = 'dashboard',
-    status = 'inactive',
+    target,
+    status,
     className,
     ...props
 }) => {
