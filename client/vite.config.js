@@ -115,19 +115,16 @@ export default defineConfig({
                     }
                 ]
             },
-            // to be used only for development mode
-            devOptions: {
-                enabled: false,
-                navigateFallbackAllowlist: []
-            },
         }),
     ],
     server: {
+        port: 3000,
+        open: true,
         proxy: {
             '/graphql': {
-                target: 'mongodb+srv://coolcoders2024:coolcoders2024@cluster0.y6djdn0.mongodb.net/AdsTrees?retryWrites=true&w=majority',
+                target: 'http://localhost:3001',
                 changeOrigin: true,
-                secure: true,
+                secure: false,
             },
         },
     },
