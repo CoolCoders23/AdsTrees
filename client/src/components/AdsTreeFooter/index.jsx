@@ -1,5 +1,5 @@
 /* Code generated with AutoHTML Plugin for Figma */
-import './Footer.css';
+// import './Footer.css';
 import { Link } from 'react-router-dom';
 
 export const Footer = ({ className }) => {

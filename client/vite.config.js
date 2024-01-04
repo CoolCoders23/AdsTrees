@@ -117,7 +117,7 @@ export default defineConfig({
             },
             // to be used only for development mode
             devOptions: {
-                enabled: true,
+                enabled: false,
                 navigateFallbackAllowlist: []
             },
         }),

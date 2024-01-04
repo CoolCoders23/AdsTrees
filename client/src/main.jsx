@@ -27,7 +27,6 @@ import App from './App.jsx';
 import { Dashboard } from './pages/Dashboard';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-// import About from './pages/About';
 import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
 import Contact from './pages/Contact';
@@ -131,11 +130,6 @@ const Main = () => {
                     path: '/contact',
                     element: <Contact />
                 },
-
-                // {
-                //     path: '/about',
-                //     element: <About />
-                // },
 
                 {
                     path: '/donations',
