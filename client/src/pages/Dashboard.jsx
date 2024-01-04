@@ -19,7 +19,6 @@ const Dashboard = ({ user }) => {
     console.log(data);
     const [addWatchedAd, { loading: mutationLoading }] = useMutation(ADD_WATCHED_AD);
     const [currentVideo, setCurrentVideo] = useState(null);
-    // const [userData, setUserData] = useState(null);
     const [playing, setPlaying] = useState(false);
     const [player, setPlayer] = useState(null);
     const [holdStartTime, setHoldStartTime]= useState(null);
@@ -38,27 +37,25 @@ const Dashboard = ({ user }) => {
             setCurrentVideo(data.youtube[0]);
         }
     }, [data]);
-    console.log(currentVideo);
 
     const handleWatchVideo = async () => {
         if (currentVideo) {
-            const ad = {
-
-                title: currentVideo.title,
-                watched: true,
-                duration: currentVideo.duration,
-                date: moment().toISOString(),
-
-            };
-
-            try {
-                await addWatchedAd({
-                    variables: { ad: ad },
+            addWatchedAd({
+                variables: {
+                    ad: {
+                        title: currentVideo.title,
+                        watched: true,
+                        duration: currentVideo.duration,
+                        date: moment().toISOString(),
+                    },
+                },
+            })
+                .then(() => {
+                    refetchUser();
+                })
+                .catch((error) => {
+                    console.error('Error executing mutation:', error);
                 });
-                await refetchUser();
-            } catch (e) {
-                console.error('Error executing mutation:', e);
-            }
         }
     };
 
@@ -163,6 +160,7 @@ const Dashboard = ({ user }) => {
                     <button className="white-button" onClick={handleEnd}>Next</button>
                 </>
             )}
+
             {userData && userData.user && (
                 <div>
                     <h3>Your Statistics</h3>
@@ -172,6 +170,7 @@ const Dashboard = ({ user }) => {
                     {/* Add more statistics */}
                 </div>
             )}
+
         </div>
     );
 };
