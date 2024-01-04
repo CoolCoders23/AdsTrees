@@ -2,8 +2,8 @@
 import './StatsFigureCard.css';
 
 export const StatsFigureCard = ({
-    statFigure = '7,280',
-    statTitle = 'Trees you planted',
+    statFigure,
+    statTitle,
     className,
     ...props
 }) => {
