@@ -63,7 +63,7 @@ const typeDefs = `
 
   type Youtube {
     _id: ID!
-    title: String!
+    title: String
     url: String!
     duration: Int!
   }

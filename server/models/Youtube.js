@@ -12,8 +12,6 @@ const youtubeSchema = new Schema({
 
     title: {
         type: String,
-        required: true,
-        unique: true,
         trim: true,
         minlength: [5, 'Title must be at least 3 characters long.']
     },
