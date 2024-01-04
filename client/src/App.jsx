@@ -21,7 +21,7 @@ import { Outlet } from 'react-router-dom';
 // Importing components and utils
 // ============================================================
 import { Header } from './components/Header';
-import { Footer } from './components/AdsTreeFooter';
+import { Footer } from './components/Footer';
 import Cart from './components/Cart';
 import useStateContext from './utils/payment-logic/UseStateContext';
 import { TOGGLE_CART } from './utils/payment-logic/actions';
