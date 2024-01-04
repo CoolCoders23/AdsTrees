@@ -40,7 +40,9 @@ const corsOptions = {
             'https://github.com/CoolCoders23/AdsTrees',
             'https://fonts.googleapis.com',
             'https://fonts.gstatic.com',
+            'https://www.youtube.com',
             'https://adstrees.onrender.com'
+
         ];
         if (!origin || whitelist.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
             callback(null, true);

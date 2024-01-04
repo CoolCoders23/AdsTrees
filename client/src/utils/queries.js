@@ -18,7 +18,6 @@ export const QUERY_USER = gql`
         url
         altText
       }
-      totalDonations
       preferences
       purchases {
         _id
@@ -32,6 +31,21 @@ export const QUERY_USER = gql`
           price
         }
       }
+      ads {
+        _id
+      }
+      totalDonations
+      totalWatched
+      totalTreesPlanted
+      watchedToday
+      watchedInWeek
+      watchedInMonth
+      treesPlantedInWeek
+      treesPlantedInYear
+      bestWeek
+      lastWatchedWeek
+      lastWatchedMonth
+      lastWatchedYear
     }
   }
 `;
@@ -63,7 +77,21 @@ export const QUERY_USER_PROFILE = gql`
           price
         }
       }
+      ads {
+        _id
+      }
       totalDonations
+      totalWatched
+      totalTreesPlanted
+      watchedToday
+      watchedInWeek
+      watchedInMonth
+      treesPlantedInWeek
+      treesPlantedInYear
+      bestWeek
+      lastWatchedWeek
+      lastWatchedMonth
+      lastWatchedYear
     }
   }
 `;
@@ -131,6 +159,35 @@ export const QUERY_CHECKOUT = gql`
   query getCheckout($donations: [DonationInput]) {
     checkout(donations: $donations) {
       session
+    }
+  }
+`;
+// ================================================================
+
+// To query the ads
+// ================================================================
+export const QUERY_ADS = gql`
+  query getAds {
+    ads {
+      _id
+      title
+      watched
+      duration
+      date
+    }
+  }
+`;
+// ================================================================
+
+// To query the youtube videos
+// ================================================================
+export const QUERY_YOUTUBE = gql`
+  query getYoutube {
+    youtube {
+      _id
+      title
+      url
+      duration
     }
   }
 `;

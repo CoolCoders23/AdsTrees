@@ -4,10 +4,12 @@
 // Import the database connection and models
 // =================================================================
 const db = require('../config/connection');
-const { User, Donation, Purchase } = require('../models');
+const { User, Donation, Purchase, Ad, Youtube } = require('../models');
 const userData = require('./userSeeds');
 const donationData = require('./donationSeeds');
 const purchaseData = require('./purchaseSeeds');
+const adData = require('./adSeeds');
+const youtubeData = require('./youtubeSeeds');
 const cleanDB = require('./cleanDB');
 // =================================================================
 
@@ -24,6 +26,8 @@ const connectAndSeed = async () => {
         await cleanDB('User', 'users');
         await cleanDB('Donation', 'donations');
         await cleanDB('Purchase', 'purchases');
+        await cleanDB('Ad', 'ads');
+        await cleanDB('Youtube', 'youtube');
     } catch (err) {
         console.error(`Error occurred while cleaning the database: ${err}`);
         process.exit(1);
@@ -34,6 +38,8 @@ const connectAndSeed = async () => {
         await User.create(userData);
         await Donation.create(donationData);
         await Purchase.create(purchaseData);
+        await Ad.create(adData);
+        await Youtube.create(youtubeData);
 
     } catch (err) {
         console.error(`Error occurred while creating Purchase documents and updating User documents: ${err}`);

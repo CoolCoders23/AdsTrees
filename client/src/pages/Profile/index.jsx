@@ -1,21 +1,119 @@
-/* Code generated with AutoHTML Plugin for Figma */
+import React, { useState, useEffect } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_USER_PROFILE } from '../../utils/queries';
+import { UPDATE_USER, REMOVE_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import DonationHistory from '../../components/DonationHistory';
 import './AdsTreesProfile.css';
-import { CategoriesCheckboxes } from './CheckboxGroup/CheckboxGroup.jsx';
-import React from 'react';
+// import { CategoriesCheckboxes } from '../pages/AdsTreesProfile/CheckboxGroup/CheckboxGroup';
+import { useNavigate } from 'react-router-dom';
 
-export const AdsTreesProfile = ({
-    profilePasswordConfirmation = '    ',
-    profilePassword = '   •••••••••••••••••••••••••••',
-    publicProfileBaseline = '   Trees lover',
-    publicProfileFirstName = '   John',
-    privateProfileEmail = '   Email',
-    profileNewPassword = '    ',
-    publicProfileLastName = '   Doe',
-    className,
-    ...props
-}) => {
+const Profile = () => {
+    // Local state for user data and form inputs
+    const navigate = useNavigate();
+    // const [userData, setUserData] = useState({});
+    // const [profilePic, setProfilePic] = useState({ url: '', altText: '' });
+    const [profileData, setProfileData] = useState({
+        username: '',
+        email: '',
+        newPassword: '',
+        passwordConfirmation: ''
+        // preferences: []
+    });
+
+    const { data, loading, error } = useQuery(QUERY_USER_PROFILE);
+    const [updateUserMutation] = useMutation(UPDATE_USER);
+    const [removeUserMutation] = useMutation(REMOVE_USER);
+
+    useEffect(() => {
+        const profile = Auth.getProfile();
+        if (data && data.userProfile) {
+            setProfileData({
+                _id: profile.data._id,
+                username: data.userProfile.username || '',
+                email: data.userProfile.email || '',
+                newPassword: '',
+                passwordConfirmation: '',
+                // preferences: data.userProfile.preferences || []
+            });
+            // setProfilePic(data.userProfile.profilePicture || { url: '', altText: '' });
+        }
+    }, [data]);
+
+    console.log('Updated state after data fetch:', profileData);
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setProfileData(prevState => {
+            const updatedState = { ...prevState, [name]: value };
+            console.log('State after input change:', updatedState);
+            return updatedState;
+        });
+    };
+
+    const handleUpdateProfile = async () => {
+        if (profileData.newPassword !== profileData.passwordConfirmation) {
+            alert('Passwords do not match');
+            return;
+        }
+
+        // Prepare the update data
+        const updateData = {
+            _id: profileData._id,
+            username: profileData.username,
+            email: profileData.email,
+            ...(profileData.newPassword && { password: profileData.newPassword }),
+            // ...(profilePic.url && { profilePicture: { url: profilePic.url, altText: profilePic.altText } })
+        };
+
+        try {
+            const response = await updateUserMutation({
+                variables: { user: updateData }
+            });
+
+            if (response.data.updateUser) {
+                // Handle successful update
+                setProfileData(response.data.updateUser.user);
+                alert('Profile updated successfully');
+            }
+        } catch (e) {
+            console.error('Error updating profile:', e);
+        }
+    };
+
+    const handleDeleteAccount = async () => {
+        try {
+            await removeUserMutation({
+                variables: { userId: profileData._id }
+            });
+            alert('Account deleted successfully');
+        } catch (e) {
+            console.error('Error deleting account: ', e);
+        }
+    };
+
+    // // Redirect to contact page
+    // const handleContactClick = () => {
+    //     navigate('/contact'); // Update this path to your actual contact page route
+    // };
+
+    // // Redirect to sign-in page
+    // const handleLogoutClick = () => {
+    //     // Implement logout logic here if needed
+    //     navigate('/signin'); // Update this path to your actual sign-in page route
+    // };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    if (error) {
+        return <div>Error loading profile: {error.message}</div>;
+    }
+
+    console.log('State before rendering:', profileData);
+
     return (
-        <div className={'ads-trees-profile ' + className}>
+        <div className={'ads-trees-profile'}>
             <div className="profile-body">
                 <div className="profile-sub-body">
                     <div className="profile-header">
@@ -94,25 +192,24 @@ export const AdsTreesProfile = ({
                             </div>
                             <div className="profile-summary-frame">
                                 <div className="profile-summary">
-                                    <div className="user-name">John Doe </div>
-                                    <div className="user-motto">Trees lover </div>
+                                    <div className="user-name">{profileData.username}</div>
                                 </div>
                             </div>
                         </div>
                         <div className="profile-header-controls">
-                            <div className="theme-link-frame">
+                            {/* <div className="theme-link-frame">
                                 <button className="theme-link">Change theme </button>
-                            </div>
-                            <div className="contact-us-link-frame">
-                                <button className="contact-us-link">
+                            </div> */}
+                            {/* <div className="contact-us-link-frame">
+                                <button className="contact-us-link" onClick={handleContactClick}>
                                     <div className="contact-us">Contact us </div>
                                 </button>
-                            </div>
-                            <div className="contact-us-link-frame">
-                                <button className="log-out-link">
+                            </div> */}
+                            {/* <div className="contact-us-link-frame">
+                                <button className="log-out-link" onClick={handleLogoutClick}>
                                     <div className="logout">Logout </div>
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="profile-body2">
@@ -120,27 +217,16 @@ export const AdsTreesProfile = ({
                             <div className="public-profile-title">Public </div>
                             <div className="public-profile-name-input">
                                 <div className="public-profile-first-name-input">
-                                    <div className="field-title-label">First name </div>
+                                    <div className="field-title-label">Username </div>
                                     <div className="input-group">
-                                        <div className="input">
-                                            <input className="first-name" value="   John" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="public-profile-last-name-input">
-                                    <div className="field-title-label">Last name </div>
-                                    <div className="input-group">
-                                        <div className="input">
-                                            <input className="last-name" value="   Doe" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="public-profile-baseline-input">
-                                <div className="field-title-label">Baseline </div>
-                                <div className="input-group">
-                                    <div className="input">
-                                        <input className="baseline" value="   Trees lover" />
+                                        {/* <div className="input"> */}
+                                        <input
+                                            className="input"
+                                            name="username"
+                                            value={profileData.username || ''}
+                                            onChange={handleInputChange}
+                                        />
+                                        {/* </div> */}
                                     </div>
                                 </div>
                             </div>
@@ -150,62 +236,69 @@ export const AdsTreesProfile = ({
                             <div className="private-profile-email-input">
                                 <div className="field-title-label2">Email </div>
                                 <div className="input-group">
-                                    <div className="input">
-                                        <input className="email" value="   Email" />
-                                    </div>
+                                    {/* <div className="input"> */}
+                                    <input
+                                        className="input"
+                                        name="email"
+                                        value={profileData.email || ''}
+                                        onChange={handleInputChange}
+                                    />
+                                    {/* </div> */}
                                 </div>
                             </div>
-                            <div className="private-profile-content-preference-input">
-                                <div className="component-title-label">
-                    Content preferences{' '}
-                                </div>
-
+                            {/* <div className="private-profile-content-preference-input">
+                                <div className="component-title-label">Content preferences{' '}</div>
                                 <div className="checkboxes-input-group">
                                     <CategoriesCheckboxes />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="password-edit-frame">
                             <div className="password-edit-profile-title">Password </div>
                             <div className="password-input">
-                                <div className="field-title-label2">Password </div>
-                                <div className="input-group">
-                                    <div className="input">
-                                        <input
-                                            className="password"
-                                            value="   •••••••••••••••••••••••••••"
-                                        />
-                                    </div>
-                                </div>
+
                             </div>
                             <div className="new-password-input">
                                 <div className="field-title-label2">New password </div>
                                 <div className="input-group">
-                                    <div className="input">
-                                        <input className="new-password" value="    " />
-                                    </div>
+                                    {/* <div className="input"> */}
+                                    <input
+                                        className="input"
+                                        name="newPassword"
+                                        value={profileData.newPassword}
+                                        onChange={handleInputChange}
+                                    />
+                                    {/* </div> */}
                                 </div>
                             </div>
                             <div className="password-confirmation-input">
                                 <div className="field-title-label2">Confirm password </div>
                                 <div className="input-group">
-                                    <div className="input">
-                                        <input className="password-confirmation" value="    " />
-                                    </div>
+                                    {/* <div className="input"> */}
+                                    <input
+                                        className="input"
+                                        name="passwordConfirmation"
+                                        value={profileData.passwordConfirmation}
+                                        onChange={handleInputChange}
+                                    />
+                                    {/* </div> */}
                                 </div>
                             </div>
                         </div>
                         <div className="profile-main-controls">
-                            <button className="button">
+                            <button className="button" onClick={handleUpdateProfile}>
                                 <div className="children2">Save Profile Information </div>
                             </button>
-                            <button className="delete-account-button">
+                            <button className="delete-account-button" onClick={handleDeleteAccount}>
                                 <div className="children3">Delete Account </div>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+            <DonationHistory />
         </div>
     );
 };
+
+export default Profile;

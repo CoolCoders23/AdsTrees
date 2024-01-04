@@ -9,7 +9,7 @@
 // Dependencies
 // ==================================================================
 const { GraphQLError } = require('graphql');
-const { User, Donation, Purchase } = require('../models');
+const { User, Donation, Purchase, Ad, Youtube } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const validator = require('validator');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -135,6 +135,30 @@ const resolvers = {
 
             }
 
+        },
+
+        ads: async () => {
+            try{
+                return Ad.find({});
+            } catch (err) {
+                throw new GraphQLError(`Failed to fetch ads: ${err.message}`, {
+                    extensions: {
+                        code: 'BAD_USER_INPUT',
+                    },
+                });
+            }
+        },
+
+        youtube: async () => {
+            try{
+                return Youtube.find({});
+            } catch (err) {
+                throw new GraphQLError(`Failed to fetch youtube: ${err.message}`, {
+                    extensions: {
+                        code: 'BAD_USER_INPUT',
+                    },
+                });
+            }
         },
 
         checkout: async (parent, args, context) => {
@@ -332,6 +356,32 @@ const resolvers = {
                 });
 
             }
+
+        },
+
+        addWatchedAd: async (parent, { ad }, context) => {
+
+            if (context.user) {
+
+                const newAd = new Ad({
+                    title: ad.title,
+                    watched: ad.watched,
+                    duration: ad.duration,
+                    date: ad.date
+                });
+
+                await newAd.save();
+
+                const user = await User.findById(context.user._id);
+                await user.updateWatched(newAd);
+
+                user.ads.push(newAd._id);
+                await user.save();
+
+                return newAd;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
 
         },
 
