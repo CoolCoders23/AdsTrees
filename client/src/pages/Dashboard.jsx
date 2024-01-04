@@ -19,9 +19,12 @@ const Dashboard = ({ user }) => {
     console.log(data);
     const [addWatchedAd, { loading: mutationLoading }] = useMutation(ADD_WATCHED_AD);
     const [currentVideo, setCurrentVideo] = useState(null);
-    const [playing, setPlaying] = useState(false);
+    // const [videos, setVideos] = useState([]);
     const [player, setPlayer] = useState(null);
-    const [holdStartTime, setHoldStartTime]= useState(null);
+    const [isButtonHeld, setIsButtonHeld] = useState(false);
+    const [holdStartTime, setHoldStartTime] = useState(null);
+    const [playVideo, setPlayVideo] = useState(false);
+
     const playerRef = useRef(null);
     let timerRef = useRef(null);
 
@@ -59,9 +62,9 @@ const Dashboard = ({ user }) => {
         }
     };
 
-    // const onReady = (e) => {
-    //     setPlayer(e.target);
-    // };
+    const onReady = (e) => {
+        setPlayer(e.target);
+    };
 
     const handleEnd = () => {
         handleWatchVideo();
@@ -70,64 +73,44 @@ const Dashboard = ({ user }) => {
         setCurrentVideo(data.youtube[nextIndex]);
     };
 
-    const handlePlayPause = () => {
-        setPlaying(!playing);
+    const onMouseDownHandler = () => {
+        setIsButtonHeld(true);
+        setHoldStartTime(Date.now());
+        setPlayVideo(true);
     };
 
-    const handleMouseDown = () => {
-        if (player) {
-            setPlaying(true);
-            setHoldStartTime(Date.now());
-            player.playVideo();
-        }
-    };
-
-    const handleMouseUp = () => {
-        if (player) {
-            setPlaying(false);
-            player.pauseVideo();
-        }
-    };
-
-    const handleKeyDown = (event) => {
-        if (event.key === 'ArrowRight') {
-            setPlaying(true);
-        }
-    };
-
-    const handleKeyUp = (event) => {
-        if (event.key === 'ArrowRight') {
-            setPlaying(false);
-        }
+    const onMouseUpHandler = () => {
+        setIsButtonHeld(false);
+        setPlayVideo(false);
     };
 
     useEffect(() => {
+        // let timer;
         console.log('use is in effect');
-        if (playing && player && data && data.youtube && data.youtube.length > 0) {
+        if (isButtonHeld && playVideo && player) {
             const videoDuration = player.getDuration() * 1000;
             timerRef.current = setTimeout(() => {
-                if (playing) {
-                    const currentIndex = data.youtube.findIndex((video) => video._id === currentVideo._id);
-                    const nextIndex = (currentIndex + 1) % data.youtube.length;
-                    setCurrentVideo(nextIndex);
-                    alert(`you watched ${nextIndex} out of ${data.youtube.length} ads`);
+                if (isButtonHeld) {
+
+                    alert('You have watched the whole video!');
                 }
             }, videoDuration);
         }
         return () => clearTimeout(timerRef.current);
-    }, [playing, player, currentVideo, data, timerRef]);
+    }, [isButtonHeld, player, currentVideo, playVideo, timerRef]);
 
     useEffect(() => {
         // if the button is released before the end of the video clear the timeout
         //console.log('use was stopped')
-        if (playing && holdStartTime && player) {
+        if (!isButtonHeld && !playVideo && holdStartTime && player) {
             const holdDuration = Date.now() - holdStartTime;
             const videoDuration = player.getDuration() * 1000;
             if (holdDuration < videoDuration){
                 clearTimeout(timerRef.current);
             }
         }
-    }, [playing, holdStartTime, player, timerRef]);
+    }, [isButtonHeld, holdStartTime, player, playVideo, timerRef]);
+
 
     if (queryLoading || mutationLoading) {
         return 'Loading...';
@@ -138,11 +121,6 @@ const Dashboard = ({ user }) => {
 
     return (
         <div
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onKeyDown={handleKeyDown}
-            onKeyUp={handleKeyUp}
-            tabIndex={0}
             className="dashboard"
         >
             {currentVideo && (
@@ -151,12 +129,13 @@ const Dashboard = ({ user }) => {
                     <ReactPlayer
                         ref={playerRef}
                         url={currentVideo.url}
-                        playing={playing}
+                        onReady={onReady}
                         onEnded={handleEnd}
                     />
-                    <button className="white-button" onClick={handlePlayPause}>
-                        {playing ? 'Pause' : 'Play'}
-                    </button>
+                    <div className="white-button">
+                        <button tabIndex={0} onMouseDown={onMouseDownHandler}
+                            onMouseUp={onMouseUpHandler}> Press to watch </button>
+                    </div>
                     <button className="white-button" onClick={handleEnd}>Next</button>
                 </>
             )}
