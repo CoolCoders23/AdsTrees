@@ -9,6 +9,7 @@ import ReactPlayer from 'react-player';
 import { QUERY_YOUTUBE } from '../utils/queries';
 import { ADD_WATCHED_AD } from '../utils/mutations';
 import moment from 'moment';
+import './Dashboard.css';
 
 const Dashboard = ({ user }) => {
     const { loading: queryLoading, error: queryError, data } = useQuery(QUERY_YOUTUBE);
@@ -84,6 +85,7 @@ const Dashboard = ({ user }) => {
             onKeyDown={handleKeyDown}
             onKeyUp={handleKeyUp}
             tabIndex={0}
+            className="dashboard"
         >
             {currentVideo && (
                 <>
@@ -94,10 +96,10 @@ const Dashboard = ({ user }) => {
                         playing={playing}
                         onEnded={handleEnd}
                     />
-                    <button onClick={handlePlayPause}>
+                    <button className="white-button" onClick={handlePlayPause}>
                         {playing ? 'Pause' : 'Play'}
                     </button>
-                    <button onClick={handleEnd}>Next</button>
+                    <button className="white-button" onClick={handleEnd}>Next</button>
                 </>
             )}
             {mutationData && mutationData.addWatchedAd && (
