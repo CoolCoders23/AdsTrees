@@ -19,14 +19,9 @@ const Dashboard = ({ user }) => {
     console.log(data);
     const [addWatchedAd, { loading: mutationLoading }] = useMutation(ADD_WATCHED_AD);
     const [currentVideo, setCurrentVideo] = useState(null);
-    // const [videos, setVideos] = useState([]);
-    const [player, setPlayer] = useState(null);
     const [isButtonHeld, setIsButtonHeld] = useState(false);
-    const [holdStartTime, setHoldStartTime] = useState(null);
-    const [playVideo, setPlayVideo] = useState(false);
 
     const playerRef = useRef(null);
-    let timerRef = useRef(null);
 
     const profile = Auth.getProfile();
     const username = profile?.data.username;
@@ -62,9 +57,6 @@ const Dashboard = ({ user }) => {
         }
     };
 
-    const onReady = (e) => {
-        setPlayer(e.target);
-    };
 
     const handleEnd = () => {
         handleWatchVideo();
@@ -75,41 +67,11 @@ const Dashboard = ({ user }) => {
 
     const onMouseDownHandler = () => {
         setIsButtonHeld(true);
-        setHoldStartTime(Date.now());
-        setPlayVideo(true);
     };
 
     const onMouseUpHandler = () => {
         setIsButtonHeld(false);
-        setPlayVideo(false);
     };
-
-    useEffect(() => {
-        // let timer;
-        console.log('use is in effect');
-        if (isButtonHeld && playVideo && player) {
-            const videoDuration = player.getDuration() * 1000;
-            timerRef.current = setTimeout(() => {
-                if (isButtonHeld) {
-
-                    alert('You have watched the whole video!');
-                }
-            }, videoDuration);
-        }
-        return () => clearTimeout(timerRef.current);
-    }, [isButtonHeld, player, currentVideo, playVideo, timerRef]);
-
-    useEffect(() => {
-        // if the button is released before the end of the video clear the timeout
-        //console.log('use was stopped')
-        if (!isButtonHeld && !playVideo && holdStartTime && player) {
-            const holdDuration = Date.now() - holdStartTime;
-            const videoDuration = player.getDuration() * 1000;
-            if (holdDuration < videoDuration){
-                clearTimeout(timerRef.current);
-            }
-        }
-    }, [isButtonHeld, holdStartTime, player, playVideo, timerRef]);
 
 
     if (queryLoading || mutationLoading) {
@@ -129,7 +91,7 @@ const Dashboard = ({ user }) => {
                     <ReactPlayer
                         ref={playerRef}
                         url={currentVideo.url}
-                        onReady={onReady}
+                        playing={isButtonHeld}
                         onEnded={handleEnd}
                     />
                     <div className="white-button">
@@ -143,10 +105,14 @@ const Dashboard = ({ user }) => {
             {userData && userData.user && (
                 <div>
                     <h3>Your Statistics</h3>
-                    <p>Total Watched: {userData.user.totalWatched}</p>
-                    <p>Total Trees Planted: {userData.user.totalTreesPlanted}</p>
-                    <p>Watched Today: {userData.user.watchedToday}</p>
-                    {/* Add more statistics */}
+                    <p>Total Watched: {userData.user.totalWatched} Seconds</p>
+                    <p>Total Trees Planted: {userData.user.totalTreesPlanted}Seconds</p>
+                    <p>Watched Today: {userData.user.watchedToday} Seconds</p>
+                    <p>Watched This Week: {userData.user.watchedInWeek} Seconds</p>
+                    <p>Watched This Month: {userData.user.watchedInMonth} Seconds</p>
+                    <p>Trees Planted This Week: {userData.user.treesPlantedInWeek} Seconds</p>
+                    <p>Trees Planted This year: {userData.user.treesPlantedInYear} Seconds</p>
+                    <p>Best Week: {userData.user.bestWeek} Seconds</p>
                 </div>
             )}
 
