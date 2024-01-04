@@ -11,10 +11,8 @@ import { ADD_WATCHED_AD } from '../utils/mutations';
 import moment from 'moment';
 
 const Dashboard = ({ user }) => {
-    const { loading, error, data } = useQuery(QUERY_YOUTUBE);
-    const [addWatchedAd, { data: mutationData }] = useMutation(ADD_WATCHED_AD);
-    console.log(mutationData);
-    console.log(addWatchedAd);
+    const { loading: queryLoading, error: queryError, data } = useQuery(QUERY_YOUTUBE);
+    const [addWatchedAd, { loading: mutationLoading, data: mutationData }] = useMutation(ADD_WATCHED_AD);
     const [currentVideo, setCurrentVideo] = useState(null);
     const [playing, setPlaying] = useState(false);
     const playerRef = useRef(null);
@@ -72,11 +70,11 @@ const Dashboard = ({ user }) => {
         }
     };
 
-    if (loading) {
+    if (queryLoading || mutationLoading) {
         return 'Loading...';
     }
-    if (error) {
-        return `Error! ${error.message}`;
+    if (queryError) {
+        return `Error! ${queryError.message}`;
     }
 
     return (
