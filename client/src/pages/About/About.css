@@ -1,0 +1,531 @@
+.about,
+.about * {
+  box-sizing: border-box;
+}
+.about {
+  background: var(--white-pure, #081c15);
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.about .about-body {
+  padding: 48px 0px 48px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .about-sub-body {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .mission-text-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .mission-title-frame {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .trees {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  overflow: visible;
+}
+.about .mission-title {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: var(
+    --component-heading-large-xl-font-family,
+    "Inter-Bold",
+    sans-serif
+  );
+  font-size: var(--component-heading-large-xl-font-size, 36px);
+  line-height: var(--component-heading-large-xl-line-height, 120%);
+  font-weight: var(--component-heading-large-xl-font-weight, 700);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.about .mission-text-frame2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .mission-text {
+  color: var(--green-dark, #e8f5f1);
+  text-align: center;
+  font-family: var(--body-font-font-family, "Poppins-Regular", sans-serif);
+  font-size: var(--body-font-font-size, 18px);
+  font-weight: var(--body-font-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about .trees2 {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  overflow: visible;
+}
+.about .mission-title-frame2 {
+  padding: 0px 0px 64px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .trees3 {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  overflow: visible;
+}
+.about .team-frame {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .team-member-card-ea {
+  padding: 0px 0px 48px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 272px;
+  position: relative;
+}
+.about .background {
+  flex-shrink: 0;
+  width: 272px;
+  height: 299.73px;
+  position: absolute;
+  left: 0px;
+  top: -40px;
+  overflow: visible;
+}
+.about .ehsan-1 {
+  flex-shrink: 0;
+  width: 272px;
+  height: 300px;
+  position: relative;
+}
+.about .team-member-data-frame {
+  background: var(--green-medium, #269063);
+  border-radius: 0px 0px 20px 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .team-member-name-title-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .name {
+  color: var(--constant-white-pure, #ffffff);
+  text-align: left;
+  font-family: var(
+    --text-xl-line-height-7-font-normal-font-family,
+    "Inter-Regular",
+    sans-serif
+  );
+  font-size: var(--text-xl-line-height-7-font-normal-font-size, 20px);
+  line-height: var(--text-xl-line-height-7-font-normal-line-height, 28px);
+  font-weight: var(--text-xl-line-height-7-font-normal-font-weight, 400);
+  position: relative;
+}
+.about .title {
+  color: var(--constant-white-pure, #ffffff);
+  text-align: left;
+  font-family: var(
+    --text-sm-line-height-5-font-normal-font-family,
+    "Inter-Regular",
+    sans-serif
+  );
+  font-size: var(--text-sm-line-height-5-font-normal-font-size, 14px);
+  line-height: var(--text-sm-line-height-5-font-normal-line-height, 20px);
+  font-weight: var(--text-sm-line-height-5-font-normal-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.about .team-member-bio-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 128px;
+  position: relative;
+}
+.about .team-member-bio {
+  color: var(--constant-white-pure, #ffffff);
+  text-align: left;
+  font-family: var(
+    --text-xs-line-height-4-font-normal-font-family,
+    "Inter-Regular",
+    sans-serif
+  );
+  font-size: var(--text-xs-line-height-4-font-normal-font-size, 12px);
+  line-height: var(--text-xs-line-height-4-font-normal-line-height, 16px);
+  font-weight: var(--text-xs-line-height-4-font-normal-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.about .team-member-links-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .linked-in-link {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .linked-in-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .linked-in-wording {
+  color: var(--constant-white-pure, #ffffff);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+}
+.about .git-hub-link {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .git-hub-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .git-hub-wording {
+  color: var(--constant-white-pure, #ffffff);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+}
+.about .portfolio-link {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .portfolio-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .portfolio-wording {
+  color: var(--constant-white-pure, #ffffff);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+}
+.about .email-link {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.about .email-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .email-wording {
+  color: var(--constant-white-pure, #ffffff);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  position: relative;
+}
+.about .team-member-card-mm {
+  padding: 0px 0px 48px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 272px;
+  position: relative;
+}
+.about .background2 {
+  flex-shrink: 0;
+  width: 272px;
+  height: 299.73px;
+  position: absolute;
+  left: 0px;
+  top: -40px;
+  overflow: visible;
+}
+.about .marko-1 {
+  flex-shrink: 0;
+  width: 272px;
+  height: 300px;
+  position: relative;
+}
+.about .team-member-bio2 {
+  color: var(--constant-white-pure, #ffffff);
+  text-align: left;
+  font-family: var(
+    --text-xs-line-height-4-font-normal-font-family,
+    "Inter-Regular",
+    sans-serif
+  );
+  font-size: var(--text-xs-line-height-4-font-normal-font-size, 12px);
+  line-height: var(--text-xs-line-height-4-font-normal-line-height, 16px);
+  font-weight: var(--text-xs-line-height-4-font-normal-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  height: 112px;
+}
+.about .linked-in-icon2 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .git-hub-icon2 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .portfolio-icon2 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .email-icon2 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .team-member-card-jide {
+  padding: 0px 0px 48px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 272px;
+  position: relative;
+}
+.about .background3 {
+  flex-shrink: 0;
+  width: 272px;
+  height: 299.73px;
+  position: absolute;
+  left: 0px;
+  top: -40px;
+  overflow: visible;
+}
+.about .jide-1 {
+  flex-shrink: 0;
+  width: 272px;
+  height: 300px;
+  position: relative;
+}
+.about .linked-in-icon3 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .git-hub-icon3 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .portfolio-icon3 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .email-icon3 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .team-member-card-yega {
+  padding: 0px 0px 48px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 272px;
+  position: relative;
+}
+.about .background4 {
+  flex-shrink: 0;
+  width: 272px;
+  height: 299.73px;
+  position: absolute;
+  left: 0px;
+  top: -40px;
+  overflow: visible;
+}
+.about .yega-1 {
+  flex-shrink: 0;
+  width: 272px;
+  height: 300px;
+  position: relative;
+}
+.about .linked-in-icon4 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .git-hub-icon4 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .portfolio-icon4 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}
+.about .email-icon4 {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: visible;
+}

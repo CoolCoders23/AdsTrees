@@ -81,13 +81,13 @@
   flex-shrink: 0 !important;
 }
 
+.header .logo_link  {
+  text-decoration: none !important;
+}
 .header .cart-icon-active-instance {
   flex-shrink: 0 !important;
 }
 
-.header .logo_link {
-  text-decoration: none;
-}
 .header .dashboard_link {
   text-decoration: none;
 }
