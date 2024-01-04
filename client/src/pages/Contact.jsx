@@ -86,7 +86,7 @@ const Contact = ({ className = '' }) => {
                 console.log(error.text);
                 setMessage('Failed to send the message, please try again.');
             });
-    };    
+    };
     // ============================================================
 
     // Rendering the contact form

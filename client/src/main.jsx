@@ -33,6 +33,9 @@ import ErrorPage from './pages/ErrorPage';
 import Contact from './pages/Contact';
 import Donations from './pages/Donations';
 import Success from './pages/Success';
+import { About } from './pages/About/About';
+
+
 import StateProvider from './utils/payment-logic/StateProvider';
 // ============================================================
 
@@ -143,6 +146,13 @@ const Main = () => {
                     path: '/success',
                     element: <Success />
                 },
+
+                {
+                    path: '/about',
+                    element: <About />
+                },
+
+
 
             ]
         },

@@ -30,7 +30,7 @@ const Signup = ({ className = '' }) => {
 
         // Check if passwords match
         if (formState.password !== formState.confirmPassword) {
-            setConfirmPasswordError("Passwords do not match.");
+            setConfirmPasswordError('Passwords do not match.');
             return;
         }
 

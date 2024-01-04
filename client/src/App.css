@@ -361,13 +361,14 @@ template {
 .outer-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .page {
   flex: 1;
   background: var(--white-pure, #081c15);
   padding-top: 48px;
+  overflow: auto;
 
 }
 
