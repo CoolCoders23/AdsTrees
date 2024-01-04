@@ -95,3 +95,18 @@ export const ADD_PURCHASE = gql`
   }
 `;
 // ================================================================
+
+// Add Watched Ad
+// ================================================================
+export const ADD_WATCHED_AD = gql`
+  mutation addWatchedAd($ad: AdInput!) {
+    addWatchedAd(ad: $ad) {
+      _id
+      title
+      watched
+      duration
+      date
+    }
+  }
+`;
+// ================================================================
