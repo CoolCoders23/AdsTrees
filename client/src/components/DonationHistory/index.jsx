@@ -33,8 +33,8 @@ import {
 // =========================================================
 const DonationHistory = () => {
 
-    const bg = useColorModeValue('gray.200', 'gray.700');
-    const color = useColorModeValue('black', 'white');
+    const bg = '#081c15';
+    const color = '#e8f5f1';
 
     const client = useApolloClient();
     const [state, dispatch] = useStateContext();
@@ -115,7 +115,7 @@ const DonationHistory = () => {
             borderWidth="1px"
             borderRadius="md"
             fontFamily="Roboto, system-ui, sans-serif"
-            fontWeight={'hairline'}
+            fontWeight={'light'}
             color="#f5a61d"
         >
             <Heading
