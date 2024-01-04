@@ -8,7 +8,7 @@ const { ApolloServer } = require('@apollo/server');
 const { ApolloServerPluginCacheControl } = require('@apollo/server/plugin/cacheControl');
 const responseCachePlugin = require('@apollo/server-plugin-response-cache').default;
 const { expressMiddleware } = require('@apollo/server/express4');
-const cors = require('cors'); // CORS middleware
+// const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 // ================================================================
@@ -30,33 +30,32 @@ const app = express();
 
 // Configuring CORS options
 // ================================================================
-const corsOptions = {
-    origin: function (origin, callback) {
-        // Define allowed origins for production
-        const whitelist = [
-            'http://localhost:3000',
-            'http://localhost:3001',
-            'https://checkout.stripe.com/c/pay',
-            'https://github.com/CoolCoders23/AdsTrees',
-            'https://fonts.googleapis.com',
-            'https://fonts.gstatic.com',
-            'https://www.youtube.com',
-            'https://adstrees.onrender.com'
+// const corsOptions = {
+//     origin: function (origin, callback) {
+//         const whitelist = [
+//             'http://localhost:3000',
+//             'http://localhost:3001',
+//             'https://checkout.stripe.com/c/pay',
+//             'https://github.com/CoolCoders23/AdsTrees',
+//             'https://fonts.googleapis.com',
+//             'https://fonts.gstatic.com',
+//             'https://www.youtube.com',
+//             'https://adstrees.onrender.com'
 
-        ];
-        if (!origin || whitelist.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true,
-};
+//         ];
+//         if (!origin || whitelist.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     },
+//     credentials: true,
+// };
 // ================================================================
 
 // Apply CORS middleware
 // ================================================================
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 // ================================================================
 
 // Create an instance of ApolloServer
@@ -88,7 +87,7 @@ const startApolloServer = async () => {
         // Apply Apollo Middleware using expressMiddleware
         app.use('/graphql', expressMiddleware(server, {
             context: authMiddleware, // Add context
-            cors: corsOptions, // Apply CORS options
+            // cors: corsOptions,
         }));
 
         // Serve static files in production mode
