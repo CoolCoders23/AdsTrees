@@ -123,13 +123,11 @@ export default defineConfig({
         }),
     ],
     server: {
-        port: 3000,
-        open: true,
         proxy: {
             '/graphql': {
-                target: 'http://localhost:3001',
+                target: 'mongodb+srv://coolcoders2024:coolcoders2024@cluster0.y6djdn0.mongodb.net/AdsTrees?retryWrites=true&w=majority',
                 changeOrigin: true,
-                secure: false,
+                secure: true,
             },
         },
     },
