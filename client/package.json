@@ -11,15 +11,22 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",
+    "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
+    "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "axios": "^1.6.2",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.2.2",
     "framer-motion": "^10.16.16",
     "graphql": "^16.8.1",
     "jwt-decode": "^4.0.0",
+    "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "react-player": "^2.14.1",
+    "react-refresh": "^0.14.0",
     "react-router-dom": "^6.20.1"
   },
   "devDependencies": {
@@ -30,6 +37,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^0.17.4"
   }
 }

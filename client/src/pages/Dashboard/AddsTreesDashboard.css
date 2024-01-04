@@ -1,0 +1,208 @@
+.adds-trees-dashboard,
+.adds-trees-dashboard * {
+  box-sizing: border-box;
+}
+.adds-trees-dashboard {
+  background: var(--white-pure, #081c15);
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.adds-trees-dashboard .dashboard-main-frame {
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow-y: auto;
+}
+.adds-trees-dashboard .dashboard-body {
+  padding: 48px 0px 64px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.adds-trees-dashboard .client-video-interaction-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  min-width: 224px;
+  max-width: 1600px;
+  position: relative;
+}
+.adds-trees-dashboard .client-video-interaction-subframe {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.adds-trees-dashboard .youtube-iframe-frame {
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 300px;
+  position: relative;
+}
+.adds-trees-dashboard .client-controllers-frame {
+  background: var(--white-pure, #081c15);
+  padding: 0px 0px 16px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  backdrop-filter: blur(1px);
+}
+.adds-trees-dashboard .video-information-frame {
+  display: flex;
+  flex-direction: row;
+  gap: 1265px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.adds-trees-dashboard .video-information-subframe {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.adds-trees-dashboard .video-title {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 100%;
+  font-weight: 400;
+  position: relative;
+}
+.adds-trees-dashboard .client-controllers {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.adds-trees-dashboard .play-button {
+  background: var(--cards-main-color, #f4fbf9);
+  border-radius: 6px;
+  padding: 0px 24px 0px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 59px;
+  position: relative;
+  box-shadow: var(
+    --drop-shadow-buttons-at-box-shadow,
+    0px 4px 61px 0px rgba(45, 106, 79, 0.4)
+  );
+}
+.adds-trees-dashboard .children {
+  color: var(--cards-white, #081c15);
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.adds-trees-dashboard .next-button {
+  background: var(--cards-main-color, #f4fbf9);
+  border-radius: 6px;
+  padding: 0px 24px 0px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 59px;
+  position: relative;
+  box-shadow: var(
+    --drop-shadow-buttons-at-box-shadow,
+    0px 4px 61px 0px rgba(45, 106, 79, 0.4)
+  );
+}
+.adds-trees-dashboard .right-icon-instance {
+  flex-shrink: 0 !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+.adds-trees-dashboard .reward-frame {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.adds-trees-dashboard .trees {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.adds-trees-dashboard .reward-label {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 15.56px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  flex: 1;
+}
+.adds-trees-dashboard .progress-instance {
+  background: var(--grey-light, rgba(168, 177, 174, 0.1)) !important;
+  align-self: stretch !important;
+  flex-shrink: 0 !important;
+  width: unset !important;
+}
+.adds-trees-dashboard .stats-component-instance {
+  flex: 1 !important;
+  align-self: unset !important;
+  flex-shrink: unset !important;
+}

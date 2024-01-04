@@ -1,0 +1,94 @@
+.footer,
+.footer * {
+  box-sizing: border-box;
+}
+.footer {
+  background: var(--white-pure, #081c15);
+  padding: 8px 16px 8px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.footer .footer-content {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex: 1;
+  position: relative;
+}
+.footer .copyright-frame {
+  padding: 4px 0px 4px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.footer .copyright {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
+  font-size: var(--link-small-font-font-size, 14px);
+  font-weight: var(--link-small-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.footer .footer-links {
+  padding: 4px 0px 4px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  text-decoration: none;
+}
+.footer .privacy-link-label {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
+  font-size: var(--link-small-font-font-size, 14px);
+  font-weight: var(--link-small-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+.footer .terms-link-label {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
+  font-size: var(--link-small-font-font-size, 14px);
+  font-weight: var(--link-small-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+.footer .donate-link-label {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
+  font-size: var(--link-small-font-font-size, 14px);
+  font-weight: var(--link-small-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+}

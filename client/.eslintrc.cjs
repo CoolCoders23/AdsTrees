@@ -26,6 +26,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    "react/prop-types": "off",
     "no-undef-init": "error",
     "no-duplicate-case": "error",
     "no-irregular-whitespace": "error",

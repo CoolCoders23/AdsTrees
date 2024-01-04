@@ -5,3 +5,108 @@
 // ================================================================
 import { gql } from '@apollo/client';
 // ================================================================
+
+// Login the User
+// ================================================================
+export const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password)
+    {
+      token
+      user {
+        _id
+        username
+        profilePicture{
+          url
+          altText
+        }
+      }
+    }
+  }
+`;
+// ================================================================
+
+// Add a new User
+// ================================================================
+export const ADD_USER = gql`
+  mutation addUser($user: UserInput!) {
+    addUser(user: $user) {
+      token
+      user {
+        _id
+        username
+        email
+      }
+    }
+  }
+`;
+// ================================================================
+
+// Remove a User
+// ================================================================
+export const REMOVE_USER = gql`
+  mutation removeUser($userId: ID!) {
+    removeUser(userId: $userId) {
+      user{
+        _id
+        username
+      }
+    }
+  }
+`;
+// ================================================================
+
+// Update a User
+// ================================================================
+export const UPDATE_USER = gql`
+  mutation updateUser($user: UpdateUserInput!) {
+    updateUser(user: $user) {
+      token
+      user {
+        _id
+        username
+        email
+        profilePicture {
+          url
+          altText
+        }
+      }
+    }
+  }
+`;
+// ================================================================
+
+// Add a new Purchase
+// ================================================================
+export const ADD_PURCHASE = gql`
+  mutation addPurchase($donations: [ID]!) {
+    addPurchase(donations: $donations) {
+      _id
+      purchaseDate
+      donations {
+        _id
+        donationType
+        description
+        image
+        donationAmount
+        price
+      }
+    }
+  }
+`;
+// ================================================================
+
+// Add Watched Ad
+// ================================================================
+export const ADD_WATCHED_AD = gql`
+  mutation addWatchedAd($ad: AdInput!) {
+    addWatchedAd(ad: $ad) {
+      _id
+      title
+      watched
+      duration
+      date
+    }
+  }
+`;
+// ================================================================

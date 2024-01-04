@@ -4,13 +4,13 @@
 // Import all models
 // ==================================================================
 const User = require('./User');
+const Donation = require('./Donation');
+const Purchase = require('./Purchase');
 const Ad = require('./Ad');
+const Youtube = require('./Youtube');
 // ==================================================================
 
 // Export all models
 // ==================================================================
-module.exports = {
-    User,
-    Ad,
-};
+module.exports = { User, Donation, Purchase, Ad, Youtube };
 // ==================================================================

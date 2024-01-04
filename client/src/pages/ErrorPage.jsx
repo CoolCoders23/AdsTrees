@@ -1,6 +1,5 @@
 // Desc: Error page for when a route fails to load
 // ============================================================
-// TODO: Add more style
 
 // Importing libraries and packages
 // ============================================================
