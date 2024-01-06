@@ -30,7 +30,7 @@ export const Footer = ({ className }) => {
                     <Link
                         className="donate-link-label"
                         to='/contact'>
-                        Contact US
+                        Contact
                     </Link>
 
                     <a
@@ -40,6 +40,12 @@ export const Footer = ({ className }) => {
                         rel='noopener noreferrer'>
                         GitHub
                     </a>
+
+                    <Link
+                        className="donate-link-label"
+                        to='/about'>
+                        About
+                    </Link>
 
                 </div>
             </div>

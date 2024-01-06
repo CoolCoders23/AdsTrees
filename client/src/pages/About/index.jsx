@@ -1,9 +1,9 @@
 /* Code generated with AutoHTML Plugin for Figma */
 import './About.css';
-import EhsanPicture from '../../images/Ehsan.png'; // Import the image for Ehsan
-import MarkoPicture from '../../images/Marko.png'; // Import the image for Marko
-import JidPicture from '../../images/Jide.png'; // Import the image for Jid
-import YeaPicture from '../../images/Yega.png'; // Import the image for Yega
+import EhsanPicture from '../../assets/image/Ehsan.png'; // Import the image for Ehsan
+import MarkoPicture from '../../assets/image/Marko.png'; // Import the image for Marko
+import JidPicture from '../../assets/image/Jide.png'; // Import the image for Jid
+import YeaPicture from '../../assets/image/Yega.png'; // Import the image for Yega
 import { Link } from 'react-router-dom';
 
 export const About = ({ className, ...props }) => {
@@ -68,10 +68,10 @@ export const About = ({ className, ...props }) => {
                             </div>
                             <div className="mission-text-frame2">
                                 <div className="mission-text">
-                  Inspire Change Through Engagement.
+                                    Inspire Change Through Engagement.
                                     <br />
-                  Empower individuals and businesses to contribute to global
-                  reforestation efforts.{' '}
+                                    Empower individuals and businesses to contribute to global
+                                    reforestation efforts.{' '}
                                 </div>
                             </div>
                         </div>
@@ -131,14 +131,14 @@ export const About = ({ className, ...props }) => {
                             </div>
                             <div className="mission-text-frame2">
                                 <div className="mission-text">
-                  AdsTrees combines digital advertising with environmental
-                  sustainability.
+                                    AdsTrees combines digital advertising with environmental
+                                    sustainability.
                                     <br />
-                  Viewers can watch ads and contribute to tree planting. Each ad
-                  view leads to a tangible environmental impact. <br />
-                  Advertisers get premium ad space and showcase their commitment
-                  to sustainability, with direct impact on environmental
-                  initiatives.{' '}
+                                    Viewers can watch ads and contribute to tree planting. Each ad
+                                    view leads to a tangible environmental impact. <br />
+                                    Advertisers get premium ad space and showcase their commitment
+                                    to sustainability, with direct impact on environmental
+                                    initiatives.{' '}
                                 </div>
                             </div>
                         </div>
@@ -220,11 +220,11 @@ export const About = ({ className, ...props }) => {
                                         </div>
                                         <div className="team-member-bio-frame">
                                             <div className="team-member-bio">
-                        Transitioning from a Mechanical Engineer to an aspiring
-                        Full-Stack Developer, he is currently navigating through
-                        the software development realm with a fusion of
-                        strategic, management, and analytic skills, rooted in a
-                        robust technical background.{' '}
+                                                Transitioning from a Mechanical Engineer to an aspiring
+                                                Full-Stack Developer, he is currently navigating through
+                                                the software development realm with a fusion of
+                                                strategic, management, and analytic skills, rooted in a
+                                                robust technical background.{' '}
                                             </div>
                                         </div>
 
@@ -451,10 +451,10 @@ export const About = ({ className, ...props }) => {
                                         </div>
                                         <div className="team-member-bio-frame">
                                             <div className="team-member-bio2">
-                        A dedicated product designer driven by the desire to
-                        craft experiences tailored to meet the needs of
-                        individuals while achieving ambitious business
-                        objectives.{' '}
+                                                A dedicated product designer driven by the desire to
+                                                craft experiences tailored to meet the needs of
+                                                individuals while achieving ambitious business
+                                                objectives.{' '}
                                             </div>
                                         </div>
                                         <div className="team-member-links-frame">
@@ -563,11 +563,11 @@ export const About = ({ className, ...props }) => {
                                         </div>
                                         <div className="team-member-bio-frame">
                                             <div className="team-member-bio2">
-                        a software engineer with a strong background in
-                        generating data-driven business insights and designing
-                        intuitive user experiences. He aspires to leverage his
-                        creativity and skillset to build scalable, world
-                        changing solutions.{' '}
+                                                a software engineer with a strong background in
+                                                generating data-driven business insights and designing
+                                                intuitive user experiences. He aspires to leverage his
+                                                creativity and skillset to build scalable, world
+                                                changing solutions.{' '}
                                             </div>
                                         </div>
                                         <div className="team-member-links-frame">
