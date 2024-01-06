@@ -10,7 +10,7 @@ import { ProgressSizeXsColorSchemeGreen } from './ProgressSizeXsColorSchemeGreen
 import { StatsComponent } from './StatsComponent/StatsComponent.jsx';
 import React, { useState, useEffect, useRef } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player/lazy';
 import { QUERY_YOUTUBE } from '../../utils/queries.js';
 import { ADD_WATCHED_AD } from '../../utils/mutations.js';
 import moment from 'moment';

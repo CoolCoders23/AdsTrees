@@ -61,6 +61,12 @@ const Main = () => {
     useEffect(() => {
 
         window.addEventListener('beforeinstallprompt', (e) => {
+
+            // Check if the prompt has been shown before
+            if (localStorage.getItem('installPromptShown')) {
+                return;
+            }
+
             // Prevent the mini-infobar from appearing on mobile
             e.preventDefault();
             // Stash the event so it can be triggered later.
@@ -93,6 +99,8 @@ const Main = () => {
             } else {
                 console.log('User dismissed the install prompt');
             }
+            // Set the flag in localStorage
+            localStorage.setItem('installPromptShown', 'true');
             setDeferredPrompt(null);
         });
     };
