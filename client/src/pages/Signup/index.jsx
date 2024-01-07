@@ -48,7 +48,8 @@ const Signup = ({ className = '' }) => {
             const token = mutationResponse.data.addUser.token;
             Auth.login(token); // Logging in the user on successful signup.
         } catch (e) {
-            setErrorMessage(e.message); // Setting error message on failure.
+            console.error(e);
+            setErrorMessage('Something went wrong. Please make sure you entered all the required information properly.');
         }
     };
 

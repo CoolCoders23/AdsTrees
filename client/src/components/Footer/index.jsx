@@ -33,6 +33,12 @@ export const Footer = ({ className }) => {
                         Contact
                     </Link>
 
+                    <Link
+                        className="donate-link-label"
+                        to='/about'>
+                        About
+                    </Link>
+
                     <a
                         className="donate-link-label"
                         href='https://github.com/CoolCoders23/AdsTrees'
@@ -40,12 +46,6 @@ export const Footer = ({ className }) => {
                         rel='noopener noreferrer'>
                         GitHub
                     </a>
-
-                    <Link
-                        className="donate-link-label"
-                        to='/about'>
-                        About
-                    </Link>
 
                 </div>
             </div>
