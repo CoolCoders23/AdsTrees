@@ -7,7 +7,7 @@ import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-import './AdsTreesSignUp/AdsTreesSignUp.css'; // Importing custom CSS for styling.
+import './AdsTreesSignUp.css'; // Importing custom CSS for styling.
 import { Input } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
 
 // Signup component definition.
@@ -66,7 +66,7 @@ const Signup = ({ className = '' }) => {
                         <div className="hook-text">
                             <div className="plant-trees-for-free">Plant trees for free </div>
                             <div className="make-the-planet-better">
-                Make the planet better{' '}
+                                Make the planet better{' '}
                             </div>
                         </div>
                     </div>

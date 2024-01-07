@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-import './AdsTreesSignIn/AdsTreesSignIn.css'; // Importing custom CSS for styling.
+import './AdsTreesSignIn.css'; // Importing custom CSS for styling.
 import { Link } from 'react-router-dom'; // Importing Link for routing.
 import { Input } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
 // ============================================================
@@ -31,7 +31,7 @@ const Login = ({ className = '' }) => {
             const token = mutationResponse.data.login.token;
             Auth.login(token); // Logging in the user on successful authentication.
         } catch (e) {
-            console.log(e); 
+            console.log(e);
         }
     };
     // ============================================================
@@ -104,6 +104,9 @@ const Login = ({ className = '' }) => {
         </div>
     );
 };
+// ============================================================
 
 // Exporting the Login component.
+// ============================================================
 export default Login;
+// ============================================================
