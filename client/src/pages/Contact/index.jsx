@@ -2,8 +2,8 @@
 // ============================================================
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import Auth from '../utils/auth';
-import { validateEmail } from '../utils/validation';
+import Auth from '../../utils/auth';
+import { validateEmail } from '../../utils/validation';
 import './AdsTreesContactUs.css'; // Importing the CSS
 import { Input } from '@chakra-ui/react';
 import { Textarea } from '@chakra-ui/react';

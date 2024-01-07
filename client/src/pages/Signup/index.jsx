@@ -5,8 +5,8 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { ADD_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { ADD_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 import './AdsTreesSignUp.css'; // Importing custom CSS for styling.
 import { Input } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
 
