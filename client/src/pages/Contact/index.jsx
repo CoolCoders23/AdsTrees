@@ -4,7 +4,7 @@ import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Auth from '../utils/auth';
 import { validateEmail } from '../utils/validation';
-import './AdsTreesContactUs/AdsTreesContactUs.css'; // Importing the CSS
+import './AdsTreesContactUs.css'; // Importing the CSS
 import { Input } from '@chakra-ui/react';
 import { Textarea } from '@chakra-ui/react';
 // ============================================================
@@ -113,7 +113,6 @@ const Contact = ({ className = '' }) => {
                                         />
                                     </div>
                                 </div>
-                                {/* Last Name Input */}
                                 <div className="contact-us-last-name-input">
                                     <div className="field-title-label">Last name</div>
                                     <div className="input-group">
@@ -164,10 +163,13 @@ const Contact = ({ className = '' }) => {
                     </div>
                 </div>
             </div>
-            {message && <p>{message}</p>}
+            {message && <p className="user-message">{message}</p>}
         </div>
     );
 };
+// ============================================================
 
 // Exporting the Contact component
+// ============================================================
 export default Contact;
+// ============================================================
