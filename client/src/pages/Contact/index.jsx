@@ -156,14 +156,14 @@ const Contact = ({ className = '' }) => {
                                     />
                                 </div>
                             </div>
-                            <button type="submit" className="button">=
+                            <button type="submit" className="button">
                                 <div className="children">Send Message</div>
                             </button>
                         </form>
+                        {message && <p className="user-message">{message}</p>}
                     </div>
                 </div>
             </div>
-            {message && <p className="user-message">{message}</p>}
         </div>
     );
 };

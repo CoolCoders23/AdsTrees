@@ -4,8 +4,8 @@ import { ProgressStripe } from '../ProgressStripe/ProgressStripe.jsx';
 
 export const ProgressSizeXsColorSchemeGreen = ({
     hasStripe = true,
-    size = 'xs',
-    colorScheme = 'blue',
+    size,
+    colorScheme,
     className,
     ...props
 }) => {

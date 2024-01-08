@@ -7,15 +7,27 @@ import { BonusCard } from '../BonusCard/BonusCard.jsx';
 import { QUERY_USER } from '../../../utils/queries.js';
 import Auth from '../../../utils/auth';
 import { useQuery } from '@apollo/client';
+import { useEffect } from 'react';
 
-export const StatsComponent = ({ className, ...props }) => {
+export const StatsComponent = ({ className, watchedVideo, setWatchedVideo, ...props }) => {
 
     const profile = Auth.getProfile();
     const username = profile?.data.username;
 
-    const { loading: userLoading, error: userError, data: userData } = useQuery(QUERY_USER, {
+    const { loading: userLoading, error: userError, data: userData, refetch } = useQuery(QUERY_USER, {
         variables: { username: username },
     });
+
+    // Add a useEffect hook that listens for changes to watchedVideo
+    useEffect(() => {
+
+        if (watchedVideo) {
+            refetch();
+            console.log(userData, userLoading, userError);
+            setWatchedVideo(false);
+        }
+
+    }, [watchedVideo, setWatchedVideo, refetch, userData, userLoading, userError]);
 
     if (userLoading) {
         return <p>Loading...</p>;

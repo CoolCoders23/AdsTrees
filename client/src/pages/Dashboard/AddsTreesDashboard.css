@@ -76,6 +76,7 @@
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
+  -webkit-backdrop-filter: blur(1px);
   backdrop-filter: blur(1px);
 }
 .adds-trees-dashboard .video-information-frame {
@@ -144,6 +145,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  cursor: pointer;
 }
 .adds-trees-dashboard .next-button {
   background: var(--cards-main-color, #f4fbf9);
@@ -157,6 +159,7 @@
   flex-shrink: 0;
   height: 59px;
   position: relative;
+  cursor: pointer;
   box-shadow: var(
     --drop-shadow-buttons-at-box-shadow,
     0px 4px 61px 0px rgba(45, 106, 79, 0.4)
@@ -169,7 +172,7 @@
 }
 .adds-trees-dashboard .reward-frame {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 0px;
   align-items: flex-start;
   justify-content: flex-start;
@@ -194,6 +197,15 @@
   position: relative;
   align-self: stretch;
   flex: 1;
+}
+.adds-trees-dashboard .reward-frame-planted {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 1rem;
+}
+.adds-trees-dashboard .reward-frame-planted p {
+  align-self: center;
 }
 .adds-trees-dashboard .progress-instance {
   background: var(--grey-light, rgba(168, 177, 174, 0.1)) !important;
