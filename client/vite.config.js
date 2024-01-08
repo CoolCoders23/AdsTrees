@@ -73,15 +73,13 @@ export default defineConfig({
                 sourcemap: true,
                 // precaching
                 globPatterns: [
-                    '**/*.{js,jsx,css,html,ico,png,jpg,jpeg,svg,gif}', // Common file types
+                    '**/*.{js,jsx,css,html}', // Common file types
                     'index.html',// Precache the entry point
-                    'assets/**' // Precache images in public
                 ],
                 globIgnores: [
                     '**/node_modules/**/*',
                     'sw.js',
                     'workbox-*.js',
-                    'assets/workFlow.md'
                 ],
                 runtimeCaching: [
                     {
@@ -126,9 +124,6 @@ export default defineConfig({
                 secure: false,
             },
         },
-    },
-    build: {
-        chunkSizeWarningLimit: 1000, // Set limit to 1000kB
-    },
+    }
 });
 // ===================================================
