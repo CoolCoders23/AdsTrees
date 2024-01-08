@@ -6,14 +6,14 @@
 const mongoose = require('mongoose');
 // ===================================================
 
-// Import dateFormat module
-// ===================================================
-const dateFormat = require('../utils/dateFormat');
-// ===================================================
-
 // Create Schema class
 // ===================================================
 const { Schema, model } = mongoose;
+// ===================================================
+
+// Import dateFormat module
+// ===================================================
+const dateFormat = require('../utils/dateFormat');
 // ===================================================
 
 // Create Purchase schema
