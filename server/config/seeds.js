@@ -3,14 +3,14 @@
 
 // Import the database connection and models
 // =================================================================
-const db = require('../config/connection');
+const db = require('./connection');
 const { User, Donation, Purchase, Ad, Youtube } = require('../models');
-const userData = require('./userSeeds');
-const donationData = require('./donationSeeds');
-const purchaseData = require('./purchaseSeeds');
-const adData = require('./adSeeds');
-const youtubeData = require('./youtubeSeeds');
-const cleanDB = require('./cleanDB');
+const userData = require('../seeders/userSeeds');
+const donationData = require('../seeders/donationSeeds');
+const purchaseData = require('../seeders/purchaseSeeds');
+const adData = require('../seeders/adSeeds');
+const youtubeData = require('../seeders/youtubeSeeds');
+const cleanDB = require('../seeders/cleanDB');
 // =================================================================
 
 // Error handling
