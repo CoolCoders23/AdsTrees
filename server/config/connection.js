@@ -10,7 +10,7 @@ require('dotenv').config();
 // =================================================
 // Connect to MongoDB
 // =================================================
-mongoose.connect(process.env.MONGODB_URI + '/AdsTreesDB');
+mongoose.connect(process.env.MONGODB_URI);
 // =================================================
 
 // Export connection
