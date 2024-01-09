@@ -8,16 +8,18 @@ AdsTrees is a revolutionary web application that intertwines the power of advert
 
 
 ## Table of Contents
-1. [Description](#description)
-2. [Installation](#installation)
-   - [Cloning the Application and Using Node. js](#cloning-the-application-and-using-nodejs)
-   - [Directly Accessing the Deployed Application](#directly-accessing-the-deployed-application)
-3. [Usage](#usage)
-4. [Credits](#credits)
-5. [License](#license)
-6. [Link to the Deployed Application](#link-to-the-deployed-application)
-7. [Preview of the Application](#preview-of-the-application)
-8. [Contact](#contact)
+- [AdsTrees](#adstrees)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+    - [1. Cloning the Application and Using Node.js](#1-cloning-the-application-and-using-nodejs)
+    - [2. Directly Accessing the Deployed Application](#2-directly-accessing-the-deployed-application)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Link to the Deployed Application](#link-to-the-deployed-application)
+  - [Preview of the Application](#preview-of-the-application)
+  - [Contact](#contact)
 
 ## Installation
 
@@ -53,7 +55,7 @@ To use the application using this method, please follow these steps:
 
 Alternatively, you can access our application directly by clicking the link to the deployed application on Render.
 
-Deployed Application on Render - ADD LINK HERE 
+[Deployed Application on Render](https://adstrees.onrender.com/)
 
 ## Usage
 
