@@ -244,8 +244,8 @@ Enhancing and Optimizing the AdsTrees Platform for Users and Developers
 
 #### 14. Contact Page Message Input Fix
 - **Given** a user wants to send a message,
-- **When I** type in the message box on the contact page,
-- **Then I** should be able to enter text without issues.
+- **When I**check the message box on the contact page,
+- **Then I** should see that the styling is following the original design.
 
 #### 15. Restyling Signup Page Inputs
 - **Given** a user is registering,
@@ -286,5 +286,3 @@ Enhancing and Optimizing the AdsTrees Platform for Users and Developers
 ### Testing and Deployment
 1. Thoroughly test all new features and fixes for functionality and responsiveness.
 2. Deploy updates and monitor the application for any issues post-deployment.
-
-By implementing these enhancements and fixes, the AdsTrees platform will offer a more engaging,
