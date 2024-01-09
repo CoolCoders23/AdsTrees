@@ -269,7 +269,7 @@ export const About = ({ className, ...props }) => {
                                             </Link>
 
 
-                                            <Link className="portfolio-link" to="https://www.ehsanashportfolio.netlify.app/">
+                                            <Link className="portfolio-link" to="https://ehsanashportfolio.netlify.app/">
                                                 <svg
                                                     className="portfolio-icon"
                                                     width="16"
@@ -339,9 +339,9 @@ export const About = ({ className, ...props }) => {
                                         </div>
                                         <div className="team-member-bio-frame">
                                             <div className="team-member-bio2">
-                        A full stack developer who is passionate about web
-                        development and exploring new technologies that unlock
-                        novel processes and functionalities.{' '}
+                                                A full stack developer who is passionate about web
+                                                development and exploring new technologies that unlock
+                                                novel processes and functionalities.{' '}
                                             </div>
                                         </div>
                                         <div className="team-member-links-frame">
@@ -388,7 +388,7 @@ export const About = ({ className, ...props }) => {
 
 
 
-                                            <Link className="portfolio-link" to="https://www.lucent-churros-865ead.netlify.app/">
+                                            <Link className="portfolio-link" to="https://lucent-churros-865ead.netlify.app/">
                                                 <svg
                                                     className="portfolio-icon2"
                                                     width="16"
@@ -500,7 +500,7 @@ export const About = ({ className, ...props }) => {
 
 
 
-                                            <Link className="portfolio-link" to="https://www.uxfol.io/jts2023">
+                                            <Link className="portfolio-link" to="https://jide.onrender.com/">
                                                 <svg
                                                     className="portfolio-icon3"
                                                     width="16"
@@ -610,7 +610,7 @@ export const About = ({ className, ...props }) => {
                                                 <div className="git-hub-wording">GitHub </div>
                                             </Link>
 
-                                            <Link className="portfolio-link" to="https://yega-cho-porQolio.netlify.app/">
+                                            <Link className="portfolio-link" to="https://yega-cho-portfolio.netlify.app/">
                                                 <svg
                                                     className="portfolio-icon4"
                                                     width="16"
