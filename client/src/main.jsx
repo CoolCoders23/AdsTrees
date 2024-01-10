@@ -4,7 +4,7 @@
 
 // Importing libraries
 // ============================================================
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Import PWA registration
@@ -17,24 +17,23 @@ import {
     ModalHeader,
     ModalFooter,
     ModalBody,
-    Button
+    Button,
+    Spinner
 } from '@chakra-ui/react';
 // ============================================================
 
 // Importing components
 // ============================================================
 import App from './App.jsx';
-import { Dashboard } from './pages/Dashboard';
+const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Profile from './pages/Profile';
+const Profile = React.lazy(() => import('./pages/Profile'));
 import ErrorPage from './pages/ErrorPage';
-import Contact from './pages/Contact';
+const Contact = React.lazy(() => import('./pages/Contact'));
 import Donations from './pages/Donations';
-import Success from './pages/Success';
-import { About } from './pages/About';
-
-
+const Success = React.lazy(() => import('./pages/Success'));
+const About = React.lazy(() => import('./pages/About'));
 import StateProvider from './utils/payment-logic/StateProvider';
 // ============================================================
 
@@ -125,10 +124,11 @@ const Main = () => {
 
     return (
         <ChakraProvider>
-
-            <StateProvider>
-                <RouterProvider router={router} />
-            </StateProvider>
+            <Suspense fallback={<Spinner size="xl" />}>
+                <StateProvider>
+                    <RouterProvider router={router} />
+                </StateProvider>
+            </Suspense>
 
             {/* Refresh Modal */}
             <Modal isOpen={isRefreshModalOpen} onClose={() => setRefreshModalOpen(false)}>
