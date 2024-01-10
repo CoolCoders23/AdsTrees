@@ -73,8 +73,8 @@ export default defineConfig({
                 sourcemap: true,
                 // precaching
                 globPatterns: [
-                    '**/*.{js,jsx,css,html}', // Common file types
-                    'index.html',// Precache the entry point
+                    // Precache the entry point
+                    'index.html',
                 ],
                 globIgnores: [
                     '**/node_modules/**/*',
@@ -124,6 +124,44 @@ export default defineConfig({
                 secure: false,
             },
         },
-    }
+    },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    'react-chunk': [
+                        'react',
+                        'react-dom',
+                        'react-router-dom',
+                        'react-icons',
+                        'react-refresh'
+                    ],
+                    'player-chunk': [
+                        'react-player',
+                    ],
+                    'apollo-chunk': [
+                        '@apollo/client',
+                        'graphql',
+                    ],
+                    'chakra-chunk': [
+                        '@chakra-ui/react',
+                        '@chakra-ui/icons',
+                        '@emotion/react',
+                        '@emotion/styled'
+                    ],
+                    'stripe-chunk': [
+                        '@stripe/react-stripe-js',
+                        '@stripe/stripe-js'
+                    ],
+                    'other-chunk': [
+                        '@emailjs/browser',
+                        'framer-motion',
+                        'jwt-decode',
+                        'moment'
+                    ],
+                },
+            },
+        },
+    },
 });
 // ===================================================
