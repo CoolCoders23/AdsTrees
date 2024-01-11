@@ -83,6 +83,7 @@ export const ADD_PURCHASE = gql`
     addPurchase(donations: $donations) {
       _id
       purchaseDate
+      paymentIntent
       donations {
         _id
         donationType

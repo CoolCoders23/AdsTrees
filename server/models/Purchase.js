@@ -26,6 +26,10 @@ const purchaseSchema = new Schema({
         get: (timestamp) => dateFormat(timestamp)
     },
 
+    paymentIntent: {
+        type: String,
+    },
+
     donations: [
         {
             type: Schema.Types.ObjectId,

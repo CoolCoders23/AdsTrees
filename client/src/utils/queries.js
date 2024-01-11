@@ -120,6 +120,7 @@ export const QUERY_PURCHASES = gql`
     purchases (userId: $userId) {
       _id
       purchaseDate
+      paymentIntent
       donations {
         _id
         donationType
@@ -140,6 +141,7 @@ export const QUERY_PURCHASE = gql`
     purchase(_id: $_id) {
       _id
       purchaseDate
+      paymentIntent
       donations {
         _id
         donationType
@@ -158,7 +160,7 @@ export const QUERY_PURCHASE = gql`
 export const QUERY_CHECKOUT = gql`
   query getCheckout($donations: [DonationInput]) {
     checkout(donations: $donations) {
-      session
+      clientSecret
     }
   }
 `;
@@ -189,6 +191,15 @@ export const QUERY_YOUTUBE = gql`
       url
       duration
     }
+  }
+`;
+// ================================================================
+
+// To get Stripe client key
+// ================================================================
+export const QUERY_STRIPE_CLIENT_KEY = gql`
+  query getStripeClientKey {
+      stripeClientKey
   }
 `;
 // ================================================================
