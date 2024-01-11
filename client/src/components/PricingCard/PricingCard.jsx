@@ -73,7 +73,7 @@ export const PricingCard = (item) => {
                         </div>
                     </div>
                     <div className="button">
-                        <button className="children" onClick={addToCart}>Add to cart</button>
+                        <button className="children" onClick={addToCart}>Proceed to Payment</button>
                     </div>
                 </div>
             </div>
