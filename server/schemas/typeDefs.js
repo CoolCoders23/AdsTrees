@@ -44,12 +44,17 @@ const typeDefs = `
   }
 
   type Checkout {
-    session: ID
+    clientSecret: String
+  }
+
+  type GetStripeClientKey {
+    stripeClientKey: String
   }
 
   type Purchase @cacheControl(maxAge: 60) {
     _id: ID!
     purchaseDate: String
+    paymentIntent: String
     donations: [Donation]
   }
 
@@ -130,6 +135,8 @@ const typeDefs = `
     purchase(_id: ID!): Purchase
       @cacheControl(scope: PUBLIC)
     checkout(donations: [DonationInput]): Checkout
+      @cacheControl(scope: PRIVATE)
+    getStripeClientKey: GetStripeClientKey
       @cacheControl(scope: PRIVATE)
     ads: [Ad]
       @cacheControl(scope: PUBLIC)

@@ -165,40 +165,70 @@ const resolvers = {
 
             if (context.user) {
 
-                const url = new URL(context.headers.referer).origin;
-                console.log(url);
-                await Purchase.create({ donations: args.donations.map(({ _id }) => _id)});
+                const donation = await args.donations;
+                const price = donation.price * 100;
 
                 try {
 
-                    const line_items = args.donations.map(donation => ({
-                        price_data: {
-                            currency: 'usd',
-                            product_data: {
-                                name: donation.donationType,
-                                description: donation.description,
-                            },
-                            unit_amount: 99,
-                        },
-                        quantity: donation.donationAmount,
-                    }));
-
-                    const session = await stripe.checkout.sessions.create({
+                    const paymentIntent = await stripe.paymentIntents.create({
+                        amount: price,
+                        currency: 'usd',
+                        description: donation.description,
+                        receipt_email: context.user.email,
                         payment_method_types: ['card'],
-                        line_items,
-                        mode: 'payment',
-                        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-                        cancel_url: `${url}/`,
+                        metadata: {
+                            donation_id: donation._id,
+                            user_id: context.user._id,
+                            donation_type: donation.donationType,
+                            donation_amount: donation.donationAmount,
+                        },
+                        automatic_payment_methods: {
+                            enabled: true,
+                        },
                     });
 
-                    return { session: session.id };
+                    await Purchase.create({
+                        donations: donation._id,
+                        paymentIntent: paymentIntent.id
+                    });
+
+                    return { clientSecret: paymentIntent.client_secret };
 
                 } catch (err) {
 
-                    console.log(err);
-                    throw AuthenticationError;
+                    throw new GraphQLError
+                    (`Failed to create payment intent: ${err.message}`, {
+                        extensions: {
+                            code: 'BAD_USER_INPUT',
+                        },
+                    });
 
                 }
+
+            } else {
+                throw AuthenticationError;
+            }
+
+
+        },
+
+        getStripeClientKey: async (context) => {
+
+            if (!context.user) {
+                throw AuthenticationError;
+            }
+
+            try {
+
+                return { stripeClientKey: process.env.STRIPE_PUBLIC_KEY };
+
+            } catch (err) {
+
+                throw new GraphQLError(`Failed to fetch stripe client key: ${err.message}`, {
+                    extensions: {
+                        code: 'BAD_USER_INPUT',
+                    },
+                });
 
             }
 
@@ -244,7 +274,11 @@ const resolvers = {
             return { token, user };
         },
 
-        removeUser: async (parent, { userId }) => {
+        removeUser: async (parent, { userId }, context) => {
+
+            if (!context.user) {
+                throw AuthenticationError;
+            }
 
             try {
 
@@ -271,7 +305,12 @@ const resolvers = {
 
         },
 
-        updateUser: async (parent, { user }) => {
+        updateUser: async (parent, { user }, context) => {
+
+            if (!context.user) {
+                throw AuthenticationError;
+            }
+
             try {
 
                 const updatedUser = await User.findById(user._id);
