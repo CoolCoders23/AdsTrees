@@ -126,6 +126,14 @@ button:disabled {
   }
 }
 
+.message {
+  border-bottom: 1px solid #f3a847;
+  padding-bottom: 0.5rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: #eab2a3;
+}
+
 @media only screen and (max-width: 600px) {
   form {
     width: 80vw;

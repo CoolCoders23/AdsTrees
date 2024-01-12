@@ -23,7 +23,6 @@ import {
     Th,
     Td,
     Spinner,
-    useColorModeValue,
     Alert,
     AlertIcon
 } from '@chakra-ui/react';

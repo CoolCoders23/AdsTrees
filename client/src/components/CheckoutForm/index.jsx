@@ -7,6 +7,7 @@
 import React, { useState } from 'react';
 import { PaymentElement, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useHistory } from 'react-router-dom';
+import Auth from '../../utils/auth';
 // ============================================================
 
 // Checkout Form Function
@@ -66,12 +67,18 @@ const CheckoutForm = ({ clientSecret, appearance }) => {
         <form id="payment-form" onSubmit={handleSubmit}>
             <PaymentElement id="payment-element" options={paymentElementOptions} />
             <label htmlFor="card-element">Enter your payment details:</label>
-            <CardElement id="card-element"/>
-            <button disabled={isLoading || !stripe || !elements} id="submit">
-                <span id="button-text">
-                    {isLoading ? <div className="spinner" id="spinner"></div> : 'Donate'}
-                </span>
-            </button>
+            <CardElement id="card-element" />
+
+            {Auth.loggedIn() ? (
+                <button disabled={isLoading || !stripe || !elements} id="submit">
+                    <span id="button-text">
+                        {isLoading ? <div className="spinner" id="spinner"></div> : 'Donate'}
+                    </span>
+                </button>
+            ) : (
+                <span className='message'>log in to confirm the donation.</span>
+            )}
+
             {message && <div id="payment-message">{message}</div>}
         </form>
     );
