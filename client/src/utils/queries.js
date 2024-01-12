@@ -155,17 +155,6 @@ export const QUERY_PURCHASE = gql`
 `;
 // ================================================================
 
-// To query the checkout session
-// ================================================================
-export const QUERY_CHECKOUT = gql`
-  query getCheckout($donations: [DonationInput]) {
-    checkout(donations: $donations) {
-      clientSecret
-    }
-  }
-`;
-// ================================================================
-
 // To query the ads
 // ================================================================
 export const QUERY_ADS = gql`

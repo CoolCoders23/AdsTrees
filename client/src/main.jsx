@@ -34,6 +34,7 @@ const Contact = React.lazy(() => import('./pages/Contact'));
 import Donations from './pages/Donations';
 const Success = React.lazy(() => import('./pages/Success'));
 const About = React.lazy(() => import('./pages/About'));
+const Checkout = React.lazy(() => import('./pages/Checkout'));
 import StateProvider from './utils/payment-logic/StateProvider';
 // ============================================================
 
@@ -114,7 +115,10 @@ const Main = () => {
                     element: <About />
                 },
 
-
+                {
+                    path: '/checkout',
+                    element: <Checkout />
+                },
 
             ]
         },

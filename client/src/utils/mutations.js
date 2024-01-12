@@ -76,6 +76,19 @@ export const UPDATE_USER = gql`
 `;
 // ================================================================
 
+// Add a new Checkout
+// ================================================================
+// To query the checkout session
+// ================================================================
+export const ADD_CHECKOUT = gql`
+  mutation addCheckout($donations: [DonationInput]) {
+    addCheckout(donations: $donations) {
+      clientSecret
+    }
+  }
+`;
+// ================================================================
+
 // Add a new Purchase
 // ================================================================
 export const ADD_PURCHASE = gql`
