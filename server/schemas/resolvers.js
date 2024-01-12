@@ -1,9 +1,9 @@
 // Desc: This file contains the graphql resolvers for the AdsTrees application.
 // Used following links as reference:
 // https://www.apollographql.com/docs/apollo-server/data/resolvers/
-// https://stripe.com/docs/payments/checkout/how-checkout-works
-// https://stripe.com/docs/api/checkout/sessions/create
-// https://stripe.com/docs/payments/checkout/customization
+// https://stripe.com/docs/videos/global-payments?video=create-a-payment-intent
+// https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=elements#fetch-updates
+// https://stripe.com/docs/payments/quickstart
 // ==================================================================
 
 // Dependencies

@@ -1,5 +1,11 @@
 /* eslint-disable no-unused-vars */
 // Desc: Checkout page for Stripe
+// Used the followings as reference:
+// https://stripe.com/docs/payments/quickstart
+// https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=elements#fetch-updates
+// https://stripe.com/docs/payments/payment-element
+// https://stripe.com/docs/stripe-js/react
+// https://stripe.com/docs/videos/global-payments?video=card
 // ============================================================
 
 // Import Dependencies and Components

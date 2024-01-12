@@ -1,8 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { useHistory } from 'react-router-dom';
+// Desc: Checkout form to be used in Checkout page
+// ============================================================
 
+// Import Dependencies
+// ============================================================
+import React, { useState } from 'react';
+import { PaymentElement, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { useHistory } from 'react-router-dom';
+// ============================================================
+
+// Checkout Form Function
+// ============================================================
 const CheckoutForm = ({ clientSecret, appearance }) => {
 
     const stripe = useStripe();
@@ -56,11 +64,9 @@ const CheckoutForm = ({ clientSecret, appearance }) => {
 
     return (
         <form id="payment-form" onSubmit={handleSubmit}>
+            <PaymentElement id="payment-element" options={paymentElementOptions} />
             <label htmlFor="card-element">Enter your payment details:</label>
-            <CardElement
-                id="card-element"
-                options={paymentElementOptions}
-            />
+            <CardElement id="card-element"/>
             <button disabled={isLoading || !stripe || !elements} id="submit">
                 <span id="button-text">
                     {isLoading ? <div className="spinner" id="spinner"></div> : 'Donate'}
@@ -70,5 +76,9 @@ const CheckoutForm = ({ clientSecret, appearance }) => {
         </form>
     );
 };
+// ============================================================
 
+// Export Checkout Form Function
+// ============================================================
 export default CheckoutForm;
+// ============================================================
