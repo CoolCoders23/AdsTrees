@@ -161,57 +161,6 @@ const resolvers = {
             }
         },
 
-        checkout: async (parent, args, context) => {
-
-            if (context.user) {
-
-                const donation = await args.donations;
-                const price = donation.price * 100;
-
-                try {
-
-                    const paymentIntent = await stripe.paymentIntents.create({
-                        amount: price,
-                        currency: 'usd',
-                        description: donation.description,
-                        receipt_email: context.user.email,
-                        payment_method_types: ['card'],
-                        metadata: {
-                            donation_id: donation._id,
-                            user_id: context.user._id,
-                            donation_type: donation.donationType,
-                            donation_amount: donation.donationAmount,
-                        },
-                        automatic_payment_methods: {
-                            enabled: true,
-                        },
-                    });
-
-                    await Purchase.create({
-                        donations: donation._id,
-                        paymentIntent: paymentIntent.id
-                    });
-
-                    return { clientSecret: paymentIntent.client_secret };
-
-                } catch (err) {
-
-                    throw new GraphQLError
-                    (`Failed to create payment intent: ${err.message}`, {
-                        extensions: {
-                            code: 'BAD_USER_INPUT',
-                        },
-                    });
-
-                }
-
-            } else {
-                throw AuthenticationError;
-            }
-
-
-        },
-
         getStripeClientKey: async (context) => {
 
             if (!context.user) {
@@ -347,6 +296,56 @@ const resolvers = {
                 console.log(err);
                 throw AuthenticationError;
 
+            }
+
+        },
+
+        addCheckout: async (parent, args, context) => {
+
+            if (context.user) {
+
+                const donation = await args.donations;
+                const price = donation.price * 100;
+
+                try {
+
+                    const paymentIntent = await stripe.paymentIntents.create({
+                        amount: price,
+                        currency: 'usd',
+                        description: donation.description,
+                        receipt_email: context.user.email,
+                        payment_method_types: ['card'],
+                        metadata: {
+                            donation_id: donation._id,
+                            user_id: context.user._id,
+                            donation_type: donation.donationType,
+                            donation_amount: donation.donationAmount,
+                        },
+                        automatic_payment_methods: {
+                            enabled: true,
+                        },
+                    });
+
+                    await Purchase.create({
+                        donations: donation._id,
+                        paymentIntent: paymentIntent.id
+                    });
+
+                    return { clientSecret: paymentIntent.client_secret };
+
+                } catch (err) {
+
+                    throw new GraphQLError
+                    (`Failed to create payment intent: ${err.message}`, {
+                        extensions: {
+                            code: 'BAD_USER_INPUT',
+                        },
+                    });
+
+                }
+
+            } else {
+                throw AuthenticationError;
             }
 
         },

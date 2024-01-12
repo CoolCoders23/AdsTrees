@@ -134,8 +134,6 @@ const typeDefs = `
       @cacheControl(scope: PUBLIC)
     purchase(_id: ID!): Purchase
       @cacheControl(scope: PUBLIC)
-    checkout(donations: [DonationInput]): Checkout
-      @cacheControl(scope: PRIVATE)
     getStripeClientKey: GetStripeClientKey
       @cacheControl(scope: PRIVATE)
     ads: [Ad]
@@ -154,6 +152,8 @@ const typeDefs = `
     removeUser(userId: ID!): User
     updateUser(user: UpdateUserInput): User
       @cacheControl(maxAge: 0, scope: PRIVATE)
+    addCheckout(donations: [DonationInput]): Checkout
+      @cacheControl(scope: PRIVATE)
     addPurchase(donations: [ID]!): Purchase
       @cacheControl(scope: PRIVATE)
     addWatchedAd(ad: AdInput!): Ad
