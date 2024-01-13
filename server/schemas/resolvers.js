@@ -161,11 +161,7 @@ const resolvers = {
             }
         },
 
-        getStripeClientKey: async (context) => {
-
-            if (!context.user) {
-                throw AuthenticationError;
-            }
+        getStripeClientKey: async () => {
 
             try {
 
@@ -304,32 +300,71 @@ const resolvers = {
 
             if (context.user) {
 
-                const donation = await args.donations;
-                const price = donation.price * 100;
+                const donations = await args.donations;
+
+                // Define variables to store the donation data
+                let donationId = '';
+                let type = '';
+                let description = '';
+                let image = '';
+                let quantity = 0;
+                let price = 0;
+
+                for (const donation of donations) {
+
+                    if (typeof donation.price !== 'number' || isNaN(donation.price)) {
+                        throw new GraphQLError('Invalid donation price', {
+                            extensions: {
+                                code: 'BAD_USER_INPUT',
+                            },
+                        });
+                    }
+
+                    donationId += `${donation._id}, `;
+                    type += `${donation.donationType}, `;
+                    description += `${donation.description}, `;
+                    image += `${donation.image}, `;
+                    quantity += donation.donationAmount;
+                    price += donation.price * 100;
+
+                }
+
+                // remove last comma and space
+                donationId = donationId.slice(0, -2);
+                type = type.slice(0, -2);
+                description = description.slice(0, -2);
+                image = image.slice(0, -2);
 
                 try {
 
                     const paymentIntent = await stripe.paymentIntents.create({
                         amount: price,
                         currency: 'usd',
-                        description: donation.description,
+                        description: description,
                         receipt_email: context.user.email,
-                        payment_method_types: ['card'],
+                        // payment_method_types: ['card'],
                         metadata: {
-                            donation_id: donation._id,
+                            donation_id: donationId,
                             user_id: context.user._id,
-                            donation_type: donation.donationType,
-                            donation_amount: donation.donationAmount,
+                            donation_type: type,
+                            donation_image: image,
+                            donation_amount: quantity,
                         },
                         automatic_payment_methods: {
                             enabled: true,
                         },
                     });
 
-                    await Purchase.create({
-                        donations: donation._id,
-                        paymentIntent: paymentIntent.id
+                    const newPurchase = await Purchase.create({
+                        donations: donationId,
+                        paymentIntent: paymentIntent.id,
+                        paymentStatus: paymentIntent.status,
                     });
+
+                    const user = await User.findById(context.user._id);
+                    // Add the new purchase to the user's purchases
+                    user.purchases.push(newPurchase);
+                    await user.save();
 
                     return { clientSecret: paymentIntent.client_secret };
 
