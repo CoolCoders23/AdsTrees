@@ -6,7 +6,7 @@
 // ============================================================
 import React, { useState } from 'react';
 import { PaymentElement, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Auth from '../../utils/auth';
 // ============================================================
 
@@ -16,7 +16,7 @@ const CheckoutForm = ({ clientSecret, appearance }) => {
 
     const stripe = useStripe();
     const elements = useElements();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [message, setMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +47,7 @@ const CheckoutForm = ({ clientSecret, appearance }) => {
                 `Successful payment of $${(paymentIntent.amount / 100).toFixed(2)} : ${paymentIntent.id}`
             );
             setIsLoading(false);
-            history.push('/success');
+            navigate('/success');
         }
     };
 
@@ -64,8 +64,8 @@ const CheckoutForm = ({ clientSecret, appearance }) => {
     };
 
     return (
-        <form id="payment-form" onSubmit={handleSubmit}>
-            <PaymentElement id="payment-element" options={paymentElementOptions} />
+        <form id="payment-form" onSubmit={handleSubmit} style={{ color: 'white' }}>
+
             <label htmlFor="card-element">Enter your payment details:</label>
             <CardElement id="card-element" />
 

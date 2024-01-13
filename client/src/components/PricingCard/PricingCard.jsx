@@ -9,7 +9,7 @@ import './PricingCard.css';
 import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { ADD_TO_CART } from '../../utils/payment-logic/actions';
 import { idbPromise } from '../../utils/payment-logic/idbHelper';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // =========================================================
 
 // Define component
@@ -18,7 +18,7 @@ export const PricingCard = (item) => {
 
     // Destructure state and dispatch from context
     const [state, dispatch] = useStateContext();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     // Destructure item prop
     const {
@@ -56,7 +56,7 @@ export const PricingCard = (item) => {
 
     const addToCartAndCheckout = () => {
         addToCart();
-        history.push('/checkout');
+        navigate('/checkout');
     };
 
     return (
