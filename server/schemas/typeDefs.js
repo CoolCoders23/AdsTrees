@@ -55,6 +55,7 @@ const typeDefs = `
     _id: ID!
     purchaseDate: String
     paymentIntent: String
+    paymentStatus: String
     donations: [Donation]
   }
 

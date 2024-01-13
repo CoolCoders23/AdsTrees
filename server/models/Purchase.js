@@ -30,6 +30,10 @@ const purchaseSchema = new Schema({
         type: String,
     },
 
+    paymentStatus: {
+        type: String,
+    },
+
     donations: [
         {
             type: Schema.Types.ObjectId,

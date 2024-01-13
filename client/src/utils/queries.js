@@ -121,6 +121,7 @@ export const QUERY_PURCHASES = gql`
       _id
       purchaseDate
       paymentIntent
+      paymentStatus
       donations {
         _id
         donationType
@@ -142,6 +143,7 @@ export const QUERY_PURCHASE = gql`
       _id
       purchaseDate
       paymentIntent
+      paymentStatus
       donations {
         _id
         donationType
@@ -188,7 +190,9 @@ export const QUERY_YOUTUBE = gql`
 // ================================================================
 export const QUERY_STRIPE_CLIENT_KEY = gql`
   query getStripeClientKey {
+    getStripeClientKey{
       stripeClientKey
+    }
   }
 `;
 // ================================================================

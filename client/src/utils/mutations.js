@@ -97,6 +97,7 @@ export const ADD_PURCHASE = gql`
       _id
       purchaseDate
       paymentIntent
+      paymentStatus
       donations {
         _id
         donationType
