@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import './CheckoutForm.css';
 // ============================================================
 
 // Checkout Form Function
@@ -60,23 +61,36 @@ const CheckoutForm = ({ clientSecret, appearance, className }) => {
     };
 
     return (
-        <>
-            <form id="payment-form" onSubmit={handleSubmit} style={{ color: 'white' }}>
-                <PaymentElement id="payment-element" />
+        <div className={'checkout-form ' + className}>
+            <form id="payment-form" onSubmit={handleSubmit}>
+                <PaymentElement id="payment-element" options={paymentElementOptions} />
 
                 {Auth.loggedIn() ? (
-                    <button disabled={isLoading || !stripe || !elements} id="submit">
-                        <span id="button-text">
-                            {isLoading ? <div className={className + 'spinner'} id="spinner"></div> : 'Donate'}
-                        </span>
-                    </button>
+                    <div >
+                        <div className='terms'>
+                            <div className='terms-and-conditions'>
+                                By donating you accept our Privacy &amp; Terms Policy{' '}
+                            </div>
+                        </div>
+                        <button
+                            disabled={isLoading || !stripe || !elements}
+                            id="submit"
+                            className='button'
+                        >
+                            <span id="button-text">
+                                {isLoading
+                                    ? <div className='spinner' id="spinner"></div>
+                                    : <div className='children'>Donate</div>}
+                            </span>
+                        </button>
+                    </div>
                 ) : (
-                    <span className={className + 'message'}>log in to confirm the donation.</span>
+                    <span className='message'>log in to confirm the donation.</span>
                 )}
 
-                {message && <div className={className + 'payment-message'}>{message}</div>}
+                {message && <div className='payment-message'>{message}</div>}
             </form>
-        </>
+        </div>
     );
 };
 // ============================================================

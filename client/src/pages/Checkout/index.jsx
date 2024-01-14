@@ -92,7 +92,16 @@ const Checkout = ({ className, ...props }) => {
     const appearance = {
         theme: 'night',
         labels: 'floating',
-        // variables: { colorPrimaryText: '#fff' }
+        variables: {
+            colorBackground:'#d0ffd7',
+            colorText: '#081c15',
+            colorDanger: '#f3a847',
+        },
+        rules: {
+            '.CheckboxLabel': {
+                color: '#82eb92',
+            },
+        },
     };
     const options = {
         clientSecret,
@@ -226,7 +235,6 @@ const Checkout = ({ className, ...props }) => {
                                                     </clipPath>
                                                 </defs>
                                             </svg>
-
                                             <div className="content4">
                                                 <div className="text-and-supporting-text">
                                                     <div className="text">Pay with Credit and Debit Card </div>
@@ -234,28 +242,20 @@ const Checkout = ({ className, ...props }) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="payment-form">
-                                        {clientSecret && (
-                                            <Elements stripe={stripePromise} options={options}>
-                                                <CheckoutForm
-                                                    clientSecret={clientSecret}
-                                                    appearance={appearance}
-                                                    className="ads-trees-donate-section-2"
-                                                />
-                                            </Elements>
-                                        )}
-                                        {message && <div id="payment-message">{message}</div>}
-                                    </div>
+
+                                    {clientSecret && (
+                                        <Elements stripe={stripePromise} options={options}>
+                                            <CheckoutForm
+                                                clientSecret={clientSecret}
+                                                appearance={appearance}
+                                                className="payment-form"
+                                            />
+                                        </Elements>
+                                    )}
+                                    {message && <div id="payment-message">{message}</div>}
+
                                 </div>
                             </div>
-                        </div>
-                        <div className="terms">
-                            <div className="terms-and-conditions">
-                                By donating you accept our Privacy &amp; Terms Policy{' '}
-                            </div>
-                        </div>
-                        <div className="button">
-                            <div className="children">Donate </div>
                         </div>
                     </div>
                 </div>
