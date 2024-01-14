@@ -30,11 +30,11 @@ const CheckoutForm = ({ clientSecret, appearance }) => {
 
         setIsLoading(true);
 
-        const cardElement = elements.getElement(CardElement);
+        const paymentElement = elements.getElement(PaymentElement);
 
         const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
-                card: cardElement,
+                element: paymentElement,
             },
         });
 
@@ -57,30 +57,28 @@ const CheckoutForm = ({ clientSecret, appearance }) => {
             type: 'tabs',
             defaultCollapsed: false,
         },
-        business: {
-            name: 'AdsTrees',
-            product: 'AdsTrees Donation',
-        },
     };
 
     return (
-        <form id="payment-form" onSubmit={handleSubmit} style={{ color: 'white' }}>
+        <>
 
-            <label htmlFor="card-element">Enter your payment details:</label>
-            <CardElement id="card-element" />
+            <form id="payment-form" onSubmit={handleSubmit} style={{ color: 'white' }}>
+                <label htmlFor="payment-element">Enter your payment details:</label>
+                <PaymentElement id="payment-element" options={paymentElementOptions} />
 
-            {Auth.loggedIn() ? (
-                <button disabled={isLoading || !stripe || !elements} id="submit">
-                    <span id="button-text">
-                        {isLoading ? <div className="spinner" id="spinner"></div> : 'Donate'}
-                    </span>
-                </button>
-            ) : (
-                <span className='message'>log in to confirm the donation.</span>
-            )}
+                {Auth.loggedIn() ? (
+                    <button disabled={isLoading || !stripe || !elements} id="submit">
+                        <span id="button-text">
+                            {isLoading ? <div className="spinner" id="spinner"></div> : 'Donate'}
+                        </span>
+                    </button>
+                ) : (
+                    <span className='message'>log in to confirm the donation.</span>
+                )}
 
-            {message && <div id="payment-message">{message}</div>}
-        </form>
+                {message && <div id="payment-message">{message}</div>}
+            </form>
+        </>
     );
 };
 // ============================================================

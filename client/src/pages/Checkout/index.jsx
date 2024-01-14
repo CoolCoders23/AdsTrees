@@ -85,19 +85,20 @@ const Checkout = () => {
     // Set the appearance
     // ============================================================
     const appearance = {
-        theme: 'stripe',
+        theme: 'night',
+        labels: 'floating',
         // variables: { colorPrimaryText: '#fff' }
     };
-    // const options = {
-    //     clientSecret,
-    //     appearance,
-    // };
+    const options = {
+        clientSecret,
+        appearance,
+    };
     // ============================================================
 
     return (
         <div className="Checkout">
             {clientSecret && (
-                <Elements stripe={stripePromise}>
+                <Elements stripe={stripePromise} options={options}>
                     <CheckoutForm clientSecret={clientSecret} appearance={appearance} />
                 </Elements>
             )}

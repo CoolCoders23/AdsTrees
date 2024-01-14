@@ -362,6 +362,7 @@ template {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100vw;
 }
 
 .page {
@@ -369,7 +370,6 @@ template {
   background: var(--white-pure, #081c15);
   padding-top: 48px;
   overflow: auto;
-
 }
 
 /* ========================================================================== */
