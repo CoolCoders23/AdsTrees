@@ -5,14 +5,14 @@
 // Import Dependencies
 // ============================================================
 import React, { useState } from 'react';
-import { PaymentElement, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../../utils/auth';
 // ============================================================
 
 // Checkout Form Function
 // ============================================================
-const CheckoutForm = ({ clientSecret, appearance }) => {
+const CheckoutForm = ({ clientSecret, appearance, className }) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -61,22 +61,20 @@ const CheckoutForm = ({ clientSecret, appearance }) => {
 
     return (
         <>
-
             <form id="payment-form" onSubmit={handleSubmit} style={{ color: 'white' }}>
-                <label htmlFor="payment-element">Enter your payment details:</label>
-                <PaymentElement id="payment-element" options={paymentElementOptions} />
+                <PaymentElement id="payment-element" />
 
                 {Auth.loggedIn() ? (
                     <button disabled={isLoading || !stripe || !elements} id="submit">
                         <span id="button-text">
-                            {isLoading ? <div className="spinner" id="spinner"></div> : 'Donate'}
+                            {isLoading ? <div className={className + 'spinner'} id="spinner"></div> : 'Donate'}
                         </span>
                     </button>
                 ) : (
-                    <span className='message'>log in to confirm the donation.</span>
+                    <span className={className + 'message'}>log in to confirm the donation.</span>
                 )}
 
-                {message && <div id="payment-message">{message}</div>}
+                {message && <div className={className + 'payment-message'}>{message}</div>}
             </form>
         </>
     );
