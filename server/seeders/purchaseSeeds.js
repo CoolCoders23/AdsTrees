@@ -20,7 +20,7 @@ for (let i = 0; i < 5; i += 1) {
     const purchaseDate = faker.date.past();
     const paymentIntent = faker.random.alphaNumeric(10);
     const paymentStatus = faker.random.arrayElement([
-        'incomplete', 'succeeded', 'failed'
+        'incomplete', 'complete', 'failed'
     ]);
     const donations = [];
 

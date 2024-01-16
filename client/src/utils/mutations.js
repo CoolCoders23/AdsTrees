@@ -92,8 +92,14 @@ export const ADD_CHECKOUT = gql`
 // Add a new Purchase
 // ================================================================
 export const ADD_PURCHASE = gql`
-  mutation addPurchase($donations: [ID]!) {
-    addPurchase(donations: $donations) {
+  mutation addPurchase(
+    $donations: [ID]!,
+    $status: String,
+    $paymentId: String) {
+    addPurchase(
+      donations: $donations,
+      status: $status,
+      paymentId: $paymentId) {
       _id
       purchaseDate
       paymentIntent

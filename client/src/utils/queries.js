@@ -196,3 +196,15 @@ export const QUERY_STRIPE_CLIENT_KEY = gql`
   }
 `;
 // ================================================================
+
+// To query Stripe payment intent
+// ================================================================
+export const QUERY_STRIPE_PAYMENT_INTENT = gql`
+  query getStripePaymentIntent {
+    getStripePaymentIntent {
+      id
+      status
+    }
+  }
+`;
+// ================================================================
