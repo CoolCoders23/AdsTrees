@@ -179,6 +179,45 @@ const resolvers = {
 
         },
 
+        getStripePaymentIntent: async () => {
+
+            try {
+
+                // List all PaymentIntents with 'requires_payment_method' status
+                const paymentIntentsToCancel = await stripe.paymentIntents.list({
+                    status: 'requires_payment_method',
+                });
+
+                // Cancel each PaymentIntent individually
+                for (let pi of paymentIntentsToCancel.data) {
+                    await stripe.paymentIntents.cancel(pi.id, { cancellation_reason: 'abandoned' });
+                }
+
+                const paymentIntents = await stripe.paymentIntents.list({
+                    limit: 1,
+                    status: 'succeeded',
+                });
+                console.log(paymentIntents);
+
+                if (paymentIntents.data.length === 0) {
+                    throw new Error('No payment intents found');
+                }
+
+                const lastPaymentIntent = paymentIntents.data[0];
+                console.log(lastPaymentIntent);
+
+                return { id: lastPaymentIntent.id, status: lastPaymentIntent.status };
+
+            } catch (err) {
+
+                throw new GraphQLError(`Failed to fetch stripe payment intent: ${err.message}`, {
+                    extensions: {
+                        code: 'BAD_USER_INPUT',
+                    },
+                });
+
+            }
+        },
     },
 
     Mutation: {
@@ -355,17 +394,6 @@ const resolvers = {
                         },
                     });
 
-                    const newPurchase = await Purchase.create({
-                        donations: donationId,
-                        paymentIntent: paymentIntent.id,
-                        paymentStatus: paymentIntent.status,
-                    });
-
-                    const user = await User.findById(context.user._id);
-                    // Add the new purchase to the user's purchases
-                    user.purchases.push(newPurchase);
-                    await user.save();
-
                     return { clientSecret: paymentIntent.client_secret };
 
                 } catch (err) {
@@ -385,7 +413,7 @@ const resolvers = {
 
         },
 
-        addPurchase: async (parent, { donations }, context) => {
+        addPurchase: async (parent, { donations, status, paymentId }, context) => {
 
             if (!context.user) {
                 throw AuthenticationError;
@@ -393,7 +421,9 @@ const resolvers = {
 
             try {
 
-                const newPurchase = await Purchase.create({ donations });
+                const newPurchase = await Purchase.create({
+                    donations, paymentStatus: status, paymentIntent: paymentId
+                });
 
                 // Fetch the actual donation objects from the database
                 const donationObjects = await Donation.find({

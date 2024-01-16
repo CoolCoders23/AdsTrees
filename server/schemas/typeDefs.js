@@ -43,12 +43,17 @@ const typeDefs = `
     user: User
   }
 
-  type Checkout {
+  type Checkout @cacheControl(maxAge: 0) {
     clientSecret: String
   }
 
-  type GetStripeClientKey {
+  type GetStripeClientKey @cacheControl(maxAge: 0) {
     stripeClientKey: String
+  }
+
+  type StripePaymentIntent @cacheControl(maxAge: 60) {
+    id: String
+    status: String
   }
 
   type Purchase @cacheControl(maxAge: 60) {
@@ -137,6 +142,8 @@ const typeDefs = `
       @cacheControl(scope: PUBLIC)
     getStripeClientKey: GetStripeClientKey
       @cacheControl(scope: PRIVATE)
+    getStripePaymentIntent: StripePaymentIntent
+      @cacheControl(scope: PRIVATE)
     ads: [Ad]
       @cacheControl(scope: PUBLIC)
     youtube: [Youtube]
@@ -155,7 +162,11 @@ const typeDefs = `
       @cacheControl(maxAge: 0, scope: PRIVATE)
     addCheckout(donations: [DonationInput]): Checkout
       @cacheControl(scope: PRIVATE)
-    addPurchase(donations: [ID]!): Purchase
+    addPurchase(
+      donations: [ID]!,
+      status: String,
+      paymentId: String
+      ): Purchase
       @cacheControl(scope: PRIVATE)
     addWatchedAd(ad: AdInput!): Ad
       @cacheControl(scope: PRIVATE)
