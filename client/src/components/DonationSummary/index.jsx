@@ -2,11 +2,12 @@
 import './DonationSummary.css';
 
 export const DonationSummary = ({
-    taxPriceTag = '$ 1.49',
-    subtotalPriceTag = '$ 9.99',
-    totalPriceTag = '$ 11.48',
-    tradeoffPriceTag = '$ 9.99',
-    tradeoffDescription = '10 trees planted',
+    taxPriceTag,
+    subtotalPriceTag,
+    totalPriceTag,
+    tradeoffPriceTag,
+    tradeoffDescription,
+    tradeoffType,
     className,
     ...props
 }) => {
@@ -69,7 +70,7 @@ export const DonationSummary = ({
                                 </defs>
                             </svg>
                         </div>
-                        <div className="tradeoff-description">{tradeoffDescription} </div>
+                        <div className="tradeoff-description">{tradeoffType}, {tradeoffDescription}</div>
                         <div className="tradeoff-price-tag">{tradeoffPriceTag} </div>
                     </div>
                 </div>

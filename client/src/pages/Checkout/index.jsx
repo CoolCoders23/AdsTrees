@@ -20,9 +20,6 @@ import { ADD_CHECKOUT } from '../../utils/mutations';
 import CheckoutForm from '../../components/CheckoutForm';
 import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { DonationSummary } from '../../components/DonationSummary';
-import { PictoDisplayWood } from '../../components/PictoDisplayWood/PictoDisplayWood.jsx';
-// import { PictoDisplayForest } from '../../components_temp_storage/PictoDisplayForest/PictoDisplayForest.jsx';
-// import { PictoDisplayGarden } from '../../components_temp_storage/PictoDisplayGarden/PictoDisplayGarden.jsx';
 // import { Spinner } from '@chakra-ui/react';
 import './Checkout.css';
 // ============================================================
@@ -31,13 +28,34 @@ import './Checkout.css';
 // ============================================================
 const Checkout = ({ className, ...props }) => {
 
-    // Define all the states
+    // Get the donation from the state and define props
+    // to be passed to donation summary component
     // ============================================================
     const [state] = useStateContext();
+    const donation = state.cart.slice(-1);
+    console.log(donation);
+    if (donation.length === 0) {
+        window.location.assign('/donations');
+    }
+    let type = '';
+    let amount = 0;
+    let price = 0;
+    for (const item of donation) {
+        type += `${item.donationType}, `;
+        amount += item.donationAmount;
+        price += item.price;
+    }
+    const taxTag = parseFloat((price * 0.13).toFixed(2));
+    const tax = parseFloat((price + taxTag).toFixed(2));
+    console.log(type, amount, price, taxTag, tax);
+    // ============================================================
+
+    // Define all the states
+    // ============================================================
     const [clientSecret, setClientSecret] = useState('');
     const [message, setMessage] = useState(null);
     const [addCheckout, { data }, error] = useMutation(ADD_CHECKOUT, {
-        variables: { donations: state.cart.slice(-1) },
+        variables: { donations: donation },
     });
     // ============================================================
 
@@ -161,16 +179,16 @@ const Checkout = ({ className, ...props }) => {
                             </div>
                         </div>
                     </div>
-                    <PictoDisplayWood display="wood" className="picto-instance" />
                 </div>
                 <div className="body-content">
                     <div className="card">
                         <DonationSummary
-                            tradeoffDescription="10 trees planted"
-                            tradeoffPriceTag="$ 9.99"
-                            totalPriceTag="$ 11.48"
-                            subtotalPriceTag="$ 9.99"
-                            taxPriceTag="$ 1.49"
+                            tradeoffDescription={`${amount} trees planted`}
+                            tradeoffPriceTag={price}
+                            totalPriceTag={tax}
+                            subtotalPriceTag={price}
+                            taxPriceTag={taxTag}
+                            tradeoffType={type}
                             className="donation-summary-instance"
                         />
                         <div className="security-information">
