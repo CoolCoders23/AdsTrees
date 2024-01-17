@@ -88,9 +88,6 @@ const resolvers = {
                         .populate({
                             path: 'purchases',
                             options: { sort: { purchaseDate: -1 } },
-                            populate: {
-                                path: 'donations',
-                            },
                         });
 
                 return user.purchases;
@@ -113,9 +110,6 @@ const resolvers = {
 
                     const user = await User.findById(context.user._id).populate({
                         path: 'purchases',
-                        populate: {
-                            path: 'donations',
-                        },
                     });
 
                     const purchase = user.purchases.id(_id);
@@ -183,39 +177,34 @@ const resolvers = {
 
             try {
 
-                // List all PaymentIntents with 'requires_payment_method' status
-                const paymentIntentsToCancel = await stripe.paymentIntents.list({
-                    status: 'requires_payment_method',
-                });
+                // List all PaymentIntents
+                const paymentIntentsList = await stripe.paymentIntents.list();
+
+                // Filter PaymentIntents with 'requires_payment_method' status
+                const paymentIntentsToCancel = paymentIntentsList.data.filter(pi => pi.status === 'requires_payment_method');
 
                 // Cancel each PaymentIntent individually
-                for (let pi of paymentIntentsToCancel.data) {
+                for (let pi of paymentIntentsToCancel) {
                     await stripe.paymentIntents.cancel(pi.id, { cancellation_reason: 'abandoned' });
                 }
 
-                const paymentIntents = await stripe.paymentIntents.list({
-                    limit: 1,
-                    status: 'succeeded',
-                });
-                console.log(paymentIntents);
+                // Filter PaymentIntents with 'succeeded' status
+                const succeededPaymentIntents = paymentIntentsList.data.filter(pi => pi.status === 'succeeded');
 
-                if (paymentIntents.data.length === 0) {
+                if (succeededPaymentIntents.length === 0) {
                     throw new Error('No payment intents found');
                 }
 
-                const lastPaymentIntent = paymentIntents.data[0];
-                console.log(lastPaymentIntent);
+                const lastPaymentIntent = succeededPaymentIntents[0];
 
                 return { id: lastPaymentIntent.id, status: lastPaymentIntent.status };
 
             } catch (err) {
-
                 throw new GraphQLError(`Failed to fetch stripe payment intent: ${err.message}`, {
                     extensions: {
                         code: 'BAD_USER_INPUT',
                     },
                 });
-
             }
         },
     },
@@ -364,10 +353,11 @@ const resolvers = {
                     description += `${donation.description}, `;
                     image += `${donation.image}, `;
                     quantity += donation.donationAmount;
-                    price += donation.price * 100;
+                    price += parseFloat((donation.price + (donation.price * 0.13)).toFixed(2));
 
                 }
-
+                const totalPrice = parseFloat((price * 100).toFixed(2));
+                console.log(`Total price: ${totalPrice}`);
                 // remove last comma and space
                 donationId = donationId.slice(0, -2);
                 type = type.slice(0, -2);
@@ -377,7 +367,7 @@ const resolvers = {
                 try {
 
                     const paymentIntent = await stripe.paymentIntents.create({
-                        amount: price,
+                        amount: totalPrice,
                         currency: 'usd',
                         description: description,
                         receipt_email: context.user.email,
@@ -420,19 +410,32 @@ const resolvers = {
             }
 
             try {
-
-                const newPurchase = await Purchase.create({
-                    donations, paymentStatus: status, paymentIntent: paymentId
-                });
+                console.log(`received Donations: ${donations}`);
 
                 // Fetch the actual donation objects from the database
                 const donationObjects = await Donation.find({
                     _id: { $in: donations },
                 });
+                console.log(`Donation objects: ${donationObjects}`);
 
-                // Calculate the total donation amount
-                const donationAmount = donationObjects.reduce(
-                    (total, donation) => total + donation.donationAmount, 0);
+                // Update the price of each donation object to include tax (13%)
+                // ==================================================================
+                // Update the price of each donation object to include tax (13%) and save
+                const updatedDonations = await Promise.all(donationObjects.map(async (donation) => {
+                    const donationPrice = donation.price;
+                    const finalDonationPrice = parseFloat((donationPrice + (donationPrice * 0.13)).toFixed(2));
+                    donation.price = finalDonationPrice;
+                    delete donation._id;
+                    return donation;
+                }));
+                console.log(`Updated donations: ${updatedDonations}`);
+                const newPurchase = new Purchase({
+                    donations: updatedDonations,
+                    status,
+                    paymentId,
+                });
+                console.log(`New purchase: ${newPurchase}`);
+                // ==================================================================
 
                 const user = await User.findById(context.user._id);
 
@@ -440,11 +443,14 @@ const resolvers = {
                     throw new Error('User not found');
                 }
 
-                // Update total donations
-                await user.addDonation(donationAmount);
+                const totalDonationAmount = updatedDonations.reduce((total, donation) => total + donation.donationAmount, 0);
+                console.log(`Total donation amount: ${totalDonationAmount}`);
 
-                // Add the new purchase to the user's purchases
-                user.purchases.push(newPurchase);
+                // Update total donations
+                await user.addDonation(totalDonationAmount);
+
+                // Add the updatedPurchase to the user's purchases
+                user.purchases.push(newPurchase._id);
 
                 await user.save();
 

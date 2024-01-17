@@ -56,12 +56,20 @@ const typeDefs = `
     status: String
   }
 
+  type UserDonation @cacheControl(maxAge: 60) {
+    donationType: String!
+    description: String
+    image: String
+    donationAmount: Int!
+    price: Float!
+  }
+
   type Purchase @cacheControl(maxAge: 60) {
     _id: ID!
     purchaseDate: String
     paymentIntent: String
     paymentStatus: String
-    donations: [Donation]
+    donations: UserDonation
   }
 
   type Ad {
