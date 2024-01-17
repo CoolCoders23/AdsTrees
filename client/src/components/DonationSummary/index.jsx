@@ -70,8 +70,8 @@ export const DonationSummary = ({
                                 </defs>
                             </svg>
                         </div>
-                        <div className="tradeoff-description">{tradeoffType}, {tradeoffDescription}</div>
-                        <div className="tradeoff-price-tag">{tradeoffPriceTag} </div>
+                        <div className="tradeoff-description">{tradeoffType} {tradeoffDescription}</div>
+                        <div className="tradeoff-price-tag">${tradeoffPriceTag}</div>
                     </div>
                 </div>
                 <div className="checkout-summary-body">
@@ -80,15 +80,15 @@ export const DonationSummary = ({
                     </div>
                     <div className="subtotal-review-title">
                         <div className="subtotal">Subtotal </div>
-                        <div className="subtotal-price-tag">{subtotalPriceTag} </div>
+                        <div className="subtotal-price-tag">${subtotalPriceTag}</div>
                     </div>
                     <div className="tax-review-title">
                         <div className="tax">Tax </div>
-                        <div className="tax-price-tag">{taxPriceTag} </div>
+                        <div className="tax-price-tag">${taxPriceTag}</div>
                     </div>
                     <div className="total-review-title">
                         <div className="total">Total </div>
-                        <div className="total-price-tag">{totalPriceTag} </div>
+                        <div className="total-price-tag">${totalPriceTag}</div>
                     </div>
                 </div>
             </div>

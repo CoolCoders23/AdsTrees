@@ -53,7 +53,6 @@ const CheckoutForm = ({ clientSecret, appearance, className }) => {
     };
 
     const paymentElementOptions = {
-        appearance: appearance,
         layout: {
             type: 'tabs',
             defaultCollapsed: false,

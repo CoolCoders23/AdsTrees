@@ -47,7 +47,6 @@ const Checkout = ({ className, ...props }) => {
     }
     const taxTag = parseFloat((price * 0.13).toFixed(2));
     const tax = parseFloat((price + taxTag).toFixed(2));
-    console.log(type, amount, price, taxTag, tax);
     // ============================================================
 
     // Define all the states
@@ -265,7 +264,6 @@ const Checkout = ({ className, ...props }) => {
                                         <Elements stripe={stripePromise} options={options}>
                                             <CheckoutForm
                                                 clientSecret={clientSecret}
-                                                appearance={appearance}
                                                 className="payment-form"
                                             />
                                         </Elements>
