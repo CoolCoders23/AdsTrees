@@ -22,8 +22,9 @@ export const QUERY_USER = gql`
       purchases {
         _id
         purchaseDate
+        paymentIntent
+        paymentStatus
         donations {
-          _id
           donationType
           description
           image
@@ -68,8 +69,9 @@ export const QUERY_USER_PROFILE = gql`
       purchases {
         _id
         purchaseDate
+        paymentIntent
+        paymentStatus
         donations {
-          _id
           donationType
           description
           image
@@ -123,7 +125,6 @@ export const QUERY_PURCHASES = gql`
       paymentIntent
       paymentStatus
       donations {
-        _id
         donationType
         description
         image
@@ -145,7 +146,6 @@ export const QUERY_PURCHASE = gql`
       paymentIntent
       paymentStatus
       donations {
-        _id
         donationType
         description
         image

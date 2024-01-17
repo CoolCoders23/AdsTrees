@@ -26,9 +26,18 @@ const Success = ({ className, ...props }) => {
 
         async function saveOrder() {
 
+            // Get all items and last item in cart
+            // ======================================================
             const cart = await idbPromise('cart', 'get');
             const donations = cart.map((item) => item._id);
             const lastDonation = donations.slice(-1);
+            // ======================================================
+
+            // Get all items in donations collection in indexedDB
+            // ======================================================
+            const donationsInDb = await idbPromise('donations', 'get');
+            const donationsInDbIds = donationsInDb.map((item) => item._id);
+            // ======================================================
 
             if (donations.length && status !== 'incomplete' && paymentId !== '') {
 
@@ -41,7 +50,11 @@ const Success = ({ className, ...props }) => {
                 });
 
                 donations.forEach((item) => {
-                    idbPromise('cart', 'delete', item);
+                    idbPromise('cart', 'delete', { _id: item });
+                });
+
+                donationsInDbIds.forEach((item) => {
+                    idbPromise('donations', 'delete', { _id: item });
                 });
 
             }

@@ -54,10 +54,15 @@ const idbPromise = (storeName, method, object) => {
                 break;
 
             case 'delete':
-                access = store.delete(object._id);
-                access.onsuccess = function() {
-                    resolve(true);
-                };
+                if (object && object._id) {
+                    access = store.delete(object._id);
+                    access.onsuccess = function() {
+                        resolve(true);
+                    };
+                } else {
+                    console.error('Cannot delete object because no valid _id was provided');
+                    reject('Cannot delete object because no valid _id was provided');
+                }
                 break;
 
             default:

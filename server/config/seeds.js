@@ -27,7 +27,7 @@ const connectAndSeed = async () => {
         await cleanDB('Donation', 'donations');
         await cleanDB('Purchase', 'purchases');
         await cleanDB('Ad', 'ads');
-        await cleanDB('Youtube', 'youtube');
+        await cleanDB('Youtube', 'youtubes');
     } catch (err) {
         console.error(`Error occurred while cleaning the database: ${err}`);
         process.exit(1);

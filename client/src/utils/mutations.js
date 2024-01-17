@@ -105,7 +105,6 @@ export const ADD_PURCHASE = gql`
       paymentIntent
       paymentStatus
       donations {
-        _id
         donationType
         description
         image
