@@ -34,12 +34,32 @@ const purchaseSchema = new Schema({
         type: String,
     },
 
-    donations: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Donation',
-        }
-    ]
+    donations: {
+
+        donationType: {
+            type: String,
+            required: true,
+            // The donation type must be one of the following
+            enum: ['Garden', 'Wood', 'Forest'],
+            trim : true
+        },
+        description: {
+            type: String,
+        },
+        image: {
+            type: String,
+        },
+        donationAmount: {
+            type: Number,
+            required: true,
+            enum: [1, 10, 100],
+        },
+        price: {
+            type: Number,
+            required: true,
+        },
+
+    }
 });
 // ===================================================
 
