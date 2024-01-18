@@ -13,7 +13,6 @@ import {
     Box,
     Heading,
     Text,
-    Image,
     Table,
     Thead,
     Tbody,
@@ -129,29 +128,26 @@ const DonationHistory = () => {
                     >
                         {purchase.purchaseDate}
                     </Heading>
-                    <Table variant="simple">
-                        <Thead>
-                            <Tr>
-                                <Th>Donation Type</Th>
-                                <Th>Image</Th>
-                                <Th>Donated Trees</Th>
-                                <Th>Amount</Th>
-                            </Tr>
-                        </Thead>
-                        <Tbody>
-                            <Tr>
-                                <Td>{purchase.donations.donationType}</Td>
-                                <Td>
-                                    <Image
-                                        boxSize="50px"
-                                        src={`/images/${purchase.donations.image}`}
-                                        alt={purchase.donations.donationType} />
-                                </Td>
-                                <Td>{purchase.donations.donationAmount}</Td>
-                                <Td>${purchase.donations.price}</Td>
-                            </Tr>
-                        </Tbody>
-                    </Table>
+                    {purchase.donations && (
+                        <Table variant="simple">
+                            <Thead>
+                                <Tr>
+                                    <Th>Donation Type</Th>
+                                    <Th>Payment Status</Th>
+                                    <Th>Donated Trees</Th>
+                                    <Th>Amount</Th>
+                                </Tr>
+                            </Thead>
+                            <Tbody>
+                                <Tr>
+                                    <Td>{purchase.donations.donationType}</Td>
+                                    <Td>{purchase.paymentStatus}</Td>
+                                    <Td>{purchase.donations.donationAmount}</Td>
+                                    <Td>${purchase.donations.price}</Td>
+                                </Tr>
+                            </Tbody>
+                        </Table>
+                    )}
                 </Box>
             ))}
             <Box borderTopWidth={2} pt={3}>

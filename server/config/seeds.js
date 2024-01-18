@@ -5,10 +5,7 @@
 // =================================================================
 const db = require('./connection');
 const { User, Donation, Purchase, Ad, Youtube } = require('../models');
-// const userData = require('../seeders/userSeeds');
 const donationData = require('../seeders/donationSeeds');
-// const purchaseData = require('../seeders/purchaseSeeds');
-// const adData = require('../seeders/adSeeds');
 const youtubeData = require('../seeders/youtubeSeeds');
 const cleanDB = require('../seeders/cleanDB');
 // =================================================================
