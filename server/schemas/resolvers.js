@@ -410,31 +410,31 @@ const resolvers = {
             }
 
             try {
-                console.log(`received Donations: ${donations}`);
 
                 // Fetch the actual donation objects from the database
                 const donationObjects = await Donation.find({
                     _id: { $in: donations },
                 });
-                console.log(`Donation objects: ${donationObjects}`);
 
-                // Update the price of each donation object to include tax (13%)
+                // Create a new purchase object to be used as the
+                // nested document of the Purchase model and save the purchase
                 // ==================================================================
-                // Update the price of each donation object to include tax (13%) and save
-                const updatedDonations = await Promise.all(donationObjects.map(async (donation) => {
-                    const donationPrice = donation.price;
-                    const finalDonationPrice = parseFloat((donationPrice + (donationPrice * 0.13)).toFixed(2));
-                    donation.price = finalDonationPrice;
-                    delete donation._id;
-                    return donation;
-                }));
-                console.log(`Updated donations: ${updatedDonations}`);
-                const newPurchase = new Purchase({
-                    donations: updatedDonations,
-                    status,
-                    paymentId,
+                const updatedDonations = donationObjects.map((donation) => {
+                    const donationType = donation.donationType;
+                    const description = donation.description;
+                    const image = donation.image;
+                    const donationAmount = donation.donationAmount;
+                    const price = parseFloat((donation.price + (donation.price * 0.13)).toFixed(2));
+                    return { donationType, description, image, donationAmount, price };
                 });
-                console.log(`New purchase: ${newPurchase}`);
+
+                const newPurchase = new Purchase({
+                    paymentIntent: paymentId,
+                    paymentStatus: status,
+                    donations: updatedDonations[0],
+                });
+
+                await newPurchase.save();
                 // ==================================================================
 
                 const user = await User.findById(context.user._id);
@@ -443,8 +443,7 @@ const resolvers = {
                     throw new Error('User not found');
                 }
 
-                const totalDonationAmount = updatedDonations.reduce((total, donation) => total + donation.donationAmount, 0);
-                console.log(`Total donation amount: ${totalDonationAmount}`);
+                const totalDonationAmount = donationObjects.reduce((total, donation) => total + donation.donationAmount, 0);
 
                 // Update total donations
                 await user.addDonation(totalDonationAmount);

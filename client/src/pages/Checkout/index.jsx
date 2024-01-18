@@ -33,7 +33,6 @@ const Checkout = ({ className, ...props }) => {
     // ============================================================
     const [state] = useStateContext();
     const donation = state.cart.slice(-1);
-    console.log(donation);
     if (donation.length === 0) {
         window.location.assign('/donations');
     }
