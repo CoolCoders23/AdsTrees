@@ -56,6 +56,14 @@ const typeDefs = `
     status: String
   }
 
+  type Purchase @cacheControl(maxAge: 60) {
+    _id: ID!
+    purchaseDate: String
+    paymentIntent: String
+    paymentStatus: String
+    donations: UserDonation
+  }
+
   type UserDonation @cacheControl(maxAge: 60) {
     donationType: String!
     description: String
@@ -64,12 +72,16 @@ const typeDefs = `
     price: Float!
   }
 
-  type Purchase @cacheControl(maxAge: 60) {
-    _id: ID!
-    purchaseDate: String
-    paymentIntent: String
-    paymentStatus: String
-    donations: UserDonation
+  enum DonationType {
+    Garden
+    Wood
+    Forest
+  }
+
+  enum DonationAmount {
+    ONE
+    TEN
+    HUNDRED
   }
 
   type Ad {
