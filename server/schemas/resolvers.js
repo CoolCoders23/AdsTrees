@@ -357,7 +357,6 @@ const resolvers = {
 
                 }
                 const totalPrice = parseFloat((price * 100).toFixed(2));
-                console.log(`Total price: ${totalPrice}`);
                 // remove last comma and space
                 donationId = donationId.slice(0, -2);
                 type = type.slice(0, -2);

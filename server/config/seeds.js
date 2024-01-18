@@ -5,10 +5,10 @@
 // =================================================================
 const db = require('./connection');
 const { User, Donation, Purchase, Ad, Youtube } = require('../models');
-const userData = require('../seeders/userSeeds');
+// const userData = require('../seeders/userSeeds');
 const donationData = require('../seeders/donationSeeds');
-const purchaseData = require('../seeders/purchaseSeeds');
-const adData = require('../seeders/adSeeds');
+// const purchaseData = require('../seeders/purchaseSeeds');
+// const adData = require('../seeders/adSeeds');
 const youtubeData = require('../seeders/youtubeSeeds');
 const cleanDB = require('../seeders/cleanDB');
 // =================================================================
@@ -35,10 +35,10 @@ const connectAndSeed = async () => {
 
     try {
 
-        await User.create(userData);
-        await Donation.create(donationData);
-        await Purchase.create(purchaseData);
-        await Ad.create(adData);
+        await User.create();
+        await Donation.create(donationData );
+        await Purchase.create();
+        await Ad.create();
         await Youtube.create(youtubeData);
 
     } catch (err) {

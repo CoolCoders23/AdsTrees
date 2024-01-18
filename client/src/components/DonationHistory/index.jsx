@@ -7,8 +7,6 @@
 // =========================================================
 import { useApolloClient } from '@apollo/client';
 import { useEffect, useState } from 'react';
-import useStateContext from '../../utils/payment-logic/UseStateContext';
-import { UPDATE_DONATIONS } from '../../utils/payment-logic/actions';
 import { QUERY_PURCHASES, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth';
 import {
@@ -36,9 +34,9 @@ const DonationHistory = () => {
     const color = '#e8f5f1';
 
     const client = useApolloClient();
-    const [state, dispatch] = useStateContext();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [purchases, setPurchases] = useState([]);
     const [totalDonations, setTotalDonations] = useState(0);
 
     const profile = Auth.getProfile();
@@ -65,11 +63,7 @@ const DonationHistory = () => {
                 });
 
                 setTotalDonations(userData?.user?.totalDonations || 0);
-
-                dispatch({
-                    type: UPDATE_DONATIONS,
-                    donations: data?.purchases || [],
-                });
+                setPurchases(data?.purchases || []);
 
             } catch (err) {
                 setError(err);
@@ -80,9 +74,7 @@ const DonationHistory = () => {
 
         fetchData();
 
-    }, [client, userId, username, dispatch]);
-
-    const purchases = state.donations;
+    }, [client, userId, username]);
 
     if (loading) {
         return <Spinner size="xl" />;
@@ -147,19 +139,17 @@ const DonationHistory = () => {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {purchase.donations?.map(({ image, donationType, donationAmount, price }, index) => (
-                                <Tr key={index}>
-                                    <Td>{donationType}</Td>
-                                    <Td>
-                                        <Image
-                                            boxSize="50px"
-                                            src={`/images/${image}`}
-                                            alt={donationType} />
-                                    </Td>
-                                    <Td>{donationAmount}</Td>
-                                    <Td>${price}</Td>
-                                </Tr>
-                            ))}
+                            <Tr>
+                                <Td>{purchase.donations.donationType}</Td>
+                                <Td>
+                                    <Image
+                                        boxSize="50px"
+                                        src={`/images/${purchase.donations.image}`}
+                                        alt={purchase.donations.donationType} />
+                                </Td>
+                                <Td>{purchase.donations.donationAmount}</Td>
+                                <Td>${purchase.donations.price}</Td>
+                            </Tr>
                         </Tbody>
                     </Table>
                 </Box>
