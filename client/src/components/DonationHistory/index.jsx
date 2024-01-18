@@ -5,17 +5,14 @@
 
 // import dependencies
 // =========================================================
-import { useApolloClient } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
-import useStateContext from '../../utils/payment-logic/UseStateContext';
-import { UPDATE_DONATIONS } from '../../utils/payment-logic/actions';
 import { QUERY_PURCHASES, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth';
 import {
     Box,
     Heading,
     Text,
-    Image,
     Table,
     Thead,
     Tbody,
@@ -23,7 +20,6 @@ import {
     Th,
     Td,
     Spinner,
-    useColorModeValue,
     Alert,
     AlertIcon
 } from '@chakra-ui/react';
@@ -36,60 +32,66 @@ const DonationHistory = () => {
     const bg = '#081c15';
     const color = '#e8f5f1';
 
-    const client = useApolloClient();
-    const [state, dispatch] = useStateContext();
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [purchases, setPurchases] = useState([]);
     const [totalDonations, setTotalDonations] = useState(0);
 
     const profile = Auth.getProfile();
     const userId = profile?.data._id;
     const username = profile?.data.username;
 
+    const { loading, error, data, refetch } = useQuery(QUERY_PURCHASES, {
+        variables: { userId: userId },
+    });
+
+    const {
+        loading: userLoading,
+        error: userError,
+        data: userData,
+        refetch: userRefetch,
+    } = useQuery(QUERY_USER, {
+        variables: { username: username },
+    });
+
     useEffect(() => {
+        if (!loading && data) {
+            setPurchases(data?.purchases || []);
+        }
 
-        const fetchData = async () => {
+        if (!userLoading && userData) {
+            setTotalDonations(userData?.user?.totalDonations || 0);
+        }
+    }, [loading, data, userLoading, userData]);
 
-            try {
+    useEffect(() => {
+        if (purchases.length > 0) {
+            refetch();
+        }
+    }, [purchases, refetch]);
 
-                setLoading(true);
-                setError(null);
-
-                const { data } = await client.query({
-                    query: QUERY_PURCHASES,
-                    variables: { userId: userId },
-                });
-
-                const { data: userData } = await client.query({
-                    query: QUERY_USER,
-                    variables: { username: username },
-                });
-
-                setTotalDonations(userData?.user?.totalDonations || 0);
-
-                dispatch({
-                    type: UPDATE_DONATIONS,
-                    donations: data?.purchases || [],
-                });
-
-            } catch (err) {
-                setError(err);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-
-    }, [client, userId, username, dispatch]);
-
-    const purchases = state.donations;
+    useEffect(() => {
+        if (totalDonations > 0) {
+            userRefetch();
+        }
+    }, [totalDonations, userRefetch]);
 
     if (loading) {
         return <Spinner size="xl" />;
     }
 
     if (error) {
+        return (
+            <Alert status="error">
+                <AlertIcon />
+                There was an error processing your request.
+            </Alert>
+        );
+    }
+
+    if (userLoading) {
+        return <Spinner size="xl" />;
+    }
+
+    if (userError) {
         return (
             <Alert status="error">
                 <AlertIcon />
@@ -138,31 +140,26 @@ const DonationHistory = () => {
                     >
                         {purchase.purchaseDate}
                     </Heading>
-                    <Table variant="simple">
-                        <Thead>
-                            <Tr>
-                                <Th>Donation Type</Th>
-                                <Th>Image</Th>
-                                <Th>Donated Trees</Th>
-                                <Th>Amount</Th>
-                            </Tr>
-                        </Thead>
-                        <Tbody>
-                            {purchase.donations?.map(({ image, donationType, donationAmount, price }, index) => (
-                                <Tr key={index}>
-                                    <Td>{donationType}</Td>
-                                    <Td>
-                                        <Image
-                                            boxSize="50px"
-                                            src={`/images/${image}`}
-                                            alt={donationType} />
-                                    </Td>
-                                    <Td>{donationAmount}</Td>
-                                    <Td>${price}</Td>
+                    {purchase.donations && (
+                        <Table variant="simple">
+                            <Thead>
+                                <Tr>
+                                    <Th>Donation Type</Th>
+                                    <Th>Payment Status</Th>
+                                    <Th>Donated Trees</Th>
+                                    <Th>Amount</Th>
                                 </Tr>
-                            ))}
-                        </Tbody>
-                    </Table>
+                            </Thead>
+                            <Tbody>
+                                <Tr>
+                                    <Td>{purchase.donations.donationType}</Td>
+                                    <Td>{purchase.paymentStatus}</Td>
+                                    <Td>{purchase.donations.donationAmount}</Td>
+                                    <Td>${purchase.donations.price}</Td>
+                                </Tr>
+                            </Tbody>
+                        </Table>
+                    )}
                 </Box>
             ))}
             <Box borderTopWidth={2} pt={3}>

@@ -14,17 +14,12 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 import { Outlet } from 'react-router-dom';
-
-
 // ============================================================
 
 // Importing components and utils
 // ============================================================
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import Cart from './components/Cart';
-import useStateContext from './utils/payment-logic/UseStateContext';
-import { TOGGLE_CART } from './utils/payment-logic/actions';
 // ============================================================
 
 // Create an error link
@@ -82,17 +77,10 @@ const client = new ApolloClient({
 // ============================================================
 function App() {
 
-    const [state, dispatch] = useStateContext();
-
-    function toggleCart() {
-        dispatch({ type: TOGGLE_CART });
-    }
-
     return (
         <ApolloProvider client={client}>
             <div className="outer-container">
-                <Header toggleCart={toggleCart} state={state} />
-                {state.cartOpen && <Cart toggleCart={toggleCart} />}
+                <Header />
                 <div className="page">
                     <Outlet />
                 </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* Code generated with AutoHTML Plugin for Figma */
 // Desc: This file contains the Success page component
 // ======================================================
@@ -5,10 +6,11 @@
 // Import Components and Packages
 // ======================================================
 import './index.css';
-import { useEffect } from 'react';
-import { useMutation } from '@apollo/client';
+import { useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
 import { ADD_PURCHASE } from '../../utils/mutations';
 import { idbPromise } from '../../utils/payment-logic/idbHelper';
+import { QUERY_STRIPE_PAYMENT_INTENT } from '../../utils/queries';
 // ======================================================
 
 // Component Function
@@ -16,34 +18,60 @@ import { idbPromise } from '../../utils/payment-logic/idbHelper';
 const Success = ({ className, ...props }) => {
 
     const [addPurchase] = useMutation(ADD_PURCHASE);
+    const { loading, data: paymentIntentData } = useQuery(QUERY_STRIPE_PAYMENT_INTENT);
+    const [status, setStatus] = useState('incomplete');
+    const [paymentId, setPaymentId] = useState('');
 
     useEffect(() => {
 
         async function saveOrder() {
 
+            // Get all items and last item in cart
+            // ======================================================
             const cart = await idbPromise('cart', 'get');
             const donations = cart.map((item) => item._id);
+            const lastDonation = donations.slice(-1);
+            // ======================================================
 
-            if (donations.length) {
+            // Get all items in donations collection in indexedDB
+            // ======================================================
+            const donationsInDb = await idbPromise('donations', 'get');
+            const donationsInDbIds = donationsInDb.map((item) => item._id);
+            // ======================================================
 
-                const { data } = await addPurchase({ variables: { donations } });
-                const donationData = data.addPurchase.donations;
+            if (donations.length && status !== 'incomplete' && paymentId !== '') {
 
-                donationData.forEach((item) => {
-                    idbPromise('cart', 'delete', item);
+                await addPurchase({
+                    variables: {
+                        donations: lastDonation,
+                        status,
+                        paymentId
+                    }
+                });
+
+                donations.forEach((item) => {
+                    idbPromise('cart', 'delete', { _id: item });
+                });
+
+                donationsInDbIds.forEach((item) => {
+                    idbPromise('donations', 'delete', { _id: item });
                 });
 
             }
 
-            setTimeout(() => {
-                window.location.assign('/user-profile');
-            }, 4000);
-
         }
 
-        saveOrder();
+        if (!loading && paymentIntentData) {
+            setStatus(paymentIntentData.getStripePaymentIntent.status);
+            setPaymentId(paymentIntentData.getStripePaymentIntent.id);
+            saveOrder();
+        }
 
-    }, [addPurchase]);
+        setTimeout(() => {
+            window.location.assign('/user-profile');
+        }, 4000);
+
+    }, [addPurchase, loading, paymentIntentData, status, paymentId]);
 
     return (
         <div className={'ads-trees-donate-section-3 ' + className}>

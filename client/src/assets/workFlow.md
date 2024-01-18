@@ -1,5 +1,9 @@
 ![AdsTrees](./image/LogoMain/AdsTrees_Logo_128.svg)
 
+# Phase 1
+
+---
+
 ## Title:
 Engaging with Eco-Focused Advertisement Platform
 
@@ -147,3 +151,138 @@ Engaging with Eco-Focused Advertisement Platform
 1. Introduce interactive ad features to increase engagement.
 2. Implement social sharing capabilities.
 3. Establish corporate partnerships for broader environmental impact.
+
+---
+
+# Phase 2:
+
+## Title:
+Enhancing and Optimizing the AdsTrees Platform for Users and Developers
+
+---
+
+## Developer-Centric User Story
+
+> As a developer working on the AdsTrees platform,
+> *I WANT* to implement advanced features and fix existing issues,
+> *SO THAT* the application offers a seamless, engaging, and user-friendly experience while supporting environmental sustainability.
+
+---
+
+## Phase 2 Acceptance Criteria
+
+### Error Handling and Bug Fixes
+
+#### 1. Robust Error Handling
+- **Given** an error occurs anywhere in the application,
+- **When I** interact with the application,
+- **Then I** should see user-friendly error messages and the app should handle errors gracefully.
+
+#### 2. Profile Page and User Update Fixes
+- **Given** a user updates their profile,
+- **When I** save changes,
+- **Then I** should see the updates reflected correctly without errors.
+
+#### 3. Profile Picture Functionality
+- **Given** a user uploads a new profile picture,
+- **When I** view the profile,
+- **Then I** should see the updated profile picture.
+
+### Dynamic Video Content and User Preferences
+
+#### 4. Dynamic Video Fetching Using YouTube API
+- **Given** the application needs fresh content,
+- **When I** interact with the video section,
+- **Then I** should see new videos dynamically fetched from YouTube.
+
+#### 5. User Preferences and Ads Filtering
+- **Given** a user sets specific ad preferences,
+- **When I** view ads,
+- **Then I** should only see ads that match my preferences.
+
+### UI/UX Enhancements
+
+#### 6. Light and Dark Mode Toggle
+- **Given** a user prefers a specific theme,
+- **When I** toggle the theme switch,
+- **Then I** should see the app's appearance change to light or dark mode.
+
+#### 7. Cart Feature to Payment Page Transformation
+- **Given** a user decides to make a donation,
+- **When I** proceed to checkout,
+- **Then I** should be directed to a redesigned payment page.
+
+#### 8. Custom Donation Checkout Page
+- **Given** a user is on the payment page,
+- **When I** finalize my donation,
+- **Then I** should experience a streamlined and custom checkout process.
+
+#### 9. Video Player and Stats Alignment
+- **Given** a user is watching videos,
+- **When I** view the dashboard,
+- **Then I** should see the video player aligned with real-time stats.
+
+#### 10. Duration Bar for Videos
+- **Given** a user is watching a video,
+- **When I** view the video player,
+- **Then I** should see a duration bar indicating video progress.
+
+#### 11. Responsive Video Frame Styling
+- **Given** a user accesses the app on various devices,
+- **When I** view videos,
+- **Then I** should see a responsive and well-styled video frame.
+
+#### 12. Active Tabs Logic in Header
+- **Given** a user navigates through the app,
+- **When I** switch between different pages,
+- **Then I** should see the active tab highlighted in the header.
+
+#### 13. Terms and Privacy Implementation
+- **Given** a user is concerned about privacy,
+- **When I** visit the Terms and Privacy section,
+- **Then I** should find detailed information regarding the app's policies.
+
+#### 14. Contact Page Message Input Fix
+- **Given** a user wants to send a message,
+- **When I**check the message box on the contact page,
+- **Then I** should see that the styling is following the original design.
+
+#### 15. Restyling Signup Page Inputs
+- **Given** a user is registering,
+- **When I** enter my details on the signup page,
+- **Then I** should see well-styled and responsive input fields.
+
+#### 16. Login Page Motto Update
+- **Given** a user visits the login page,
+- **When I** read the page's motto,
+- **Then I** should find it inspiring and aligned with the app's mission.
+
+---
+
+## Phase 2 Algorithm:
+
+### Error Handling and User Experience
+1. Implement global error handling mechanisms.
+2. Ensure profile updates are handled correctly and reflect immediately.
+3. Add functionality for users to update their profile pictures.
+
+### Dynamic Content and User Preferences
+1. Integrate YouTube API to fetch new videos dynamically.
+2. Implement user preference settings for personalized ad experiences.
+
+### UI/UX Enhancements
+1. Add a toggle switch for light and dark modes.
+2. Transform the cart feature into a more comprehensive payment page.
+3. Design a custom checkout page for donations.
+4. Align the video player with real-time statistics for a cohesive user experience.
+5. Implement a duration bar for videos to indicate progress.
+6. Ensure the video frame is responsive and aesthetically pleasing.
+7. Develop logic for active tabs in the header to improve navigation.
+8. Create detailed Terms and Privacy pages.
+9. Fix the message input functionality on the contact page.
+10. Restyle the input fields on the signup page for better user experience.
+11. Update the motto on the login page to reflect the app's mission and values.
+
+### Testing and Deployment
+1. Thoroughly test all new features and fixes for functionality and responsiveness.
+2. Deploy updates and monitor the application for any issues post-deployment.

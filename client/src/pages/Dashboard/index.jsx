@@ -17,7 +17,8 @@ import moment from 'moment';
 // ===============================================================
 
 // Define Component "Dashboard"
-export const Dashboard = ({ className, ...props }) => {
+// ===============================================================
+const Dashboard = ({ className, ...props }) => {
 
     const { loading: queryLoading, error: queryError, data } = useQuery(QUERY_YOUTUBE);
     const [addWatchedAd, { loading: mutationLoading }] = useMutation(ADD_WATCHED_AD);
@@ -184,4 +185,9 @@ export const Dashboard = ({ className, ...props }) => {
         </div>
     );
 };
+// ===============================================================
+
+// Export Component "Dashboard"
+// ===============================================================
+export default Dashboard;
 // ===============================================================

@@ -43,14 +43,45 @@ const typeDefs = `
     user: User
   }
 
-  type Checkout {
-    session: ID
+  type Checkout @cacheControl(maxAge: 0) {
+    clientSecret: String
+  }
+
+  type GetStripeClientKey @cacheControl(maxAge: 0) {
+    stripeClientKey: String
+  }
+
+  type StripePaymentIntent @cacheControl(maxAge: 60) {
+    id: String
+    status: String
   }
 
   type Purchase @cacheControl(maxAge: 60) {
     _id: ID!
     purchaseDate: String
-    donations: [Donation]
+    paymentIntent: String
+    paymentStatus: String
+    donations: UserDonation
+  }
+
+  type UserDonation @cacheControl(maxAge: 60) {
+    donationType: String!
+    description: String
+    image: String
+    donationAmount: Int!
+    price: Float!
+  }
+
+  enum DonationType {
+    Garden
+    Wood
+    Forest
+  }
+
+  enum DonationAmount {
+    ONE
+    TEN
+    HUNDRED
   }
 
   type Ad {
@@ -129,7 +160,9 @@ const typeDefs = `
       @cacheControl(scope: PUBLIC)
     purchase(_id: ID!): Purchase
       @cacheControl(scope: PUBLIC)
-    checkout(donations: [DonationInput]): Checkout
+    getStripeClientKey: GetStripeClientKey
+      @cacheControl(scope: PRIVATE)
+    getStripePaymentIntent: StripePaymentIntent
       @cacheControl(scope: PRIVATE)
     ads: [Ad]
       @cacheControl(scope: PUBLIC)
@@ -147,7 +180,13 @@ const typeDefs = `
     removeUser(userId: ID!): User
     updateUser(user: UpdateUserInput): User
       @cacheControl(maxAge: 0, scope: PRIVATE)
-    addPurchase(donations: [ID]!): Purchase
+    addCheckout(donations: [DonationInput]): Checkout
+      @cacheControl(scope: PRIVATE)
+    addPurchase(
+      donations: [ID]!,
+      status: String,
+      paymentId: String
+      ): Purchase
       @cacheControl(scope: PRIVATE)
     addWatchedAd(ad: AdInput!): Ad
       @cacheControl(scope: PRIVATE)

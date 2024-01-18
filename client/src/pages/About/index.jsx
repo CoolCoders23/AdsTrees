@@ -6,7 +6,7 @@ import JidPicture from '../../assets/image/Jide.png'; // Import the image for Ji
 import YeaPicture from '../../assets/image/Yega.png'; // Import the image for Yega
 import { Link } from 'react-router-dom';
 
-export const About = ({ className, ...props }) => {
+const About = ({ className, ...props }) => {
     return (
         <div className={'about ' + className}>
             <div className="about-body">
@@ -657,3 +657,6 @@ export const About = ({ className, ...props }) => {
         </div>
     );
 };
+
+// Export the component as the default object
+export default About;

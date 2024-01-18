@@ -23,7 +23,6 @@ export const StatsComponent = ({ className, watchedVideo, setWatchedVideo, ...pr
 
         if (watchedVideo) {
             refetch();
-            console.log(userData, userLoading, userError);
             setWatchedVideo(false);
         }
 

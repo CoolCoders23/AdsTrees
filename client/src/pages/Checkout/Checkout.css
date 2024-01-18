@@ -1,0 +1,734 @@
+.ads-trees-donate-section-2,
+.ads-trees-donate-section-2 * {
+  box-sizing: border-box;
+}
+.ads-trees-donate-section-2 {
+  background: var(--white-pure, #081c15);
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.ads-trees-donate-section-2 .body {
+  padding: 64px 0px 64px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .stepper {
+  padding: 16px 0px 16px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-2 {
+  padding: 1px 5px 1px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 398px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .active-line {
+  background: var(--stepper-green, #9dffce);
+  flex-shrink: 0;
+  width: 65px;
+  height: 2px;
+  position: absolute;
+  left: 104px;
+  top: 11px;
+}
+.ads-trees-donate-section-2 .inactive-line {
+  background: var(--grey-intermediate, #d9d9d9);
+  flex-shrink: 0;
+  width: 85px;
+  height: 2px;
+  position: absolute;
+  left: 201px;
+  top: 11px;
+}
+.ads-trees-donate-section-2 .steps {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-2-1-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-icon-base {
+  background: var(--grey-light, rgba(168, 177, 174, 0.1));
+  border-radius: 10.83px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .content {
+  background: var(--grey-light, rgba(168, 177, 174, 0.1));
+  border-radius: 10.83px;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .bbackground {
+  background: var(--grey-light, rgba(168, 177, 174, 0.1));
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 32.5px;
+  height: 32.5px;
+  position: absolute;
+  left: -6px;
+  top: -6px;
+}
+.ads-trees-donate-section-2 .dot {
+  background: var(--stepper-green, #9dffce);
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 7.22px;
+  height: 7.22px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-icon-wording {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .welcome {
+  color: var(--stepper-green, #9dffce);
+  text-align: center;
+  font-family: var(
+    --donate-stepper-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--donate-stepper-font-font-size, 14px);
+  font-weight: var(--donate-stepper-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ads-trees-donate-section-2 .step-2-2-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .payment {
+  color: var(--stepper-green, #9dffce);
+  text-align: center;
+  font-family: var(
+    --donate-stepper-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--donate-stepper-font-font-size, 14px);
+  font-weight: var(--donate-stepper-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ads-trees-donate-section-2 .step-2-3-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-icon-base2 {
+  background: var(--grey-light, rgba(168, 177, 174, 0.1));
+  border-radius: 10.83px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.ads-trees-donate-section-2 .content2 {
+  border-radius: 10.83px;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .dot2 {
+  background: var(--grey-dark, #f1f0f3);
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 7.22px;
+  height: 7.22px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-icon-wording2 {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .confirmation {
+  color: var(--grey-intermediate, #d9d9d9);
+  text-align: center;
+  font-family: var(
+    --donate-stepper-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--donate-stepper-font-font-size, 14px);
+  font-weight: var(--donate-stepper-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ads-trees-donate-section-2 .headline-frame-with-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .headline-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .headline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .main-title {
+  color: var(--green-dark, #e8f5f1);
+  text-align: center;
+  font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
+  font-size: var(--h-1-font-font-size, 32px);
+  font-weight: var(--h-1-font-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.ads-trees-donate-section-2 .subtitle {
+  color: var(--green-dark, #e8f5f1);
+  text-align: center;
+  font-family: var(--subtitle-font-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--subtitle-font-font-size, 16px);
+  font-weight: var(--subtitle-font-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.ads-trees-donate-section-2 .picto-instance {
+  flex-shrink: 0 !important;
+}
+.ads-trees-donate-section-2 .body-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .card {
+  background: var(--white-pure, #081c15);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+  max-width: 450px;
+  position: relative;
+  overflow: hidden;
+}
+.ads-trees-donate-section-2 .payment-module {
+  display: flex;
+  flex-direction: column;
+  gap: 11.62px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 9.34px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .credit-card {
+  border-radius: 6.23px;
+  border-style: solid;
+  border-color: var(--cards-main-color, #f4fbf9);
+  border-width: 0.78px;
+  padding: 12.45px;
+  display: flex;
+  flex-direction: column;
+  gap: 11.67px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .payment-header {
+  display: flex;
+  flex-direction: row;
+  gap: 11.67px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  margin-left: 2.4rem;
+}
+.ads-trees-donate-section-2 .content3 {
+  display: flex;
+  flex-direction: row;
+  gap: 9.34px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex: 1;
+  position: relative;
+}
+.ads-trees-donate-section-2 .checkbox-icon {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  height: auto;
+  position: relative;
+  overflow: visible;
+}
+.ads-trees-donate-section-2 .content4 {
+  display: flex;
+  flex-direction: column;
+  gap: 6.23px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  min-width: 156px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .text-and-supporting-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .text {
+  color: var(--cards-main-color, #f4fbf9);
+  text-align: left;
+  font-family: var(
+    --payment-title-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--payment-title-font-font-size, 14px);
+  font-weight: var(--payment-title-font-font-weight, 500);
+  position: relative;
+}
+/* .ads-trees-donate-section-2 .payment-logos {
+  display: flex;
+  flex-direction: row;
+  gap: 9px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .payment-method-icon {
+  border-radius: 4.67px;
+  flex-shrink: 0;
+  width: 35.8px;
+  height: 24.9px;
+  position: relative;
+  overflow: visible;
+}
+.ads-trees-donate-section-2 .payment-method-icon2 {
+  border-radius: 3.11px;
+  flex-shrink: 0;
+  width: 35.8px;
+  height: 24.9px;
+  position: relative;
+  overflow: visible;
+}
+.ads-trees-donate-section-2 .payment-method-icon3 {
+  border-radius: 4.67px;
+  flex-shrink: 0;
+  width: 35.8px;
+  height: 24.9px;
+  position: relative;
+  overflow: visible;
+} */
+.ads-trees-donate-section-2 .payment-form {
+  align-self: stretch !important;
+  flex-shrink: 0 !important;
+  width: unset !important;
+}
+/* .ads-trees-donate-section-2 .name {
+  display: flex;
+  flex-direction: row;
+  gap: 12.45px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .input-with-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4.67px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.ads-trees-donate-section-2 .label {
+  color: var(--cards-main-color, #f4fbf9);
+  text-align: left;
+  font-family: var(
+    --payment-input-label-font-family,
+    "Roboto-Medium",
+    sans-serif
+  );
+  font-size: var(--payment-input-label-font-size, 14px);
+  font-weight: var(--payment-input-label-font-weight, 500);
+  position: relative;
+}
+.ads-trees-donate-section-2 .input-group {
+  background: var(--green-light, #d0ffd7);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .input {
+  background: var(--green-light, #d0ffd7);
+  border-radius: 4px;
+  border-style: solid;
+  border-color: var(--green-light, #d0ffd7);
+  border-width: 1px;
+  padding: 0px 2px 0px 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 40px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .payer-name {
+  color: var(--constant-green-dark, #081c15);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ads-trees-donate-section-2 .card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12.45px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .card-number {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  min-width: 184px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .input-with-label2 {
+  display: flex;
+  flex-direction: column;
+  gap: 4.67px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .card-number2 {
+  color: var(--constant-green-dark, #081c15);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ads-trees-donate-section-2 .frame-37274 {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .card-expiry {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .input-group2 {
+  background: var(--green-light, #d0ffd7);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  min-width: 80px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .expiry {
+  color: var(--constant-green-dark, #081c15);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ads-trees-donate-section-2 .card-security {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .input-group3 {
+  background: var(--green-light, #d0ffd7);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  min-width: 56px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .cvv {
+  color: var(--constant-green-dark, #081c15);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+} */
+.ads-trees-donate-section-2 .security-information {
+  padding: 0px 4px 0px 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 11px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .security-shield-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  overflow: visible;
+}
+.ads-trees-donate-section-2 .security-shield-description {
+  color: var(--cards-main-color, #f4fbf9);
+  text-align: left;
+  font-family: var(
+    --small-body-font-font-family,
+    "Poppins-Regular",
+    sans-serif
+  );
+  font-size: var(--small-body-font-font-size, 14px);
+  font-weight: var(--small-body-font-font-weight, 400);
+  position: relative;
+  flex: 1;
+}
+.ads-trees-donate-section-2 .donation-summary-instance {
+  align-self: stretch !important;
+  flex-shrink: 0 !important;
+  width: unset !important;
+}
+/* .ads-trees-donate-section-2 .terms {
+  display: flex;
+  flex-direction: row;
+  gap: 9.19px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .terms-and-conditions {
+  color: var(--cards-main-color, #f4fbf9);
+  text-align: left;
+  font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
+  font-size: var(--link-small-font-font-size, 14px);
+  font-weight: var(--link-small-font-font-weight, 500);
+  position: relative;
+  flex: 1;
+} */
+/* .ads-trees-donate-section-2 .button {
+  background: var(--cards-main-color, #f4fbf9);
+  border-radius: 6px;
+  padding: 0px 24px 0px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 48px;
+  position: relative;
+  box-shadow: var(
+    --drop-shadow-buttons-at-box-shadow,
+    0px 4px 61px 0px rgba(45, 106, 79, 0.4)
+  );
+} */
+/* .ads-trees-donate-section-2 .children {
+  color: var(--cards-white, #081c15);
+  text-align: left;
+  font-family: var(
+    --button-label-font-font-family,
+    "Poppins-SemiBold",
+    sans-serif
+  );
+  font-size: var(--button-label-font-font-size, 18px);
+  font-weight: var(--button-label-font-font-weight, 600);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+} */
