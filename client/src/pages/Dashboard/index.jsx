@@ -111,8 +111,17 @@ const Dashboard = ({ className, ...props }) => {
                                                     onProgress={({ played }) => {
                                                         setPlayed(played);
                                                     }}
+                                                    width="100%"
                                                 />
                                                 <div className="video-title">{currentVideo.title}</div>
+                                                <ProgressSizeXsColorSchemeGreen
+                                                    hasStripe={true}
+                                                    size="xs"
+                                                    colorScheme="green"
+                                                    className="progress-instance"
+                                                    value={played}
+                                                    max={1}
+                                                />
                                             </>
                                         )}
                                     </div>
@@ -181,14 +190,7 @@ const Dashboard = ({ className, ...props }) => {
                                     </div>
 
                                 </div>
-                                <ProgressSizeXsColorSchemeGreen
-                                    hasStripe={true}
-                                    size="xs"
-                                    colorScheme="green"
-                                    className="progress-instance"
-                                    value={played}
-                                    max={1}
-                                />
+
                             </div>
                         </div>
                     </div>
