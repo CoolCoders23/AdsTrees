@@ -25,6 +25,7 @@ const Dashboard = ({ className, ...props }) => {
     const [currentVideo, setCurrentVideo] = useState(null);
     const [isButtonHeld, setIsButtonHeld] = useState(false);
     const [watchedVideo, setWatchedVideo] = useState(false);
+    const [played, setPlayed] = useState(0);
 
     const playerRef = useRef(null);
 
@@ -96,8 +97,31 @@ const Dashboard = ({ className, ...props }) => {
                                                     url={currentVideo.url}
                                                     playing={isButtonHeld}
                                                     onEnded={handleEnd}
+                                                    config={{
+                                                        youtube: {
+                                                            playerVars: {
+                                                                autoplay: 0,
+                                                                controls: 0,
+                                                                modestbranding: 1,
+                                                                rel: 0,
+                                                                showinfo: 0,
+                                                            },
+                                                        },
+                                                    }}
+                                                    onProgress={({ played }) => {
+                                                        setPlayed(played);
+                                                    }}
+                                                    width="100%"
                                                 />
                                                 <div className="video-title">{currentVideo.title}</div>
+                                                <ProgressSizeXsColorSchemeGreen
+                                                    hasStripe={true}
+                                                    size="xs"
+                                                    colorScheme="green"
+                                                    className="progress-instance"
+                                                    value={played}
+                                                    max={1}
+                                                />
                                             </>
                                         )}
                                     </div>
@@ -166,12 +190,7 @@ const Dashboard = ({ className, ...props }) => {
                                     </div>
 
                                 </div>
-                                <ProgressSizeXsColorSchemeGreen
-                                    hasStripe={true}
-                                    size="xs"
-                                    colorScheme="green"
-                                    className="progress-instance"
-                                />
+
                             </div>
                         </div>
                     </div>
