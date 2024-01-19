@@ -96,6 +96,27 @@ const Dashboard = ({ className, ...props }) => {
                                                     url={currentVideo.url}
                                                     playing={isButtonHeld}
                                                     onEnded={handleEnd}
+                                                    config={{
+                                                        youtube: {
+                                                            playerVars: {
+                                                                autoplay: 0,
+                                                                controls: 1,
+                                                                modestbranding: 1,
+                                                                rel: 0,
+                                                                showinfo: 1,
+                                                            },
+                                                            embedOptions: {
+                                                                autoplay: 0,
+                                                            },
+                                                        },
+                                                    }}
+                                                    onDuration={(duration) => {
+                                                        setCurrentVideo({
+                                                            ...currentVideo,
+                                                            duration: duration,
+                                                        });
+
+                                                    }}
                                                 />
                                                 <div className="video-title">{currentVideo.title}</div>
                                             </>
