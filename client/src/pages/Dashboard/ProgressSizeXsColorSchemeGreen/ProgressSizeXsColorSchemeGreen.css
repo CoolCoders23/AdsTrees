@@ -12,6 +12,9 @@
   width: 320px;
   position: relative;
 }
+.progress-size-xs-color-scheme-green.xs {
+  height: 4px;
+}
 .progress-size-xs-color-scheme-green .inner {
   background: var(--green-500, #38a169);
   display: flex;
@@ -26,6 +29,9 @@
   left: 0%;
   width: 57.19%;
   top: 0px;
+}
+.progress-size-xs-color-scheme-green .inner.green {
+  background: green;
 }
 .progress-size-xs-color-scheme-green .stripe-instance {
   align-self: stretch !important;

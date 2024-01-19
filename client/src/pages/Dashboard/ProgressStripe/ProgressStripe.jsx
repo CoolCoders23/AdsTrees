@@ -215,7 +215,6 @@ export const ProgressStripe = ({ className, ...props }) => {
             </g>
             <defs>
                 <clipPath id="clip0_97_5084">
-                    <rect width="183" height="4" fill="white" />
                 </clipPath>
             </defs>
         </svg>

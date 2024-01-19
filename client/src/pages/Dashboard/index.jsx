@@ -25,6 +25,7 @@ const Dashboard = ({ className, ...props }) => {
     const [currentVideo, setCurrentVideo] = useState(null);
     const [isButtonHeld, setIsButtonHeld] = useState(false);
     const [watchedVideo, setWatchedVideo] = useState(false);
+    const [played, setPlayed] = useState(0);
 
     const playerRef = useRef(null);
 
@@ -100,22 +101,15 @@ const Dashboard = ({ className, ...props }) => {
                                                         youtube: {
                                                             playerVars: {
                                                                 autoplay: 0,
-                                                                controls: 1,
+                                                                controls: 0,
                                                                 modestbranding: 1,
                                                                 rel: 0,
-                                                                showinfo: 1,
-                                                            },
-                                                            embedOptions: {
-                                                                autoplay: 0,
+                                                                showinfo: 0,
                                                             },
                                                         },
                                                     }}
-                                                    onDuration={(duration) => {
-                                                        setCurrentVideo({
-                                                            ...currentVideo,
-                                                            duration: duration,
-                                                        });
-
+                                                    onProgress={({ played }) => {
+                                                        setPlayed(played);
                                                     }}
                                                 />
                                                 <div className="video-title">{currentVideo.title}</div>
@@ -192,6 +186,8 @@ const Dashboard = ({ className, ...props }) => {
                                     size="xs"
                                     colorScheme="green"
                                     className="progress-instance"
+                                    value={played}
+                                    max={1}
                                 />
                             </div>
                         </div>
