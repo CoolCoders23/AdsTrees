@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .ads-trees-donate-section-2 {
-  background: var(--white-pure, #081c15);
   padding: 0px 16px 0px 16px;
   display: flex;
   flex-direction: column;
@@ -298,7 +297,7 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .card {
-  background: var(--white-pure, #081c15);
+  /* background: var(--white-pure, #081c15); */
   display: flex;
   flex-direction: column;
   gap: 32px;

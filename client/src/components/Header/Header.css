@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .header {
-  background: var(--white-pure, #081c15);
   padding: 8px 16px 8px 16px;
   display: flex;
   flex-direction: row;
@@ -81,7 +80,7 @@
   flex-shrink: 0 !important;
 }
 
-.header .logo_link  {
+.header .logo_link {
   text-decoration: none !important;
 }
 .header .cart-icon-active-instance {

@@ -3,8 +3,8 @@
   box-sizing: border-box;
 }
 .ads-trees-contact-us {
-  background: var(--white-pure, #081c15);
   padding: 0px 16px 0px 16px;
+  margin-top: 10rem;
   display: flex;
   flex-direction: column;
   gap: 0px;
