@@ -5,10 +5,13 @@ import MarkoPicture from '../../assets/image/Marko.png'; // Import the image for
 import JidPicture from '../../assets/image/Jide.png'; // Import the image for Jid
 import YeaPicture from '../../assets/image/Yega.png'; // Import the image for Yega
 import { Link } from 'react-router-dom';
+import { Box } from '@chakra-ui/react';
 
 const About = ({ className, ...props }) => {
+
     return (
-        <div className={'about ' + className}>
+
+        <Box className={'about ' + className}>
             <div className="about-body">
                 <div className="about-sub-body">
                     <div className="about-text">
@@ -654,7 +657,7 @@ const About = ({ className, ...props }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Box>
     );
 };
 

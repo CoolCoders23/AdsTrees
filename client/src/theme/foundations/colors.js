@@ -73,9 +73,11 @@ const colors = {
     },
     light: {
         primary: '#edf7f4',
+        // secondary: '#9747ff',
     },
     dark: {
         primary: '#081c15',
+        // secondary: '#ffe999',
     },
 };
 // ============================================================

@@ -8,7 +8,6 @@ import './AdsTreesSignIn.css'; // Importing custom CSS for styling.
 import { Link } from 'react-router-dom'; // Importing Link for routing.
 import {
     Input,
-    ChakraProvider,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -108,24 +107,22 @@ const Login = ({ className = '' }) => {
 
         <div className={'ads-trees-sign-in ' + className}>
 
-            <ChakraProvider>
-                {/* Install Modal */}
-                <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>
-                    <ModalOverlay />
-                    <ModalContent>
-                        <ModalHeader>Install AdsTrees</ModalHeader>
-                        <ModalBody>
+            {/* Install Modal */}
+            <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Install AdsTrees</ModalHeader>
+                    <ModalBody>
                             Do you want to install AdsTrees on your device?
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button colorScheme="blue" mr={3} onClick={handleInstallClick}>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button colorScheme="blue" mr={3} onClick={handleInstallClick}>
                                 Install
-                            </Button>
-                            <Button variant="ghost" onClick={() => setInstallPromptOpen(false)}>Cancel</Button>
-                        </ModalFooter>
-                    </ModalContent>
-                </Modal>
-            </ChakraProvider>
+                        </Button>
+                        <Button variant="ghost" onClick={() => setInstallPromptOpen(false)}>Cancel</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
 
             <div className="sign-in-body" >
                 <div className="home-text">
