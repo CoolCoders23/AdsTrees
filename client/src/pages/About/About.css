@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .about {
-  background: var(--white-pure, #081c15);
   padding: 0px 16px 0px 16px;
   display: flex;
   flex-direction: column;

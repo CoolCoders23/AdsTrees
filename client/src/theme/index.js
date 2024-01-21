@@ -18,7 +18,7 @@ import fonts from './foundations/fonts';
 import Button from './components/button';
 // ============================================================
 
-// Define Overrides
+// Define Overrides and configs for changing the color mode
 // ============================================================
 const overrides = {
     styles,
@@ -31,6 +31,13 @@ const overrides = {
     // Other components go here
     },
 };
+
+const config = {
+    initialColorMode: 'dark',
+    useSystemColorMode: true,
+};
+
+overrides.config = config;
 // ============================================================
 
 // Export Overrides

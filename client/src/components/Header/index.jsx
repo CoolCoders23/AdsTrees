@@ -22,6 +22,7 @@ export const Header = ({
     showTargetLogoutStatusActive = true,
     className
 }) => {
+
     const logout = (event) => {
         event.preventDefault();
         Auth.logout();

@@ -21,6 +21,7 @@ import {
     ModalBody,
     Button,
     Spinner,
+    ColorModeScript
 } from '@chakra-ui/react';
 // ============================================================
 
@@ -133,6 +134,7 @@ const Main = () => {
         <ChakraProvider theme={theme}>
             <Suspense fallback={<Spinner size="xl" />}>
                 <StateProvider>
+                    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
                     <RouterProvider router={router} />
                 </StateProvider>
             </Suspense>

@@ -367,8 +367,6 @@ template {
 
 .page {
   flex: 1;
-  background: var(--white-pure, #081c15);
-  padding-top: 48px;
   overflow: auto;
 }
 
