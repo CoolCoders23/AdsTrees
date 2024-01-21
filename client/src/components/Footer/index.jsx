@@ -1,15 +1,44 @@
 /* Code generated with AutoHTML Plugin for Figma */
+// Desc: This file contains the footer component of the application.
+// Used the followings as reference:
+// https://chakra-ui.com/docs/styled-system/chakra-factory
+// https://chakra-ui.com/docs/components/switch/usage
+// https://chakra-ui.com/docs/styled-system/style-props
+// https://chakra-ui.com/docs/styled-system/customize-theme
+// ================================================================
+
+// Import dependencies
+// ================================================================
 import './Footer.css';
 import { Link } from 'react-router-dom';
-import { useColorMode, Button } from '@chakra-ui/react';
+import { useColorMode, Switch, Box, IconButton, chakra } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+// ================================================================
 
+// Footer component
+// ================================================================
 export const Footer = ({ className }) => {
 
+    const StyledModeBox = chakra(Box, {
+        base: {
+            py: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 1,
+            position: 'relative',
+        },
+        md: {
+            justifyContent: 'flex-end',
+            flexGrow: 1,
+        },
+    });
+
     const { colorMode, toggleColorMode } = useColorMode();
+    const isDark = colorMode === 'dark';
 
     return (
-        <footer className={'footer ' + className}>
+        <Box className={'footer ' + className}>
             <div className="footer-content">
                 <div className="copyright-frame">
                     <div className="copyright">
@@ -51,15 +80,20 @@ export const Footer = ({ className }) => {
                         rel='noopener noreferrer'>
                         GitHub
                     </a>
-
-                    <Button
-                        className="color-mode-button"
-                        onClick={toggleColorMode}>
-                        {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-                    </Button>
-
                 </div>
             </div>
-        </footer>
+            <StyledModeBox>
+                <IconButton
+                    isRound="true"
+                    size="lg"
+                    alignSelf="flex-end"
+                    onClick={toggleColorMode}
+                />
+                <SunIcon color="greyLM.300" mr={2} />
+                <Switch colorScheme="green" isChecked={isDark} onChange={toggleColorMode} />
+                <MoonIcon color="greyLM.300" ml={2} />
+            </StyledModeBox>
+        </Box>
     );
 };
+// ================================================================
