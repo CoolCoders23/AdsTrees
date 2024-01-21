@@ -1,8 +1,13 @@
 /* Code generated with AutoHTML Plugin for Figma */
 import './Footer.css';
 import { Link } from 'react-router-dom';
+import { useColorMode, Button } from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 export const Footer = ({ className }) => {
+
+    const { colorMode, toggleColorMode } = useColorMode();
+
     return (
         <footer className={'footer ' + className}>
             <div className="footer-content">
@@ -46,6 +51,12 @@ export const Footer = ({ className }) => {
                         rel='noopener noreferrer'>
                         GitHub
                     </a>
+
+                    <Button
+                        className="color-mode-button"
+                        onClick={toggleColorMode}>
+                        {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                    </Button>
 
                 </div>
             </div>
