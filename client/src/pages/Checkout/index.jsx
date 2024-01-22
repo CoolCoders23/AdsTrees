@@ -267,7 +267,7 @@ const Checkout = ({ className, ...props }) => {
                                             />
                                         </Elements>
                                     )}
-                                    {message && <div id="payment-message">{message}</div>}
+                                    {message && <div className='error'>{message}</div>}
 
                                 </div>
                             </div>

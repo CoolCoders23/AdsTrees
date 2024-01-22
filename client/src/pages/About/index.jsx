@@ -313,12 +313,6 @@ const About = ({ className, ...props }) => {
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
-
                                 <div className="team-member-card-mm">
                                     <svg
                                         className="background2"

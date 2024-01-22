@@ -108,8 +108,6 @@ const Contact = ({ className = '' }) => {
                                             name="user_name"
                                             value={formData.user_name || ''}
                                             onChange={handleChange}
-                                            placeholder=""
-                                            _placeholder={{ color: 'green.900' }}
                                         />
                                     </div>
                                 </div>
@@ -122,8 +120,6 @@ const Contact = ({ className = '' }) => {
                                                 name="user_last_name"
                                                 value={formData.user_last_name || ''}
                                                 onChange={handleChange}
-                                                placeholder=""
-                                                _placeholder={{ color: 'green.900' }}
                                             />
                                         </div>
                                     </div>
@@ -138,8 +134,6 @@ const Contact = ({ className = '' }) => {
                                         type="email"
                                         value={formData.user_email || ''}
                                         onChange={handleChange}
-                                        placeholder=""
-                                        _placeholder={{ color: 'green.900' }}
                                     />
                                 </div>
                             </div>
@@ -151,8 +145,6 @@ const Contact = ({ className = '' }) => {
                                         name="message"
                                         value={formData.message || ''}
                                         onChange={handleChange}
-                                        placeholder=""
-                                        _placeholder={{ color: 'green.900' }}
                                     />
                                 </div>
                             </div>
@@ -160,7 +152,7 @@ const Contact = ({ className = '' }) => {
                                 <div className="children">Send Message</div>
                             </button>
                         </form>
-                        {message && <p className="user-message">{message}</p>}
+                        {message && <p className="error">{message}</p>}
                     </div>
                 </div>
             </div>

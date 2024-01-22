@@ -87,7 +87,7 @@ const CheckoutForm = ({ clientSecret, appearance, className }) => {
                     <span className='message'>log in to confirm the donation.</span>
                 )}
 
-                {message && <div className='payment-message'>{message}</div>}
+                {message && <div className='error'>{message}</div>}
             </form>
         </div>
     );

@@ -89,9 +89,9 @@ export const Footer = ({ className }) => {
                     alignSelf="flex-end"
                     onClick={toggleColorMode}
                 />
-                <SunIcon color="greyLM.300" mr={2} />
+                <SunIcon mr={2} />
                 <Switch colorScheme="green" isChecked={isDark} onChange={toggleColorMode} />
-                <MoonIcon color="greyLM.300" ml={2} />
+                <MoonIcon ml={2} />
             </StyledModeBox>
         </Box>
     );
