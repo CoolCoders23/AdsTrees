@@ -11,15 +11,30 @@ import { mode } from '@chakra-ui/theme-tools';
 const styles = {
     global: (props) => ({
         body: {
-            // color: mode('gray.800', 'whiteAlpha.900')(props),
-            bg: props.colorMode === 'light' ? 'light.primary' : 'dark.primary',
+            color: mode('light.text', 'dark.text')(props),
+            bg: mode('light.primary', 'dark.primary')(props),
         },
-        // a: {
-        //     color: 'teal.500',
-        //     _hover: {
-        //         textDecoration: 'underline',
-        //     },
-        // },
+        a: {
+            textDecoration: 'none',
+        },
+        'input': {
+            color: mode('light.inputText', 'dark.inputText')(props),
+        },
+        'input::placeholder': {
+            color: mode('light.inputText', 'dark.inputText')(props),
+        },
+        'input:-ms-input-placeholder': {
+            color: mode('light.inputText', 'dark.inputText')(props),
+        },
+        'button div, button span, button p, button': {
+            color: mode('light.buttonText', 'dark.buttonText')(props),
+        },
+        '.error': {
+            color: mode('light.errorText', 'dark.errorText')(props),
+        },
+        'textarea': {
+            color: mode('light.inputText', 'dark.inputText')(props),
+        },
     }),
 };
 // ============================================================
