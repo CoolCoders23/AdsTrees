@@ -146,7 +146,6 @@ const Login = ({ className = '' }) => {
                                         value= {formState.email}
                                         onChange={(event) => handleChange(event, 'email')}
                                         placeholder='Email'
-                                        _placeholder={{ color: 'green.900' }}
                                         size='lg'
                                         type="text"
 
@@ -157,7 +156,6 @@ const Login = ({ className = '' }) => {
                                 <div className="input">
                                     <Input
                                         placeholder="Password"
-                                        _placeholder={{ color: 'green.900' }}
                                         className="password"
                                         value={formState.password}
                                         onChange={(event) => handleChange(event, 'password')}

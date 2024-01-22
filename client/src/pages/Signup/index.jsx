@@ -85,7 +85,6 @@ const Signup = ({ className = '' }) => {
                                             value={formState.username}
                                             onChange={(event) => handleChange('username', event.target.value)}
                                             placeholder="Username"
-                                            _placeholder={{ color: 'green.900' }}
                                             size='lg'
                                         />
                                     </div>
@@ -98,7 +97,6 @@ const Signup = ({ className = '' }) => {
                                             value={formState.email}
                                             onChange={(event) => handleChange('email', event.target.value)}
                                             placeholder="Email"
-                                            _placeholder={{ color: 'green.900' }}
                                             size='lg'
                                         />
                                     </div>
@@ -111,7 +109,6 @@ const Signup = ({ className = '' }) => {
                                             value={formState.password}
                                             onChange={(event) => handleChange('password', event.target.value)}
                                             placeholder="Password"
-                                            _placeholder={{ color: 'green.900' }}
                                             size='lg'
                                         />
                                     </div>
@@ -124,7 +121,6 @@ const Signup = ({ className = '' }) => {
                                             value={formState.confirmPassword}
                                             onChange={(event) => handleChange('confirmPassword', event.target.value)}
                                             placeholder="Confirm password"
-                                            _placeholder={{ color: 'green.900' }}
                                             size='lg'
                                         />
                                     </div>

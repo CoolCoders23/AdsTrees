@@ -127,7 +127,7 @@ const Dashboard = ({ className, ...props }) => {
                                     </div>
                                 </div>
                                 <div className="client-controllers">
-                                    <div className="play-button">
+                                    <button className="play-button">
                                         <div
                                             className="children"
                                             tabIndex={0}
@@ -136,7 +136,7 @@ const Dashboard = ({ className, ...props }) => {
                                         >
                                             Press to watch
                                         </div>
-                                    </div>
+                                    </button>
                                     <div className="next-button" onClick={handleNext}>
                                         <CkArrowRight className="right-icon-instance" />
                                     </div>
