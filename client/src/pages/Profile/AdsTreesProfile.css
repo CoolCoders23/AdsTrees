@@ -121,7 +121,6 @@
   position: relative;
 }
 .ads-trees-profile .user-name {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-1-font-font-size, 32px);
@@ -129,7 +128,6 @@
   position: relative;
 }
 .ads-trees-profile .user-motto {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--body-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--body-font-font-size, 18px);
@@ -155,7 +153,6 @@
   position: relative;
 }
 .ads-trees-profile .theme-link {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
@@ -180,14 +177,13 @@
   flex-shrink: 0;
   position: relative;
 }
-.ads-trees-profile .contact-us {
-  color: var(--green-dark, #e8f5f1);
+/* .ads-trees-profile .contact-us {
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
   font-weight: var(--link-small-font-font-weight, 500);
   position: relative;
-}
+} */
 .ads-trees-profile .log-out-link {
   display: flex;
   flex-direction: row;
@@ -197,14 +193,14 @@
   flex-shrink: 0;
   position: relative;
 }
-.ads-trees-profile .logout {
+/* .ads-trees-profile .logout {
   color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
   font-weight: var(--link-small-font-font-weight, 500);
   position: relative;
-}
+} */
 .ads-trees-profile .profile-body2 {
   padding: 64px 0px 0px 0px;
   display: flex;
@@ -227,7 +223,6 @@
   position: relative;
 }
 .ads-trees-profile .public-profile-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--h-2-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-2-font-font-size, 24px);
@@ -259,7 +254,6 @@
   position: relative;
 }
 .ads-trees-profile .field-title-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --text-field-input-label-font-font-family,
@@ -299,7 +293,6 @@
   position: relative;
 }
 .ads-trees-profile .first-name {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -321,7 +314,6 @@
   position: relative;
 }
 .ads-trees-profile .last-name {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -344,7 +336,7 @@
   position: relative;
 }
 .ads-trees-profile .baseline {
-  color: var(--constant-green-dark, #081c15);
+  /* color: var(--constant-green-dark, #081c15); */
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -367,7 +359,6 @@
   position: relative;
 }
 .ads-trees-profile .private-profile-title {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(--h-2-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-2-font-font-size, 24px);
@@ -389,7 +380,6 @@
   position: relative;
 }
 .ads-trees-profile .field-title-label2 {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --text-field-input-label-font-font-family,
@@ -401,7 +391,6 @@
   position: relative;
 }
 .ads-trees-profile .email {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -424,7 +413,6 @@
   position: relative;
 }
 .ads-trees-profile .component-title-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --text-field-input-label-font-font-family,
@@ -459,7 +447,6 @@
   flex-shrink: 0 !important;
 }
 .ads-trees-profile .children {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -592,7 +579,6 @@
   position: relative;
 }
 .ads-trees-profile .password-edit-profile-title {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(--h-2-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-2-font-font-size, 24px);
@@ -614,7 +600,7 @@
   position: relative;
 }
 .ads-trees-profile .password {
-  color: var(--constant-green-dark, #081c15);
+  /* color: var(--constant-green-dark, #081c15); */
   text-align: left;
   font-family: "-", sans-serif;
   font-size: 16px;
@@ -627,13 +613,13 @@
   justify-content: flex-start;
 }
 .password-span {
-  color: var(--constant-green-dark, #081c15);
+  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
 .password-span2 {
-  color: var(--constant-green-dark, #081c15);
+  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -649,7 +635,7 @@
   position: relative;
 }
 .ads-trees-profile .new-password {
-  color: var(--constant-green-dark, #081c15);
+  /* color: var(--constant-green-dark, #081c15); */
   text-align: left;
   font-family: "-", sans-serif;
   font-size: 16px;
@@ -662,13 +648,13 @@
   justify-content: flex-start;
 }
 .new-password-span {
-  color: var(--constant-green-dark, #081c15);
+  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
 .new-password-span2 {
-  color: var(--constant-green-dark, #081c15);
+  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -684,7 +670,7 @@
   position: relative;
 }
 .ads-trees-profile .password-confirmation {
-  color: var(--constant-green-dark, #081c15);
+  /* color: var(--constant-green-dark, #081c15); */
   text-align: left;
   font-family: "-", sans-serif;
   font-size: 16px;
@@ -697,13 +683,13 @@
   justify-content: flex-start;
 }
 .password-confirmation-span {
-  color: var(--constant-green-dark, #081c15);
+  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
 .password-confirmation-span2 {
-  color: var(--constant-green-dark, #081c15);
+  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -737,7 +723,7 @@
   );
 }
 .ads-trees-profile .children2 {
-  color: var(--cards-white, #081c15);
+  /* color: var(--cards-white, #081c15); */
   text-align: left;
   font-family: var(
     --button-label-font-font-family,

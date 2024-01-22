@@ -227,7 +227,6 @@
   position: relative;
 }
 .ads-trees-donate-section-3 .you-are-awesome {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-1-font-font-size, 32px);
@@ -236,7 +235,6 @@
   align-self: stretch;
 }
 .ads-trees-donate-section-3 .thank-you-for-your-payment {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--subtitle-font-font-family, "Roboto-Regular", sans-serif);
   font-size: var(--subtitle-font-font-size, 16px);
@@ -316,7 +314,7 @@
   position: relative;
   align-self: stretch;
 }
-.ads-trees-donate-section-3 .button {
+/* .ads-trees-donate-section-3 .button {
   background: var(--cards-main-color, #f4fbf9);
   border-radius: 6px;
   padding: 0px 24px 0px 24px;
@@ -349,4 +347,4 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-}
+} */

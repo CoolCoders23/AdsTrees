@@ -95,7 +95,7 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .content {
-  background: var(--grey-light, rgba(168, 177, 174, 0.1));
+  /* background: var(--grey-light, rgba(168, 177, 174, 0.1)); */
   border-radius: 10.83px;
   padding: 7px;
   display: flex;
@@ -198,7 +198,7 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .payment {
-  color: var(--grey-intermediate, #d9d9d9);
+  /* color: var(--grey-intermediate, #d9d9d9); */
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -222,7 +222,7 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .confirmation {
-  color: var(--grey-intermediate, #d9d9d9);
+  /* color: var(--grey-intermediate, #d9d9d9); */
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -257,7 +257,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .main-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-1-font-font-size, 32px);
@@ -266,7 +265,6 @@
   align-self: stretch;
 }
 .ads-trees-donate-section-1 .subtitle {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--subtitle-font-font-family, "Roboto-Regular", sans-serif);
   font-size: var(--subtitle-font-font-size, 16px);
@@ -365,7 +363,7 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .title {
-  color: var(--grey-dark, #f1f0f3);
+  /* color: var(--grey-dark, #f1f0f3); */
   text-align: left;
   font-family: var(
     --donate-card-type-font-font-family,
@@ -387,7 +385,7 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .tradeoff {
-  color: var(--cards-main-color, #f4fbf9);
+  /* color: var(--cards-main-color, #f4fbf9); */
   text-align: left;
   font-family: var(
     --donate-card-type-subtitle-font-font-family,
@@ -419,7 +417,7 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .price {
-  color: var(--cards-main-color, #f4fbf9);
+  /* color: var(--cards-main-color, #f4fbf9); */
   text-align: left;
   font-family: var(--price-tag-font-font-family, "Roboto-Bold", sans-serif);
   font-size: var(--price-tag-font-font-size, 48px);
@@ -445,7 +443,7 @@
   );
 }
 .ads-trees-donate-section-1 .children {
-  color: var(--cards-white, #081c15);
+  /* color: var(--cards-white, #081c15); */
   text-align: left;
   font-family: var(
     --button-label-font-font-family,

@@ -58,7 +58,6 @@
   position: relative;
 }
 .ads-trees-sign-in .plant-trees-for-free {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--motto-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--motto-font-font-size, 24px);
@@ -67,7 +66,6 @@
   align-self: stretch;
 }
 .ads-trees-sign-in .make-the-planet-better {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--motto-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--motto-font-font-size, 24px);
@@ -98,7 +96,6 @@
   max-width: 480px;
 }
 .ads-trees-sign-in .sign-in-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-1-font-font-size, 32px);
@@ -147,7 +144,6 @@
   position: relative;
 }
 .ads-trees-sign-in .email {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -160,7 +156,6 @@
   justify-content: flex-start;
 }
 .ads-trees-sign-in .email {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -173,7 +168,6 @@
   justify-content: flex-start;
 }
 .ads-trees-sign-in .password {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -205,7 +199,6 @@
   );
 }
 .ads-trees-sign-in .children {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: var(
     --button-label-font-font-family,
@@ -231,7 +224,6 @@
   position: relative;
 }
 .ads-trees-sign-in .error {
-  color: var(--red-dark, #f5e8e8);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -252,7 +244,6 @@
   position: relative;
 }
 .ads-trees-sign-in .instruction-text {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -273,7 +264,6 @@
   position: relative;
 }
 .ads-trees-sign-in .register-here-link {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --link-medium-font-font-family,
