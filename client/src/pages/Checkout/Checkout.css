@@ -221,7 +221,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .confirmation {
-  color: var(--grey-intermediate, #d9d9d9);
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -266,7 +265,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .main-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-1-font-font-size, 32px);
@@ -275,7 +273,6 @@
   align-self: stretch;
 }
 .ads-trees-donate-section-2 .subtitle {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--subtitle-font-font-family, "Roboto-Regular", sans-serif);
   font-size: var(--subtitle-font-font-size, 16px);
@@ -397,7 +394,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .text {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --payment-title-font-font-family,
@@ -662,7 +658,6 @@
   overflow: visible;
 }
 .ads-trees-donate-section-2 .security-shield-description {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,

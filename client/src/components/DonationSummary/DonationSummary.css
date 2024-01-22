@@ -49,7 +49,6 @@
   position: relative;
 }
 .donation-summary .donation-review {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --payment-title-font-font-family,
@@ -90,7 +89,6 @@
   overflow: visible;
 }
 .donation-summary .tradeoff-description {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -106,7 +104,6 @@
   justify-content: flex-start;
 }
 .donation-summary .tradeoff-price-tag {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: "Poppins-Regular", sans-serif;
   font-size: 14px;
@@ -126,7 +123,6 @@
   position: relative;
 }
 .donation-summary .checkout-summary {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --payment-title-font-font-family,
@@ -148,7 +144,6 @@
   position: relative;
 }
 .donation-summary .subtotal {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -160,7 +155,6 @@
   position: relative;
 }
 .donation-summary .subtotal-price-tag {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -185,7 +179,6 @@
   position: relative;
 }
 .donation-summary .tax {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -197,7 +190,6 @@
   position: relative;
 }
 .donation-summary .tax-price-tag {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -220,7 +212,6 @@
   position: relative;
 }
 .donation-summary .total {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --payment-title-font-font-family,
@@ -232,7 +223,6 @@
   position: relative;
 }
 .donation-summary .total-price-tag {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --payment-title-font-font-family,

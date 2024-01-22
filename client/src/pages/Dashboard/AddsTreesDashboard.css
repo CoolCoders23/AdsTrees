@@ -98,7 +98,6 @@
   position: relative;
 }
 .adds-trees-dashboard .video-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: "Poppins-Regular", sans-serif;
   font-size: 24px;
@@ -134,7 +133,6 @@
   );
 }
 .adds-trees-dashboard .children {
-  color: var(--cards-white, #081c15);
   text-align: left;
   font-family: "Inter-SemiBold", sans-serif;
   font-size: 18px;
@@ -187,7 +185,6 @@
   overflow: visible;
 }
 .adds-trees-dashboard .reward-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: "Poppins-Regular", sans-serif;
   font-size: 14px;

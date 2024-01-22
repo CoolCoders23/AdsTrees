@@ -47,7 +47,6 @@
   position: relative;
 }
 .ads-trees-contact-us .contact-us-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-1-font-font-size, 32px);
@@ -96,7 +95,6 @@
   position: relative;
 }
 .ads-trees-contact-us .field-title-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --text-field-input-label-font-font-family,
@@ -136,7 +134,6 @@
   position: relative;
 }
 .ads-trees-contact-us .first-name {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -158,7 +155,6 @@
   position: relative;
 }
 .ads-trees-contact-us .last-name {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -181,7 +177,6 @@
   position: relative;
 }
 .ads-trees-contact-us .email {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -233,7 +228,6 @@
   position: relative;
 }
 .ads-trees-contact-us .message {
-  color: var(--constant-green-dark, #081c15);
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -261,7 +255,6 @@
   );
 }
 .ads-trees-contact-us .children {
-  color: var(--cards-white, #081c15);
   text-align: left;
   font-family: var(
     --button-label-font-font-family,
@@ -275,8 +268,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.ads-trees-contact-us .user-message {
-  color: var(--red-dark, #f5e8e8);
+.ads-trees-contact-us .error {
   text-align: left;
   font-family: var(
     --small-body-font-font-family,

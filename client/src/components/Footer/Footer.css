@@ -34,7 +34,6 @@
   position: relative;
 }
 .footer .copyright {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
@@ -57,7 +56,6 @@
   text-decoration: none;
 }
 .footer .privacy-link-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
@@ -69,7 +67,6 @@
   text-decoration: none;
 }
 .footer .terms-link-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
@@ -81,7 +78,6 @@
   text-decoration: none;
 }
 .footer .donate-link-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);

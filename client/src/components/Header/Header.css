@@ -43,7 +43,6 @@
   overflow: visible;
 }
 .header .wording {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --main-logo-font-font-family,

@@ -26,7 +26,6 @@
 }
 
 .checkout-form .terms-and-conditions {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
@@ -120,7 +119,7 @@
 }
 
 .checkout-form .children {
-  color: var(--cards-white, #56a165);
+  /* color: var(--cards-white, #56a165); */
   text-align: left;
   font-family: var(
     --button-label-font-font-family,
@@ -140,11 +139,11 @@
   padding-bottom: 0.5rem;
   margin: 1rem 0;
   font-size: 1rem;
-  color: #f4fbf9;
+  /* color: #f4fbf9; */
 }
 
-.checkout-form .payment-message {
-  color: #f4fbf9;
+.checkout-form .error {
+  /* color: #f4fbf9; */
   font-size: 16px;
   line-height: 20px;
   padding-top: 12px;

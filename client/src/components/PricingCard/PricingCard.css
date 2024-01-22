@@ -81,7 +81,6 @@
   position: relative;
 }
 .pricing-card .title {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --donate-card-type-font-font-family,
@@ -103,7 +102,6 @@
   position: relative;
 }
 .pricing-card .tradeoff {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --donate-card-type-subtitle-font-font-family,
@@ -135,7 +133,6 @@
   position: relative;
 }
 .pricing-card .price {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(--price-tag-font-font-family, "Roboto-Bold", sans-serif);
   font-size: var(--price-tag-font-font-size, 48px);
@@ -161,7 +158,6 @@
   );
 }
 .pricing-card .children {
-  color: var(--cards-white, #081c15);
   text-align: left;
   font-family: var(
     --button-label-font-font-family,

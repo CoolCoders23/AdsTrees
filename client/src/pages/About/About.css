@@ -72,7 +72,6 @@
   overflow: visible;
 }
 .about .mission-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --component-heading-large-xl-font-family,
@@ -98,7 +97,6 @@
   position: relative;
 }
 .about .mission-text {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--body-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--body-font-font-size, 18px);
