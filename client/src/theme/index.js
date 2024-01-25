@@ -16,6 +16,7 @@ import colors from './foundations/colors';
 import fonts from './foundations/fonts';
 // Component style overrides
 import Button from './components/button';
+import Input from './components/input';
 // ============================================================
 
 // Define Overrides and configs for changing the color mode
@@ -28,7 +29,7 @@ const overrides = {
     // Other foundational style overrides go here
     components: {
         Button,
-    // Other components go here
+        Input,
     },
 };
 

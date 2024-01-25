@@ -32,7 +32,7 @@ const Button = {
             py: 4,
         },
     },
-    // Two variants: outline and solid
+
     variants: {
         'with-shadow': {
             // Make a responsive variant
