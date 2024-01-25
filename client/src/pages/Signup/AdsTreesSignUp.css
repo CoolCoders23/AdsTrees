@@ -3,23 +3,20 @@
   box-sizing: border-box;
 }
 .ads-trees-sign-up {
-  padding: 0px 16px 0px 16px;
-  margin-top: 10rem;
   display: flex;
   flex-direction: column;
   gap: 0px;
   align-items: center;
   justify-content: flex-start;
-  align-self: stretch;
   flex: 1;
   position: relative;
 }
 .ads-trees-sign-up .sign-up-body {
-  padding: 32px 0px 0px 0px;
+  padding: 10rem;
   display: flex;
   flex-direction: row;
   gap: 80px;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   align-self: stretch;
@@ -83,7 +80,7 @@
   max-width: 480px;
   position: relative;
 }
-​ .ads-trees-sign-up .sign-up-form2 {
+​.ads-trees-sign-up .sign-up-form2 {
   position: relative;
   align-self: stretch;
 }
@@ -91,7 +88,6 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  align-items: flex-start;
   justify-content: center;
   flex: 1;
   position: relative;
@@ -115,8 +111,6 @@
   position: relative;
 }
 .ads-trees-sign-up .input-group {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 8px;
   display: flex;
   flex-direction: row;
   gap: 0px;
@@ -127,11 +121,6 @@
   position: relative;
 }
 .ads-trees-sign-up .input {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 4px;
-  border-style: solid;
-  border-color: var(--green-light, #d0ffd7);
-  border-width: 1px;
   padding: 0px 0px 0px 0px;
   display: flex;
   flex-direction: column;

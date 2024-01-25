@@ -106,8 +106,6 @@
   position: relative;
 }
 .ads-trees-contact-us .input-group {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 8px;
   display: flex;
   flex-direction: row;
   gap: 0px;
@@ -118,11 +116,6 @@
   position: relative;
 }
 .ads-trees-contact-us .input {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 8px;
-  border-style: solid;
-  border-color: var(--green-light, #d0ffd7);
-  border-width: 1px;
   padding: 0px 0px 0px 0px;
   display: flex;
   flex-direction: column;
@@ -199,8 +192,6 @@
   position: relative;
 }
 .ads-trees-contact-us .input-group2 {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 8px;
   display: flex;
   flex-direction: row;
   gap: 0px;
@@ -212,11 +203,6 @@
   position: relative;
 }
 .ads-trees-contact-us .input2 {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 4px;
-  border-style: solid;
-  border-color: var(--green-light, #d0ffd7);
-  border-width: 1px;
   padding: 0px 0px 0px 0px;
   display: flex;
   flex-direction: column;
@@ -229,12 +215,19 @@
 }
 .ads-trees-contact-us .message {
   text-align: left;
+  padding-top: 15px;
+  padding-left: 20px;
   font-family: "Inter-Regular", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   position: relative;
   align-self: stretch;
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-height: 6rem;
+  min-height: 8rem;
 }
 .ads-trees-contact-us .button {
   background: var(--cards-main-color, #f4fbf9);

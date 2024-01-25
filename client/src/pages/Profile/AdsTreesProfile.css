@@ -177,13 +177,6 @@
   flex-shrink: 0;
   position: relative;
 }
-/* .ads-trees-profile .contact-us {
-  text-align: left;
-  font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
-  font-size: var(--link-small-font-font-size, 14px);
-  font-weight: var(--link-small-font-font-weight, 500);
-  position: relative;
-} */
 .ads-trees-profile .log-out-link {
   display: flex;
   flex-direction: row;
@@ -193,14 +186,6 @@
   flex-shrink: 0;
   position: relative;
 }
-/* .ads-trees-profile .logout {
-  color: var(--green-dark, #e8f5f1);
-  text-align: left;
-  font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
-  font-size: var(--link-small-font-font-size, 14px);
-  font-weight: var(--link-small-font-font-weight, 500);
-  position: relative;
-} */
 .ads-trees-profile .profile-body2 {
   padding: 64px 0px 0px 0px;
   display: flex;
@@ -265,8 +250,6 @@
   position: relative;
 }
 .ads-trees-profile .input-group {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 8px;
   display: flex;
   flex-direction: row;
   gap: 0px;
@@ -277,12 +260,7 @@
   position: relative;
 }
 .ads-trees-profile .input {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 4px;
-  border-style: solid;
-  border-color: var(--green-light, #d0ffd7);
-  border-width: 1px;
-  padding: 0px 2px 0px 2px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -336,7 +314,6 @@
   position: relative;
 }
 .ads-trees-profile .baseline {
-  /* color: var(--constant-green-dark, #081c15); */
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
@@ -600,7 +577,6 @@
   position: relative;
 }
 .ads-trees-profile .password {
-  /* color: var(--constant-green-dark, #081c15); */
   text-align: left;
   font-family: "-", sans-serif;
   font-size: 16px;
@@ -613,13 +589,11 @@
   justify-content: flex-start;
 }
 .password-span {
-  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
 .password-span2 {
-  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -635,7 +609,6 @@
   position: relative;
 }
 .ads-trees-profile .new-password {
-  /* color: var(--constant-green-dark, #081c15); */
   text-align: left;
   font-family: "-", sans-serif;
   font-size: 16px;
@@ -648,13 +621,11 @@
   justify-content: flex-start;
 }
 .new-password-span {
-  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
 .new-password-span2 {
-  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -670,7 +641,6 @@
   position: relative;
 }
 .ads-trees-profile .password-confirmation {
-  /* color: var(--constant-green-dark, #081c15); */
   text-align: left;
   font-family: "-", sans-serif;
   font-size: 16px;
@@ -683,13 +653,11 @@
   justify-content: flex-start;
 }
 .password-confirmation-span {
-  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
 .password-confirmation-span2 {
-  /* color: var(--constant-green-dark, #081c15); */
   font-family: "Inter-Regular", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -723,7 +691,6 @@
   );
 }
 .ads-trees-profile .children2 {
-  /* color: var(--cards-white, #081c15); */
   text-align: left;
   font-family: var(
     --button-label-font-font-family,
@@ -738,7 +705,8 @@
   justify-content: flex-start;
 }
 .ads-trees-profile .delete-account-button {
-  background: var(--red-500, #e53e3e);
+  /* background: var(--red-500, #e53e3e); */
+  background: var(--red-500, #7d0a0a);
   border-radius: 6px;
   padding: 0px 24px 0px 24px;
   display: flex;
@@ -750,7 +718,7 @@
   flex-shrink: 0;
   height: 48px;
   position: relative;
-  box-shadow: 0px 4px 61px 0px rgba(241, 94, 43, 0.4);
+  box-shadow: 0px 0px 3px 3px rgba(94, 26, 3, 0.4);
 }
 .ads-trees-profile .children3 {
   color: #ffffff;
