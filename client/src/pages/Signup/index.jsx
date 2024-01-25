@@ -69,6 +69,9 @@ const Signup = ({ className = '' }) => {
                             <div className="make-the-planet-better">
                                 Make the planet better{' '}
                             </div>
+                            <div className="make-the-planet-better">
+                                While learning about topics you love!
+                            </div>
                         </div>
                     </div>
                 </div>

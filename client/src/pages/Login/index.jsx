@@ -128,9 +128,14 @@ const Login = ({ className = '' }) => {
                 <div className="home-text">
                     <div className="hook-text-frame">
                         <div className="hook-text">
-                            <div className="plant-trees-for-free">Plant trees for free </div>
+                            <div className="plant-trees-for-free">
+                                Plant trees for free
+                            </div>
                             <div className="make-the-planet-better">
                                 Make the planet better{' '}
+                            </div>
+                            <div className="make-the-planet-better">
+                                While learning about topics you love!
                             </div>
                         </div>
                     </div>
@@ -148,7 +153,6 @@ const Login = ({ className = '' }) => {
                                         placeholder='Email'
                                         size='lg'
                                         type="text"
-
                                     />
                                 </div>
                             </div>

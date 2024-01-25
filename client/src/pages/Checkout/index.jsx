@@ -20,7 +20,7 @@ import { ADD_CHECKOUT } from '../../utils/mutations';
 import CheckoutForm from '../../components/CheckoutForm';
 import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { DonationSummary } from '../../components/DonationSummary';
-// import { Spinner } from '@chakra-ui/react';
+import { useColorModeValue, useTheme } from '@chakra-ui/react';
 import './Checkout.css';
 // ============================================================
 
@@ -105,11 +105,14 @@ const Checkout = ({ className, ...props }) => {
 
     // Set the appearance
     // ============================================================
+    const { colors } = useTheme();
+    const colorBackground = useColorModeValue(colors.light.checkoutBg, colors.dark.checkoutBg);
+
     const appearance = {
         theme: 'night',
         labels: 'floating',
         variables: {
-            colorBackground:'#d0ffd7',
+            colorBackground: colorBackground,
             colorText: '#081c15',
             colorDanger: '#f3a847',
         },

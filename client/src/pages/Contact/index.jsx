@@ -6,7 +6,6 @@ import Auth from '../../utils/auth';
 import { validateEmail } from '../../utils/validation';
 import './AdsTreesContactUs.css'; // Importing the CSS
 import { Input } from '@chakra-ui/react';
-import { Textarea } from '@chakra-ui/react';
 // ============================================================
 
 // Contact component
@@ -140,7 +139,7 @@ const Contact = ({ className = '' }) => {
                             <div className="contact-us-message-input">
                                 <div className="field-title-label">Message</div>
                                 <div className="input-group2">
-                                    <Textarea
+                                    <textarea
                                         className="message"
                                         name="message"
                                         value={formData.message || ''}
