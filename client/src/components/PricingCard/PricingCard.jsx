@@ -10,6 +10,7 @@ import useStateContext from '../../utils/payment-logic/UseStateContext';
 import { ADD_TO_CART } from '../../utils/payment-logic/actions';
 import { idbPromise } from '../../utils/payment-logic/idbHelper';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
 // =========================================================
 
 // Define component
@@ -79,9 +80,9 @@ export const PricingCard = (item) => {
                             <div className="price">${price}</div>
                         </div>
                     </div>
-                    <div className="button">
-                        <button className="children" onClick={addToCartAndCheckout}>Proceed to Payment</button>
-                    </div>
+                    <Button className="button">
+                        <div className="children" onClick={addToCartAndCheckout}>Proceed to Payment</div>
+                    </Button>
                 </div>
             </div>
         </div>

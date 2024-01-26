@@ -168,9 +168,9 @@ const Login = ({ className = '' }) => {
                                     />
                                 </div>
                             </div>
-                            <button type="submit" className="button">
+                            <Button type="submit" className="button">
                                 <div className="children">Login </div>
-                            </button>
+                            </Button>
                             {error && <div className="error">The provided credentials are incorrect</div>}
                         </form>
                         <div className="call-to-register">

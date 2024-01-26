@@ -83,12 +83,6 @@ export const Footer = ({ className }) => {
                 </div>
             </div>
             <StyledModeBox>
-                <IconButton
-                    isRound="true"
-                    size="lg"
-                    alignSelf="flex-end"
-                    onClick={toggleColorMode}
-                />
                 <SunIcon mr={2} />
                 <Switch colorScheme="green" isChecked={isDark} onChange={toggleColorMode} />
                 <MoonIcon ml={2} />

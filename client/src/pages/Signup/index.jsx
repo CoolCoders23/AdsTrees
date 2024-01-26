@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import './AdsTreesSignUp.css'; // Importing custom CSS for styling.
-import { Input } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
+import { Input, Button } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
 
 // Signup component definition.
 const Signup = ({ className = '' }) => {
@@ -129,9 +129,9 @@ const Signup = ({ className = '' }) => {
                                     </div>
                                 </div>
 
-                                <button type="submit" className="button">
+                                <Button type="submit" className="button">
                                     <div className="children">Register </div>
-                                </button>
+                                </Button>
                                 {errorMessage && <div className="error">{errorMessage}</div>}
                                 {confirmPasswordError && <div className="error">{confirmPasswordError}</div>}
                             </div>

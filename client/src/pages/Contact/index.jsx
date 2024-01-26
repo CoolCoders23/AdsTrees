@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 import Auth from '../../utils/auth';
 import { validateEmail } from '../../utils/validation';
 import './AdsTreesContactUs.css'; // Importing the CSS
-import { Input } from '@chakra-ui/react';
+import { Input, Button } from '@chakra-ui/react';
 // ============================================================
 
 // Contact component
@@ -147,9 +147,9 @@ const Contact = ({ className = '' }) => {
                                     />
                                 </div>
                             </div>
-                            <button type="submit" className="button">
+                            <Button type="submit" className="button">
                                 <div className="children">Send Message</div>
-                            </button>
+                            </Button>
                         </form>
                         {message && <p className="error">{message}</p>}
                     </div>
