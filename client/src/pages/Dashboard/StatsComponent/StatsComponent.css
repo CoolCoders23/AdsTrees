@@ -50,10 +50,6 @@
   overflow: hidden;
 }
 .stats-component .stats-figure-card-instance {
-  background: var(
-    --green-dark-transparent,
-    rgba(116, 222, 177, 0.1)
-  ) !important;
   flex: 1 !important;
   align-self: unset !important;
   flex-shrink: unset !important;
@@ -90,9 +86,5 @@
   position: relative;
 }
 .stats-component .bonus-card-instance {
-  background: var(
-    --green-dark-transparent,
-    rgba(116, 222, 177, 0.1)
-  ) !important;
   min-width: 200px !important;
 }

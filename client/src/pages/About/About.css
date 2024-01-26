@@ -170,7 +170,7 @@
   position: relative;
 }
 .about .team-member-data-frame {
-  background: var(--green-medium, #269063);
+  /* background: var(--green-medium, #269063); */
   border-radius: 0px 0px 20px 20px;
   padding: 32px;
   display: flex;
@@ -193,7 +193,7 @@
   position: relative;
 }
 .about .name {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: var(
     --text-xl-line-height-7-font-normal-font-family,
@@ -206,7 +206,7 @@
   position: relative;
 }
 .about .title {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: var(
     --text-sm-line-height-5-font-normal-font-family,
@@ -231,7 +231,7 @@
   position: relative;
 }
 .about .team-member-bio {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: var(
     --text-xs-line-height-4-font-normal-font-family,
@@ -270,7 +270,7 @@
   overflow: visible;
 }
 .about .linked-in-wording {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 14px;
@@ -294,7 +294,7 @@
   overflow: visible;
 }
 .about .git-hub-wording {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 14px;
@@ -318,7 +318,7 @@
   overflow: visible;
 }
 .about .portfolio-wording {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 14px;
@@ -342,7 +342,7 @@
   overflow: visible;
 }
 .about .email-wording {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 14px;
@@ -376,7 +376,7 @@
   position: relative;
 }
 .about .team-member-bio2 {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: var(
     --text-xs-line-height-4-font-normal-font-family,

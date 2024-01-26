@@ -229,33 +229,7 @@
   max-height: 6rem;
   min-height: 8rem;
 }
-.ads-trees-contact-us .button {
-  background: var(--cards-main-color, #f4fbf9);
-  border-radius: 6px;
-  padding: 0px 24px 0px 24px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 48px;
-  position: relative;
-  box-shadow: var(
-    --drop-shadow-buttons-at-box-shadow,
-    0px 4px 61px 0px rgba(45, 106, 79, 0.4)
-  );
-}
 .ads-trees-contact-us .children {
-  text-align: left;
-  font-family: var(
-    --button-label-font-font-family,
-    "Poppins-SemiBold",
-    sans-serif
-  );
-  font-size: var(--button-label-font-font-size, 18px);
-  font-weight: var(--button-label-font-font-weight, 600);
   position: relative;
   display: flex;
   align-items: center;
