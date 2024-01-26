@@ -10,73 +10,88 @@ import { mode } from '@chakra-ui/theme-tools';
 // Define Overrides
 // ============================================================
 const Button = {
-    // The styles all button have in common
+
     baseStyle: {
-        fontWeight: 'bold',
-        textTransform: 'uppercase',
-        borderRadius: 'base',
+
+        fontFamily: 'heading',
+        fontWeight: 'semibold',
+        borderRadius: '8px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        textAlign: 'left',
+        gap: '8px',
+        cursor: 'pointer',
         _focus: {
             boxShadow: 'none',
+            outline: 'none',
         },
+        _hover: {
+            boxShadow: 'none',
+            outline: 'none',
+        },
+
     },
-    // Two sizes: sm and md
+
     sizes: {
         sm: {
             fontSize: 'sm',
-            px: 4,
-            py: 3,
+            px: '16 !important',
+            py: '0 !important',
         },
         md: {
             fontSize: 'md',
-            px: 6,
-            py: 4,
+            px: '20 !important',
+            py: '0 !important',
         },
+        lg: {
+            fontSize: 'lg',
+            px: '24px !important',
+            py:'0 !important',
+        }
     },
 
     variants: {
-        'with-shadow': {
-            // Make a responsive variant
-            base: {
-                bg: 'yellow.500',
-                fontSize: 'md'
-            },
-            sm: {
-                bg: 'teal.500',
-                fontSize: 'lg'
-            },
-            md: {
-                bg: 'orange.500',
-                fontSize: 'xl'
-            },
-        },
-        outline: {
-            border: '2px solid',
-            borderColor: 'primary',
-            color: 'primary',
+        'dashboard': props => ({
+            bg: mode('light.buttonBgColor', 'dark.buttonBgColor')(props),
+            color: mode('light.buttonText', 'dark.buttonText')(props),
+            boxShadow: '0px 2px 5px 3px rgba(45, 106, 79, 0.4)',
+            flex: 1,
+            minHeight: '59px',
+            lineHeight: '1.2',
             _hover: {
-                bg: 'primary',
-                color: 'white',
-            },
-        },
-        solid: props => ({
-            bg: mode('primary', 'secondary')(props),
-            color: mode('white', 'white')(props),
-            _hover: {
-                bg: mode('secondary', 'primary')(props),
-                color: mode('white', 'white')(props),
+                bg: mode('light.buttonBgColorHover', 'dark.buttonBgColorHover')(props),
             },
         }),
-        // or:
-        //solid: (props) => ({
-        //  bg: props.colorMode === 'dark' ? 'red.300' : 'red.500',
-        //}),
+        'next': props => ({
+            bg: mode('light.buttonBgColor', 'dark.buttonBgColor')(props),
+            color: mode('light.buttonText', 'dark.buttonText')(props),
+            boxShadow: '0px 2px 5px 3px rgba(45, 106, 79, 0.4)',
+            minHeight: '59px',
+            flexShrink: 0,
+            _hover: {
+                bg: mode('light.buttonBgColorHover', 'dark.buttonBgColorHover')(props),
+            },
+        }),
+        solid: props => ({
+            bg: mode('light.buttonBgColor', 'dark.buttonBgColor')(props),
+            color: mode('light.buttonText', 'dark.buttonText')(props),
+            boxShadow: '0px 2px 5px 3px rgba(45, 106, 79, 0.4)',
+            minHeight: '48px',
+            alignSelf: 'stretch',
+            flexShrink: 0,
+            _hover: {
+                bg: mode('light.buttonBgColorHover', 'dark.buttonBgColorHover')(props),
+            },
+        }),
 
     },
     // The default size and variant values
     defaultProps: {
-        size: 'md',
+        size: 'lg',
         variant: 'solid',
-        colorScheme: 'green', // default is gray
+        colorScheme: 'green',
     },
 };
 // ============================================================
