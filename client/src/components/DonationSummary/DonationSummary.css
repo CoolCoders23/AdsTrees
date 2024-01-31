@@ -5,8 +5,7 @@
 .donation-summary {
   border-radius: 8px;
   border-style: solid;
-  border-color: var(--grey-intermediate, #d9d9d9);
-  border-width: 1px;
+  border-width: 2px;
   display: flex;
   flex-direction: column;
   gap: 11.62px;
@@ -61,7 +60,6 @@
 }
 .donation-summary .donation-tradeoff {
   border-style: solid;
-  border-color: var(--cards-main-color, #f4fbf9);
   border-width: 0px 0px 1px 0px;
   padding: 0px 6.13px 8px 6.13px;
   display: flex;
@@ -167,7 +165,6 @@
 }
 .donation-summary .tax-review-title {
   border-style: solid;
-  border-color: var(--cards-main-color, #f4fbf9);
   border-width: 0px 0px 1px 0px;
   padding: 0px 6.13px 8px 6.13px;
   display: flex;

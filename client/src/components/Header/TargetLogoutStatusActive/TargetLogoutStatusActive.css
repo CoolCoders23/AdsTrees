@@ -3,10 +3,8 @@
   box-sizing: border-box;
 }
 .target-logout-status-active {
-  background: var(--white-pure, #081c15);
   border-radius: 21px;
   border-style: solid;
-  border-color: var(--green-dark, #e8f5f1);
   border-width: 1px;
   padding: 6px 8px 6px 8px;
   display: flex;
@@ -24,7 +22,6 @@
   overflow: visible;
 }
 .target-logout-status-active .logout {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--menu-item-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--menu-item-font-font-size, 14px);
