@@ -7,6 +7,7 @@ import DonationHistory from '../../components/DonationHistory';
 import './AdsTreesProfile.css';
 // import { CategoriesCheckboxes } from '../pages/AdsTreesProfile/CheckboxGroup/CheckboxGroup';
 import { useNavigate } from 'react-router-dom';
+import { Input, Button } from '@chakra-ui/react';
 
 const Profile = () => {
     // Local state for user data and form inputs
@@ -220,7 +221,7 @@ const Profile = () => {
                                     <div className="field-title-label">Username </div>
                                     <div className="input-group">
                                         {/* <div className="input"> */}
-                                        <input
+                                        <Input
                                             className="input"
                                             name="username"
                                             value={profileData.username || ''}
@@ -237,7 +238,7 @@ const Profile = () => {
                                 <div className="field-title-label2">Email </div>
                                 <div className="input-group">
                                     {/* <div className="input"> */}
-                                    <input
+                                    <Input
                                         className="input"
                                         name="email"
                                         value={profileData.email || ''}
@@ -262,7 +263,7 @@ const Profile = () => {
                                 <div className="field-title-label2">New password </div>
                                 <div className="input-group">
                                     {/* <div className="input"> */}
-                                    <input
+                                    <Input
                                         className="input"
                                         name="newPassword"
                                         value={profileData.newPassword}
@@ -275,7 +276,7 @@ const Profile = () => {
                                 <div className="field-title-label2">Confirm password </div>
                                 <div className="input-group">
                                     {/* <div className="input"> */}
-                                    <input
+                                    <Input
                                         className="input"
                                         name="passwordConfirmation"
                                         value={profileData.passwordConfirmation}
@@ -286,9 +287,9 @@ const Profile = () => {
                             </div>
                         </div>
                         <div className="profile-main-controls">
-                            <button className="button" onClick={handleUpdateProfile}>
+                            <Button className="button" onClick={handleUpdateProfile}>
                                 <div className="children2">Save Profile Information </div>
-                            </button>
+                            </Button>
                             <button className="delete-account-button" onClick={handleDeleteAccount}>
                                 <div className="children3">Delete Account </div>
                             </button>

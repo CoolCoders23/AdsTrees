@@ -21,6 +21,8 @@ import {
     Td,
     Spinner,
     Alert,
+    useColorModeValue,
+    useTheme,
     AlertIcon
 } from '@chakra-ui/react';
 // =========================================================
@@ -29,8 +31,9 @@ import {
 // =========================================================
 const DonationHistory = () => {
 
-    const bg = '#081c15';
-    const color = '#e8f5f1';
+    const { colors } = useTheme();
+    const bg = useColorModeValue(colors.light.historyBg, colors.dark.historyBg);
+    const color = useColorModeValue(colors.light.historyColor, colors.dark.historyColor);
 
     const [purchases, setPurchases] = useState([]);
     const [totalDonations, setTotalDonations] = useState(0);
@@ -113,12 +116,14 @@ const DonationHistory = () => {
         <Box
             bg={bg}
             p={5}
-            shadow="md"
-            borderWidth="1px"
-            borderRadius="md"
+            shadow="0px 0px 10px 5px rgba(0, 0, 0, 0.2)"
+            borderWidth="3px"
+            borderRadius="20px"
+            borderColor={bg}
             fontFamily="Roboto, system-ui, sans-serif"
             fontWeight={'light'}
-            color="#f5a61d"
+            color={color}
+            mb={10}
         >
             <Heading
                 as="h2"

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import './AdsTreesSignUp.css'; // Importing custom CSS for styling.
-import { Input } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
+import { Input, Button } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
 
 // Signup component definition.
 const Signup = ({ className = '' }) => {
@@ -69,6 +69,9 @@ const Signup = ({ className = '' }) => {
                             <div className="make-the-planet-better">
                                 Make the planet better{' '}
                             </div>
+                            <div className="make-the-planet-better">
+                                While learning about topics you love!
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,7 +88,6 @@ const Signup = ({ className = '' }) => {
                                             value={formState.username}
                                             onChange={(event) => handleChange('username', event.target.value)}
                                             placeholder="Username"
-                                            _placeholder={{ color: 'green.900' }}
                                             size='lg'
                                         />
                                     </div>
@@ -98,7 +100,6 @@ const Signup = ({ className = '' }) => {
                                             value={formState.email}
                                             onChange={(event) => handleChange('email', event.target.value)}
                                             placeholder="Email"
-                                            _placeholder={{ color: 'green.900' }}
                                             size='lg'
                                         />
                                     </div>
@@ -111,7 +112,6 @@ const Signup = ({ className = '' }) => {
                                             value={formState.password}
                                             onChange={(event) => handleChange('password', event.target.value)}
                                             placeholder="Password"
-                                            _placeholder={{ color: 'green.900' }}
                                             size='lg'
                                         />
                                     </div>
@@ -124,15 +124,14 @@ const Signup = ({ className = '' }) => {
                                             value={formState.confirmPassword}
                                             onChange={(event) => handleChange('confirmPassword', event.target.value)}
                                             placeholder="Confirm password"
-                                            _placeholder={{ color: 'green.900' }}
                                             size='lg'
                                         />
                                     </div>
                                 </div>
 
-                                <button type="submit" className="button">
+                                <Button type="submit" className="button">
                                     <div className="children">Register </div>
-                                </button>
+                                </Button>
                                 {errorMessage && <div className="error">{errorMessage}</div>}
                                 {confirmPasswordError && <div className="error">{confirmPasswordError}</div>}
                             </div>

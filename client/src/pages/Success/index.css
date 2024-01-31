@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .ads-trees-donate-section-3 {
-  background: var(--white-pure, #081c15);
   padding: 0px 16px 0px 16px;
   display: flex;
   flex-direction: column;
@@ -59,7 +58,6 @@
   position: relative;
 }
 .ads-trees-donate-section-3 .active-line {
-  background: var(--stepper-green, #9dffce);
   flex-shrink: 0;
   width: 65px;
   height: 2px;
@@ -68,7 +66,6 @@
   top: 11px;
 }
 .ads-trees-donate-section-3 .active-line2 {
-  background: var(--stepper-green, #9dffce);
   flex-shrink: 0;
   width: 79px;
   height: 2px;
@@ -95,7 +92,6 @@
   position: relative;
 }
 .ads-trees-donate-section-3 .step-icon-base {
-  background: var(--grey-light, rgba(168, 177, 174, 0.1));
   border-radius: 10.83px;
   display: flex;
   flex-direction: column;
@@ -118,7 +114,6 @@
   position: relative;
 }
 .ads-trees-donate-section-3 .bbackground {
-  background: var(--grey-light, rgba(168, 177, 174, 0.1));
   border-radius: 50%;
   flex-shrink: 0;
   width: 32.5px;
@@ -128,7 +123,6 @@
   top: -6px;
 }
 .ads-trees-donate-section-3 .dot {
-  background: var(--stepper-green, #9dffce);
   border-radius: 50%;
   flex-shrink: 0;
   width: 7.22px;
@@ -145,7 +139,6 @@
   position: relative;
 }
 .ads-trees-donate-section-3 .welcome {
-  color: var(--stepper-green, #9dffce);
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -168,8 +161,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.ads-trees-donate-section-3 .payment {
-  color: var(--stepper-green, #9dffce);
+.ads-trees-donate-section-3 .checkout-payment {
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -192,8 +184,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.ads-trees-donate-section-3 .confirmation {
-  color: var(--stepper-green, #9dffce);
+.ads-trees-donate-section-3 .success-confirmation {
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -228,7 +219,6 @@
   position: relative;
 }
 .ads-trees-donate-section-3 .you-are-awesome {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-1-font-font-size, 32px);
@@ -237,7 +227,6 @@
   align-self: stretch;
 }
 .ads-trees-donate-section-3 .thank-you-for-your-payment {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--subtitle-font-font-family, "Roboto-Regular", sans-serif);
   font-size: var(--subtitle-font-font-size, 16px);
@@ -309,45 +298,10 @@
   position: relative;
 }
 .ads-trees-donate-section-3 .feedback-text {
-  color: var(--stepper-green, #9dffce);
   text-align: center;
   font-family: var(--subtitle-font-font-family, "Roboto-Regular", sans-serif);
   font-size: var(--subtitle-font-font-size, 16px);
   font-weight: var(--subtitle-font-font-weight, 400);
   position: relative;
   align-self: stretch;
-}
-.ads-trees-donate-section-3 .button {
-  background: var(--cards-main-color, #f4fbf9);
-  border-radius: 6px;
-  padding: 0px 24px 0px 24px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  flex-shrink: 0;
-  height: 48px;
-  max-width: 400px;
-  position: relative;
-  box-shadow: var(
-    --drop-shadow-buttons-at-box-shadow,
-    0px 4px 61px 0px rgba(45, 106, 79, 0.4)
-  );
-}
-.ads-trees-donate-section-3 .children {
-  color: var(--cards-white, #081c15);
-  text-align: left;
-  font-family: var(
-    --button-label-font-font-family,
-    "Poppins-SemiBold",
-    sans-serif
-  );
-  font-size: var(--button-label-font-font-size, 18px);
-  font-weight: var(--button-label-font-font-weight, 600);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
 }

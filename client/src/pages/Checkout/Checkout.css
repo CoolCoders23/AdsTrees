@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .ads-trees-donate-section-2 {
-  background: var(--white-pure, #081c15);
   padding: 0px 16px 0px 16px;
   display: flex;
   flex-direction: column;
@@ -48,7 +47,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .active-line {
-  background: var(--stepper-green, #9dffce);
   flex-shrink: 0;
   width: 65px;
   height: 2px;
@@ -57,7 +55,6 @@
   top: 11px;
 }
 .ads-trees-donate-section-2 .inactive-line {
-  background: var(--grey-intermediate, #d9d9d9);
   flex-shrink: 0;
   width: 85px;
   height: 2px;
@@ -84,7 +81,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .step-icon-base {
-  background: var(--grey-light, rgba(168, 177, 174, 0.1));
   border-radius: 10.83px;
   display: flex;
   flex-direction: column;
@@ -107,7 +103,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .bbackground {
-  background: var(--grey-light, rgba(168, 177, 174, 0.1));
   border-radius: 50%;
   flex-shrink: 0;
   width: 32.5px;
@@ -117,7 +112,6 @@
   top: -6px;
 }
 .ads-trees-donate-section-2 .dot {
-  background: var(--stepper-green, #9dffce);
   border-radius: 50%;
   flex-shrink: 0;
   width: 7.22px;
@@ -134,7 +128,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .welcome {
-  color: var(--stepper-green, #9dffce);
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -157,8 +150,7 @@
   flex-shrink: 0;
   position: relative;
 }
-.ads-trees-donate-section-2 .payment {
-  color: var(--stepper-green, #9dffce);
+.ads-trees-donate-section-2 .checkout-payment {
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -182,7 +174,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .step-icon-base2 {
-  background: var(--grey-light, rgba(168, 177, 174, 0.1));
   border-radius: 10.83px;
   display: flex;
   flex-direction: row;
@@ -205,7 +196,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .dot2 {
-  background: var(--grey-dark, #f1f0f3);
   border-radius: 50%;
   flex-shrink: 0;
   width: 7.22px;
@@ -222,7 +212,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .confirmation {
-  color: var(--grey-intermediate, #d9d9d9);
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -267,7 +256,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .main-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-1-font-font-size, 32px);
@@ -276,7 +264,6 @@
   align-self: stretch;
 }
 .ads-trees-donate-section-2 .subtitle {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--subtitle-font-font-family, "Roboto-Regular", sans-serif);
   font-size: var(--subtitle-font-font-size, 16px);
@@ -298,7 +285,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .card {
-  background: var(--white-pure, #081c15);
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -333,8 +319,7 @@
 .ads-trees-donate-section-2 .credit-card {
   border-radius: 6.23px;
   border-style: solid;
-  border-color: var(--cards-main-color, #f4fbf9);
-  border-width: 0.78px;
+  border-width: 2px;
   padding: 12.45px;
   display: flex;
   flex-direction: column;
@@ -398,7 +383,6 @@
   position: relative;
 }
 .ads-trees-donate-section-2 .text {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --payment-title-font-font-family,
@@ -447,203 +431,6 @@
   flex-shrink: 0 !important;
   width: unset !important;
 }
-/* .ads-trees-donate-section-2 .name {
-  display: flex;
-  flex-direction: row;
-  gap: 12.45px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-.ads-trees-donate-section-2 .input-with-label {
-  display: flex;
-  flex-direction: column;
-  gap: 4.67px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex: 1;
-  position: relative;
-}
-.ads-trees-donate-section-2 .label {
-  color: var(--cards-main-color, #f4fbf9);
-  text-align: left;
-  font-family: var(
-    --payment-input-label-font-family,
-    "Roboto-Medium",
-    sans-serif
-  );
-  font-size: var(--payment-input-label-font-size, 14px);
-  font-weight: var(--payment-input-label-font-weight, 500);
-  position: relative;
-}
-.ads-trees-donate-section-2 .input-group {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-.ads-trees-donate-section-2 .input {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 4px;
-  border-style: solid;
-  border-color: var(--green-light, #d0ffd7);
-  border-width: 1px;
-  padding: 0px 2px 0px 2px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  height: 40px;
-  position: relative;
-}
-.ads-trees-donate-section-2 .payer-name {
-  color: var(--constant-green-dark, #081c15);
-  text-align: left;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.ads-trees-donate-section-2 .card-info {
-  display: flex;
-  flex-direction: column;
-  gap: 12.45px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-.ads-trees-donate-section-2 .card-number {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  min-width: 184px;
-  position: relative;
-}
-.ads-trees-donate-section-2 .input-with-label2 {
-  display: flex;
-  flex-direction: column;
-  gap: 4.67px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-.ads-trees-donate-section-2 .card-number2 {
-  color: var(--constant-green-dark, #081c15);
-  text-align: left;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.ads-trees-donate-section-2 .frame-37274 {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-.ads-trees-donate-section-2 .card-expiry {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-.ads-trees-donate-section-2 .input-group2 {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  min-width: 80px;
-  position: relative;
-}
-.ads-trees-donate-section-2 .expiry {
-  color: var(--constant-green-dark, #081c15);
-  text-align: left;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.ads-trees-donate-section-2 .card-security {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-.ads-trees-donate-section-2 .input-group3 {
-  background: var(--green-light, #d0ffd7);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  gap: 0px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  min-width: 56px;
-  position: relative;
-}
-.ads-trees-donate-section-2 .cvv {
-  color: var(--constant-green-dark, #081c15);
-  text-align: left;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  position: relative;
-  align-self: stretch;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-} */
 .ads-trees-donate-section-2 .security-information {
   padding: 0px 4px 0px 4px;
   display: flex;
@@ -663,7 +450,6 @@
   overflow: visible;
 }
 .ads-trees-donate-section-2 .security-shield-description {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -680,55 +466,3 @@
   flex-shrink: 0 !important;
   width: unset !important;
 }
-/* .ads-trees-donate-section-2 .terms {
-  display: flex;
-  flex-direction: row;
-  gap: 9.19px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-.ads-trees-donate-section-2 .terms-and-conditions {
-  color: var(--cards-main-color, #f4fbf9);
-  text-align: left;
-  font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
-  font-size: var(--link-small-font-font-size, 14px);
-  font-weight: var(--link-small-font-font-weight, 500);
-  position: relative;
-  flex: 1;
-} */
-/* .ads-trees-donate-section-2 .button {
-  background: var(--cards-main-color, #f4fbf9);
-  border-radius: 6px;
-  padding: 0px 24px 0px 24px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 48px;
-  position: relative;
-  box-shadow: var(
-    --drop-shadow-buttons-at-box-shadow,
-    0px 4px 61px 0px rgba(45, 106, 79, 0.4)
-  );
-} */
-/* .ads-trees-donate-section-2 .children {
-  color: var(--cards-white, #081c15);
-  text-align: left;
-  font-family: var(
-    --button-label-font-font-family,
-    "Poppins-SemiBold",
-    sans-serif
-  );
-  font-size: var(--button-label-font-font-size, 18px);
-  font-weight: var(--button-label-font-font-weight, 600);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-} */

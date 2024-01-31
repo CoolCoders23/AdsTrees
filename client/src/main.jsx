@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-//Desc: Entry point of the app
+// Desc: Entry point of the app
+// Used the followings as reference:
+// https://chakra-ui.com/getting-started/vite-guide
 // ============================================================
 
 // Importing libraries
@@ -18,7 +20,8 @@ import {
     ModalFooter,
     ModalBody,
     Button,
-    Spinner
+    Spinner,
+    ColorModeScript
 } from '@chakra-ui/react';
 // ============================================================
 
@@ -36,6 +39,7 @@ const Success = React.lazy(() => import('./pages/Success'));
 const About = React.lazy(() => import('./pages/About'));
 const Checkout = React.lazy(() => import('./pages/Checkout'));
 import StateProvider from './utils/payment-logic/StateProvider';
+import theme from './theme';
 // ============================================================
 
 // Main function
@@ -127,9 +131,10 @@ const Main = () => {
     const router = createBrowserRouter(routes);
 
     return (
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
             <Suspense fallback={<Spinner size="xl" />}>
                 <StateProvider>
+                    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
                     <RouterProvider router={router} />
                 </StateProvider>
             </Suspense>

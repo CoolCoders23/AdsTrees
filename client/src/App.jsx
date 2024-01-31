@@ -14,6 +14,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 import { Outlet } from 'react-router-dom';
+import { Box } from '@chakra-ui/react';
 // ============================================================
 
 // Importing components and utils
@@ -79,13 +80,13 @@ function App() {
 
     return (
         <ApolloProvider client={client}>
-            <div className="outer-container">
+            <Box className="outer-container">
                 <Header />
-                <div className="page">
+                <Box className="page">
                     <Outlet />
-                </div>
+                </Box>
                 <Footer />
-            </div>
+            </Box>
         </ApolloProvider>
     );
 

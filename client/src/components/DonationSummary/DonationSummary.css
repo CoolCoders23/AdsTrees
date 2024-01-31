@@ -5,8 +5,7 @@
 .donation-summary {
   border-radius: 8px;
   border-style: solid;
-  border-color: var(--grey-intermediate, #d9d9d9);
-  border-width: 1px;
+  border-width: 2px;
   display: flex;
   flex-direction: column;
   gap: 11.62px;
@@ -49,7 +48,6 @@
   position: relative;
 }
 .donation-summary .donation-review {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --payment-title-font-font-family,
@@ -62,7 +60,6 @@
 }
 .donation-summary .donation-tradeoff {
   border-style: solid;
-  border-color: var(--cards-main-color, #f4fbf9);
   border-width: 0px 0px 1px 0px;
   padding: 0px 6.13px 8px 6.13px;
   display: flex;
@@ -90,7 +87,6 @@
   overflow: visible;
 }
 .donation-summary .tradeoff-description {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -106,7 +102,6 @@
   justify-content: flex-start;
 }
 .donation-summary .tradeoff-price-tag {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: "Poppins-Regular", sans-serif;
   font-size: 14px;
@@ -126,7 +121,6 @@
   position: relative;
 }
 .donation-summary .checkout-summary {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --payment-title-font-font-family,
@@ -148,7 +142,6 @@
   position: relative;
 }
 .donation-summary .subtotal {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -160,7 +153,6 @@
   position: relative;
 }
 .donation-summary .subtotal-price-tag {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -173,7 +165,6 @@
 }
 .donation-summary .tax-review-title {
   border-style: solid;
-  border-color: var(--cards-main-color, #f4fbf9);
   border-width: 0px 0px 1px 0px;
   padding: 0px 6.13px 8px 6.13px;
   display: flex;
@@ -185,7 +176,6 @@
   position: relative;
 }
 .donation-summary .tax {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -197,7 +187,6 @@
   position: relative;
 }
 .donation-summary .tax-price-tag {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --small-body-font-font-family,
@@ -220,7 +209,6 @@
   position: relative;
 }
 .donation-summary .total {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --payment-title-font-font-family,
@@ -232,7 +220,6 @@
   position: relative;
 }
 .donation-summary .total-price-tag {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --payment-title-font-font-family,

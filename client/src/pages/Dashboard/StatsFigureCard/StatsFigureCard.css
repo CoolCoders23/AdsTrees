@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 .stats-figure-card {
-  background: var(--cards-white, #081c15);
+  /* background: var(--cards-white, #081c15); */
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,6 @@
   position: relative;
 }
 .stats-figure-card .stat-title {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(--stats-label-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--stats-label-font-size, 14px);
@@ -38,7 +37,6 @@
   justify-content: flex-start;
 }
 .stats-figure-card .stat-figure {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(--stats-figure-font-family, "Roboto-SemiBold", sans-serif);
   font-size: var(--stats-figure-font-size, 24px);

@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .adds-trees-dashboard {
-  background: var(--white-pure, #081c15);
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -66,7 +65,6 @@
   position: relative;
 }
 .adds-trees-dashboard .client-controllers-frame {
-  background: var(--white-pure, #081c15);
   padding: 0px 0px 16px 0px;
   display: flex;
   flex-direction: column;
@@ -99,7 +97,6 @@
   position: relative;
 }
 .adds-trees-dashboard .video-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: "Poppins-Regular", sans-serif;
   font-size: 24px;
@@ -117,53 +114,12 @@
   flex-shrink: 0;
   position: relative;
 }
-.adds-trees-dashboard .play-button {
-  background: var(--cards-main-color, #f4fbf9);
-  border-radius: 6px;
-  padding: 0px 24px 0px 24px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  height: 59px;
-  position: relative;
-  box-shadow: var(
-    --drop-shadow-buttons-at-box-shadow,
-    0px 4px 61px 0px rgba(45, 106, 79, 0.4)
-  );
-}
 .adds-trees-dashboard .children {
-  color: var(--cards-white, #081c15);
-  text-align: left;
-  font-family: "Inter-SemiBold", sans-serif;
-  font-size: 18px;
-  line-height: 28px;
-  font-weight: 600;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   cursor: pointer;
-}
-.adds-trees-dashboard .next-button {
-  background: var(--cards-main-color, #f4fbf9);
-  border-radius: 6px;
-  padding: 0px 24px 0px 24px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  height: 59px;
-  position: relative;
-  cursor: pointer;
-  box-shadow: var(
-    --drop-shadow-buttons-at-box-shadow,
-    0px 4px 61px 0px rgba(45, 106, 79, 0.4)
-  );
 }
 .adds-trees-dashboard .right-icon-instance {
   flex-shrink: 0 !important;
@@ -188,7 +144,6 @@
   overflow: visible;
 }
 .adds-trees-dashboard .reward-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: "Poppins-Regular", sans-serif;
   font-size: 14px;

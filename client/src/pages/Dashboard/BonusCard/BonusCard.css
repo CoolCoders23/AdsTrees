@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 .bonus-card {
-  background: var(--cards-white, #081c15);
+  /* background: var(--cards-white, #081c15); */
   border-radius: 8px;
   padding: 24px 16px 24px 16px;
   display: flex;
@@ -54,7 +54,6 @@
   position: relative;
 }
 .bonus-card .bonus-card-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--stats-label-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--stats-label-font-size, 14px);
@@ -73,7 +72,6 @@
   position: relative;
 }
 .bonus-card .user-progress {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--stats-figure-font-family, "Roboto-SemiBold", sans-serif);
   font-size: var(--stats-figure-font-size, 24px);
@@ -98,7 +96,6 @@
   overflow: visible;
 }
 .bonus-card .reward {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--stats-figure-font-family, "Roboto-SemiBold", sans-serif);
   font-size: var(--stats-figure-font-size, 24px);
