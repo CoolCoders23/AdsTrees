@@ -7,6 +7,7 @@
 import React, { useState } from 'react';
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
+import { Button, Spinner } from '@chakra-ui/react';
 import Auth from '../../utils/auth';
 import './CheckoutForm.css';
 // ============================================================
@@ -71,17 +72,19 @@ const CheckoutForm = ({ clientSecret, appearance, className }) => {
                                 By donating you accept our Privacy &amp; Terms Policy{' '}
                             </div>
                         </div>
-                        <button
+                        <Button
+                            type="submit"
                             disabled={isLoading || !stripe || !elements}
-                            id="submit"
+                            id='submit'
                             className='button'
+                            variant={'checkout'}
                         >
                             <span id="button-text">
                                 {isLoading
-                                    ? <div className='spinner' id="spinner"></div>
+                                    ? <Spinner size="sm" color="#33c481"/>
                                     : <div className='children'>Donate</div>}
                             </span>
-                        </button>
+                        </Button>
                     </div>
                 ) : (
                     <span className='message'>log in to confirm the donation.</span>
