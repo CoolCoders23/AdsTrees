@@ -66,17 +66,17 @@ const styles = {
         '.team-member-data-frame': {
             bg: mode('dark.greenFlashy', 'light.teamImageBg')(props),
         },
-        '.aboutIconsFill': {
+        '.aboutIconsFill, .security-shield-icon, .checkbox-icon, .vector-path': {
             fill: mode('light.text', 'dark.text')(props),
         },
 
-        '.active-line, .dot': {
+        '.active-line, .dot, .dot2, .active-line2': {
             bg: mode('light.greenDark', 'dark.greenFlashy')(props),
         },
         '.inactive-line': {
             bg: mode('light.inactiveLine', 'dark.greyIntermediate')(props),
         },
-        '.welcome': {
+        '.welcome, .checkout-payment, .success-confirmation': {
             color: mode('light.greenDark', 'dark.greenFlashy')(props),
         },
         '.bbackground, .step-icon-base, .step-icon-base2 ': {
@@ -84,6 +84,22 @@ const styles = {
         },
         '.payment, .confirmation': {
             color: mode('light.bbackground', 'dark.text')(props),
+        },
+        '.donation-summary, .donation-tradeoff, .tax-review-title, .credit-card': {
+            borderColor: mode('light.greenDark', 'dark.greyIntermediate')(props),
+        },
+        '.check-icon-bg': {
+            fill: mode('light.successFeedbackColor', 'dark.inputBackground')(props),
+        },
+        '.feedback-text': {
+            color: mode('light.successFeedbackColor', 'dark.greenFlashy')(props),
+        },
+        '.check-icon': {
+            fill: mode('light.greenFlashy', 'dark.greenPop')(props),
+        },
+        '.main-navigation-button-target-dashboard-status-active,.main-navigation-button-target-profile-status-active,.target-logout-status-active': {
+            bg: mode('light.pureWhite', 'dark.primary')(props),
+            borderColor: mode('light.text', 'dark.text')(props),
         },
 
     }),

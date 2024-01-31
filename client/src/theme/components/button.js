@@ -74,6 +74,18 @@ const Button = {
                 bg: mode('light.buttonBgColorHover', 'dark.buttonBgColorHover')(props),
             },
         }),
+        'checkout': props => ({
+            bg: mode('light.buttonBgColor', 'dark.buttonBgColor')(props),
+            color: mode('light.buttonText', 'dark.buttonText')(props),
+            boxShadow: '0px 2px 5px 3px rgba(45, 106, 79, 0.4)',
+            minHeight: '48px',
+            alignSelf: 'stretch',
+            flexShrink: 0,
+            width: '100%',
+            _hover: {
+                bg: mode('light.buttonBgColorHover', 'dark.buttonBgColorHover')(props),
+            },
+        }),
         solid: props => ({
             bg: mode('light.buttonBgColor', 'dark.buttonBgColor')(props),
             color: mode('light.buttonText', 'dark.buttonText')(props),
