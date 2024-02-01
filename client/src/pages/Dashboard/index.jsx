@@ -93,28 +93,47 @@ const Dashboard = ({ className, ...props }) => {
                                     <div className="video-information-subframe">
                                         {currentVideo && (
                                             <>
-                                                <ReactPlayer
-                                                    ref={playerRef}
-                                                    url={currentVideo.url}
-                                                    playing={isButtonHeld}
-                                                    onEnded={handleEnd}
-                                                    config={{
-                                                        youtube: {
-                                                            playerVars: {
-                                                                autoplay: 0,
-                                                                controls: 0,
-                                                                modestbranding: 1,
-                                                                rel: 0,
-                                                                showinfo: 0,
-                                                            },
-                                                        },
-                                                    }}
-                                                    onProgress={({ played }) => {
-                                                        setPlayed(played);
-                                                    }}
-                                                    width="100%"
-                                                />
                                                 <div className="video-title">{currentVideo.title}</div>
+                                                <div style={{
+                                                    border: '2px solid #081c15',
+                                                    borderRadius: '10px',
+                                                    overflow: 'hidden',
+                                                    marginBottom: '10px',
+                                                    minWidth: '100%',
+                                                    minHeight: '100%',
+                                                }}>
+                                                    <ReactPlayer
+                                                        ref={playerRef}
+                                                        url={currentVideo.url}
+                                                        playing={isButtonHeld}
+                                                        onEnded={handleEnd}
+                                                        config={{
+                                                            youtube: {
+                                                                playerVars: {
+                                                                    autoplay: 0,
+                                                                    controls: 0,
+                                                                    modestbranding: 1,
+                                                                    rel: 0,
+                                                                    showinfo: 0,
+                                                                },
+                                                            },
+                                                        }}
+                                                        onProgress={({ played }) => {
+                                                            setPlayed(played);
+                                                        }}
+                                                        onPause={() => {
+                                                            setIsButtonHeld(false);
+                                                        }}
+                                                        volume={0.9}
+                                                        muted={false}
+                                                        fallback={
+                                                            <div className='video-title'>
+                                                                Failed to load media
+                                                            </div>
+                                                        }
+                                                        width="100%"
+                                                    />
+                                                </div>
                                                 <ProgressSizeXsColorSchemeGreen
                                                     hasStripe={true}
                                                     size="xs"
@@ -128,13 +147,14 @@ const Dashboard = ({ className, ...props }) => {
                                     </div>
                                 </div>
                                 <div className="client-controllers">
-                                    <Button className="play-button" variant="dashboard">
-                                        <div
-                                            className="children"
-                                            tabIndex={0}
-                                            onMouseDown={onMouseDownHandler}
-                                            onMouseUp={onMouseUpHandler}
-                                        >
+                                    <Button
+                                        className="play-button"
+                                        variant="dashboard"
+                                        tabIndex={0}
+                                        onMouseDown={onMouseDownHandler}
+                                        onMouseUp={onMouseUpHandler}
+                                    >
+                                        <div className="children">
                                             Press to watch
                                         </div>
                                     </Button>

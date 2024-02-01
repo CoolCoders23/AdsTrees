@@ -103,6 +103,7 @@
   line-height: 100%;
   font-weight: 400;
   position: relative;
+  padding: 8px 0px 8px 0px;
 }
 .adds-trees-dashboard .client-controllers {
   display: flex;
