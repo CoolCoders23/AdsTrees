@@ -33,6 +33,7 @@ const typeDefs = `
     treesPlantedInWeek: Int @cacheControl(maxAge: 60)
     treesPlantedInYear: Int @cacheControl(maxAge: 60)
     bestWeek: Int @cacheControl(maxAge: 60)
+    lastWatchedDay: String @cacheControl(maxAge: 60)
     lastWatchedWeek: String @cacheControl(maxAge: 60)
     lastWatchedMonth: String @cacheControl(maxAge: 60)
     lastWatchedYear: String @cacheControl(maxAge: 60)

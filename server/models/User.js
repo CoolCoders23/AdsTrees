@@ -113,6 +113,11 @@ const userSchema = new Schema({
         default: 0,
     },
 
+    lastWatchedDay: {
+        type: Date,
+        default: Date.now,
+    },
+
     lastWatchedWeek: {
         type: Date,
         default: Date.now,
@@ -159,6 +164,11 @@ userSchema.methods.updateWatched = function(ad) {
 
     const now = moment();
     const adDate = moment(ad.date);
+
+    if (!now.isSame(this.lastWatchedDay, 'day')) {
+        this.watchedToday = 0;
+        this.lastWatchedDay = now;
+    }
 
     if (now.isSame(adDate, 'day')) {
         this.watchedToday += ad.duration;
