@@ -1,4 +1,6 @@
 // Desc: This file contains the AdsTreesProfile component that is responsible for rendering the user profile page. It also contains the logic to update the user profile and delete the user account.
+// Used the followings as reference:
+// https://chakra-ui.com/docs/components/alert-dialog
 // ================================================================
 
 // Importing the necessary packages
@@ -21,7 +23,6 @@ import {
     AlertDialogContent,
     AlertDialogOverlay,
     AlertDialogCloseButton,
-    useDisclosure
 } from '@chakra-ui/react';
 // import { CategoriesCheckboxes } from '../pages/AdsTreesProfile/CheckboxGroup/CheckboxGroup';
 // ==============================================================
@@ -30,8 +31,20 @@ import {
 // ================================================================
 const Profile = () => {
 
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [isErrorDialogOpen, setIsErrorDialogOpen] = useState(false);
+    const [errorDialogMessage, setErrorDialogMessage] = useState('');
     const cancelRef = React.useRef();
+    const onClosePassword = () => {
+        setIsErrorDialogOpen(false);
+        setErrorDialogMessage('');
+    };
+    const onCloseProfile = () => {
+        setIsErrorDialogOpen(false);
+        setErrorDialogMessage('');
+        setTimeout(() => {
+            Auth.logout();
+        }, 1000);
+    };
 
     const [profileData, setProfileData] = useState({
         username: '',
@@ -82,30 +95,11 @@ const Profile = () => {
     const handleUpdateProfile = async () => {
 
         if (profileData.newPassword !== profileData.passwordConfirmation) {
-            return (
-                <AlertDialog
-                    motionPreset='slideInBottom'
-                    leastDestructiveRef={cancelRef}
-                    onClose={onClose}
-                    isOpen={isOpen}
-                    isCentered
-                >
-                    <AlertDialogOverlay>
-                        <AlertDialogContent>
-                            <AlertDialogHeader>Invalid Password</AlertDialogHeader>
-                            <AlertDialogCloseButton />
-                            <AlertDialogBody>
-                                Passwords do not match. Please try again.
-                            </AlertDialogBody>
-                            <AlertDialogFooter>
-                                <Button ref={cancelRef} onClick={onClose}>
-                                    Close
-                                </Button>
-                            </AlertDialogFooter>
-                        </AlertDialogContent>
-                    </AlertDialogOverlay>
-                </AlertDialog>
-            );
+            const showErrorDialog = (message) => {
+                setErrorDialogMessage(message);
+                setIsErrorDialogOpen(true);
+            };
+            showErrorDialog('Passwords do not match! Please try again.');
         }
 
         // Prepare the update data
@@ -125,7 +119,11 @@ const Profile = () => {
             // Handle successful update
             if (response.data.updateUser) {
                 setProfileData(response.data.updateUser);
-                onOpen();
+                const showErrorDialog = (message) => {
+                    setErrorDialogMessage(message);
+                    setIsErrorDialogOpen(true);
+                };
+                showErrorDialog('Your profile has been updated successfully!');
             }
         } catch (e) {
             console.error('Error updating profile:', e);
@@ -138,7 +136,11 @@ const Profile = () => {
             await removeUserMutation({
                 variables: { userId: profileData._id }
             });
-            onOpen();
+            const showErrorDialog = (message) => {
+                setErrorDialogMessage(message);
+                setIsErrorDialogOpen(true);
+            };
+            showErrorDialog('Your account has been deleted successfully!');
         } catch (e) {
             console.error('Error deleting account: ', e);
         }
@@ -300,71 +302,102 @@ const Profile = () => {
                         </div>
                         <div className="profile-main-controls">
 
-                            <Button className="button" onClick={handleUpdateProfile}>
-                                <div className="children2">Save Profile Information </div>
-                            </Button>
+                            <>
 
-                            <button className="delete-account-button" onClick={handleDeleteAccount}>
-                                <div className="children3">Delete Account </div>
-                            </button>
+                                <Button className="button" onClick={handleUpdateProfile}>
+                                    <div className="children2">Save Profile Information </div>
+                                </Button>
+
+                                {/* Alert Dialog for invalid password */}
+                                <AlertDialog
+                                    motionPreset='slideInBottom'
+                                    leastDestructiveRef={cancelRef}
+                                    onClose={onClosePassword}
+                                    isOpen={isErrorDialogOpen}
+                                    isCentered
+                                >
+                                    <AlertDialogOverlay>
+                                        <AlertDialogContent>
+                                            <AlertDialogHeader>Invalid Password</AlertDialogHeader>
+                                            <AlertDialogCloseButton />
+                                            <AlertDialogBody>
+                                                {errorDialogMessage}
+                                            </AlertDialogBody>
+                                            <AlertDialogFooter>
+                                                <Button ref={cancelRef} onClick={onClosePassword}>
+                                                Close
+                                                </Button>
+                                            </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                    </AlertDialogOverlay>
+                                </AlertDialog>
+
+                                {/* Alert Dialog for profile updated */}
+                                <AlertDialog
+                                    motionPreset='slideInBottom'
+                                    leastDestructiveRef={cancelRef}
+                                    onClose={onCloseProfile}
+                                    isOpen={isErrorDialogOpen}
+                                    isCentered
+                                >
+                                    <AlertDialogOverlay>
+                                        <AlertDialogContent>
+                                            <AlertDialogHeader>
+                                                Profile Updated
+                                            </AlertDialogHeader>
+                                            <AlertDialogCloseButton />
+                                            <AlertDialogBody>
+                                                {errorDialogMessage}
+                                            </AlertDialogBody>
+                                            <AlertDialogFooter>
+                                                <Button ref={cancelRef} onClick={onCloseProfile}>
+                                                    Close
+                                                </Button>
+                                            </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                    </AlertDialogOverlay>
+                                </AlertDialog>
+
+                            </>
+
+                            <>
+
+                                <button className="delete-account-button" onClick={handleDeleteAccount}>
+                                    <div className="children3">Delete Account </div>
+                                </button>
+
+                                {/* Alert Dialog for account deleted */}
+                                <AlertDialog
+                                    motionPreset='slideInBottom'
+                                    leastDestructiveRef={cancelRef}
+                                    onClose={onCloseProfile}
+                                    isOpen={isErrorDialogOpen}
+                                    isCentered
+                                >
+                                    <AlertDialogOverlay>
+                                        <AlertDialogContent>
+                                            <AlertDialogHeader>
+                                                Account Deleted
+                                            </AlertDialogHeader>
+                                            <AlertDialogCloseButton />
+                                            <AlertDialogBody>
+                                                {errorDialogMessage}
+                                            </AlertDialogBody>
+                                            <AlertDialogFooter>
+                                                <Button ref={cancelRef} onClick={onCloseProfile}>
+                                                    Close
+                                                </Button>
+                                            </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                    </AlertDialogOverlay>
+                                </AlertDialog>
+                            </>
 
                         </div>
                     </div>
                 </div>
             </div>
             <DonationHistory />
-            <AlertDialog
-                motionPreset='slideInBottom'
-                leastDestructiveRef={cancelRef}
-                onClose={onClose}
-                isOpen={isOpen}
-                isCentered
-            >
-                <AlertDialogOverlay>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>Profile Updated</AlertDialogHeader>
-                        <AlertDialogCloseButton />
-                        <AlertDialogBody>
-                            Your profile has been updated successfully.
-                        </AlertDialogBody>
-                        <AlertDialogFooter>
-                            <Button ref={cancelRef} onClick={() => {
-                                onClose();
-                                setTimeout(() => {
-                                    Auth.logout();
-                                }, 1000);
-                            }}>
-                                Close
-                            </Button>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialogOverlay>
-            </AlertDialog>
-            <AlertDialog
-                motionPreset='slideInBottom'
-                leastDestructiveRef={cancelRef}
-                onClose={onClose}
-                isOpen={isOpen}
-                isCentered
-            >
-                <AlertDialogOverlay>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>Account Deletion</AlertDialogHeader>
-                        <AlertDialogCloseButton />
-                        <AlertDialogBody>
-                                Are you sure? You can&apos;t undo this action afterwards.
-                        </AlertDialogBody>
-                        <AlertDialogFooter>
-                            <Button ref={cancelRef} onClick={onClose}>
-                                    Cancel
-                            </Button>
-                            <Button colorScheme='red' onClick={onClose} ml={3}>
-                                    Delete
-                            </Button>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialogOverlay>
-            </AlertDialog>
         </div>
     );
 };
