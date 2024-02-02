@@ -1,3 +1,8 @@
+// Desc: This file contains the AdsTreesProfile component that is responsible for rendering the user profile page. It also contains the logic to update the user profile and delete the user account.
+// ================================================================
+
+// Importing the necessary packages
+// ================================================================
 import React, { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_USER_PROFILE } from '../../utils/queries';
@@ -5,20 +10,38 @@ import { UPDATE_USER, REMOVE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import DonationHistory from '../../components/DonationHistory';
 import './AdsTreesProfile.css';
+import {
+    Input,
+    Button,
+    Spinner,
+    AlertDialog,
+    AlertDialogBody,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogContent,
+    AlertDialogOverlay,
+    AlertDialogCloseButton,
+    useDisclosure
+} from '@chakra-ui/react';
 // import { CategoriesCheckboxes } from '../pages/AdsTreesProfile/CheckboxGroup/CheckboxGroup';
-import { useNavigate } from 'react-router-dom';
-import { Input, Button } from '@chakra-ui/react';
+// ==============================================================
 
+// Defining the AdsTreesProfile component
+// ================================================================
 const Profile = () => {
-    // Local state for user data and form inputs
-    const navigate = useNavigate();
-    // const [userData, setUserData] = useState({});
-    // const [profilePic, setProfilePic] = useState({ url: '', altText: '' });
+
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const cancelRef = React.useRef();
+
     const [profileData, setProfileData] = useState({
         username: '',
         email: '',
         newPassword: '',
-        passwordConfirmation: ''
+        passwordConfirmation: '',
+        profilePicture: {
+            url: '',
+            altText: ''
+        }
         // preferences: []
     });
 
@@ -27,6 +50,7 @@ const Profile = () => {
     const [removeUserMutation] = useMutation(REMOVE_USER);
 
     useEffect(() => {
+
         const profile = Auth.getProfile();
         if (data && data.userProfile) {
             setProfileData({
@@ -35,27 +59,53 @@ const Profile = () => {
                 email: data.userProfile.email || '',
                 newPassword: '',
                 passwordConfirmation: '',
+                profilePicture: {
+                    url: data.userProfile.profilePicture?.url || '',
+                    altText: data.userProfile.profilePicture?.altText || ''
+                }
                 // preferences: data.userProfile.preferences || []
             });
-            // setProfilePic(data.userProfile.profilePicture || { url: '', altText: '' });
         }
+
     }, [data]);
 
-    console.log('Updated state after data fetch:', profileData);
-
     const handleInputChange = (event) => {
+
         const { name, value } = event.target;
         setProfileData(prevState => {
             const updatedState = { ...prevState, [name]: value };
-            console.log('State after input change:', updatedState);
             return updatedState;
         });
+
     };
 
     const handleUpdateProfile = async () => {
+
         if (profileData.newPassword !== profileData.passwordConfirmation) {
-            alert('Passwords do not match');
-            return;
+            return (
+                <AlertDialog
+                    motionPreset='slideInBottom'
+                    leastDestructiveRef={cancelRef}
+                    onClose={onClose}
+                    isOpen={isOpen}
+                    isCentered
+                >
+                    <AlertDialogOverlay>
+                        <AlertDialogContent>
+                            <AlertDialogHeader>Invalid Password</AlertDialogHeader>
+                            <AlertDialogCloseButton />
+                            <AlertDialogBody>
+                                Passwords do not match. Please try again.
+                            </AlertDialogBody>
+                            <AlertDialogFooter>
+                                <Button ref={cancelRef} onClick={onClose}>
+                                    Close
+                                </Button>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialogOverlay>
+                </AlertDialog>
+            );
         }
 
         // Prepare the update data
@@ -64,7 +114,7 @@ const Profile = () => {
             username: profileData.username,
             email: profileData.email,
             ...(profileData.newPassword && { password: profileData.newPassword }),
-            // ...(profilePic.url && { profilePicture: { url: profilePic.url, altText: profilePic.altText } })
+            profilePicture: profileData.profilePicture
         };
 
         try {
@@ -72,14 +122,15 @@ const Profile = () => {
                 variables: { user: updateData }
             });
 
+            // Handle successful update
             if (response.data.updateUser) {
-                // Handle successful update
-                setProfileData(response.data.updateUser.user);
-                alert('Profile updated successfully');
+                setProfileData(response.data.updateUser);
+                onOpen();
             }
         } catch (e) {
             console.error('Error updating profile:', e);
         }
+
     };
 
     const handleDeleteAccount = async () => {
@@ -87,31 +138,18 @@ const Profile = () => {
             await removeUserMutation({
                 variables: { userId: profileData._id }
             });
-            alert('Account deleted successfully');
+            onOpen();
         } catch (e) {
             console.error('Error deleting account: ', e);
         }
     };
 
-    // // Redirect to contact page
-    // const handleContactClick = () => {
-    //     navigate('/contact'); // Update this path to your actual contact page route
-    // };
-
-    // // Redirect to sign-in page
-    // const handleLogoutClick = () => {
-    //     // Implement logout logic here if needed
-    //     navigate('/signin'); // Update this path to your actual sign-in page route
-    // };
-
     if (loading) {
-        return <div>Loading...</div>;
+        return <Spinner speed="0.65s" size="xl" />;
     }
     if (error) {
-        return <div>Error loading profile: {error.message}</div>;
+        return <div className="error">Error loading profile: {error.message}</div>;
     }
-
-    console.log('State before rendering:', profileData);
 
     return (
         <div className={'ads-trees-profile'}>
@@ -197,21 +235,6 @@ const Profile = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="profile-header-controls">
-                            {/* <div className="theme-link-frame">
-                                <button className="theme-link">Change theme </button>
-                            </div> */}
-                            {/* <div className="contact-us-link-frame">
-                                <button className="contact-us-link" onClick={handleContactClick}>
-                                    <div className="contact-us">Contact us </div>
-                                </button>
-                            </div> */}
-                            {/* <div className="contact-us-link-frame">
-                                <button className="log-out-link" onClick={handleLogoutClick}>
-                                    <div className="logout">Logout </div>
-                                </button>
-                            </div> */}
-                        </div>
                     </div>
                     <div className="profile-body2">
                         <div className="public-profile-frame">
@@ -220,14 +243,12 @@ const Profile = () => {
                                 <div className="public-profile-first-name-input">
                                     <div className="field-title-label">Username </div>
                                     <div className="input-group">
-                                        {/* <div className="input"> */}
                                         <Input
                                             className="input"
                                             name="username"
                                             value={profileData.username || ''}
                                             onChange={handleInputChange}
                                         />
-                                        {/* </div> */}
                                     </div>
                                 </div>
                             </div>
@@ -237,14 +258,12 @@ const Profile = () => {
                             <div className="private-profile-email-input">
                                 <div className="field-title-label2">Email </div>
                                 <div className="input-group">
-                                    {/* <div className="input"> */}
                                     <Input
                                         className="input"
                                         name="email"
                                         value={profileData.email || ''}
                                         onChange={handleInputChange}
                                     />
-                                    {/* </div> */}
                                 </div>
                             </div>
                             {/* <div className="private-profile-content-preference-input">
@@ -256,50 +275,102 @@ const Profile = () => {
                         </div>
                         <div className="password-edit-frame">
                             <div className="password-edit-profile-title">Password </div>
-                            <div className="password-input">
-
-                            </div>
                             <div className="new-password-input">
                                 <div className="field-title-label2">New password </div>
                                 <div className="input-group">
-                                    {/* <div className="input"> */}
                                     <Input
                                         className="input"
                                         name="newPassword"
-                                        value={profileData.newPassword}
+                                        value={profileData.newPassword || ''}
                                         onChange={handleInputChange}
                                     />
-                                    {/* </div> */}
                                 </div>
                             </div>
                             <div className="password-confirmation-input">
                                 <div className="field-title-label2">Confirm password </div>
                                 <div className="input-group">
-                                    {/* <div className="input"> */}
                                     <Input
                                         className="input"
                                         name="passwordConfirmation"
-                                        value={profileData.passwordConfirmation}
+                                        value={profileData.passwordConfirmation || ''}
                                         onChange={handleInputChange}
                                     />
-                                    {/* </div> */}
                                 </div>
                             </div>
                         </div>
                         <div className="profile-main-controls">
+
                             <Button className="button" onClick={handleUpdateProfile}>
                                 <div className="children2">Save Profile Information </div>
                             </Button>
+
                             <button className="delete-account-button" onClick={handleDeleteAccount}>
                                 <div className="children3">Delete Account </div>
                             </button>
+
                         </div>
                     </div>
                 </div>
             </div>
             <DonationHistory />
+            <AlertDialog
+                motionPreset='slideInBottom'
+                leastDestructiveRef={cancelRef}
+                onClose={onClose}
+                isOpen={isOpen}
+                isCentered
+            >
+                <AlertDialogOverlay>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>Profile Updated</AlertDialogHeader>
+                        <AlertDialogCloseButton />
+                        <AlertDialogBody>
+                            Your profile has been updated successfully.
+                        </AlertDialogBody>
+                        <AlertDialogFooter>
+                            <Button ref={cancelRef} onClick={() => {
+                                onClose();
+                                setTimeout(() => {
+                                    Auth.logout();
+                                }, 1000);
+                            }}>
+                                Close
+                            </Button>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialogOverlay>
+            </AlertDialog>
+            <AlertDialog
+                motionPreset='slideInBottom'
+                leastDestructiveRef={cancelRef}
+                onClose={onClose}
+                isOpen={isOpen}
+                isCentered
+            >
+                <AlertDialogOverlay>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>Account Deletion</AlertDialogHeader>
+                        <AlertDialogCloseButton />
+                        <AlertDialogBody>
+                                Are you sure? You can&apos;t undo this action afterwards.
+                        </AlertDialogBody>
+                        <AlertDialogFooter>
+                            <Button ref={cancelRef} onClick={onClose}>
+                                    Cancel
+                            </Button>
+                            <Button colorScheme='red' onClick={onClose} ml={3}>
+                                    Delete
+                            </Button>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialogOverlay>
+            </AlertDialog>
         </div>
     );
 };
+// ===============================================================
 
+// Exporting the AdsTreesProfile component
+// ================================================================
 export default Profile;
+// ===============================================================
