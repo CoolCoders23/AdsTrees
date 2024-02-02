@@ -44,10 +44,6 @@ export const QUERY_USER = gql`
       treesPlantedInWeek
       treesPlantedInYear
       bestWeek
-      lastWatchedDay
-      lastWatchedWeek
-      lastWatchedMonth
-      lastWatchedYear
     }
   }
 `;
@@ -92,10 +88,6 @@ export const QUERY_USER_PROFILE = gql`
       treesPlantedInWeek
       treesPlantedInYear
       bestWeek
-      lastWatchedDay
-      lastWatchedWeek
-      lastWatchedMonth
-      lastWatchedYear
     }
   }
 `;

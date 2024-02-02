@@ -305,15 +305,18 @@ const resolvers = {
                 }
 
                 if (user.profilePicture !== undefined) {
-                    if (!validator.isURL(user.profilePicture.url)) {
+                    if (
+                        user.profilePicture !== undefined &&
+                        user.profilePicture.url !== '' &&
+                        !validator.isURL(user.profilePicture.url)
+                    ) {
                         throw new Error('Profile picture is not a valid URL');
                     }
                     updatedUser.profilePicture = { url: user.profilePicture.url, altText: user.profilePicture.altText };
                 }
 
                 await updatedUser.save();
-                const token = signToken(updatedUser);
-                return { token, user: updatedUser };
+                return updatedUser;
 
             } catch (err) {
 
