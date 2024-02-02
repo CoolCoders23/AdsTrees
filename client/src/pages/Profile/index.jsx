@@ -22,7 +22,6 @@ import {
     AlertDialogHeader,
     AlertDialogContent,
     AlertDialogOverlay,
-    AlertDialogCloseButton,
 } from '@chakra-ui/react';
 // import { CategoriesCheckboxes } from '../pages/AdsTreesProfile/CheckboxGroup/CheckboxGroup';
 // ==============================================================
@@ -31,20 +30,32 @@ import {
 // ================================================================
 const Profile = () => {
 
-    const [isErrorDialogOpen, setIsErrorDialogOpen] = useState(false);
-    const [errorDialogMessage, setErrorDialogMessage] = useState('');
+    // State to manage dialog visibility and messages
+    const [dialog, setDialog] = useState({
+        isOpen: false,
+        title: '',
+        message: ''
+    });
+
+    // Function to show dialog
+    const showDialog = (title, message) => {
+        setDialog({
+            isOpen: true,
+            title: title,
+            message: message
+        });
+    };
+
+    // Function to close dialog
+    const closeDialog = () => {
+        setDialog({
+            title: '',
+            message: '',
+            isOpen: false
+        });
+    };
+
     const cancelRef = React.useRef();
-    const onClosePassword = () => {
-        setIsErrorDialogOpen(false);
-        setErrorDialogMessage('');
-    };
-    const onCloseProfile = () => {
-        setIsErrorDialogOpen(false);
-        setErrorDialogMessage('');
-        setTimeout(() => {
-            Auth.logout();
-        }, 1000);
-    };
 
     const [profileData, setProfileData] = useState({
         username: '',
@@ -95,11 +106,8 @@ const Profile = () => {
     const handleUpdateProfile = async () => {
 
         if (profileData.newPassword !== profileData.passwordConfirmation) {
-            const showErrorDialog = (message) => {
-                setErrorDialogMessage(message);
-                setIsErrorDialogOpen(true);
-            };
-            showErrorDialog('Passwords do not match! Please try again.');
+            showDialog('Incorrect Password', 'Passwords do not match! Please try again.');
+            return;
         }
 
         // Prepare the update data
@@ -119,11 +127,10 @@ const Profile = () => {
             // Handle successful update
             if (response.data.updateUser) {
                 setProfileData(response.data.updateUser);
-                const showErrorDialog = (message) => {
-                    setErrorDialogMessage(message);
-                    setIsErrorDialogOpen(true);
-                };
-                showErrorDialog('Your profile has been updated successfully!');
+                showDialog('Profile Updated', 'Your profile has been updated successfully!');
+                setTimeout(() => {
+                    Auth.logout();
+                }, 4000);
             }
         } catch (e) {
             console.error('Error updating profile:', e);
@@ -136,11 +143,10 @@ const Profile = () => {
             await removeUserMutation({
                 variables: { userId: profileData._id }
             });
-            const showErrorDialog = (message) => {
-                setErrorDialogMessage(message);
-                setIsErrorDialogOpen(true);
-            };
-            showErrorDialog('Your account has been deleted successfully!');
+            showDialog('Account Deleted', 'Your account has been deleted successfully!');
+            setTimeout(() => {
+                Auth.logout();
+            }, 4000);
         } catch (e) {
             console.error('Error deleting account: ', e);
         }
@@ -308,60 +314,6 @@ const Profile = () => {
                                     <div className="children2">Save Profile Information </div>
                                 </Button>
 
-                                {/* Alert Dialog for invalid password */}
-                                <AlertDialog
-                                    motionPreset='slideInBottom'
-                                    leastDestructiveRef={cancelRef}
-                                    onClose={onClosePassword}
-                                    isOpen={isErrorDialogOpen}
-                                    isCentered
-                                >
-                                    <AlertDialogOverlay>
-                                        <AlertDialogContent>
-                                            <AlertDialogHeader>Invalid Password</AlertDialogHeader>
-                                            <AlertDialogCloseButton />
-                                            <AlertDialogBody>
-                                                {errorDialogMessage}
-                                            </AlertDialogBody>
-                                            <AlertDialogFooter>
-                                                <Button ref={cancelRef} onClick={onClosePassword}>
-                                                Close
-                                                </Button>
-                                            </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                    </AlertDialogOverlay>
-                                </AlertDialog>
-
-                                {/* Alert Dialog for profile updated */}
-                                <AlertDialog
-                                    motionPreset='slideInBottom'
-                                    leastDestructiveRef={cancelRef}
-                                    onClose={onCloseProfile}
-                                    isOpen={isErrorDialogOpen}
-                                    isCentered
-                                >
-                                    <AlertDialogOverlay>
-                                        <AlertDialogContent>
-                                            <AlertDialogHeader>
-                                                Profile Updated
-                                            </AlertDialogHeader>
-                                            <AlertDialogCloseButton />
-                                            <AlertDialogBody>
-                                                {errorDialogMessage}
-                                            </AlertDialogBody>
-                                            <AlertDialogFooter>
-                                                <Button ref={cancelRef} onClick={onCloseProfile}>
-                                                    Close
-                                                </Button>
-                                            </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                    </AlertDialogOverlay>
-                                </AlertDialog>
-
-                            </>
-
-                            <>
-
                                 <button className="delete-account-button" onClick={handleDeleteAccount}>
                                     <div className="children3">Delete Account </div>
                                 </button>
@@ -370,22 +322,17 @@ const Profile = () => {
                                 <AlertDialog
                                     motionPreset='slideInBottom'
                                     leastDestructiveRef={cancelRef}
-                                    onClose={onCloseProfile}
-                                    isOpen={isErrorDialogOpen}
+                                    onClose={closeDialog}
+                                    isOpen={dialog.isOpen}
                                     isCentered
                                 >
                                     <AlertDialogOverlay>
                                         <AlertDialogContent>
-                                            <AlertDialogHeader>
-                                                Account Deleted
-                                            </AlertDialogHeader>
-                                            <AlertDialogCloseButton />
-                                            <AlertDialogBody>
-                                                {errorDialogMessage}
-                                            </AlertDialogBody>
+                                            <AlertDialogHeader>{dialog.title}</AlertDialogHeader>
+                                            <AlertDialogBody>{dialog.message}</AlertDialogBody>
                                             <AlertDialogFooter>
-                                                <Button ref={cancelRef} onClick={onCloseProfile}>
-                                                    Close
+                                                <Button ref={cancelRef} onClick={closeDialog}>
+                                                    OK
                                                 </Button>
                                             </AlertDialogFooter>
                                         </AlertDialogContent>
