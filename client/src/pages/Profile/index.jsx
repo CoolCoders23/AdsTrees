@@ -23,6 +23,7 @@ import {
     AlertDialogContent,
     AlertDialogOverlay,
 } from '@chakra-ui/react';
+import ImageUpload from '../../components/ImageUpload';
 // import { CategoriesCheckboxes } from '../pages/AdsTreesProfile/CheckboxGroup/CheckboxGroup';
 // ==============================================================
 
@@ -127,7 +128,7 @@ const Profile = () => {
             // Handle successful update
             if (response.data.updateUser) {
                 setProfileData(response.data.updateUser);
-                showDialog('Profile Updated', 'Your profile has been updated successfully!');
+                showDialog('Profile Updated', 'Your profile has been updated successfully! You will be logged out shortly.');
                 setTimeout(() => {
                     Auth.logout();
                 }, 4000);
@@ -143,7 +144,7 @@ const Profile = () => {
             await removeUserMutation({
                 variables: { userId: profileData._id }
             });
-            showDialog('Account Deleted', 'Your account has been deleted successfully!');
+            showDialog('Account Deleted', 'Your account has been deleted successfully! You will be logged out shortly.');
             setTimeout(() => {
                 Auth.logout();
             }, 4000);
@@ -208,34 +209,7 @@ const Profile = () => {
                                     />
                                 </svg>
 
-                                <button className="edit-picture-button">
-                                    <div className="ellipse"></div>
-                                    <svg
-                                        className="edit-icon"
-                                        width="13"
-                                        height="14"
-                                        viewBox="0 0 13 14"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <g clipPath="url(#clip0_959_1525)">
-                                            <path
-                                                d="M11.6639 1.59706C11.4261 1.35934 11.1141 1.23999 10.802 1.23999C10.49 1.23999 10.1779 1.35934 9.94017 1.59706C9.94017 1.59706 9.92256 1.61369 9.90006 1.63716C9.8981 1.63912 9.89517 1.6401 9.89321 1.64206L1.07713 10.4572C1.0468 10.4885 1.0243 10.5266 1.01256 10.5697L0.509735 12.445C0.486257 12.5311 0.510714 12.623 0.5743 12.6866C0.622235 12.7346 0.685822 12.76 0.751366 12.76C0.772887 12.76 0.794409 12.7571 0.815931 12.7512L2.69126 12.2484C2.7343 12.2366 2.77245 12.2141 2.80376 12.1828L11.6189 3.36869C11.6218 3.36575 11.6228 3.36184 11.6247 3.3589C11.6472 3.3364 11.6629 3.32075 11.6629 3.32075C12.1403 2.84434 12.1403 2.07249 11.6639 1.59706ZM11.3097 1.95119C11.5895 2.23097 11.5895 2.68684 11.3097 2.96662C11.2266 3.04879 11.1561 3.12021 11.0955 3.18086L10.0801 2.16543C10.1955 2.04999 10.2943 1.95119 10.2943 1.95119C10.4293 1.81521 10.6103 1.74086 10.802 1.74086C10.9938 1.74086 11.1738 1.81619 11.3097 1.95119ZM1.40387 11.0451L2.21582 11.8571L1.1055 12.1554L1.40387 11.0451Z"
-                                                fill="#081C15"
-                                            />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_959_1525">
-                                                <rect
-                                                    width="12.5217"
-                                                    height="12.5217"
-                                                    fill="white"
-                                                    transform="translate(0 0.739136)"
-                                                />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </button>
+                                <ImageUpload />
                             </div>
                             <div className="profile-summary-frame">
                                 <div className="profile-summary">
@@ -318,7 +292,7 @@ const Profile = () => {
                                     <div className="children3">Delete Account </div>
                                 </button>
 
-                                {/* Alert Dialog for account deleted */}
+                                {/* Alert Dialog for account deleted and update profile */}
                                 <AlertDialog
                                     motionPreset='slideInBottom'
                                     leastDestructiveRef={cancelRef}
