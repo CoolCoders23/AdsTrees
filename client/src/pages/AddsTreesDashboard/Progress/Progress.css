@@ -1,0 +1,120 @@
+.progress,
+.progress * {
+  box-sizing: border-box;
+}
+.progress {
+  background: var(--gray-100, #edf2f7);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 320px;
+  position: relative;
+}
+.progress .inner {
+  background: var(--blue-500, #3182ce);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 183px;
+  position: absolute;
+  right: 42.81%;
+  left: 0%;
+  width: 57.19%;
+  top: 0px;
+}
+.progress .stripe-instance {
+  align-self: stretch !important;
+  flex-shrink: 0 !important;
+  height: 4px !important;
+}
+
+/* variant styles */
+.progress.color-scheme-blue .track,
+.progress.color-scheme-teal .track,
+.progress.color-scheme-green .track,
+.progress.color-scheme-red .track,
+.progress.color-scheme-purple .track,
+.progress.color-scheme-pink .track,
+.progress.color-scheme-orange .track {
+  background: var(--gray-100, #edf2f7);
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+}
+.progress.size-sm .track {
+  height: 8px;
+  top: calc(50% - 4px);
+}
+.progress.color-scheme-teal .inner {
+  background: var(--teal-500, #319795);
+}
+.progress.color-scheme-green .inner {
+  background: var(--green-500, #38a169);
+}
+.progress.color-scheme-red .inner {
+  background: var(--red-500, #e53e3e);
+}
+.progress.color-scheme-purple .inner {
+  background: var(--purple-500, #805ad5);
+}
+.progress.color-scheme-pink .inner {
+  background: var(--pink-500, #d53f8c);
+}
+.progress.color-scheme-orange .inner {
+  background: var(--orange-500, #dd6b20);
+}
+.progress.size-sm {
+  height: 8px;
+  background: unset;
+  display: block;
+  flex-direction: unset;
+  gap: unset;
+  align-items: unset;
+  justify-content: unset;
+}
+.progress.size-sm .inner,
+.progress.size-md .inner,
+.progress.size-lg .inner {
+  flex-shrink: unset;
+}
+.progress.size-sm .stripe-instance {
+  height: 8px !important;
+}
+.progress.size-md {
+  height: 12px;
+  background: unset;
+  display: block;
+  flex-direction: unset;
+  gap: unset;
+  align-items: unset;
+  justify-content: unset;
+}
+.progress.size-md .track {
+  height: 12px;
+  top: calc(50% - 6px);
+}
+.progress.size-md .stripe-instance {
+  height: 12px !important;
+}
+.progress.size-lg {
+  height: 16px;
+  background: unset;
+  display: block;
+  flex-direction: unset;
+  gap: unset;
+  align-items: unset;
+  justify-content: unset;
+}
+.progress.size-lg .track {
+  height: 16px;
+  top: calc(50% - 8px);
+}
+.progress.size-lg .stripe-instance {
+  height: 16px !important;
+}
