@@ -1,0 +1,116 @@
+.bonus-card,
+.bonus-card * {
+  box-sizing: border-box;
+}
+.bonus-card {
+  background: var(--cards-white, #081c15);
+  border-radius: 8px;
+  padding: 24px 16px 24px 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-self: stretch;
+  flex-shrink: 0;
+  min-width: 240px;
+  position: relative;
+}
+.bonus-card .bonus-card-body {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.bonus-card .bonus-card-icon-frame {
+  padding: 4px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.bonus-card .bonus-card-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 15.24px;
+  position: relative;
+  overflow: visible;
+}
+.bonus-card .bonus-card-sub-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+}
+.bonus-card .bonus-card-title {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: var(--stats-label-font-family, "Poppins-Regular", sans-serif);
+  font-size: var(--stats-label-font-size, 14px);
+  font-weight: var(--stats-label-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.bonus-card .bonus-card-info {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.bonus-card .user-progress {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: var(--stats-figure-font-family, "Roboto-SemiBold", sans-serif);
+  font-size: var(--stats-figure-font-size, 24px);
+  font-weight: var(--stats-figure-font-weight, 600);
+  position: relative;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.bonus-card .bonus-reward-frame {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.bonus-card .trees {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.bonus-card .reward {
+  color: var(--green-dark, #e8f5f1);
+  text-align: left;
+  font-family: var(--stats-figure-font-family, "Roboto-SemiBold", sans-serif);
+  font-size: var(--stats-figure-font-size, 24px);
+  font-weight: var(--stats-figure-font-weight, 600);
+  position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
