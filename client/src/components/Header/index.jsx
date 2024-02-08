@@ -10,8 +10,6 @@ import { TargetLogoutStatusActive } from './TargetLogoutStatusActive/TargetLogou
 import { Link } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import Auth from '../../utils/auth';
-// import Cart from '../Cart';
-import CartIcon from './CartIcon/CartIcon.jsx';
 // =====================================================
 
 // Define Header component
@@ -22,10 +20,9 @@ export const Header = ({
     showMainNavigation = true,
     showMainNavigationDashboardButtonActive = true,
     showTargetLogoutStatusActive = true,
-    className,
-    toggleCart,
-    state
+    className
 }) => {
+
     const logout = (event) => {
         event.preventDefault();
         Auth.logout();
@@ -126,12 +123,6 @@ export const Header = ({
                                         className="main-navigation-logout-button-active-instance"
                                     />
                                 </Link>
-                            </>
-                        )}
-
-                        {!state.cartOpen && (
-                            <>
-                                <CartIcon toggleCart={toggleCart} className="cart-icon-active-instance" />
                             </>
                         )}
 

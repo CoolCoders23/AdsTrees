@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .ads-trees-donate-section-1 {
-  background: var(--white-pure, #081c15);
   padding: 0px 16px 0px 16px;
   display: flex;
   flex-direction: column;
@@ -49,7 +48,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .active-line {
-  background: var(--stepper-green, #9dffce);
   flex-shrink: 0;
   width: 71px;
   height: 2px;
@@ -58,7 +56,6 @@
   top: 11px;
 }
 .ads-trees-donate-section-1 .inactive-line {
-  background: var(--grey-intermediate, #d9d9d9);
   flex-shrink: 0;
   width: 90px;
   height: 2px;
@@ -85,7 +82,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .step-icon-base {
-  background: var(--grey-light, rgba(168, 177, 174, 0.1));
   border-radius: 10.83px;
   display: flex;
   flex-direction: column;
@@ -96,7 +92,7 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .content {
-  background: var(--grey-light, rgba(168, 177, 174, 0.1));
+  /* background: var(--grey-light, rgba(168, 177, 174, 0.1)); */
   border-radius: 10.83px;
   padding: 7px;
   display: flex;
@@ -108,7 +104,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .bbackground {
-  background: var(--grey-light, rgba(168, 177, 174, 0.1));
   border-radius: 50%;
   flex-shrink: 0;
   width: 32.5px;
@@ -118,7 +113,6 @@
   top: -6px;
 }
 .ads-trees-donate-section-1 .dot {
-  background: var(--stepper-green, #9dffce);
   border-radius: 50%;
   flex-shrink: 0;
   width: 7.22px;
@@ -135,7 +129,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .welcome {
-  color: var(--stepper-green, #9dffce);
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -159,7 +152,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .step-icon-base2 {
-  background: var(--grey-light, rgba(168, 177, 174, 0.1));
   border-radius: 10.83px;
   display: flex;
   flex-direction: row;
@@ -199,7 +191,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .payment {
-  color: var(--grey-intermediate, #d9d9d9);
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -223,7 +214,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .confirmation {
-  color: var(--grey-intermediate, #d9d9d9);
   text-align: center;
   font-family: var(
     --donate-stepper-font-font-family,
@@ -258,7 +248,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .main-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--h-1-font-font-size, 32px);
@@ -267,7 +256,6 @@
   align-self: stretch;
 }
 .ads-trees-donate-section-1 .subtitle {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--subtitle-font-font-family, "Roboto-Regular", sans-serif);
   font-size: var(--subtitle-font-font-size, 16px);
@@ -287,10 +275,8 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .pricing-card {
-  background: var(--cards-white, #081c15);
   border-radius: 24px;
   border-style: solid;
-  border-color: var(--grey-light, rgba(168, 177, 174, 0.1));
   border-width: 1px;
   padding: 16px 0px 16px 0px;
   display: flex;
@@ -301,7 +287,6 @@
   flex-shrink: 0;
   width: 288px;
   position: relative;
-  box-shadow: 0px 2px 12px 0px rgba(45, 106, 79, 0.4);
 }
 .ads-trees-donate-section-1 .pricing-wrapper {
   padding: 0px 16px 0px 16px;
@@ -366,7 +351,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .title {
-  color: var(--grey-dark, #f1f0f3);
   text-align: left;
   font-family: var(
     --donate-card-type-font-font-family,
@@ -388,7 +372,6 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .tradeoff {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --donate-card-type-subtitle-font-font-family,
@@ -420,41 +403,13 @@
   position: relative;
 }
 .ads-trees-donate-section-1 .price {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(--price-tag-font-font-family, "Roboto-Bold", sans-serif);
   font-size: var(--price-tag-font-font-size, 48px);
   font-weight: var(--price-tag-font-font-weight, 700);
   position: relative;
 }
-.ads-trees-donate-section-1 .button {
-  background: var(--cards-main-color, #f4fbf9);
-  border-radius: 6px;
-  padding: 0px 24px 0px 24px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 48px;
-  position: relative;
-  box-shadow: var(
-    --drop-shadow-buttons-at-box-shadow,
-    0px 4px 61px 0px rgba(45, 106, 79, 0.4)
-  );
-}
 .ads-trees-donate-section-1 .children {
-  color: var(--cards-white, #081c15);
-  text-align: left;
-  font-family: var(
-    --button-label-font-font-family,
-    "Poppins-SemiBold",
-    sans-serif
-  );
-  font-size: var(--button-label-font-font-size, 18px);
-  font-weight: var(--button-label-font-font-weight, 600);
   position: relative;
   display: flex;
   align-items: center;

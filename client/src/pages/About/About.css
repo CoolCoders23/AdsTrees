@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .about {
-  background: var(--white-pure, #081c15);
   padding: 0px 16px 0px 16px;
   display: flex;
   flex-direction: column;
@@ -73,7 +72,6 @@
   overflow: visible;
 }
 .about .mission-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --component-heading-large-xl-font-family,
@@ -99,7 +97,6 @@
   position: relative;
 }
 .about .mission-text {
-  color: var(--green-dark, #e8f5f1);
   text-align: center;
   font-family: var(--body-font-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--body-font-font-size, 18px);
@@ -173,7 +170,7 @@
   position: relative;
 }
 .about .team-member-data-frame {
-  background: var(--green-medium, #269063);
+  /* background: var(--green-medium, #269063); */
   border-radius: 0px 0px 20px 20px;
   padding: 32px;
   display: flex;
@@ -196,7 +193,7 @@
   position: relative;
 }
 .about .name {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: var(
     --text-xl-line-height-7-font-normal-font-family,
@@ -209,7 +206,7 @@
   position: relative;
 }
 .about .title {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: var(
     --text-sm-line-height-5-font-normal-font-family,
@@ -234,7 +231,7 @@
   position: relative;
 }
 .about .team-member-bio {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: var(
     --text-xs-line-height-4-font-normal-font-family,
@@ -273,7 +270,7 @@
   overflow: visible;
 }
 .about .linked-in-wording {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 14px;
@@ -297,7 +294,7 @@
   overflow: visible;
 }
 .about .git-hub-wording {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 14px;
@@ -321,7 +318,7 @@
   overflow: visible;
 }
 .about .portfolio-wording {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 14px;
@@ -345,7 +342,7 @@
   overflow: visible;
 }
 .about .email-wording {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: "Inter-Regular", sans-serif;
   font-size: 14px;
@@ -379,7 +376,7 @@
   position: relative;
 }
 .about .team-member-bio2 {
-  color: var(--constant-white-pure, #ffffff);
+  /* color: var(--constant-white-pure, #ffffff); */
   text-align: left;
   font-family: var(
     --text-xs-line-height-4-font-normal-font-family,

@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 .progress-size-xs-color-scheme-green {
-  background: var(--gray-100, #edf2f7);
+  /* background: var(--gray-100, #edf2f7); */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -11,6 +11,9 @@
   justify-content: flex-start;
   width: 320px;
   position: relative;
+}
+.progress-size-xs-color-scheme-green.xs {
+  height: 4px;
 }
 .progress-size-xs-color-scheme-green .inner {
   background: var(--green-500, #38a169);
@@ -26,6 +29,9 @@
   left: 0%;
   width: 57.19%;
   top: 0px;
+}
+.progress-size-xs-color-scheme-green .inner.green {
+  background: green;
 }
 .progress-size-xs-color-scheme-green .stripe-instance {
   align-self: stretch !important;

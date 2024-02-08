@@ -8,7 +8,6 @@ import './AdsTreesSignIn.css'; // Importing custom CSS for styling.
 import { Link } from 'react-router-dom'; // Importing Link for routing.
 import {
     Input,
-    ChakraProvider,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -108,32 +107,35 @@ const Login = ({ className = '' }) => {
 
         <div className={'ads-trees-sign-in ' + className}>
 
-            <ChakraProvider>
-                {/* Install Modal */}
-                <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>
-                    <ModalOverlay />
-                    <ModalContent>
-                        <ModalHeader>Install AdsTrees</ModalHeader>
-                        <ModalBody>
+            {/* Install Modal */}
+            <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Install AdsTrees</ModalHeader>
+                    <ModalBody>
                             Do you want to install AdsTrees on your device?
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button colorScheme="blue" mr={3} onClick={handleInstallClick}>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button colorScheme="blue" mr={3} onClick={handleInstallClick}>
                                 Install
-                            </Button>
-                            <Button variant="ghost" onClick={() => setInstallPromptOpen(false)}>Cancel</Button>
-                        </ModalFooter>
-                    </ModalContent>
-                </Modal>
-            </ChakraProvider>
+                        </Button>
+                        <Button variant="ghost" onClick={() => setInstallPromptOpen(false)}>Cancel</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
 
             <div className="sign-in-body" >
                 <div className="home-text">
                     <div className="hook-text-frame">
                         <div className="hook-text">
-                            <div className="plant-trees-for-free">Plant trees for free </div>
+                            <div className="plant-trees-for-free">
+                                Plant trees for free
+                            </div>
                             <div className="make-the-planet-better">
                                 Make the planet better{' '}
+                            </div>
+                            <div className="make-the-planet-better">
+                                While learning about topics you love!
                             </div>
                         </div>
                     </div>
@@ -149,10 +151,8 @@ const Login = ({ className = '' }) => {
                                         value= {formState.email}
                                         onChange={(event) => handleChange(event, 'email')}
                                         placeholder='Email'
-                                        _placeholder={{ color: 'green.900' }}
                                         size='lg'
                                         type="text"
-
                                     />
                                 </div>
                             </div>
@@ -160,7 +160,6 @@ const Login = ({ className = '' }) => {
                                 <div className="input">
                                     <Input
                                         placeholder="Password"
-                                        _placeholder={{ color: 'green.900' }}
                                         className="password"
                                         value={formState.password}
                                         onChange={(event) => handleChange(event, 'password')}
@@ -169,9 +168,9 @@ const Login = ({ className = '' }) => {
                                     />
                                 </div>
                             </div>
-                            <button type="submit" className="button">
+                            <Button type="submit" className="button">
                                 <div className="children">Login </div>
-                            </button>
+                            </Button>
                             {error && <div className="error">The provided credentials are incorrect</div>}
                         </form>
                         <div className="call-to-register">

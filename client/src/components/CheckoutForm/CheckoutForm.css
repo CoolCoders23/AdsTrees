@@ -1,0 +1,120 @@
+.checkout-form,
+.checkout-form * {
+  box-sizing: border-box;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12.45px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.checkout-form .terms {
+  display: flex;
+  flex-direction: row;
+  gap: 9.19px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.checkout-form .terms-and-conditions {
+  text-align: left;
+  font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
+  font-size: var(--link-small-font-font-size, 14px);
+  font-weight: var(--link-small-font-font-weight, 500);
+  position: relative;
+  margin: 1rem;
+  flex: 1;
+}
+
+/* .checkout-form .spinner,
+.checkout-form .spinner:before,
+.checkout-form .spinner:after {
+  border-radius: 50%;
+}
+
+.checkout-form .spinner {
+  color: #ffffff;
+  font-size: 22px;
+  text-indent: -99999px;
+  margin: 0px auto;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  box-shadow: inset 0 0 0 2px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.checkout-form .spinner:before,
+.checkout-form .spinner:after {
+  position: absolute;
+  content: "";
+}
+
+.checkout-form .spinner:before {
+  width: 10.4px;
+  height: 20.4px;
+  background: #5469d4;
+  border-radius: 20.4px 0 0 20.4px;
+  top: -0.2px;
+  left: -0.2px;
+  -webkit-transform-origin: 10.4px 10.2px;
+  transform-origin: 10.4px 10.2px;
+  -webkit-animation: loading 2s infinite ease 1.5s;
+  animation: loading 2s infinite ease 1.5s;
+}
+
+.checkout-form .spinner:after {
+  width: 10.4px;
+  height: 10.2px;
+  background: #5469d4;
+  border-radius: 0 10.2px 10.2px 0;
+  top: -0.1px;
+  left: 10.2px;
+  -webkit-transform-origin: 0px 10.2px;
+  transform-origin: 0px 10.2px;
+  -webkit-animation: loading 2s infinite ease;
+  animation: loading 2s infinite ease;
+}
+
+@keyframes loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+} */
+
+.checkout-form .children {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.checkout-form .message {
+  border-bottom: 1px solid #f3a847;
+  padding-bottom: 0.5rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.checkout-form .error {
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 12px;
+  text-align: center;
+}

@@ -14,16 +14,19 @@ import ReactPlayer from 'react-player/lazy';
 import { QUERY_YOUTUBE } from '../../utils/queries.js';
 import { ADD_WATCHED_AD } from '../../utils/mutations.js';
 import moment from 'moment';
+import { Button } from '@chakra-ui/react';
 // ===============================================================
 
 // Define Component "Dashboard"
-export const Dashboard = ({ className, ...props }) => {
+// ===============================================================
+const Dashboard = ({ className, ...props }) => {
 
     const { loading: queryLoading, error: queryError, data } = useQuery(QUERY_YOUTUBE);
     const [addWatchedAd, { loading: mutationLoading }] = useMutation(ADD_WATCHED_AD);
     const [currentVideo, setCurrentVideo] = useState(null);
     const [isButtonHeld, setIsButtonHeld] = useState(false);
     const [watchedVideo, setWatchedVideo] = useState(false);
+    const [played, setPlayed] = useState(0);
 
     const playerRef = useRef(null);
 
@@ -90,31 +93,74 @@ export const Dashboard = ({ className, ...props }) => {
                                     <div className="video-information-subframe">
                                         {currentVideo && (
                                             <>
-                                                <ReactPlayer
-                                                    ref={playerRef}
-                                                    url={currentVideo.url}
-                                                    playing={isButtonHeld}
-                                                    onEnded={handleEnd}
-                                                />
                                                 <div className="video-title">{currentVideo.title}</div>
+                                                <div style={{
+                                                    border: '2px solid #081c15',
+                                                    borderRadius: '10px',
+                                                    overflow: 'hidden',
+                                                    marginBottom: '10px',
+                                                    minWidth: '100%',
+                                                    minHeight: '100%',
+                                                }}>
+                                                    <ReactPlayer
+                                                        ref={playerRef}
+                                                        url={currentVideo.url}
+                                                        playing={isButtonHeld}
+                                                        onEnded={handleEnd}
+                                                        config={{
+                                                            youtube: {
+                                                                playerVars: {
+                                                                    autoplay: 0,
+                                                                    controls: 0,
+                                                                    modestbranding: 1,
+                                                                    rel: 0,
+                                                                    showinfo: 0,
+                                                                },
+                                                            },
+                                                        }}
+                                                        onProgress={({ played }) => {
+                                                            setPlayed(played);
+                                                        }}
+                                                        onPause={() => {
+                                                            setIsButtonHeld(false);
+                                                        }}
+                                                        volume={0.9}
+                                                        muted={false}
+                                                        fallback={
+                                                            <div className='video-title'>
+                                                                Failed to load media
+                                                            </div>
+                                                        }
+                                                        width="100%"
+                                                    />
+                                                </div>
+                                                <ProgressSizeXsColorSchemeGreen
+                                                    hasStripe={true}
+                                                    size="xs"
+                                                    colorScheme="green"
+                                                    className="progress-instance"
+                                                    value={played}
+                                                    max={1}
+                                                />
                                             </>
                                         )}
                                     </div>
                                 </div>
                                 <div className="client-controllers">
-                                    <div className="play-button">
-                                        <div
-                                            className="children"
-                                            tabIndex={0}
-                                            onMouseDown={onMouseDownHandler}
-                                            onMouseUp={onMouseUpHandler}
-                                        >
+                                    <Button
+                                        className="play-button"
+                                        variant="dashboard"
+                                        tabIndex={0}
+                                        onMouseDown={onMouseDownHandler}
+                                        onMouseUp={onMouseUpHandler}
+                                    >
+                                        <div className="children">
                                             Press to watch
                                         </div>
-                                    </div>
-                                    <div className="next-button" onClick={handleNext}>
+                                    </Button>
+                                    <Button className="next-button" onClick={handleNext} variant= "next">
                                         <CkArrowRight className="right-icon-instance" />
-                                    </div>
+                                    </Button>
                                 </div>
                                 <div className="reward-frame">
 
@@ -165,12 +211,7 @@ export const Dashboard = ({ className, ...props }) => {
                                     </div>
 
                                 </div>
-                                <ProgressSizeXsColorSchemeGreen
-                                    hasStripe={true}
-                                    size="xs"
-                                    colorScheme="green"
-                                    className="progress-instance"
-                                />
+
                             </div>
                         </div>
                     </div>
@@ -184,4 +225,9 @@ export const Dashboard = ({ className, ...props }) => {
         </div>
     );
 };
+// ===============================================================
+
+// Export Component "Dashboard"
+// ===============================================================
+export default Dashboard;
 // ===============================================================

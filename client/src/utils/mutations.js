@@ -76,15 +76,35 @@ export const UPDATE_USER = gql`
 `;
 // ================================================================
 
+// Add a new Checkout
+// ================================================================
+// To query the checkout session
+// ================================================================
+export const ADD_CHECKOUT = gql`
+  mutation addCheckout($donations: [DonationInput]) {
+    addCheckout(donations: $donations) {
+      clientSecret
+    }
+  }
+`;
+// ================================================================
+
 // Add a new Purchase
 // ================================================================
 export const ADD_PURCHASE = gql`
-  mutation addPurchase($donations: [ID]!) {
-    addPurchase(donations: $donations) {
+  mutation addPurchase(
+    $donations: [ID]!,
+    $status: String,
+    $paymentId: String) {
+    addPurchase(
+      donations: $donations,
+      status: $status,
+      paymentId: $paymentId) {
       _id
       purchaseDate
+      paymentIntent
+      paymentStatus
       donations {
-        _id
         donationType
         description
         image

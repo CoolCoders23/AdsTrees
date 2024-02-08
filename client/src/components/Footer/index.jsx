@@ -1,10 +1,44 @@
 /* Code generated with AutoHTML Plugin for Figma */
+// Desc: This file contains the footer component of the application.
+// Used the followings as reference:
+// https://chakra-ui.com/docs/styled-system/chakra-factory
+// https://chakra-ui.com/docs/components/switch/usage
+// https://chakra-ui.com/docs/styled-system/style-props
+// https://chakra-ui.com/docs/styled-system/customize-theme
+// ================================================================
+
+// Import dependencies
+// ================================================================
 import './Footer.css';
 import { Link } from 'react-router-dom';
+import { useColorMode, Switch, Box, IconButton, chakra } from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+// ================================================================
 
+// Footer component
+// ================================================================
 export const Footer = ({ className }) => {
+
+    const StyledModeBox = chakra(Box, {
+        base: {
+            py: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 1,
+            position: 'relative',
+        },
+        md: {
+            justifyContent: 'flex-end',
+            flexGrow: 1,
+        },
+    });
+
+    const { colorMode, toggleColorMode } = useColorMode();
+    const isDark = colorMode === 'dark';
+
     return (
-        <footer className={'footer ' + className}>
+        <Box className={'footer ' + className}>
             <div className="footer-content">
                 <div className="copyright-frame">
                     <div className="copyright">
@@ -46,9 +80,14 @@ export const Footer = ({ className }) => {
                         rel='noopener noreferrer'>
                         GitHub
                     </a>
-
                 </div>
             </div>
-        </footer>
+            <StyledModeBox>
+                <SunIcon mr={2} />
+                <Switch colorScheme="green" isChecked={isDark} onChange={toggleColorMode} />
+                <MoonIcon ml={2} />
+            </StyledModeBox>
+        </Box>
     );
 };
+// ================================================================
