@@ -7,7 +7,7 @@
 // Importing the necessary packages
 // ================================================================
 import './ImageUpload.css';
-// import { useState, useRef } from 'react';
+// import { useState } from 'react';
 import {
     Modal,
     ModalOverlay,
@@ -19,11 +19,6 @@ import {
     useDisclosure,
     Button,
     Box,
-    // Input,
-    // FormControl,
-    // FormLabel,
-    // FormHelperText,
-    // FormErrorMessage,
 } from '@chakra-ui/react';
 import { IKImage, IKContext, IKUpload } from 'imagekitio-react';
 import Auth from '../../utils/auth';
@@ -69,10 +64,6 @@ const ImageUpload= () => {
 
     // State to manage modal visibility
     const { isOpen, onOpen, onClose } = useDisclosure();
-
-    // Define inputRef and ikUploadRef
-    // const inputRefTest = useRef(null);
-    // const ikUploadRefTest = useRef(null);
 
     // const [message, setMessage] = useState('');
 
@@ -123,21 +114,7 @@ const ImageUpload= () => {
                 <ModalContent>
                     <ModalHeader>Upload a Profile Picture</ModalHeader>
                     <ModalCloseButton />
-                    <ModalBody>
-
-                        {/* <FormControl p={2}>
-                            <FormLabel>Link</FormLabel>
-                            <FormHelperText my={2} fontWeight={'bold'}>You can upload an Image Here.</FormHelperText>
-                            <Input
-                                type="file"
-                                required
-                                my={2}
-                                p={2}
-                                placeholder="Upload Image"
-                            />
-                            <FormErrorMessage>{message}</FormErrorMessage>
-                            <Button type='submit' my={2}>Upload Picture</Button>
-                        </FormControl> */}
+                    <ModalBody p={2} mt={3}>
 
                         <IKContext
                             publicKey={publicKey}
@@ -161,7 +138,8 @@ const ImageUpload= () => {
                             />
                             {/* TODO: get the Response from ImageKit and return
                                 TODO: display the uploaded image in profile page
-                                TODO: add Uppy as the form
+                                TODO: Style the <IKImage>
+                                TODO: Display success message
                                 <IKImage
                                     path='/AdsTrees/EhsanAsh/AdsTrees_EhsanAsh_7eWpSUvrn'
                                     transformation={[
@@ -176,16 +154,7 @@ const ImageUpload= () => {
                                     loading="lazy"
                                 />
                             </IKUpload> */}
-                            {/* {inputRefTest &&
-                                <Button my={2} onClick={() => inputRefTest.current.click()}>
-                                    Upload
-                                </Button>
-                            }
-                            {ikUploadRefTest &&
-                                <Button my={2} onClick={() => ikUploadRefTest.current.abort()}>
-                                    Abort request
-                                </Button>
-                            } */}
+
                         </IKContext>
 
                     </ModalBody>

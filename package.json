@@ -15,7 +15,6 @@
   "author": "Cool Coders",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^8.2.2",
-    "jquery": "^3.7.1"
+    "concurrently": "^8.2.2"
   }
 }
