@@ -6,6 +6,7 @@
 
 // Importing libraries
 // ============================================================
+import 'regenerator-runtime/runtime';
 import React, { useState, useEffect, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
