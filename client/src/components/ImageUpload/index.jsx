@@ -63,18 +63,24 @@ const ImageUpload= () => {
 
     // Define state to store the uploaded image path
     const [imagePath, setImagePath] = useState('');
-
     const [uploadStatus, setUploadStatus] = useState(null);
+    const [message, setMessage] = useState('');
 
     const onSuccess = res => {
         console.log('Success', res);
         setImagePath(res.filePath);
         setUploadStatus('success');
+        setMessage(
+            'Your profile picture has been updated! Please refresh the page.'
+        );
         localStorage.setItem('profilePicture', res.filePath);
     };
 
     const onError = err => {
         console.log('Error', err);
+        setMessage(
+            'An error occurred while uploading your profile picture.Please refresh try again.'
+        );
         setUploadStatus('error');
     };
 
@@ -85,6 +91,17 @@ const ImageUpload= () => {
         }
     }, []);
 
+    const imageRemoveHandler = () => {
+        setImagePath('');
+        setUploadStatus('removed');
+        setMessage(
+            'Your profile picture has been removed! Please refresh the page.'
+        );
+        localStorage.removeItem('profilePicture');
+    };
+
+    // Styling
+    // ============================================================
     const imageKitStyle={
         display: 'flex',
         flexDirection: 'column',
@@ -97,29 +114,29 @@ const ImageUpload= () => {
         border: '2px solid #b4b4b429',
         borderRadius: '10px',
         color: '#d9d9d9',
-        padding: '20px',
-        marginTop: '10px',
+        padding: '15px',
+        marginTop: '5px',
         boxShadow: '0 2px 5px 3px rgba(0,0,0,0.2)',
         fontSize: '20px',
     };
 
     const closeBtStyle = {
-        alignSelf: 'center',
         backgroundColor: '#49454f',
         border: '2px solid #b4b4b429',
         borderRadius: '7px',
         color: '#d9d9d9',
         padding: '10px',
-        marginTop: '3px',
         boxShadow: '0 2px 5px 3px rgba(0,0,0,0.2)',
         fontSize: '18px',
         cursor: 'pointer',
+        width: '100%',
     };
 
     const ikImageStyle = {
         objectFit: 'cover',
         borderRadius: '50%',
     };
+    // ============================================================
 
     return (
         <Box className="profile-picture-frame">
@@ -241,9 +258,21 @@ const ImageUpload= () => {
                     backdropBlur='2px'
                 />
                 <ModalContent>
-                    <ModalHeader>Upload a Profile Picture</ModalHeader>
+                    <ModalHeader>Upload or Remove a Profile Picture</ModalHeader>
                     <ModalCloseButton />
-                    <ModalBody p={2} mt={3}>
+                    <ModalBody
+                        p={7}
+                        borderBottom={'2px'}
+                        borderColor={'#b4b4b484'}
+                    >
+
+                        <Alert status='warning' mb={3}>
+                            <AlertIcon />
+                            <AlertTitle>Notice:</AlertTitle>
+                            <AlertDescription>
+                                The Profile Picture size must be less than 2 MB
+                            </AlertDescription>
+                        </Alert>
 
                         <IKContext
                             publicKey={publicKey}
@@ -255,7 +284,7 @@ const ImageUpload= () => {
                                 onSuccess={onSuccess}
                                 onError={onError}
                                 useUniqueFileName={true}
-                                validateFile={file => file.size < 1000000}
+                                validateFile={file => file.size < 2000000}
                                 folder={`/AdsTrees/${username}`}
                                 style={imageKitStyle}
                             />
@@ -265,68 +294,59 @@ const ImageUpload= () => {
 
                     <ModalFooter
                         display={'flex'}
-                        flexDirection={'row'}
+                        flexDirection={'column'}
                         alignItems={'flex-end'}
                         justifyContent={'center'}
+                        gap={3}
                     >
 
                         <button onClick={onClose} style={closeBtStyle}>
                             Close
                         </button>
 
-                        {uploadStatus === 'error' && (
-                            <Alert
-                                status='error'
-                                ml={5}
-                                display={'flex'}
-                                flexDirection={'row'}
-                                alignItems={'center'}
-                                justifyContent={'flex-start'}
-                            >
-                                <AlertIcon />
-                                <Box>
-                                    <AlertTitle>Error!</AlertTitle>
-                                    <AlertDescription>
-                                        There was an error uploading your profile picture.
-                                    </AlertDescription>
-                                </Box>
-                                <CloseButton
-                                    alignSelf='flex-start'
-                                    flexGrow={1}
-                                    position='relative'
-                                    right={-1}
-                                    top={-1}
-                                    onClick={onClose}
-                                />
-                            </Alert>
+                        {imagePath && (
+                            <button onClick={imageRemoveHandler} style={closeBtStyle}>
+                                Remove Profile Picture
+                            </button>
                         )}
 
-                        {uploadStatus === 'success' && (
-                            <Alert
-                                status='success'
-                                ml={5}
-                                display={'flex'}
-                                flexDirection={'row'}
-                                alignItems={'center'}
-                                justifyContent={'flex-start'}
-                            >
-                                <AlertIcon />
-                                <Box>
-                                    <AlertTitle>Success!</AlertTitle>
-                                    <AlertDescription>
-                                        Your profile picture has been updated. Please refresh the page.
-                                    </AlertDescription>
-                                </Box>
-                                <CloseButton
-                                    alignSelf='flex-start'
-                                    flexGrow={1}
-                                    position='relative'
-                                    right={-1}
-                                    top={-1}
-                                    onClick={onClose}
-                                />
-                            </Alert>
-                        )}
+                        {
+                            uploadStatus === 'error' ||
+                            uploadStatus === 'success' ||
+                            uploadStatus === 'removed' ? (
+                                    <Alert
+                                        status={
+                                            uploadStatus === 'error' ? 'error'
+                                                : uploadStatus === 'success' ? 'success'
+                                                    : 'info'}
+                                        ml={5}
+                                        display={'flex'}
+                                        flexDirection={'row'}
+                                        alignItems={'center'}
+                                        justifyContent={'flex-start'}
+                                    >
+                                        <AlertIcon />
+                                        <Box>
+                                            <AlertTitle>
+                                                {uploadStatus === 'error' ? 'Error!'
+                                                    : uploadStatus === 'success' ? 'Success!'
+                                                        : 'Profile Picture removed!'}
+                                            </AlertTitle>
+                                            <AlertDescription>
+                                                {message}
+                                            </AlertDescription>
+                                        </Box>
+                                        <CloseButton
+                                            alignSelf='flex-start'
+                                            flexGrow={1}
+                                            position='relative'
+                                            right={-1}
+                                            top={-1}
+                                            onClick={onClose}
+                                        />
+                                    </Alert>
+                                ) : null
+                        }
 
                     </ModalFooter>
 
