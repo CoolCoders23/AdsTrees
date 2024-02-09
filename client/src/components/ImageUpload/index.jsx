@@ -65,6 +65,24 @@ const ImageUpload= () => {
     // State to manage modal visibility
     const { isOpen, onOpen, onClose } = useDisclosure();
 
+    const imageKitStyle={
+
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '10px',
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#fff',
+        border: '1px solid #000',
+        borderRadius: '10px',
+        color: '#000',
+        padding: '20px',
+        marginTop: '10px',
+
+    };
+
     // const [message, setMessage] = useState('');
 
     return (
@@ -104,6 +122,7 @@ const ImageUpload= () => {
                 onClose={onClose}
                 motionPreset='slideInRight'
                 size={'xl'}
+                isCentered
             >
                 <ModalOverlay
                     bg='none'
@@ -134,7 +153,7 @@ const ImageUpload= () => {
                                         'add_shadow': true,
                                     },
                                 }]}
-                                // style={{display: 'none'}}
+                                style={imageKitStyle}
                             />
                             {/* TODO: get the Response from ImageKit and return
                                 TODO: display the uploaded image in profile page
