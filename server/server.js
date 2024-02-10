@@ -137,14 +137,28 @@ const startApolloServer = async () => {
 
 // Initializing the Apollo Server
 // ================================================================
-startApolloServer();
-// ================================================================
+startApolloServer().then(() => {
 
-// Add /auth endpoint
-// ================================================================
-app.get('/auth', function (req, res) {
-    var result = imagekit.getAuthenticationParameters();
-    res.send(result);
+    app.get('/auth', function (req, res) {
+        var result = imagekit.getAuthenticationParameters();
+        res.send(result);
+    });
+
+    app.delete('/delete-profile-picture', async function (req, res) {
+
+        const { fileId } = req.body;
+
+        imagekit.deleteFile(fileId , function(error, result) {
+            if(error) {
+                console.log(error);
+            } else {
+                res.send(result);
+                console.log(`File deleted successfully: ${result}`);
+            }
+        });
+
+    });
+
 });
 // ================================================================
 
