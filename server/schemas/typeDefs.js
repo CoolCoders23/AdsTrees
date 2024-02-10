@@ -20,7 +20,6 @@ const typeDefs = `
     username: String!
     email: String! @cacheControl(maxAge: 0, scope: PRIVATE)
     password: String! @cacheControl(maxAge: 0, scope: PRIVATE)
-    profilePicture: Image @cacheControl(maxAge: 40)
     preferences: [String] @cacheControl(maxAge: 60)
     purchases: [Purchase] @cacheControl(maxAge: 60)
     ads: [Ad] @cacheControl(maxAge: 60)
@@ -109,16 +108,6 @@ const typeDefs = `
     price: Float
   }
 
-  type Image {
-    url: String
-    altText: String
-  }
-
-  input ImageInput {
-    url: String!
-    altText: String
-  }
-
   input UserInput {
     username: String!
     email: String!
@@ -130,7 +119,6 @@ const typeDefs = `
     username: String
     email: String
     password: String
-    profilePicture: ImageInput
   }
 
   input DonationInput {

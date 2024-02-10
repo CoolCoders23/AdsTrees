@@ -63,10 +63,6 @@ const Profile = () => {
         email: '',
         newPassword: '',
         passwordConfirmation: '',
-        profilePicture: {
-            url: '',
-            altText: ''
-        }
         // preferences: []
     });
 
@@ -84,10 +80,6 @@ const Profile = () => {
                 email: data.userProfile.email || '',
                 newPassword: '',
                 passwordConfirmation: '',
-                profilePicture: {
-                    url: data.userProfile.profilePicture?.url || '',
-                    altText: data.userProfile.profilePicture?.altText || ''
-                }
                 // preferences: data.userProfile.preferences || []
             });
         }
@@ -117,7 +109,6 @@ const Profile = () => {
             username: profileData.username,
             email: profileData.email,
             ...(profileData.newPassword && { password: profileData.newPassword }),
-            profilePicture: profileData.profilePicture
         };
 
         try {

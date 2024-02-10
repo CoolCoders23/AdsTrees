@@ -16,10 +16,6 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
-        profilePicture{
-          url
-          altText
-        }
       }
     }
   }
@@ -62,10 +58,6 @@ export const UPDATE_USER = gql`
         _id
         username
         email
-        profilePicture {
-          url
-          altText
-        }
     }
   }
 `;

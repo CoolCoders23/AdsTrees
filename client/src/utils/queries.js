@@ -14,10 +14,6 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      profilePicture {
-        url
-        altText
-      }
       preferences
       purchases {
         _id
@@ -57,10 +53,6 @@ export const QUERY_USER_PROFILE = gql`
       _id
       username
       email
-      profilePicture {
-        url
-        altText
-      }
       totalDonations
       preferences
       purchases {

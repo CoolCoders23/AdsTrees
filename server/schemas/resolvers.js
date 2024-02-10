@@ -11,7 +11,6 @@
 const { GraphQLError } = require('graphql');
 const { User, Donation, Purchase, Ad, Youtube } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
-const validator = require('validator');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 // ==================================================================
 
@@ -302,17 +301,6 @@ const resolvers = {
 
                 if (user.password !== undefined) {
                     updatedUser.password = user.password;
-                }
-
-                if (user.profilePicture !== undefined) {
-                    if (
-                        user.profilePicture !== undefined &&
-                        user.profilePicture.url !== '' &&
-                        !validator.isURL(user.profilePicture.url)
-                    ) {
-                        throw new Error('Profile picture is not a valid URL');
-                    }
-                    updatedUser.profilePicture = { url: user.profilePicture.url, altText: user.profilePicture.altText };
                 }
 
                 await updatedUser.save();
