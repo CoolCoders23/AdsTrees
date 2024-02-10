@@ -51,6 +51,33 @@ const authenticator = async () => {
 };
 // ================================================================
 
+// Define a function to use fetch to send a request to the server with delete method and body set to send the fileId, to remove profile picture from imagekit
+// ================================================================
+const deleteProfilePicture = async (fileId) => {
+    try {
+        const response = await fetch('http://localhost:3001/delete-profile-picture', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ fileId }),
+        });
+
+        if (response.ok) {
+            console.log(`File ${fileId} deleted successfully.`);
+            localStorage.removeItem('fileId');
+        } else {
+            const errorText = await response.text();
+            throw new Error(`Request failed with status ${response.status}: ${errorText}`);
+        }
+
+    } catch (error) {
+        throw new Error(`Delete request failed: ${error.message}`);
+    }
+
+};
+// ================================================================
+
 // ImageUpload component
 // ================================================================
 const ImageUpload= () => {
@@ -74,6 +101,7 @@ const ImageUpload= () => {
             'Your profile picture has been updated! Please refresh the page.'
         );
         localStorage.setItem('profilePicture', res.filePath);
+        localStorage.setItem('fileId', res.fileId);
     };
 
     const onError = err => {
@@ -91,13 +119,15 @@ const ImageUpload= () => {
         }
     }, []);
 
-    const imageRemoveHandler = () => {
+    const imageRemoveHandler = async () => {
+        const fileId = localStorage.getItem('fileId');
         setImagePath('');
         setUploadStatus('removed');
         setMessage(
             'Your profile picture has been removed! Please refresh the page.'
         );
         localStorage.removeItem('profilePicture');
+        await deleteProfilePicture(fileId);
     };
 
     // Styling
