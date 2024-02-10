@@ -1,0 +1,52 @@
+.profile-picture-frame {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 50%;
+  border: 3px solid var(--white-pure, #4eab848b);
+}
+
+.picture {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: visible;
+  margin-right: 8px;
+}
+
+.edit-picture-button {
+  margin: 0 0 0 -32px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.ellipse {
+  background: var(--green-light, #d0ffd7);
+  border-radius: 50%;
+  border-style: solid;
+  border-color: var(--white-pure, #4eab848b);
+  border-width: 2px;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.edit-icon {
+  flex-shrink: 0;
+  width: 12.52px;
+  height: 12.52px;
+  position: absolute;
+  left: 6px;
+  top: 5.74px;
+  overflow: visible;
+}

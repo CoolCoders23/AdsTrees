@@ -11,6 +11,7 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
+const ImageKit = require('imagekit');
 // ================================================================
 
 
@@ -26,6 +27,15 @@ const db = require('./config/connection');
 // ================================================================
 const PORT = process.env.PORT || 3001;
 const app = express();
+// ================================================================
+
+// Define the ImageKit instance
+// ================================================================
+const imagekit = new ImageKit({
+    publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+    privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+    urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
+});
 // ================================================================
 
 // Configuring CORS options
@@ -56,6 +66,16 @@ const corsOptions = {
 // Apply CORS middleware
 // ================================================================
 app.use(cors(corsOptions));
+// ================================================================
+
+// Allow cross-origin requests
+// ================================================================
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
 // ================================================================
 
 // Create an instance of ApolloServer
@@ -103,6 +123,7 @@ const startApolloServer = async () => {
             app.listen(PORT, () => {
                 console.log(`API server running on port ${PORT}!`);
                 console.log(`GraphQL at http://localhost:${PORT}/graphql`);
+                console.log(`ImageKit at http://localhost:${PORT}/auth`);
             });
         });
         db.on('error', (error) => {
@@ -116,7 +137,29 @@ const startApolloServer = async () => {
 
 // Initializing the Apollo Server
 // ================================================================
-startApolloServer();
+startApolloServer().then(() => {
+
+    app.get('/auth', function (req, res) {
+        var result = imagekit.getAuthenticationParameters();
+        res.send(result);
+    });
+
+    app.delete('/delete-profile-picture', async function (req, res) {
+
+        const { fileId } = req.body;
+
+        imagekit.deleteFile(fileId , function(error, result) {
+            if(error) {
+                console.log(error);
+            } else {
+                res.send(result);
+                console.log(`File deleted successfully: ${result}`);
+            }
+        });
+
+    });
+
+});
 // ================================================================
 
 // Exporting the Express app for use elsewhere in the project

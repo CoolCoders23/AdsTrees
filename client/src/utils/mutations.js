@@ -16,10 +16,6 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
-        profilePicture{
-          url
-          altText
-        }
       }
     }
   }
@@ -47,10 +43,8 @@ export const ADD_USER = gql`
 export const REMOVE_USER = gql`
   mutation removeUser($userId: ID!) {
     removeUser(userId: $userId) {
-      user{
         _id
         username
-      }
     }
   }
 `;
@@ -61,16 +55,9 @@ export const REMOVE_USER = gql`
 export const UPDATE_USER = gql`
   mutation updateUser($user: UpdateUserInput!) {
     updateUser(user: $user) {
-      token
-      user {
         _id
         username
         email
-        profilePicture {
-          url
-          altText
-        }
-      }
     }
   }
 `;

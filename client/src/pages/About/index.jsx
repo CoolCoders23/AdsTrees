@@ -1,7 +1,6 @@
 /* Code generated with AutoHTML Plugin for Figma */
 import './About.css';
 import EhsanPicture from '../../assets/image/Ehsan.png'; // Import the image for Ehsan
-import MarkoPicture from '../../assets/image/Marko.png'; // Import the image for Marko
 import JidPicture from '../../assets/image/Jide.png'; // Import the image for Jid
 import YeaPicture from '../../assets/image/Yega.png'; // Import the image for Yega
 import { Link } from 'react-router-dom';

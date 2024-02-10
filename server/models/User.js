@@ -35,17 +35,6 @@ const userSchema = new Schema({
         minlength: [5, 'Password must be at least 5 characters long.']
     },
 
-    profilePicture: {
-        url: {
-            type: String,
-            required: false,
-        },
-        altText: {
-            type: String,
-            required: false,
-        },
-    },
-
     preferences: [
         {
             type: String,
