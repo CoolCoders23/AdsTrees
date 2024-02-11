@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 .progress {
-  background: var(--gray-100, #edf2f7);
+  /* background: var(--gray-100, #edf2f7); */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -11,6 +11,9 @@
   justify-content: flex-start;
   width: 320px;
   position: relative;
+}
+.progress.xs {
+  height: 4px;
 }
 .progress .inner {
   background: var(--blue-500, #3182ce);
