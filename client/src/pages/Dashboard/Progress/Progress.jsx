@@ -1,14 +1,19 @@
+/* eslint-disable no-unused-vars */
 import './Progress.css';
 import { ProgressStripe } from '../ProgressStripe/ProgressStripe.jsx';
 
 export const Progress = ({
-    hasStripe = true,
-    size = 'xs',
-    colorScheme = 'blue',
+    hasStripe,
+    size,
+    colorScheme,
     className,
+    value,
+    max = 1,
     ...props
 }) => {
+
     const variantsClassName = 'size-' + size + ' color-scheme-' + colorScheme;
+    const percentage = (value / max) * 100; // calculate percentage
 
     return (
         <div className={'progress ' + className + ' ' + variantsClassName}>
@@ -17,12 +22,8 @@ export const Progress = ({
                     <div className="track"></div>
                 </>
             )}
-            <div className="inner">
-                {hasStripe && (
-                    <>
-                        <ProgressStripe className="stripe-instance"></ProgressStripe>
-                    </>
-                )}
+            <div className="inner" style={{ width: `${percentage}%` }}>
+                {hasStripe && <ProgressStripe className="stripe-instance" />}
             </div>
         </div>
     );

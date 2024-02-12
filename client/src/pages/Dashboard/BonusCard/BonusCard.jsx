@@ -1,4 +1,3 @@
-/* Code generated with AutoHTML Plugin for Figma */
 import './BonusCard.css';
 
 export const BonusCard = ({
@@ -8,7 +7,6 @@ export const BonusCard = ({
     bonusCardTitle,
     ...props
 }) => {
-
     return (
         <div className={'bonus-card ' + className}>
             <div className="bonus-card-body">
@@ -32,9 +30,9 @@ export const BonusCard = ({
                     </svg>
                 </div>
                 <div className="bonus-card-sub-body">
-                    <div className="bonus-card-title">{bonusCardTitle}</div>
+                    <div className="bonus-card-title">{bonusCardTitle} </div>
                     <div className="bonus-card-info">
-                        <div className="user-progress">{userProgress}</div>
+                        <div className="user-progress">{userProgress} </div>
                         <div className="bonus-reward-frame">
                             <svg
                                 className="trees"
@@ -73,8 +71,7 @@ export const BonusCard = ({
                                     fill="#9DFFCE"
                                 />
                             </svg>
-
-                            <div className="reward">{reward}</div>
+                            <div className="reward">{reward} </div>
                         </div>
                     </div>
                 </div>

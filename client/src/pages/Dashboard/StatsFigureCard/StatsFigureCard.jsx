@@ -1,4 +1,3 @@
-/* Code generated with AutoHTML Plugin for Figma */
 import './StatsFigureCard.css';
 
 export const StatsFigureCard = ({

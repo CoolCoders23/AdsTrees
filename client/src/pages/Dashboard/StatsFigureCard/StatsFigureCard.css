@@ -4,7 +4,7 @@
 }
 .stats-figure-card {
   /* background: var(--cards-white, #081c15); */
-  padding: 8px;
+  padding: 24px 16px 24px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -12,14 +12,13 @@
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
-  height: 72px;
   min-width: 160px;
   position: relative;
 }
 .stats-figure-card .data {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;

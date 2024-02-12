@@ -1,4 +1,3 @@
-/* Code generated with AutoHTML Plugin for Figma */
 import './CkArrowRight.css';
 
 export const CkArrowRight = ({ className, ...props }) => {

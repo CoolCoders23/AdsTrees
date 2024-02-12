@@ -1,4 +1,3 @@
-/* Code generated with AutoHTML Plugin for Figma */
 import './ProgressStripe.css';
 
 export const ProgressStripe = ({ className, ...props }) => {
@@ -11,7 +10,7 @@ export const ProgressStripe = ({ className, ...props }) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <g opacity="0.28" clipPath="url(#clip0_97_5084)">
+            <g opacity="0.28" clipPath="url(#clip0_97_5080)">
                 <line
                     y1="-3.5"
                     x2="58.1008"
@@ -214,7 +213,8 @@ export const ProgressStripe = ({ className, ...props }) => {
                 />
             </g>
             <defs>
-                <clipPath id="clip0_97_5084">
+                <clipPath id="clip0_97_5080">
+                    <rect height="4" fill="white" width="100%"/>
                 </clipPath>
             </defs>
         </svg>
