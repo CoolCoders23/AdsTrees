@@ -66,6 +66,8 @@ const Profile = () => {
         // preferences: []
     });
 
+    const [confirmDialog, setConfirmDialog] = useState(false);
+
     const { data, loading, error } = useQuery(QUERY_USER_PROFILE);
     const [updateUserMutation] = useMutation(UPDATE_USER);
     const [removeUserMutation] = useMutation(REMOVE_USER);
@@ -130,18 +132,57 @@ const Profile = () => {
 
     };
 
-    const handleDeleteAccount = async () => {
+    const handleDeleteAccount = () => {
+        setConfirmDialog(true);
+    };
+
+    const handleConfirmDelete = async () => {
+
+        setConfirmDialog(false);
+
         try {
-            await removeUserMutation({
+
+            // Remove user from database
+            const response = await removeUserMutation({
                 variables: { userId: profileData._id }
             });
-            showDialog('Account Deleted', 'Your account has been deleted successfully! You will be logged out shortly.');
-            setTimeout(() => {
-                Auth.logout();
-            }, 4000);
+
+            if (response.data.removeUser) {
+
+                // delete profile picture from imagekit
+                const fileId = localStorage.getItem('fileId');
+                const response = await fetch('http://localhost:3001/delete-profile-picture', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ fileId }),
+                });
+
+                if (response.ok) {
+                    console.log(`File ${fileId} deleted successfully.`);
+                } else {
+                    console.error(`Failed to delete file ${fileId}.`);
+                }
+
+                // remove fileId and profilePicture from localStorage
+                localStorage.removeItem('fileId');
+                localStorage.removeItem('profilePicture');
+
+                showDialog('Account Deleted', 'Your account has been deleted successfully! You will be logged out shortly.');
+                setTimeout(() => {
+                    Auth.logout();
+                }, 4000);
+
+            } else {
+                showDialog('Error Deleting Account', 'An error occurred while deleting your account. Please try again.');
+                return;
+            }
+
         } catch (e) {
             console.error('Error deleting account: ', e);
         }
+
     };
 
     if (loading) {
@@ -256,6 +297,28 @@ const Profile = () => {
                                             <AlertDialogFooter>
                                                 <Button ref={cancelRef} onClick={closeDialog}>
                                                     OK
+                                                </Button>
+                                            </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                    </AlertDialogOverlay>
+                                </AlertDialog>
+                                <AlertDialog
+                                    motionPreset='slideInBottom'
+                                    leastDestructiveRef={cancelRef}
+                                    onClose={() => setConfirmDialog(false)}
+                                    isOpen={confirmDialog}
+                                    isCentered
+                                >
+                                    <AlertDialogOverlay>
+                                        <AlertDialogContent>
+                                            <AlertDialogHeader>Confirm Account Deletion</AlertDialogHeader>
+                                            <AlertDialogBody>Are you sure you want to delete your account? This action cannot be undone.</AlertDialogBody>
+                                            <AlertDialogFooter>
+                                                <Button ref={cancelRef} onClick={() => setConfirmDialog(false)}>
+                                                    Cancel
+                                                </Button>
+                                                <Button colorScheme="red" onClick={handleConfirmDelete} ml={3}>
+                                                    Delete
                                                 </Button>
                                             </AlertDialogFooter>
                                         </AlertDialogContent>
