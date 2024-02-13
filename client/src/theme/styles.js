@@ -97,9 +97,15 @@ const styles = {
         '.check-icon': {
             fill: mode('light.greenFlashy', 'dark.greenPop')(props),
         },
+
         '.main-navigation-button-target-dashboard-status-active,.main-navigation-button-target-profile-status-active,.target-logout-status-active': {
             bg: mode('light.pureWhite', 'dark.primary')(props),
             borderColor: mode('light.text', 'dark.text')(props),
+        },
+
+        '.main-navigation-button-target-dashboard-status-inactive': {
+            bg: mode('light.pureWhite', 'dark.primary')(props),
+            borderColor: mode('light.borderInactive', 'dark.borderInactive')(props),
         },
 
     }),
