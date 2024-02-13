@@ -8,6 +8,8 @@ import './AdsTreesSignIn.css'; // Importing custom CSS for styling.
 import { Link } from 'react-router-dom'; // Importing Link for routing.
 import {
     Input,
+    InputGroup,
+    InputRightElement,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -26,6 +28,7 @@ const Login = ({ className = '' }) => {
     // ============================================================
     const [isInstallPromptOpen, setInstallPromptOpen] = useState(false);
     const [deferredPrompt, setDeferredPrompt] = useState(null);
+    const [showPassword, setShowPassword] = useState(false);
     // ============================================================
 
     // Function to handle PWA installation.
@@ -158,14 +161,29 @@ const Login = ({ className = '' }) => {
                             </div>
                             <div className="input-group">
                                 <div className="input">
-                                    <Input
-                                        placeholder="Password"
-                                        className="password"
-                                        value={formState.password}
-                                        onChange={(event) => handleChange(event, 'password')}
-                                        size='lg'
-                                        type="password"
-                                    />
+                                    <InputGroup size='lg'>
+                                        <Input
+                                            pr='4.5rem'
+                                            placeholder="Password"
+                                            className="password"
+                                            value={formState.password}
+                                            onChange={(event) => handleChange(event, 'password')}
+                                            size='lg'
+                                            type={showPassword ? 'text' : 'password'}
+                                        />
+                                        <InputRightElement width='4.5rem'>
+                                            <Button
+                                                variant={'none'}
+                                                h='1.75rem'
+                                                size='md'
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                color={'gray.600'}
+                                                border="none"
+                                            >
+                                                {showPassword ? 'Hide' : 'Show'}
+                                            </Button>
+                                        </InputRightElement>
+                                    </InputGroup>
                                 </div>
                             </div>
                             <Button type="submit" className="button">

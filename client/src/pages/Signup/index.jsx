@@ -8,7 +8,12 @@ import { Link } from 'react-router-dom';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import './AdsTreesSignUp.css'; // Importing custom CSS for styling.
-import { Input, Button } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
+import {
+    InputGroup,
+    InputRightElement,
+    Input,
+    Button
+} from '@chakra-ui/react'; // Chakra UI component for styled input fields.
 
 // Signup component definition.
 const Signup = ({ className = '' }) => {
@@ -23,6 +28,7 @@ const Signup = ({ className = '' }) => {
     const [addUser, { error }] = useMutation(ADD_USER);
     const [errorMessage, setErrorMessage] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     // Function to handle form submission.
     const handleFormSubmit = async (event) => {
@@ -106,26 +112,56 @@ const Signup = ({ className = '' }) => {
                                 </div>
                                 <div className="input-group">
                                     <div className="input">
-                                        <Input
-                                            className="password"
-                                            type="password"
-                                            value={formState.password}
-                                            onChange={(event) => handleChange('password', event.target.value)}
-                                            placeholder="Password"
-                                            size='lg'
-                                        />
+                                        <InputGroup size='lg'>
+                                            <Input
+                                                pr='4.5rem'
+                                                className="password"
+                                                type={showPassword ? 'text' : 'password'}
+                                                value={formState.password}
+                                                onChange={(event) => handleChange('password', event.target.value)}
+                                                placeholder="Password"
+                                                size='lg'
+                                            />
+                                            <InputRightElement width='4.5rem'>
+                                                <Button
+                                                    variant={'none'}
+                                                    h='1.75rem'
+                                                    size='md'
+                                                    onClick={() => setShowPassword(!showPassword)}
+                                                    color={'gray.600'}
+                                                    border="none"
+                                                >
+                                                    {showPassword ? 'Hide' : 'Show'}
+                                                </Button>
+                                            </InputRightElement>
+                                        </InputGroup>
                                     </div>
                                 </div>
                                 <div className="input-group">
                                     <div className="input">
-                                        <Input
-                                            className="password-confirmation"
-                                            type="password"
-                                            value={formState.confirmPassword}
-                                            onChange={(event) => handleChange('confirmPassword', event.target.value)}
-                                            placeholder="Confirm password"
-                                            size='lg'
-                                        />
+                                        <InputGroup size='lg'>
+                                            <Input
+                                                pr='4.5rem'
+                                                className="password-confirmation"
+                                                value={formState.confirmPassword}
+                                                onChange={(event) => handleChange('confirmPassword', event.target.value)}
+                                                placeholder="Confirm password"
+                                                size='lg'
+                                                type={showPassword ? 'text' : 'password'}
+                                            />
+                                            <InputRightElement width='4.5rem'>
+                                                <Button
+                                                    variant={'none'}
+                                                    h='1.75rem'
+                                                    size='md'
+                                                    onClick={() => setShowPassword(!showPassword)}
+                                                    color={'gray.600'}
+                                                    border="none"
+                                                >
+                                                    {showPassword ? 'Hide' : 'Show'}
+                                                </Button>
+                                            </InputRightElement>
+                                        </InputGroup>
                                     </div>
                                 </div>
 

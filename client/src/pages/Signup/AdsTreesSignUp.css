@@ -121,14 +121,14 @@
   position: relative;
 }
 .ads-trees-sign-up .input {
-  padding: 0px 0px 0px 0px;
+  padding: 0px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
   justify-content: center;
   flex: 1;
-  height: 40px;
+  height: 47px;
   position: relative;
 }
 .ads-trees-sign-up .email {
