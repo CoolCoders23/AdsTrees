@@ -50,7 +50,7 @@ const styles = {
             bg: mode('light.primary', 'dark.primary')(props),
         },
 
-        '.stats-figure-card-instance, .bonus-card-instance': {
+        '.stats-figure-card-instance, .bonus-card-instance, .dashboard-info-box': {
             bg: mode('light.dashboardCardBg', 'dark.dashboardCardBg')(props),
         },
 

@@ -115,6 +115,18 @@
 }
 .adds-trees-dashboard .client-controllers {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  padding: 8px 0px 8px 0px;
+  margin-bottom: 60px;
+}
+.adds-trees-dashboard .controller-buttons {
+  display: flex;
   flex-direction: row;
   gap: 16px;
   align-items: center;
@@ -161,8 +173,8 @@
 .adds-trees-dashboard .reward-label {
   text-align: left;
   font-family: "Poppins-Regular", sans-serif;
-  font-size: 14px;
-  line-height: 15.56px;
+  font-size: 18px;
+  line-height: 1.2;
   font-weight: 400;
   position: relative;
   display: flex;
@@ -296,4 +308,13 @@
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
+}
+
+@media screen and (max-width: 918px) {
+  .adds-trees-dashboard .reward-label,
+  .adds-trees-dashboard .trees {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 }
