@@ -14,6 +14,8 @@ import DonationHistory from '../../components/DonationHistory';
 import './AdsTreesProfile.css';
 import {
     Input,
+    InputGroup,
+    InputRightElement,
     Button,
     Spinner,
     AlertDialog,
@@ -67,6 +69,7 @@ const Profile = () => {
     });
 
     const [confirmDialog, setConfirmDialog] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const { data, loading, error } = useQuery(QUERY_USER_PROFILE);
     const [updateUserMutation] = useMutation(UPDATE_USER);
@@ -250,23 +253,53 @@ const Profile = () => {
                             <div className="new-password-input">
                                 <div className="field-title-label2">New password </div>
                                 <div className="input-group">
-                                    <Input
-                                        className="input"
-                                        name="newPassword"
-                                        value={profileData.newPassword || ''}
-                                        onChange={handleInputChange}
-                                    />
+                                    <InputGroup size='md'>
+                                        <Input
+                                            pr='4.5rem'
+                                            className="input"
+                                            name="newPassword"
+                                            value={profileData.newPassword || ''}
+                                            onChange={handleInputChange}
+                                            type={showPassword ? 'text' : 'password'}
+                                        />
+                                        <InputRightElement width='4.5rem'>
+                                            <Button
+                                                variant={'none'}
+                                                h='1.75rem'
+                                                size='sm'
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                color={'gray.600'}
+                                            >
+                                                {showPassword ? 'Hide' : 'Show'}
+                                            </Button>
+                                        </InputRightElement>
+                                    </InputGroup>
                                 </div>
                             </div>
                             <div className="password-confirmation-input">
                                 <div className="field-title-label2">Confirm password </div>
                                 <div className="input-group">
-                                    <Input
-                                        className="input"
-                                        name="passwordConfirmation"
-                                        value={profileData.passwordConfirmation || ''}
-                                        onChange={handleInputChange}
-                                    />
+                                    <InputGroup size='md'>
+                                        <Input
+                                            pr='4.5rem'
+                                            className="input"
+                                            name="passwordConfirmation"
+                                            value={profileData.passwordConfirmation || ''}
+                                            onChange={handleInputChange}
+                                            type={showPassword ? 'text' : 'password'}
+                                        />
+                                        <InputRightElement width='4.5rem'>
+                                            <Button
+                                                variant={'none'}
+                                                h='1.75rem'
+                                                size='sm'
+                                                color={'gray.600'}
+                                                onClick={() => setShowPassword(!showPassword)}
+                                            >
+                                                {showPassword ? 'Hide' : 'Show'}
+                                            </Button>
+                                        </InputRightElement>
+                                    </InputGroup>
                                 </div>
                             </div>
                         </div>
