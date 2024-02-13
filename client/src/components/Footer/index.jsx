@@ -10,14 +10,19 @@
 // Import dependencies
 // ================================================================
 import './Footer.css';
-import { Link } from 'react-router-dom';
-import { useColorMode, Switch, Box, IconButton, chakra } from '@chakra-ui/react';
+import { Link, useLocation } from 'react-router-dom';
+import { useColorMode, Switch, Box, chakra } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 // ================================================================
 
 // Footer component
 // ================================================================
 export const Footer = ({ className }) => {
+
+    const location = useLocation();
+    const isDonateActive = location.pathname === '/donations';
+    const isContactActive = location.pathname === '/contact';
+    const isAboutActive = location.pathname === '/about';
 
     const StyledModeBox = chakra(Box, {
         base: {
@@ -55,23 +60,52 @@ export const Footer = ({ className }) => {
                         Terms
                     </span>
 
-                    <Link
-                        className="donate-link-label"
-                        to='/donations'>
-                        Donations
-                    </Link>
+                    <>
+                        {isDonateActive ? (
+                            <Link
+                                className="footer-link-active"
+                                to='/donations'>
+                                Donations
+                            </Link>
+                        ) : (
+                            <Link
+                                className="donate-link-label"
+                                to='/donations'>
+                                Donations
+                            </Link>
+                        )}
+                    </>
 
-                    <Link
-                        className="donate-link-label"
-                        to='/contact'>
-                        Contact
-                    </Link>
-
-                    <Link
-                        className="donate-link-label"
-                        to='/about'>
-                        About
-                    </Link>
+                    <>
+                        {isContactActive ? (
+                            <Link
+                                className="footer-link-active"
+                                to='/contact'>
+                                Contact
+                            </Link>
+                        ) : (
+                            <Link
+                                className="donate-link-label"
+                                to='/contact'>
+                                Contact
+                            </Link>
+                        )}
+                    </>
+                    <>
+                        {isAboutActive ? (
+                            <Link
+                                className="footer-link-active"
+                                to='/about'>
+                                About
+                            </Link>
+                        ) : (
+                            <Link
+                                className="donate-link-label"
+                                to='/about'>
+                                About
+                            </Link>
+                        )}
+                    </>
 
                     <a
                         className="donate-link-label"
