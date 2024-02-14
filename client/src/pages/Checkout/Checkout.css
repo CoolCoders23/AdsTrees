@@ -46,15 +46,15 @@
   width: 398px;
   position: relative;
 }
-.ads-trees-donate-section-2 .active-line {
+.ads-trees-donate-section-2 .checkout-active-line {
   flex-shrink: 0;
-  width: 65px;
+  width: 70px;
   height: 2px;
   position: absolute;
   left: 104px;
   top: 11px;
 }
-.ads-trees-donate-section-2 .inactive-line {
+.ads-trees-donate-section-2 .checkout-inactive-line {
   flex-shrink: 0;
   width: 85px;
   height: 2px;
@@ -108,7 +108,7 @@
   width: 32.5px;
   height: 32.5px;
   position: absolute;
-  left: -6px;
+  left: 13px;
   top: -6px;
 }
 .ads-trees-donate-section-2 .dot {
@@ -149,6 +149,15 @@
   justify-content: flex-start;
   flex-shrink: 0;
   position: relative;
+}
+.ads-trees-donate-section-2 .bbackground2 {
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 32.5px;
+  height: 32.5px;
+  position: absolute;
+  left: 11px;
+  top: -6px;
 }
 .ads-trees-donate-section-2 .checkout-payment {
   text-align: center;
