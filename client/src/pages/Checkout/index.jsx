@@ -133,13 +133,13 @@ const Checkout = ({ className, ...props }) => {
             <div className="body">
                 <div className="stepper">
                     <div className="step-2">
-                        <div className="active-line"></div>
-                        <div className="inactive-line"></div>
+                        <div className="checkout-active-line"></div>
+                        <div className="checkout-inactive-line"></div>
                         <div className="steps">
                             <div className="step-2-1-frame">
+                                <div className="bbackground"></div>
                                 <div className="step-icon-base">
                                     <div className="content">
-                                        <div className="bbackground"></div>
                                         <div className="dot"></div>
                                     </div>
                                 </div>
@@ -148,9 +148,9 @@ const Checkout = ({ className, ...props }) => {
                                 </div>
                             </div>
                             <div className="step-2-2-frame">
+                                <div className="bbackground2"></div>
                                 <div className="step-icon-base">
                                     <div className="content">
-                                        <div className="bbackground"></div>
                                         <div className="dot"></div>
                                     </div>
                                 </div>

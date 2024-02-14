@@ -15,13 +15,14 @@ const Input = {
             field: {
                 color: mode('light.inputText', 'dark.inputText')(props),
                 backgroundColor: mode('light.inputBackground', 'dark.inputBackground')(props),
-                borderColor: mode('light.inputBorder', 'dark.inputBorder')(props),
+                // borderColor: mode('light.inputBorder', 'dark.inputBorder')(props),
                 _placeholder: {
                     color: mode('light.inputText', 'dark.inputText')(props),
                 },
                 borderStyle: 'solid',
                 borderWidth: '3px',
                 borderRadius: '8px',
+                boxShadow: mode('0px 2px 5px 3px rgba(45, 106, 79, 0.4)', '0px 2px 3px 3px rgba(200, 238, 221, 0.3)')(props),
                 _focus: {
                     borderColor: mode('light.inputFocusBorder', 'dark.inputFocusBorder')(props),
                     outline: 'none',
@@ -36,7 +37,7 @@ const Input = {
             field: {
                 color: mode('light.inputText', 'dark.inputText')(props),
                 backgroundColor: mode('light.inputBackground', 'dark.inputBackground')(props),
-                borderColor: mode('light.inputBorder', 'dark.inputBorder')(props),
+                // borderColor: mode('light.inputBorder', 'dark.inputBorder')(props),
                 _placeholder: {
                     color: mode('light.inputText', 'dark.inputText')(props),
                 },

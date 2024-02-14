@@ -109,7 +109,8 @@ export const Header = ({
                                     <Link className="dashboard_link" as={RouterLink} to="/dashboard">
                                         <MainNavigationButtonTargetDashboardStatusActive
                                             target="dashboard"
-                                            className="main-navigation-button-target-dashboard-status-inactive"
+                                            className=
+                                                "main-navigation-button-target-dashboard-status-inactive"
                                         />
                                     </Link>
                                 )}

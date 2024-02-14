@@ -50,7 +50,7 @@ const corsOptions = {
             'https://fonts.googleapis.com',
             'https://fonts.gstatic.com',
             'https://www.youtube.com',
-            'https://adstrees.onrender.com'
+            'https://adstrees.com'
 
         ];
         if (!origin || whitelist.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
