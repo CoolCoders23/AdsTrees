@@ -1,4 +1,5 @@
 // Desc: Connection to MongoDB
+//(|| 'mongodb://127.0.0.1:27017/AdsTrees')
 // =================================================
 // Dependencies
 // =================================================
@@ -10,7 +11,7 @@ require('dotenv').config();
 // =================================================
 // Connect to MongoDB
 // =================================================
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/AdsTrees');
+mongoose.connect(process.env.MONGODB_URI);
 // =================================================
 
 // Export connection
