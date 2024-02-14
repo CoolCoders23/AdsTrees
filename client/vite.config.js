@@ -162,6 +162,12 @@ export default defineConfig({
                         'jwt-decode',
                         'moment'
                     ],
+                    'runtime-chunk': [
+                        'regenerator-runtime'
+                    ],
+                    'imagekit-chunk': [
+                        'imagekitio-react'
+                    ]
                 },
             },
         },
