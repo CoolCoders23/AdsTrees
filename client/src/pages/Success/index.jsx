@@ -83,9 +83,9 @@ const Success = ({ className, ...props }) => {
                             <div className="active-line2"></div>
                             <div className="steps">
                                 <div className="step-3-1-frame">
+                                    <div className="bbackground"></div>
                                     <div className="step-icon-base">
                                         <div className="content">
-                                            <div className="bbackground"></div>
                                             <div className="dot"></div>
                                         </div>
                                     </div>
@@ -94,9 +94,9 @@ const Success = ({ className, ...props }) => {
                                     </div>
                                 </div>
                                 <div className="step-3-2-frame">
+                                    <div className="bbackground2"></div>
                                     <div className="step-icon-base">
                                         <div className="content">
-                                            <div className="bbackground"></div>
                                             <div className="dot"></div>
                                         </div>
                                     </div>
@@ -105,9 +105,9 @@ const Success = ({ className, ...props }) => {
                                     </div>
                                 </div>
                                 <div className="step-3-3-frame">
+                                    <div className="bbackground3"></div>
                                     <div className="step-icon-base">
                                         <div className="content">
-                                            <div className="bbackground"></div>
                                             <div className="dot"></div>
                                         </div>
                                     </div>

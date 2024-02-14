@@ -8,7 +8,7 @@ import { MainNavigationButtonTargetDashboardStatusActive } from './MainNavigatio
 import { MainNavigationButtonTargetProfileStatusActive } from './MainNavigationButtonTargetProfileStatusActive/MainNavigationButtonTargetProfileStatusActive.jsx';
 import { TargetLogoutStatusActive } from './TargetLogoutStatusActive/TargetLogoutStatusActive.jsx';
 import { Link } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import Auth from '../../utils/auth';
 // =====================================================
 
@@ -22,6 +22,12 @@ export const Header = ({
     showTargetLogoutStatusActive = true,
     className
 }) => {
+
+    const location = useLocation();
+    // Determine if the current location is the dashboard or user profile
+    const isDashboardActive = location.pathname === '/dashboard';
+    const isUserProfileActive = location.pathname === '/user-profile';
+    const isLogoutActive = location.pathname === '/';
 
     const logout = (event) => {
         event.preventDefault();
@@ -92,37 +98,62 @@ export const Header = ({
                     <div className="main-navigation">
                         {showMainNavigationDashboardButtonActive && (
                             <>
-                                <Link className="dashboard_link" as={RouterLink} to="/dashboard">
-                                    <MainNavigationButtonTargetDashboardStatusActive
-                                        target="dashboard"
-                                        status="active"
-                                        className="main-navigation-dashboard-button-active-instance"
-                                    />
-                                </Link>
+                                {isDashboardActive ? (
+                                    <Link className="dashboard_link" as={RouterLink} to="/dashboard">
+                                        <MainNavigationButtonTargetDashboardStatusActive
+                                            target="dashboard"
+                                            className="main-navigation-dashboard-button-active-instance"
+                                        />
+                                    </Link>
+                                ) : (
+                                    <Link className="dashboard_link" as={RouterLink} to="/dashboard">
+                                        <MainNavigationButtonTargetDashboardStatusActive
+                                            target="dashboard"
+                                            className=
+                                                "main-navigation-button-target-dashboard-status-inactive"
+                                        />
+                                    </Link>
+                                )}
                             </>
                         )}
 
                         {showMainNavigationProfileButtonActive && (
                             <>
-                                <Link className="profile_link" as={RouterLink} to="/user-profile">
-                                    <MainNavigationButtonTargetProfileStatusActive
-                                        target="profile"
-                                        status="active"
-                                        className="main-navigation-profile-button-active-instance"
-                                    />
-                                </Link>
+                                {isUserProfileActive ? (
+                                    <Link className="profile_link" as={RouterLink} to="/user-profile">
+                                        <MainNavigationButtonTargetProfileStatusActive
+                                            target="profile"
+                                            className="main-navigation-profile-button-active-instance"
+                                        />
+                                    </Link>
+                                ) : (
+                                    <Link className="profile_link" as={RouterLink} to="/user-profile">
+                                        <MainNavigationButtonTargetProfileStatusActive
+                                            target="profile"
+                                            className="main-navigation-button-target-dashboard-status-inactive"
+                                        />
+                                    </Link>
+                                )}
                             </>
                         )}
 
                         {showTargetLogoutStatusActive && (
                             <>
-                                <Link className="logout_link" onClick={logout} as={RouterLink} to="/">
-                                    <TargetLogoutStatusActive
-                                        target="logout"
-                                        status="active"
-                                        className="main-navigation-logout-button-active-instance"
-                                    />
-                                </Link>
+                                {isLogoutActive ? (
+                                    <Link className="logout_link" onClick={logout} as={RouterLink} to="/">
+                                        <TargetLogoutStatusActive
+                                            target="logout"
+                                            className="main-navigation-logout-button-active-instance"
+                                        />
+                                    </Link>
+                                ) : (
+                                    <Link className="logout_link" onClick={logout} as={RouterLink} to="/">
+                                        <TargetLogoutStatusActive
+                                            target="logout"
+                                            className="main-navigation-button-target-dashboard-status-inactive"
+                                        />
+                                    </Link>
+                                )}
                             </>
                         )}
 

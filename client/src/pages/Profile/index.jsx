@@ -14,6 +14,8 @@ import DonationHistory from '../../components/DonationHistory';
 import './AdsTreesProfile.css';
 import {
     Input,
+    InputGroup,
+    InputRightElement,
     Button,
     Spinner,
     AlertDialog,
@@ -65,6 +67,9 @@ const Profile = () => {
         passwordConfirmation: '',
         // preferences: []
     });
+
+    const [confirmDialog, setConfirmDialog] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const { data, loading, error } = useQuery(QUERY_USER_PROFILE);
     const [updateUserMutation] = useMutation(UPDATE_USER);
@@ -130,18 +135,57 @@ const Profile = () => {
 
     };
 
-    const handleDeleteAccount = async () => {
+    const handleDeleteAccount = () => {
+        setConfirmDialog(true);
+    };
+
+    const handleConfirmDelete = async () => {
+
+        setConfirmDialog(false);
+
         try {
-            await removeUserMutation({
+
+            // Remove user from database
+            const response = await removeUserMutation({
                 variables: { userId: profileData._id }
             });
-            showDialog('Account Deleted', 'Your account has been deleted successfully! You will be logged out shortly.');
-            setTimeout(() => {
-                Auth.logout();
-            }, 4000);
+
+            if (response.data.removeUser) {
+
+                // delete profile picture from imagekit
+                const fileId = localStorage.getItem('fileId');
+                const response = await fetch('http://localhost:3001/delete-profile-picture', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ fileId }),
+                });
+
+                if (response.ok) {
+                    console.log(`File ${fileId} deleted successfully.`);
+                } else {
+                    console.error(`Failed to delete file ${fileId}.`);
+                }
+
+                // remove fileId and profilePicture from localStorage
+                localStorage.removeItem('fileId');
+                localStorage.removeItem('profilePicture');
+
+                showDialog('Account Deleted', 'Your account has been deleted successfully! You will be logged out shortly.');
+                setTimeout(() => {
+                    Auth.logout();
+                }, 4000);
+
+            } else {
+                showDialog('Error Deleting Account', 'An error occurred while deleting your account. Please try again.');
+                return;
+            }
+
         } catch (e) {
             console.error('Error deleting account: ', e);
         }
+
     };
 
     if (loading) {
@@ -209,23 +253,53 @@ const Profile = () => {
                             <div className="new-password-input">
                                 <div className="field-title-label2">New password </div>
                                 <div className="input-group">
-                                    <Input
-                                        className="input"
-                                        name="newPassword"
-                                        value={profileData.newPassword || ''}
-                                        onChange={handleInputChange}
-                                    />
+                                    <InputGroup size='md'>
+                                        <Input
+                                            pr='4.5rem'
+                                            className="input"
+                                            name="newPassword"
+                                            value={profileData.newPassword || ''}
+                                            onChange={handleInputChange}
+                                            type={showPassword ? 'text' : 'password'}
+                                        />
+                                        <InputRightElement width='4.5rem'>
+                                            <Button
+                                                variant={'none'}
+                                                h='1.75rem'
+                                                size='sm'
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                color={'gray.600'}
+                                            >
+                                                {showPassword ? 'Hide' : 'Show'}
+                                            </Button>
+                                        </InputRightElement>
+                                    </InputGroup>
                                 </div>
                             </div>
                             <div className="password-confirmation-input">
                                 <div className="field-title-label2">Confirm password </div>
                                 <div className="input-group">
-                                    <Input
-                                        className="input"
-                                        name="passwordConfirmation"
-                                        value={profileData.passwordConfirmation || ''}
-                                        onChange={handleInputChange}
-                                    />
+                                    <InputGroup size='md'>
+                                        <Input
+                                            pr='4.5rem'
+                                            className="input"
+                                            name="passwordConfirmation"
+                                            value={profileData.passwordConfirmation || ''}
+                                            onChange={handleInputChange}
+                                            type={showPassword ? 'text' : 'password'}
+                                        />
+                                        <InputRightElement width='4.5rem'>
+                                            <Button
+                                                variant={'none'}
+                                                h='1.75rem'
+                                                size='sm'
+                                                color={'gray.600'}
+                                                onClick={() => setShowPassword(!showPassword)}
+                                            >
+                                                {showPassword ? 'Hide' : 'Show'}
+                                            </Button>
+                                        </InputRightElement>
+                                    </InputGroup>
                                 </div>
                             </div>
                         </div>
@@ -256,6 +330,28 @@ const Profile = () => {
                                             <AlertDialogFooter>
                                                 <Button ref={cancelRef} onClick={closeDialog}>
                                                     OK
+                                                </Button>
+                                            </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                    </AlertDialogOverlay>
+                                </AlertDialog>
+                                <AlertDialog
+                                    motionPreset='slideInBottom'
+                                    leastDestructiveRef={cancelRef}
+                                    onClose={() => setConfirmDialog(false)}
+                                    isOpen={confirmDialog}
+                                    isCentered
+                                >
+                                    <AlertDialogOverlay>
+                                        <AlertDialogContent>
+                                            <AlertDialogHeader>Confirm Account Deletion</AlertDialogHeader>
+                                            <AlertDialogBody>Are you sure you want to delete your account? This action cannot be undone.</AlertDialogBody>
+                                            <AlertDialogFooter>
+                                                <Button ref={cancelRef} onClick={() => setConfirmDialog(false)}>
+                                                    Cancel
+                                                </Button>
+                                                <Button colorScheme="red" onClick={handleConfirmDelete} ml={3}>
+                                                    Delete
                                                 </Button>
                                             </AlertDialogFooter>
                                         </AlertDialogContent>

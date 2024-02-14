@@ -178,7 +178,12 @@ const Main = () => {
 // Define the root element
 // ============================================================
 const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
+// Check if a root already exists
+let root = rootElement._reactRootContainer;
+if (!root) {
+    // If not, create a new one
+    root = createRoot(rootElement);
+}
 // ============================================================
 
 // Render the app

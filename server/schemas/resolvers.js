@@ -263,6 +263,9 @@ const resolvers = {
                 // Remove all purchases associated with the user
                 await Purchase.deleteMany({ _id: { $in: user.purchases } });
 
+                // Remove all ads associated with the user
+                await Ad.deleteMany({ _id: { $in: user.ads } });
+
                 await User.deleteOne({ _id: userId });
 
                 return user;

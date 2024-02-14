@@ -63,7 +63,7 @@ export const PricingCard = (item) => {
     return (
         <div className={'pricing-card ' + className}>
             <div className="pricing-wrapper">
-                <div className="content">
+                <div className="card-content">
                     <div className="card-header">
                         <div className="card-subheader">
                             <div className="icon">{imageComponent}</div>
