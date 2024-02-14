@@ -80,9 +80,9 @@ const Donations = ({ className, ...props }) => {
                         <div className="inactive-line"></div>
                         <div className="steps">
                             <div className="step-1-1-frame">
+                                <div className="bbackground"></div>
                                 <div className="step-icon-base">
                                     <div className="content">
-                                        <div className="bbackground"></div>
                                         <div className="dot"></div>
                                     </div>
                                 </div>

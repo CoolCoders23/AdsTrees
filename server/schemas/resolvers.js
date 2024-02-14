@@ -1,9 +1,9 @@
 // Desc: This file contains the graphql resolvers for the AdsTrees application.
 // Used following links as reference:
 // https://www.apollographql.com/docs/apollo-server/data/resolvers/
-// https://stripe.com/docs/payments/checkout/how-checkout-works
-// https://stripe.com/docs/api/checkout/sessions/create
-// https://stripe.com/docs/payments/checkout/customization
+// https://stripe.com/docs/videos/global-payments?video=create-a-payment-intent
+// https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=elements#fetch-updates
+// https://stripe.com/docs/payments/quickstart
 // ==================================================================
 
 // Dependencies
@@ -11,7 +11,6 @@
 const { GraphQLError } = require('graphql');
 const { User, Donation, Purchase, Ad, Youtube } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
-const validator = require('validator');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 // ==================================================================
 
@@ -88,9 +87,6 @@ const resolvers = {
                         .populate({
                             path: 'purchases',
                             options: { sort: { purchaseDate: -1 } },
-                            populate: {
-                                path: 'donations',
-                            },
                         });
 
                 return user.purchases;
@@ -113,9 +109,6 @@ const resolvers = {
 
                     const user = await User.findById(context.user._id).populate({
                         path: 'purchases',
-                        populate: {
-                            path: 'donations',
-                        },
                     });
 
                     const purchase = user.purchases.id(_id);
@@ -161,49 +154,58 @@ const resolvers = {
             }
         },
 
-        checkout: async (parent, args, context) => {
+        getStripeClientKey: async () => {
 
-            if (context.user) {
+            try {
 
-                const url = new URL(context.headers.referer).origin;
-                console.log(url);
-                await Purchase.create({ donations: args.donations.map(({ _id }) => _id)});
+                return { stripeClientKey: process.env.STRIPE_PUBLIC_KEY };
 
-                try {
+            } catch (err) {
 
-                    const line_items = args.donations.map(donation => ({
-                        price_data: {
-                            currency: 'usd',
-                            product_data: {
-                                name: donation.donationType,
-                                description: donation.description,
-                            },
-                            unit_amount: 99,
-                        },
-                        quantity: donation.donationAmount,
-                    }));
-
-                    const session = await stripe.checkout.sessions.create({
-                        payment_method_types: ['card'],
-                        line_items,
-                        mode: 'payment',
-                        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-                        cancel_url: `${url}/`,
-                    });
-
-                    return { session: session.id };
-
-                } catch (err) {
-
-                    console.log(err);
-                    throw AuthenticationError;
-
-                }
+                throw new GraphQLError(`Failed to fetch stripe client key: ${err.message}`, {
+                    extensions: {
+                        code: 'BAD_USER_INPUT',
+                    },
+                });
 
             }
 
         },
 
+        getStripePaymentIntent: async () => {
+
+            try {
+
+                // List all PaymentIntents
+                const paymentIntentsList = await stripe.paymentIntents.list();
+
+                // Filter PaymentIntents with 'requires_payment_method' status
+                const paymentIntentsToCancel = paymentIntentsList.data.filter(pi => pi.status === 'requires_payment_method');
+
+                // Cancel each PaymentIntent individually
+                for (let pi of paymentIntentsToCancel) {
+                    await stripe.paymentIntents.cancel(pi.id, { cancellation_reason: 'abandoned' });
+                }
+
+                // Filter PaymentIntents with 'succeeded' status
+                const succeededPaymentIntents = paymentIntentsList.data.filter(pi => pi.status === 'succeeded');
+
+                if (succeededPaymentIntents.length === 0) {
+                    throw new Error('No payment intents found');
+                }
+
+                const lastPaymentIntent = succeededPaymentIntents[0];
+
+                return { id: lastPaymentIntent.id, status: lastPaymentIntent.status };
+
+            } catch (err) {
+                throw new GraphQLError(`Failed to fetch stripe payment intent: ${err.message}`, {
+                    extensions: {
+                        code: 'BAD_USER_INPUT',
+                    },
+                });
+            }
+        },
     },
 
     Mutation: {
@@ -244,7 +246,11 @@ const resolvers = {
             return { token, user };
         },
 
-        removeUser: async (parent, { userId }) => {
+        removeUser: async (parent, { userId }, context) => {
+
+            if (!context.user) {
+                throw AuthenticationError;
+            }
 
             try {
 
@@ -256,6 +262,9 @@ const resolvers = {
 
                 // Remove all purchases associated with the user
                 await Purchase.deleteMany({ _id: { $in: user.purchases } });
+
+                // Remove all ads associated with the user
+                await Ad.deleteMany({ _id: { $in: user.ads } });
 
                 await User.deleteOne({ _id: userId });
 
@@ -271,7 +280,12 @@ const resolvers = {
 
         },
 
-        updateUser: async (parent, { user }) => {
+        updateUser: async (parent, { user }, context) => {
+
+            if (!context.user) {
+                throw AuthenticationError;
+            }
+
             try {
 
                 const updatedUser = await User.findById(user._id);
@@ -292,16 +306,8 @@ const resolvers = {
                     updatedUser.password = user.password;
                 }
 
-                if (user.profilePicture !== undefined) {
-                    if (!validator.isURL(user.profilePicture.url)) {
-                        throw new Error('Profile picture is not a valid URL');
-                    }
-                    updatedUser.profilePicture = { url: user.profilePicture.url, altText: user.profilePicture.altText };
-                }
-
                 await updatedUser.save();
-                const token = signToken(updatedUser);
-                return { token, user: updatedUser };
+                return updatedUser;
 
             } catch (err) {
 
@@ -312,7 +318,85 @@ const resolvers = {
 
         },
 
-        addPurchase: async (parent, { donations }, context) => {
+        addCheckout: async (parent, args, context) => {
+
+            if (context.user) {
+
+                const donations = await args.donations;
+
+                // Define variables to store the donation data
+                let donationId = '';
+                let type = '';
+                let description = '';
+                let image = '';
+                let quantity = 0;
+                let price = 0;
+
+                for (const donation of donations) {
+
+                    if (typeof donation.price !== 'number' || isNaN(donation.price)) {
+                        throw new GraphQLError('Invalid donation price', {
+                            extensions: {
+                                code: 'BAD_USER_INPUT',
+                            },
+                        });
+                    }
+
+                    donationId += `${donation._id}, `;
+                    type += `${donation.donationType}, `;
+                    description += `${donation.description}, `;
+                    image += `${donation.image}, `;
+                    quantity += donation.donationAmount;
+                    price += parseFloat((donation.price + (donation.price * 0.13)).toFixed(2));
+
+                }
+                const totalPrice = parseFloat((price * 100).toFixed(2));
+                // remove last comma and space
+                donationId = donationId.slice(0, -2);
+                type = type.slice(0, -2);
+                description = description.slice(0, -2);
+                image = image.slice(0, -2);
+
+                try {
+
+                    const paymentIntent = await stripe.paymentIntents.create({
+                        amount: totalPrice,
+                        currency: 'usd',
+                        description: description,
+                        receipt_email: context.user.email,
+                        // payment_method_types: ['card'],
+                        metadata: {
+                            donation_id: donationId,
+                            user_id: context.user._id,
+                            donation_type: type,
+                            donation_image: image,
+                            donation_amount: quantity,
+                        },
+                        automatic_payment_methods: {
+                            enabled: true,
+                        },
+                    });
+
+                    return { clientSecret: paymentIntent.client_secret };
+
+                } catch (err) {
+
+                    throw new GraphQLError
+                    (`Failed to create payment intent: ${err.message}`, {
+                        extensions: {
+                            code: 'BAD_USER_INPUT',
+                        },
+                    });
+
+                }
+
+            } else {
+                throw AuthenticationError;
+            }
+
+        },
+
+        addPurchase: async (parent, { donations, status, paymentId }, context) => {
 
             if (!context.user) {
                 throw AuthenticationError;
@@ -320,16 +404,31 @@ const resolvers = {
 
             try {
 
-                const newPurchase = await Purchase.create({ donations });
-
                 // Fetch the actual donation objects from the database
                 const donationObjects = await Donation.find({
                     _id: { $in: donations },
                 });
 
-                // Calculate the total donation amount
-                const donationAmount = donationObjects.reduce(
-                    (total, donation) => total + donation.donationAmount, 0);
+                // Create a new purchase object to be used as the
+                // nested document of the Purchase model and save the purchase
+                // ==================================================================
+                const updatedDonations = donationObjects.map((donation) => {
+                    const donationType = donation.donationType;
+                    const description = donation.description;
+                    const image = donation.image;
+                    const donationAmount = donation.donationAmount;
+                    const price = parseFloat((donation.price + (donation.price * 0.13)).toFixed(2));
+                    return { donationType, description, image, donationAmount, price };
+                });
+
+                const newPurchase = new Purchase({
+                    paymentIntent: paymentId,
+                    paymentStatus: status,
+                    donations: updatedDonations[0],
+                });
+
+                await newPurchase.save();
+                // ==================================================================
 
                 const user = await User.findById(context.user._id);
 
@@ -337,11 +436,13 @@ const resolvers = {
                     throw new Error('User not found');
                 }
 
-                // Update total donations
-                await user.addDonation(donationAmount);
+                const totalDonationAmount = donationObjects.reduce((total, donation) => total + donation.donationAmount, 0);
 
-                // Add the new purchase to the user's purchases
-                user.purchases.push(newPurchase);
+                // Update total donations
+                await user.addDonation(totalDonationAmount);
+
+                // Add the updatedPurchase to the user's purchases
+                user.purchases.push(newPurchase._id);
 
                 await user.save();
 

@@ -1,0 +1,477 @@
+.ads-trees-donate-section-2,
+.ads-trees-donate-section-2 * {
+  box-sizing: border-box;
+}
+.ads-trees-donate-section-2 {
+  padding: 0px 16px 0px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.ads-trees-donate-section-2 .body {
+  padding: 64px 0px 64px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .stepper {
+  padding: 16px 0px 16px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-2 {
+  padding: 1px 5px 1px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 398px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .checkout-active-line {
+  flex-shrink: 0;
+  width: 70px;
+  height: 2px;
+  position: absolute;
+  left: 104px;
+  top: 11px;
+}
+.ads-trees-donate-section-2 .checkout-inactive-line {
+  flex-shrink: 0;
+  width: 85px;
+  height: 2px;
+  position: absolute;
+  left: 201px;
+  top: 11px;
+}
+.ads-trees-donate-section-2 .steps {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-2-1-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-icon-base {
+  border-radius: 10.83px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .content {
+  background: var(--grey-light, rgba(168, 177, 174, 0.1));
+  border-radius: 10.83px;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .bbackground {
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 32.5px;
+  height: 32.5px;
+  position: absolute;
+  left: 13px;
+  top: -6px;
+}
+.ads-trees-donate-section-2 .dot {
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 7.22px;
+  height: 7.22px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-icon-wording {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .welcome {
+  text-align: center;
+  font-family: var(
+    --donate-stepper-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--donate-stepper-font-font-size, 14px);
+  font-weight: var(--donate-stepper-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ads-trees-donate-section-2 .step-2-2-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .bbackground2 {
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 32.5px;
+  height: 32.5px;
+  position: absolute;
+  left: 11px;
+  top: -6px;
+}
+.ads-trees-donate-section-2 .checkout-payment {
+  text-align: center;
+  font-family: var(
+    --donate-stepper-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--donate-stepper-font-font-size, 14px);
+  font-weight: var(--donate-stepper-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ads-trees-donate-section-2 .step-2-3-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-icon-base2 {
+  border-radius: 10.83px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.ads-trees-donate-section-2 .content2 {
+  border-radius: 10.83px;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .dot2 {
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 7.22px;
+  height: 7.22px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .step-icon-wording2 {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .confirmation {
+  text-align: center;
+  font-family: var(
+    --donate-stepper-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--donate-stepper-font-font-size, 14px);
+  font-weight: var(--donate-stepper-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ads-trees-donate-section-2 .headline-frame-with-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .headline-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .headline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .main-title {
+  text-align: center;
+  font-family: var(--h-1-font-font-family, "Poppins-Regular", sans-serif);
+  font-size: var(--h-1-font-font-size, 32px);
+  font-weight: var(--h-1-font-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.ads-trees-donate-section-2 .subtitle {
+  text-align: center;
+  font-family: var(--subtitle-font-font-family, "Roboto-Regular", sans-serif);
+  font-size: var(--subtitle-font-font-size, 16px);
+  font-weight: var(--subtitle-font-font-weight, 400);
+  position: relative;
+  align-self: stretch;
+}
+.ads-trees-donate-section-2 .picto-instance {
+  flex-shrink: 0 !important;
+}
+.ads-trees-donate-section-2 .body-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .card {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+  max-width: 450px;
+  position: relative;
+  overflow: hidden;
+}
+.ads-trees-donate-section-2 .payment-module {
+  display: flex;
+  flex-direction: column;
+  gap: 11.62px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 9.34px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .credit-card {
+  border-radius: 6.23px;
+  border-style: solid;
+  border-width: 2px;
+  padding: 12.45px;
+  display: flex;
+  flex-direction: column;
+  gap: 11.67px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .payment-header {
+  display: flex;
+  flex-direction: row;
+  gap: 11.67px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  margin-left: 2.4rem;
+}
+.ads-trees-donate-section-2 .content3 {
+  display: flex;
+  flex-direction: row;
+  gap: 9.34px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex: 1;
+  position: relative;
+}
+.ads-trees-donate-section-2 .checkbox-icon {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  height: auto;
+  position: relative;
+  overflow: visible;
+}
+.ads-trees-donate-section-2 .content4 {
+  display: flex;
+  flex-direction: column;
+  gap: 6.23px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  min-width: 156px;
+  position: relative;
+}
+.ads-trees-donate-section-2 .text-and-supporting-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .text {
+  text-align: left;
+  font-family: var(
+    --payment-title-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--payment-title-font-font-size, 14px);
+  font-weight: var(--payment-title-font-font-weight, 500);
+  position: relative;
+}
+/* .ads-trees-donate-section-2 .payment-logos {
+  display: flex;
+  flex-direction: row;
+  gap: 9px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .payment-method-icon {
+  border-radius: 4.67px;
+  flex-shrink: 0;
+  width: 35.8px;
+  height: 24.9px;
+  position: relative;
+  overflow: visible;
+}
+.ads-trees-donate-section-2 .payment-method-icon2 {
+  border-radius: 3.11px;
+  flex-shrink: 0;
+  width: 35.8px;
+  height: 24.9px;
+  position: relative;
+  overflow: visible;
+}
+.ads-trees-donate-section-2 .payment-method-icon3 {
+  border-radius: 4.67px;
+  flex-shrink: 0;
+  width: 35.8px;
+  height: 24.9px;
+  position: relative;
+  overflow: visible;
+} */
+.ads-trees-donate-section-2 .payment-form {
+  align-self: stretch !important;
+  flex-shrink: 0 !important;
+  width: unset !important;
+}
+.ads-trees-donate-section-2 .security-information {
+  padding: 0px 4px 0px 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 11px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.ads-trees-donate-section-2 .security-shield-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  overflow: visible;
+}
+.ads-trees-donate-section-2 .security-shield-description {
+  text-align: left;
+  font-family: var(
+    --small-body-font-font-family,
+    "Poppins-Regular",
+    sans-serif
+  );
+  font-size: var(--small-body-font-font-size, 14px);
+  font-weight: var(--small-body-font-font-weight, 400);
+  position: relative;
+  flex: 1;
+}
+.ads-trees-donate-section-2 .donation-summary-instance {
+  align-self: stretch !important;
+  flex-shrink: 0 !important;
+  width: unset !important;
+}

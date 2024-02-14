@@ -14,16 +14,13 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      profilePicture {
-        url
-        altText
-      }
       preferences
       purchases {
         _id
         purchaseDate
+        paymentIntent
+        paymentStatus
         donations {
-          _id
           donationType
           description
           image
@@ -43,9 +40,6 @@ export const QUERY_USER = gql`
       treesPlantedInWeek
       treesPlantedInYear
       bestWeek
-      lastWatchedWeek
-      lastWatchedMonth
-      lastWatchedYear
     }
   }
 `;
@@ -59,17 +53,14 @@ export const QUERY_USER_PROFILE = gql`
       _id
       username
       email
-      profilePicture {
-        url
-        altText
-      }
       totalDonations
       preferences
       purchases {
         _id
         purchaseDate
+        paymentIntent
+        paymentStatus
         donations {
-          _id
           donationType
           description
           image
@@ -89,9 +80,6 @@ export const QUERY_USER_PROFILE = gql`
       treesPlantedInWeek
       treesPlantedInYear
       bestWeek
-      lastWatchedWeek
-      lastWatchedMonth
-      lastWatchedYear
     }
   }
 `;
@@ -120,8 +108,9 @@ export const QUERY_PURCHASES = gql`
     purchases (userId: $userId) {
       _id
       purchaseDate
+      paymentIntent
+      paymentStatus
       donations {
-        _id
         donationType
         description
         image
@@ -140,25 +129,15 @@ export const QUERY_PURCHASE = gql`
     purchase(_id: $_id) {
       _id
       purchaseDate
+      paymentIntent
+      paymentStatus
       donations {
-        _id
         donationType
         description
         image
         donationAmount
         price
       }
-    }
-  }
-`;
-// ================================================================
-
-// To query the checkout session
-// ================================================================
-export const QUERY_CHECKOUT = gql`
-  query getCheckout($donations: [DonationInput]) {
-    checkout(donations: $donations) {
-      session
     }
   }
 `;
@@ -188,6 +167,29 @@ export const QUERY_YOUTUBE = gql`
       title
       url
       duration
+    }
+  }
+`;
+// ================================================================
+
+// To get Stripe client key
+// ================================================================
+export const QUERY_STRIPE_CLIENT_KEY = gql`
+  query getStripeClientKey {
+    getStripeClientKey{
+      stripeClientKey
+    }
+  }
+`;
+// ================================================================
+
+// To query Stripe payment intent
+// ================================================================
+export const QUERY_STRIPE_PAYMENT_INTENT = gql`
+  query getStripePaymentIntent {
+    getStripePaymentIntent {
+      id
+      status
     }
   }
 `;

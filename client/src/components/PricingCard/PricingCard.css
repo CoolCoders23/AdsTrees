@@ -3,10 +3,8 @@
   box-sizing: border-box;
 }
 .pricing-card {
-  background: var(--cards-white, #081c15);
   border-radius: 24px;
   border-style: solid;
-  border-color: var(--grey-light, rgba(168, 177, 174, 0.1));
   border-width: 1px;
   padding: 16px 0px 16px 0px;
   display: flex;
@@ -16,7 +14,6 @@
   justify-content: flex-start;
   width: 288px;
   position: relative;
-  box-shadow: 0px 2px 12px 0px rgba(45, 106, 79, 0.4);
 }
 .pricing-card .pricing-wrapper {
   padding: 0px 16px 0px 16px;
@@ -28,7 +25,7 @@
   flex: 1;
   position: relative;
 }
-.pricing-card .content {
+.pricing-card .card-content {
   padding: 10px 0px 10px 0px;
   display: flex;
   flex-direction: column;
@@ -81,7 +78,6 @@
   position: relative;
 }
 .pricing-card .title {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --donate-card-type-font-font-family,
@@ -103,7 +99,6 @@
   position: relative;
 }
 .pricing-card .tradeoff {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(
     --donate-card-type-subtitle-font-font-family,
@@ -135,41 +130,13 @@
   position: relative;
 }
 .pricing-card .price {
-  color: var(--cards-main-color, #f4fbf9);
   text-align: left;
   font-family: var(--price-tag-font-font-family, "Roboto-Bold", sans-serif);
   font-size: var(--price-tag-font-font-size, 48px);
   font-weight: var(--price-tag-font-font-weight, 700);
   position: relative;
 }
-.pricing-card .button {
-  background: var(--cards-main-color, #f4fbf9);
-  border-radius: 6px;
-  padding: 0px 24px 0px 24px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 48px;
-  position: relative;
-  box-shadow: var(
-    --drop-shadow-buttons-at-box-shadow,
-    0px 4px 61px 0px rgba(45, 106, 79, 0.4)
-  );
-}
 .pricing-card .children {
-  color: var(--cards-white, #081c15);
-  text-align: left;
-  font-family: var(
-    --button-label-font-font-family,
-    "Poppins-SemiBold",
-    sans-serif
-  );
-  font-size: var(--button-label-font-font-size, 18px);
-  font-weight: var(--button-label-font-font-weight, 600);
   position: relative;
   display: flex;
   align-items: center;

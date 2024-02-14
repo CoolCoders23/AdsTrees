@@ -16,10 +16,6 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
-        profilePicture{
-          url
-          altText
-        }
       }
     }
   }
@@ -47,10 +43,8 @@ export const ADD_USER = gql`
 export const REMOVE_USER = gql`
   mutation removeUser($userId: ID!) {
     removeUser(userId: $userId) {
-      user{
         _id
         username
-      }
     }
   }
 `;
@@ -61,16 +55,22 @@ export const REMOVE_USER = gql`
 export const UPDATE_USER = gql`
   mutation updateUser($user: UpdateUserInput!) {
     updateUser(user: $user) {
-      token
-      user {
         _id
         username
         email
-        profilePicture {
-          url
-          altText
-        }
-      }
+    }
+  }
+`;
+// ================================================================
+
+// Add a new Checkout
+// ================================================================
+// To query the checkout session
+// ================================================================
+export const ADD_CHECKOUT = gql`
+  mutation addCheckout($donations: [DonationInput]) {
+    addCheckout(donations: $donations) {
+      clientSecret
     }
   }
 `;
@@ -79,12 +79,19 @@ export const UPDATE_USER = gql`
 // Add a new Purchase
 // ================================================================
 export const ADD_PURCHASE = gql`
-  mutation addPurchase($donations: [ID]!) {
-    addPurchase(donations: $donations) {
+  mutation addPurchase(
+    $donations: [ID]!,
+    $status: String,
+    $paymentId: String) {
+    addPurchase(
+      donations: $donations,
+      status: $status,
+      paymentId: $paymentId) {
       _id
       purchaseDate
+      paymentIntent
+      paymentStatus
       donations {
-        _id
         donationType
         description
         image

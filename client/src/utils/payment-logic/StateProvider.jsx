@@ -20,7 +20,6 @@ const StateProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useReducer (reducer, {
         donations: [],
         cart: [],
-        cartOpen: false,
     });
 
     return <Provider value={[state, dispatch]} {...props} />;

@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .header {
-  background: var(--white-pure, #081c15);
   padding: 8px 16px 8px 16px;
   display: flex;
   flex-direction: row;
@@ -44,7 +43,6 @@
   overflow: visible;
 }
 .header .wording {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(
     --main-logo-font-font-family,
@@ -81,7 +79,7 @@
   flex-shrink: 0 !important;
 }
 
-.header .logo_link  {
+.header .logo_link {
   text-decoration: none !important;
 }
 .header .cart-icon-active-instance {

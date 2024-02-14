@@ -8,7 +8,8 @@ import './AdsTreesSignIn.css'; // Importing custom CSS for styling.
 import { Link } from 'react-router-dom'; // Importing Link for routing.
 import {
     Input,
-    ChakraProvider,
+    InputGroup,
+    InputRightElement,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -27,6 +28,7 @@ const Login = ({ className = '' }) => {
     // ============================================================
     const [isInstallPromptOpen, setInstallPromptOpen] = useState(false);
     const [deferredPrompt, setDeferredPrompt] = useState(null);
+    const [showPassword, setShowPassword] = useState(false);
     // ============================================================
 
     // Function to handle PWA installation.
@@ -108,32 +110,35 @@ const Login = ({ className = '' }) => {
 
         <div className={'ads-trees-sign-in ' + className}>
 
-            <ChakraProvider>
-                {/* Install Modal */}
-                <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>
-                    <ModalOverlay />
-                    <ModalContent>
-                        <ModalHeader>Install AdsTrees</ModalHeader>
-                        <ModalBody>
+            {/* Install Modal */}
+            <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Install AdsTrees</ModalHeader>
+                    <ModalBody>
                             Do you want to install AdsTrees on your device?
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button colorScheme="blue" mr={3} onClick={handleInstallClick}>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button colorScheme="blue" mr={3} onClick={handleInstallClick}>
                                 Install
-                            </Button>
-                            <Button variant="ghost" onClick={() => setInstallPromptOpen(false)}>Cancel</Button>
-                        </ModalFooter>
-                    </ModalContent>
-                </Modal>
-            </ChakraProvider>
+                        </Button>
+                        <Button variant="ghost" onClick={() => setInstallPromptOpen(false)}>Cancel</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
 
             <div className="sign-in-body" >
                 <div className="home-text">
                     <div className="hook-text-frame">
                         <div className="hook-text">
-                            <div className="plant-trees-for-free">Plant trees for free </div>
+                            <div className="plant-trees-for-free">
+                                Plant trees for free
+                            </div>
                             <div className="make-the-planet-better">
                                 Make the planet better{' '}
+                            </div>
+                            <div className="make-the-planet-better">
+                                While learning about topics you love!
                             </div>
                         </div>
                     </div>
@@ -149,29 +154,41 @@ const Login = ({ className = '' }) => {
                                         value= {formState.email}
                                         onChange={(event) => handleChange(event, 'email')}
                                         placeholder='Email'
-                                        _placeholder={{ color: 'green.900' }}
                                         size='lg'
                                         type="text"
-
                                     />
                                 </div>
                             </div>
                             <div className="input-group">
                                 <div className="input">
-                                    <Input
-                                        placeholder="Password"
-                                        _placeholder={{ color: 'green.900' }}
-                                        className="password"
-                                        value={formState.password}
-                                        onChange={(event) => handleChange(event, 'password')}
-                                        size='lg'
-                                        type="password"
-                                    />
+                                    <InputGroup size='lg'>
+                                        <Input
+                                            pr='4.5rem'
+                                            placeholder="Password"
+                                            className="password"
+                                            value={formState.password}
+                                            onChange={(event) => handleChange(event, 'password')}
+                                            size='lg'
+                                            type={showPassword ? 'text' : 'password'}
+                                        />
+                                        <InputRightElement width='4.5rem'>
+                                            <Button
+                                                variant={'none'}
+                                                h='1.75rem'
+                                                size='md'
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                color={'gray.600'}
+                                                border="none"
+                                            >
+                                                {showPassword ? 'Hide' : 'Show'}
+                                            </Button>
+                                        </InputRightElement>
+                                    </InputGroup>
                                 </div>
                             </div>
-                            <button type="submit" className="button">
+                            <Button type="submit" className="button">
                                 <div className="children">Login </div>
-                            </button>
+                            </Button>
                             {error && <div className="error">The provided credentials are incorrect</div>}
                         </form>
                         <div className="call-to-register">

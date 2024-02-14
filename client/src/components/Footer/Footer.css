@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .footer {
-  background: var(--white-pure, #081c15);
   padding: 8px 16px 8px 16px;
   display: flex;
   flex-direction: row;
@@ -17,7 +16,7 @@
 .footer .footer-content {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 20px;
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -35,7 +34,6 @@
   position: relative;
 }
 .footer .copyright {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
@@ -53,11 +51,11 @@
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
+  flex-grow: 1;
   position: relative;
   text-decoration: none;
 }
 .footer .privacy-link-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
@@ -69,7 +67,6 @@
   text-decoration: none;
 }
 .footer .terms-link-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
@@ -81,7 +78,6 @@
   text-decoration: none;
 }
 .footer .donate-link-label {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
   font-size: var(--link-small-font-font-size, 14px);
@@ -91,4 +87,25 @@
   align-items: center;
   justify-content: flex-start;
   text-decoration: none;
+}
+
+.footer .footer-link-active {
+  color: #ff6a36;
+  text-align: left;
+  font-family: var(--link-small-font-font-family, "Poppins-Medium", sans-serif);
+  font-size: var(--link-small-font-font-size, 14px);
+  font-weight: var(--link-small-font-font-weight, 500);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 620px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

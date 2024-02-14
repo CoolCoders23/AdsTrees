@@ -5,8 +5,8 @@ import emailjs from '@emailjs/browser';
 import Auth from '../../utils/auth';
 import { validateEmail } from '../../utils/validation';
 import './AdsTreesContactUs.css'; // Importing the CSS
-import { Input } from '@chakra-ui/react';
-import { Textarea } from '@chakra-ui/react';
+import { Input, Button } from '@chakra-ui/react';
+import { EmailIcon } from '@chakra-ui/icons';
 // ============================================================
 
 // Contact component
@@ -108,8 +108,6 @@ const Contact = ({ className = '' }) => {
                                             name="user_name"
                                             value={formData.user_name || ''}
                                             onChange={handleChange}
-                                            placeholder=""
-                                            _placeholder={{ color: 'green.900' }}
                                         />
                                     </div>
                                 </div>
@@ -122,8 +120,6 @@ const Contact = ({ className = '' }) => {
                                                 name="user_last_name"
                                                 value={formData.user_last_name || ''}
                                                 onChange={handleChange}
-                                                placeholder=""
-                                                _placeholder={{ color: 'green.900' }}
                                             />
                                         </div>
                                     </div>
@@ -138,29 +134,25 @@ const Contact = ({ className = '' }) => {
                                         type="email"
                                         value={formData.user_email || ''}
                                         onChange={handleChange}
-                                        placeholder=""
-                                        _placeholder={{ color: 'green.900' }}
                                     />
                                 </div>
                             </div>
                             <div className="contact-us-message-input">
                                 <div className="field-title-label">Message</div>
                                 <div className="input-group2">
-                                    <Textarea
+                                    <textarea
                                         className="message"
                                         name="message"
                                         value={formData.message || ''}
                                         onChange={handleChange}
-                                        placeholder=""
-                                        _placeholder={{ color: 'green.900' }}
                                     />
                                 </div>
                             </div>
-                            <button type="submit" className="button">
-                                <div className="children">Send Message</div>
-                            </button>
+                            <Button leftIcon={<EmailIcon />} type="submit" className="button">
+                                <div className="children">Send Email</div>
+                            </Button>
                         </form>
-                        {message && <p className="user-message">{message}</p>}
+                        {message && <p className="error">{message}</p>}
                     </div>
                 </div>
             </div>

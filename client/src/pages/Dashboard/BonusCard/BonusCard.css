@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .bonus-card {
-  background: var(--cards-white, #081c15);
   border-radius: 8px;
   padding: 24px 16px 24px 16px;
   display: flex;
@@ -54,13 +53,15 @@
   position: relative;
 }
 .bonus-card .bonus-card-title {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--stats-label-font-family, "Poppins-Regular", sans-serif);
   font-size: var(--stats-label-font-size, 14px);
   font-weight: var(--stats-label-font-weight, 400);
   position: relative;
   align-self: stretch;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .bonus-card .bonus-card-info {
   display: flex;
@@ -73,13 +74,15 @@
   position: relative;
 }
 .bonus-card .user-progress {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--stats-figure-font-family, "Roboto-SemiBold", sans-serif);
   font-size: var(--stats-figure-font-size, 24px);
   font-weight: var(--stats-figure-font-weight, 600);
   position: relative;
   flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .bonus-card .bonus-reward-frame {
   display: flex;
@@ -98,10 +101,12 @@
   overflow: visible;
 }
 .bonus-card .reward {
-  color: var(--green-dark, #e8f5f1);
   text-align: left;
   font-family: var(--stats-figure-font-family, "Roboto-SemiBold", sans-serif);
   font-size: var(--stats-figure-font-size, 24px);
   font-weight: var(--stats-figure-font-weight, 600);
   position: relative;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

@@ -1,0 +1,232 @@
+.donation-summary,
+.donation-summary * {
+  box-sizing: border-box;
+}
+.donation-summary {
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 11.62px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 398px;
+  position: relative;
+}
+.donation-summary .donation-summary-body {
+  display: flex;
+  flex-direction: column;
+  gap: 7.66px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.donation-summary .donation {
+  padding: 12.26px;
+  display: flex;
+  flex-direction: column;
+  gap: 4.6px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 72.01px;
+  position: relative;
+}
+.donation-summary .donation-review-title {
+  padding: 0px 6.13px 0px 6.13px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.donation-summary .donation-review {
+  text-align: left;
+  font-family: var(
+    --payment-title-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--payment-title-font-font-size, 14px);
+  font-weight: var(--payment-title-font-font-weight, 500);
+  position: relative;
+}
+.donation-summary .donation-tradeoff {
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  padding: 0px 6.13px 8px 6.13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.donation-summary .tradeoff-icon {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.donation-summary .trees {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.donation-summary .tradeoff-description {
+  text-align: left;
+  font-family: var(
+    --small-body-font-font-family,
+    "Poppins-Regular",
+    sans-serif
+  );
+  font-size: var(--small-body-font-font-size, 14px);
+  font-weight: var(--small-body-font-font-weight, 400);
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.donation-summary .tradeoff-price-tag {
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 18.39px;
+  font-weight: 400;
+  position: relative;
+}
+.donation-summary .checkout-summary-body {
+  padding: 15.32px;
+  display: flex;
+  flex-direction: column;
+  gap: 7.66px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.donation-summary .checkout-summary {
+  text-align: left;
+  font-family: var(
+    --payment-title-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--payment-title-font-font-size, 14px);
+  font-weight: var(--payment-title-font-font-weight, 500);
+  position: relative;
+}
+.donation-summary .subtotal-review-title {
+  padding: 0px 6.13px 0px 6.13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.donation-summary .subtotal {
+  text-align: left;
+  font-family: var(
+    --small-body-font-font-family,
+    "Poppins-Regular",
+    sans-serif
+  );
+  font-size: var(--small-body-font-font-size, 14px);
+  font-weight: var(--small-body-font-font-weight, 400);
+  position: relative;
+}
+.donation-summary .subtotal-price-tag {
+  text-align: left;
+  font-family: var(
+    --small-body-font-font-family,
+    "Poppins-Regular",
+    sans-serif
+  );
+  font-size: var(--small-body-font-font-size, 14px);
+  font-weight: var(--small-body-font-font-weight, 400);
+  position: relative;
+}
+.donation-summary .tax-review-title {
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  padding: 0px 6.13px 8px 6.13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.donation-summary .tax {
+  text-align: left;
+  font-family: var(
+    --small-body-font-font-family,
+    "Poppins-Regular",
+    sans-serif
+  );
+  font-size: var(--small-body-font-font-size, 14px);
+  font-weight: var(--small-body-font-font-weight, 400);
+  position: relative;
+}
+.donation-summary .tax-price-tag {
+  text-align: left;
+  font-family: var(
+    --small-body-font-font-family,
+    "Poppins-Regular",
+    sans-serif
+  );
+  font-size: var(--small-body-font-font-size, 14px);
+  font-weight: var(--small-body-font-font-weight, 400);
+  position: relative;
+}
+.donation-summary .total-review-title {
+  padding: 0px 6.13px 0px 6.13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 44.43px;
+  position: relative;
+}
+.donation-summary .total {
+  text-align: left;
+  font-family: var(
+    --payment-title-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--payment-title-font-font-size, 14px);
+  font-weight: var(--payment-title-font-font-weight, 500);
+  position: relative;
+}
+.donation-summary .total-price-tag {
+  text-align: left;
+  font-family: var(
+    --payment-title-font-font-family,
+    "Poppins-Medium",
+    sans-serif
+  );
+  font-size: var(--payment-title-font-font-size, 14px);
+  font-weight: var(--payment-title-font-font-weight, 500);
+  position: relative;
+}

@@ -6,9 +6,7 @@
 import {
     ADD_TO_CART,
     REMOVE_FROM_CART,
-    CLEAR_CART,
-    TOGGLE_CART,
-    UPDATE_DONATIONS,
+    UPDATE_DONATIONS
 } from './actions';
 // ========================================================
 
@@ -21,7 +19,6 @@ const reducer = (state, action) => {
     case ADD_TO_CART:
         return {
             ...state,
-            cartOpen: true,
             cart: [...state.cart, action.donation],
         };
 
@@ -33,23 +30,9 @@ const reducer = (state, action) => {
 
         return {
             ...state,
-            cartOpen: newState.length > 0,
             cart: newState,
         };
     }
-
-    case CLEAR_CART:
-        return {
-            ...state,
-            cartOpen: false,
-            cart: [],
-        };
-
-    case TOGGLE_CART:
-        return {
-            ...state,
-            cartOpen: !state.cartOpen
-        };
 
     case UPDATE_DONATIONS:
         return {
