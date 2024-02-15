@@ -20,6 +20,7 @@ const ImageKit = require('imagekit');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+const { error } = require('console');
 // ================================================================
 
 
@@ -144,7 +145,12 @@ startApolloServer().then(() => {
 
     app.get('/auth', function (req, res) {
         var result = imagekit.getAuthenticationParameters();
-        res.send(result);
+        if (result) {
+            res.json(result);
+        } else {
+            res.json(error);
+            console.log(error);
+        }
     });
 
     app.delete('/delete-profile-picture', async function (req, res) {
@@ -155,7 +161,7 @@ startApolloServer().then(() => {
             if(error) {
                 console.log(error);
             } else {
-                res.send(result);
+                res.json(result);
                 console.log(`File deleted successfully: ${result}`);
             }
         });

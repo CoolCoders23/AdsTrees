@@ -38,8 +38,8 @@ const authenticator = async () => {
         const response = await fetch('/auth');
 
         if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`Request failed with status ${response.status}: ${errorText}`);
+            const errorText = await response.json();
+            throw new Error(`Authentication request failed with status ${response.status}: ${errorText}`);
         }
 
         const data = await response.json();
