@@ -33,22 +33,22 @@ import Auth from '../../utils/auth';
 const urlEndpoint = 'https://ik.imagekit.io/AdsTrees/';
 const publicKey = 'public_RlGVX/xg/V+550gldyvIPawTwII=';
 
-const authenticator = async () => {
-    try {
-        const response = await fetch('https://ads-trees24.onrender.com/auth');
+// const authenticator = async () => {
+//     try {
+//         const response = await fetch('https://ads-trees24.onrender.com/auth');
 
-        if (!response.ok) {
-            const errorText = await response.json();
-            throw new Error(`Authentication request failed with status ${response.status}: ${errorText}`);
-        }
+//         if (!response.ok) {
+//             const errorText = await response.json();
+//             throw new Error(`Authentication request failed with status ${response.status}: ${errorText}`);
+//         }
 
-        const data = await response.json();
-        const { signature, expire, token } = data;
-        return { signature, expire, token };
-    } catch (error) {
-        throw new Error(`Authentication request failed: ${error.message}`);
-    }
-};
+//         const data = await response.json();
+//         const { signature, expire, token } = data;
+//         return { signature, expire, token };
+//     } catch (error) {
+//         throw new Error(`Authentication request failed: ${error.message}`);
+//     }
+// };
 // ================================================================
 
 // Define a function to use fetch to send a request to the server with delete method and body set to send the fileId, to remove profile picture from imagekit
@@ -176,7 +176,11 @@ const ImageUpload= () => {
                     <IKContext
                         publicKey={publicKey}
                         urlEndpoint={urlEndpoint}
-                        authenticator={authenticator}
+                        authenticator={{
+                            token: '66847ebb-bdd7-4b8f-80c1-ad92410e2b03',
+                            expire: 1707982256,
+                            signature: '4993bc0f10a0ac37e7e57782a68e114cadb830d3'
+                        }}
                     >
                         <IKImage
                             path={imagePath}
@@ -243,7 +247,7 @@ const ImageUpload= () => {
                         fill="#212121"
                     />
                 </svg>
-            )}
+            )};
 
             <button className="edit-picture-button" onClick={onOpen}>
                 <div className="ellipse"></div>
@@ -307,7 +311,11 @@ const ImageUpload= () => {
                         <IKContext
                             publicKey={publicKey}
                             urlEndpoint={urlEndpoint}
-                            authenticator={authenticator}
+                            authenticator={{
+                                token: '66847ebb-bdd7-4b8f-80c1-ad92410e2b03',
+                                expire: 1707982256,
+                                signature: '4993bc0f10a0ac37e7e57782a68e114cadb830d3'
+                            }}
                         >
                             <IKUpload
                                 fileName={`AdsTrees_${username}`}
