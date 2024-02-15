@@ -176,11 +176,14 @@ const ImageUpload= () => {
                     <IKContext
                         publicKey={publicKey}
                         urlEndpoint={urlEndpoint}
-                        authenticator={{
-                            token: '66847ebb-bdd7-4b8f-80c1-ad92410e2b03',
-                            expire: 1707982256,
-                            signature: '4993bc0f10a0ac37e7e57782a68e114cadb830d3'
-                        }}
+                        // authenticator={{
+                        //     token: '66847ebb-bdd7-4b8f-80c1-ad92410e2b03',
+                        //     expire: 1707982256,
+                        //     signature: '4993bc0f10a0ac37e7e57782a68e114cadb830d3'
+                        // }}
+                        token='66847ebb-bdd7-4b8f-80c1-ad92410e2b03'
+                        expire='1707982256'
+                        signature='4993bc0f10a0ac37e7e57782a68e114cadb830d3'
                     >
                         <IKImage
                             path={imagePath}
@@ -311,11 +314,14 @@ const ImageUpload= () => {
                         <IKContext
                             publicKey={publicKey}
                             urlEndpoint={urlEndpoint}
-                            authenticator={{
-                                token: '66847ebb-bdd7-4b8f-80c1-ad92410e2b03',
-                                expire: 1707982256,
-                                signature: '4993bc0f10a0ac37e7e57782a68e114cadb830d3'
-                            }}
+                            // authenticator={{
+                            //     token: '66847ebb-bdd7-4b8f-80c1-ad92410e2b03',
+                            //     expire: 1707982256,
+                            //     signature: '4993bc0f10a0ac37e7e57782a68e114cadb830d3'
+                            // }}
+                            token='66847ebb-bdd7-4b8f-80c1-ad92410e2b03'
+                            expire='1707982256'
+                            signature='4993bc0f10a0ac37e7e57782a68e114cadb830d3'
                         >
                             <IKUpload
                                 fileName={`AdsTrees_${username}`}
