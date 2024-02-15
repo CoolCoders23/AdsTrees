@@ -20,7 +20,6 @@ const ImageKit = require('imagekit');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
-const { error } = require('console');
 // ================================================================
 
 
@@ -36,6 +35,16 @@ const imagekit = new ImageKit({
     publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
     privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
     urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
+});
+// ================================================================
+
+// Allow cross-origin requests
+// ================================================================
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept');
+    next();
 });
 // ================================================================
 
@@ -95,15 +104,6 @@ const startApolloServer = async () => {
 
         app.use(express.urlencoded({ extended: false }));
         app.use(express.json());
-        // Allow cross-origin requests
-        // ================================================================
-        app.use(function(req, res, next) {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Headers',
-                'Origin, X-Requested-With, Content-Type, Accept');
-            next();
-        });
-        // ================================================================
 
         app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
@@ -144,12 +144,8 @@ startApolloServer().then(() => {
 
     app.get('/auth', function (req, res) {
         var result = imagekit.getAuthenticationParameters();
-        if (result) {
-            res.json(result);
-        } else {
-            res.json(error);
-            console.log(error);
-        }
+        res.send(result);
+        console.log(result);
     });
 
     app.delete('/delete-profile-picture', async function (req, res) {
@@ -160,7 +156,7 @@ startApolloServer().then(() => {
             if(error) {
                 console.log(error);
             } else {
-                res.json(result);
+                res.send(result);
                 console.log(`File deleted successfully: ${result}`);
             }
         });
