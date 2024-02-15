@@ -46,12 +46,15 @@ const corsOptions = {
             'http://localhost:3000',
             'http://localhost:3001',
             'https://checkout.stripe.com/c/pay',
+            'https://checkout.stripe.com',
             'https://github.com/CoolCoders23/AdsTrees',
             'https://fonts.googleapis.com',
             'https://fonts.gstatic.com',
             'https://www.youtube.com',
-            'https://adstrees.com'
-
+            'https://adstrees.com',
+            'https://ads-trees24.onrender.com/',
+            'https://ik.imagekit.io/AdsTrees',
+            'https://ik.imagekit.io',
         ];
         if (!origin || whitelist.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
             callback(null, true);
