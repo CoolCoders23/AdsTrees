@@ -4,7 +4,7 @@
 // Import Dependencies
 // ================================================================
 const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer } = require('@apollo/server');
 const { ApolloServerPluginCacheControl } = require('@apollo/server/plugin/cacheControl');
 const responseCachePlugin = require('@apollo/server-plugin-response-cache').default;
 const { expressMiddleware } = require('@apollo/server/express4');
@@ -67,6 +67,11 @@ const corsOptions = {
 };
 // ================================================================
 
+// Apply CORS middleware
+// ================================================================
+app.use(cors(corsOptions));
+// ================================================================
+
 // Create an instance of ApolloServer
 // ================================================================
 const server = new ApolloServer({
@@ -89,10 +94,6 @@ const startApolloServer = async () => {
 
         app.use(express.urlencoded({ extended: false }));
         app.use(express.json());
-        // Apply CORS middleware
-        // ================================================================
-        app.use(cors(corsOptions));
-        // ================================================================
 
         app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
