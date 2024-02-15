@@ -153,24 +153,24 @@ const Profile = () => {
             if (response.data.removeUser) {
 
                 // delete profile picture from imagekit
-                const fileId = localStorage.getItem('fileId');
-                const response = await fetch('http://localhost:3001/delete-profile-picture', {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ fileId }),
-                });
+                // const fileId = localStorage.getItem('fileId');
+                // const response = await fetch('http://localhost:3001/delete-profile-picture', {
+                //     method: 'DELETE',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify({ fileId }),
+                // });
 
-                if (response.ok) {
-                    console.log(`File ${fileId} deleted successfully.`);
-                } else {
-                    console.error(`Failed to delete file ${fileId}.`);
-                }
+                // if (response.ok) {
+                //     console.log(`File ${fileId} deleted successfully.`);
+                // } else {
+                //     console.error(`Failed to delete file ${fileId}.`);
+                // }
 
                 // remove fileId and profilePicture from localStorage
-                localStorage.removeItem('fileId');
-                localStorage.removeItem('profilePicture');
+                // localStorage.removeItem('fileId');
+                // localStorage.removeItem('profilePicture');
 
                 showDialog('Account Deleted', 'Your account has been deleted successfully! You will be logged out shortly.');
                 setTimeout(() => {

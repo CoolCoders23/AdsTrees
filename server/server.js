@@ -8,10 +8,10 @@ const { ApolloServer } = require('@apollo/server');
 const { ApolloServerPluginCacheControl } = require('@apollo/server/plugin/cacheControl');
 const responseCachePlugin = require('@apollo/server-plugin-response-cache').default;
 const { expressMiddleware } = require('@apollo/server/express4');
-// const cors = require('cors');
+const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
-const ImageKit = require('imagekit');
+// const ImageKit = require('imagekit');
 // ================================================================
 
 
@@ -31,11 +31,11 @@ const app = express();
 
 // Define the ImageKit instance
 // ================================================================
-const imagekit = new ImageKit({
-    publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
-    privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
-    urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
-});
+// const imagekit = new ImageKit({
+//     publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+//     privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+//     urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT
+// });
 // ================================================================
 
 // Allow cross-origin requests
@@ -50,36 +50,36 @@ const imagekit = new ImageKit({
 
 // Configuring CORS options
 // ================================================================
-// const corsOptions = {
-//     origin: function (origin, callback) {
-//         const whitelist = [
-//             'http://localhost:3000',
-//             'http://localhost:3001',
-//             'http://localhost:10000',
-//             'https://checkout.stripe.com/c/pay',
-//             'https://checkout.stripe.com',
-//             'https://github.com/CoolCoders23/AdsTrees',
-//             'https://fonts.googleapis.com',
-//             'https://fonts.gstatic.com',
-//             'https://www.youtube.com',
-//             'https://adstrees.com',
-//             'https://ads-trees24.onrender.com/',
-//             'https://ik.imagekit.io/AdsTrees',
-//             'https://ik.imagekit.io',
-//         ];
-//         if (!origin || whitelist.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     },
-//     credentials: true,
-// };
+const corsOptions = {
+    origin: function (origin, callback) {
+        const whitelist = [
+            'http://localhost:3000',
+            'http://localhost:3001',
+            'http://localhost:10000',
+            'https://checkout.stripe.com/c/pay',
+            'https://checkout.stripe.com',
+            'https://github.com/CoolCoders23/AdsTrees',
+            'https://fonts.googleapis.com',
+            'https://fonts.gstatic.com',
+            'https://www.youtube.com',
+            'https://adstrees.com',
+            'https://ads-trees24.onrender.com/',
+            'https://ik.imagekit.io/AdsTrees',
+            'https://ik.imagekit.io',
+        ];
+        if (!origin || whitelist.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+};
 // ================================================================
 
 // Apply CORS middleware
 // ================================================================
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 // ================================================================
 
 // Create an instance of ApolloServer
@@ -110,7 +110,7 @@ const startApolloServer = async () => {
         // Apply Apollo Middleware using expressMiddleware
         app.use('/graphql', expressMiddleware(server, {
             context: authMiddleware, // Add context
-            // cors: corsOptions,
+            cors: corsOptions,
         }));
 
         // Serve static files in production mode
@@ -140,30 +140,32 @@ const startApolloServer = async () => {
 
 // Initializing the Apollo Server
 // ================================================================
-startApolloServer().then(() => {
+startApolloServer();
 
-    app.get('/auth', function (req, res) {
-        var result = imagekit.getAuthenticationParameters();
-        res.send(result);
-        console.log(result);
-    });
+//     .then(() => {
 
-    app.delete('/delete-profile-picture', async function (req, res) {
+//     app.get('/auth', function (req, res) {
+//         var result = imagekit.getAuthenticationParameters();
+//         res.send(result);
+//         console.log(result);
+//     });
 
-        const { fileId } = req.body;
+//     app.delete('/delete-profile-picture', async function (req, res) {
 
-        imagekit.deleteFile(fileId , function(error, result) {
-            if(error) {
-                console.log(error);
-            } else {
-                res.send(result);
-                console.log(`File deleted successfully: ${result}`);
-            }
-        });
+//         const { fileId } = req.body;
 
-    });
+//         imagekit.deleteFile(fileId , function(error, result) {
+//             if(error) {
+//                 console.log(error);
+//             } else {
+//                 res.send(result);
+//                 console.log(`File deleted successfully: ${result}`);
+//             }
+//         });
 
-});
+//     });
+
+// });
 // ================================================================
 
 // Exporting the Express app for use elsewhere in the project
