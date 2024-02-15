@@ -35,7 +35,7 @@ const publicKey = 'public_RlGVX/xg/V+550gldyvIPawTwII=';
 
 const authenticator = async () => {
     try {
-        const response = await fetch('https://ads-trees24.onrender.com/auth');
+        const response = await fetch('http://localhost:10000/auth');
 
         if (!response.ok) {
             const errorText = await response.text();
@@ -55,7 +55,7 @@ const authenticator = async () => {
 // ================================================================
 const deleteProfilePicture = async (fileId) => {
     try {
-        const response = await fetch('https://ads-trees24.onrender.com/delete-profile-picture', {
+        const response = await fetch('http://localhost:10000/delete-profile-picture', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
