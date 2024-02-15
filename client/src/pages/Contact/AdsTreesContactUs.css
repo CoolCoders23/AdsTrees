@@ -237,7 +237,8 @@
   justify-content: flex-start;
 }
 .ads-trees-contact-us .error {
-  text-align: left;
+  text-align: center;
+  align-self: stretch;
   font-family: var(
     --small-body-font-font-family,
     "Poppins-Regular",

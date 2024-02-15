@@ -66,7 +66,7 @@ const colors = {
         primary: '#1B4332',
         text: '#fff',
         buttonText: '#081c15',
-        errorText: '#f5e8e8',
+        errorText: '#ff6a36',
         inputText: '#1B4332',
         inputBackground: '#fff',
         inputBorder: '#90eb9dba',

@@ -148,11 +148,12 @@ const Contact = ({ className = '' }) => {
                                     />
                                 </div>
                             </div>
+
                             <Button leftIcon={<EmailIcon />} type="submit" className="button">
                                 <div className="children">Send Email</div>
                             </Button>
+                            {message && <p className="error">{message}</p>}
                         </form>
-                        {message && <p className="error">{message}</p>}
                     </div>
                 </div>
             </div>
