@@ -4,7 +4,7 @@
 // Import Dependencies
 // ================================================================
 const express = require('express');
-const { ApolloServer } = require('@apollo/server');
+const { ApolloServer } = require('apollo-server-express');
 const { ApolloServerPluginCacheControl } = require('@apollo/server/plugin/cacheControl');
 const responseCachePlugin = require('@apollo/server-plugin-response-cache').default;
 const { expressMiddleware } = require('@apollo/server/express4');
@@ -45,6 +45,7 @@ const corsOptions = {
         const whitelist = [
             'http://localhost:3000',
             'http://localhost:3001',
+            'http://localhost:10000',
             'https://checkout.stripe.com/c/pay',
             'https://checkout.stripe.com',
             'https://github.com/CoolCoders23/AdsTrees',
@@ -66,21 +67,6 @@ const corsOptions = {
 };
 // ================================================================
 
-// Apply CORS middleware
-// ================================================================
-app.use(cors(corsOptions));
-// ================================================================
-
-// Allow cross-origin requests
-// ================================================================
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
-// ================================================================
-
 // Create an instance of ApolloServer
 // ================================================================
 const server = new ApolloServer({
@@ -92,7 +78,6 @@ const server = new ApolloServer({
             sessionId: (requestContext) => requestContext.request.http.headers.get('session-id') || null,
         })
     ],
-    context: authMiddleware, // Add authentication middleware to Apollo Server context
 });
 // ================================================================
 
@@ -104,6 +89,10 @@ const startApolloServer = async () => {
 
         app.use(express.urlencoded({ extended: false }));
         app.use(express.json());
+        // Apply CORS middleware
+        // ================================================================
+        app.use(cors(corsOptions));
+        // ================================================================
 
         app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
