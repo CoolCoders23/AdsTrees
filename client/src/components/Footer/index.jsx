@@ -13,6 +13,9 @@ import './Footer.css';
 import { Link, useLocation } from 'react-router-dom';
 import { useColorMode, Switch, Box, chakra } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+// TODO: Remove after beta
+import Auth from '../../utils/auth';
+// TODO: Remove after beta
 // ================================================================
 
 // Footer component
@@ -59,38 +62,45 @@ export const Footer = ({ className }) => {
                     <span className="terms-link-label">
                         Terms
                     </span>
-
                     <>
-                        {isDonateActive ? (
-                            <Link
-                                className="footer-link-active"
-                                to='/donations'>
-                                Donations
-                            </Link>
-                        ) : (
-                            <Link
-                                className="donate-link-label"
-                                to='/donations'>
-                                Donations
-                            </Link>
+                        {/* TODO: Remove Auth after beta */}
+                        {Auth.loggedIn() && (
+                            <>
+                                <>
+                                    {isDonateActive ? (
+                                        <Link
+                                            className="footer-link-active"
+                                            to='/donations'>
+                                            Donations
+                                        </Link>
+                                    ) : (
+                                        <Link
+                                            className="donate-link-label"
+                                            to='/donations'>
+                                            Donations
+                                        </Link>
+                                    )}
+                                </>
+
+                                <>
+                                    {isContactActive ? (
+                                        <Link
+                                            className="footer-link-active"
+                                            to='/contact'>
+                                            Contact
+                                        </Link>
+                                    ) : (
+                                        <Link
+                                            className="donate-link-label"
+                                            to='/contact'>
+                                            Contact
+                                        </Link>
+                                    )}
+                                </>
+                            </>
                         )}
                     </>
-
-                    <>
-                        {isContactActive ? (
-                            <Link
-                                className="footer-link-active"
-                                to='/contact'>
-                                Contact
-                            </Link>
-                        ) : (
-                            <Link
-                                className="donate-link-label"
-                                to='/contact'>
-                                Contact
-                            </Link>
-                        )}
-                    </>
+                    {/* TODO: Remove Auth after beta */}
                     <>
                         {isAboutActive ? (
                             <Link

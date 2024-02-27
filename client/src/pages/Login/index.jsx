@@ -109,7 +109,13 @@ const Login = ({ className = '' }) => {
     return (
 
         <div className={'ads-trees-sign-in ' + className}>
-
+            {/* TODO: Beta, Remove later */}
+            <div className='beta'>
+                <p>
+                                    Attention: This application is in private beta mode and should be used for private demo purposes only.
+                </p>
+            </div>
+            {/* TODO: Beta, Remove later */}
             {/* Install Modal */}
             <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>
                 <ModalOverlay />
@@ -193,7 +199,9 @@ const Login = ({ className = '' }) => {
                         </form>
                         <div className="call-to-register">
                             <div className="instruction-text">Otherwise, please </div>
-                            <Link to="/signup" className="register-here-link">Register here</Link>
+                            {/* <Link to="/signup" className="register-here-link">Register here</Link> */}
+                            {/* TODO: Beta, Remove later */}
+                            <p className="register-here-link">Register here</p>
                         </div>
                     </div>
                 </div>
