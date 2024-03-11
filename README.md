@@ -55,7 +55,7 @@ To use the application using this method, please follow these steps:
 
 Alternatively, you can access our application directly by clicking the link to the deployed application on Render.
 
-[Deployed Application on Render](https://adstrees.onrender.com/)
+[Deployed Application on Render](https://adstrees.com/)
 
 ## Usage
 
