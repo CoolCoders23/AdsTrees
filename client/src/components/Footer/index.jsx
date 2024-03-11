@@ -63,44 +63,38 @@ export const Footer = ({ className }) => {
                         Terms
                     </span>
                     <>
-                        {/* TODO: Remove Auth after beta */}
-                        {Auth.loggedIn() && (
-                            <>
-                                <>
-                                    {isDonateActive ? (
-                                        <Link
-                                            className="footer-link-active"
-                                            to='/donations'>
+                        <>
+                            {isDonateActive ? (
+                                <Link
+                                    className="footer-link-active"
+                                    to='/donations'>
                                             Donations
-                                        </Link>
-                                    ) : (
-                                        <Link
-                                            className="donate-link-label"
-                                            to='/donations'>
+                                </Link>
+                            ) : (
+                                <Link
+                                    className="donate-link-label"
+                                    to='/donations'>
                                             Donations
-                                        </Link>
-                                    )}
-                                </>
+                                </Link>
+                            )}
+                        </>
 
-                                <>
-                                    {isContactActive ? (
-                                        <Link
-                                            className="footer-link-active"
-                                            to='/contact'>
+                        <>
+                            {isContactActive ? (
+                                <Link
+                                    className="footer-link-active"
+                                    to='/contact'>
                                             Contact
-                                        </Link>
-                                    ) : (
-                                        <Link
-                                            className="donate-link-label"
-                                            to='/contact'>
+                                </Link>
+                            ) : (
+                                <Link
+                                    className="donate-link-label"
+                                    to='/contact'>
                                             Contact
-                                        </Link>
-                                    )}
-                                </>
-                            </>
-                        )}
+                                </Link>
+                            )}
+                        </>
                     </>
-                    {/* TODO: Remove Auth after beta */}
                     <>
                         {isAboutActive ? (
                             <Link

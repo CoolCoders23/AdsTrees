@@ -1,6 +1,6 @@
 // Importing necessary React hooks and other dependencies.
 // ============================================================
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
@@ -10,12 +10,12 @@ import {
     Input,
     InputGroup,
     InputRightElement,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
+    // Modal,
+    // ModalOverlay,
+    // ModalContent,
+    // ModalHeader,
+    // ModalFooter,
+    // ModalBody,
     Button
 } from '@chakra-ui/react'; // Chakra UI component for styled input fields.
 // ============================================================
@@ -26,52 +26,52 @@ const Login = ({ className = '' }) => {
 
     // State variables for managing PWA installation.
     // ============================================================
-    const [isInstallPromptOpen, setInstallPromptOpen] = useState(false);
-    const [deferredPrompt, setDeferredPrompt] = useState(null);
+    // const [isInstallPromptOpen, setInstallPromptOpen] = useState(false);
+    // const [deferredPrompt, setDeferredPrompt] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
     // ============================================================
 
     // Function to handle PWA installation.
     // ============================================================
-    useEffect(() => {
+    // useEffect(() => {
 
-        window.addEventListener('beforeinstallprompt', (e) => {
+    //     window.addEventListener('beforeinstallprompt', (e) => {
 
-            // Check if the prompt has been shown before
-            if (localStorage.getItem('installPromptShown')) {
-                return;
-            }
+    //         // Check if the prompt has been shown before
+    //         if (localStorage.getItem('installPromptShown')) {
+    //             return;
+    //         }
 
-            // Prevent the mini-infobar from appearing on mobile
-            e.preventDefault();
-            // Stash the event so it can be triggered later.
-            setDeferredPrompt(e);
-            // Update UI notify the user they can install the PWA
-            setInstallPromptOpen(true);
-        });
+    //         // Prevent the mini-infobar from appearing on mobile
+    //         e.preventDefault();
+    //         // Stash the event so it can be triggered later.
+    //         setDeferredPrompt(e);
+    //         // Update UI notify the user they can install the PWA
+    //         setInstallPromptOpen(true);
+    //     });
 
-    }, []);
+    // }, []);
     // ============================================================
 
     // Function to handle PWA installation.
     // ============================================================
-    const handleInstallClick = () => {
-        // Hide the app provided install promotion
-        setInstallPromptOpen(false);
-        // Show the install prompt
-        deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the install prompt');
-            } else {
-                console.log('User dismissed the install prompt');
-            }
-            // Set the flag in localStorage
-            localStorage.setItem('installPromptShown', 'true');
-            setDeferredPrompt(null);
-        });
-    };
+    // const handleInstallClick = () => {
+    //     // Hide the app provided install promotion
+    //     setInstallPromptOpen(false);
+    //     // Show the install prompt
+    //     deferredPrompt.prompt();
+    //     // Wait for the user to respond to the prompt
+    //     deferredPrompt.userChoice.then((choiceResult) => {
+    //         if (choiceResult.outcome === 'accepted') {
+    //             console.log('User accepted the install prompt');
+    //         } else {
+    //             console.log('User dismissed the install prompt');
+    //         }
+    //         // Set the flag in localStorage
+    //         localStorage.setItem('installPromptShown', 'true');
+    //         setDeferredPrompt(null);
+    //     });
+    // };
     // ============================================================
 
     // State variables for managing form inputs and errors.
@@ -109,15 +109,8 @@ const Login = ({ className = '' }) => {
     return (
 
         <div className={'ads-trees-sign-in ' + className}>
-            {/* TODO: Beta, Remove later */}
-            <div className='beta'>
-                <p>
-                                    Attention: This application is in private beta mode and should be used for private demo purposes only.
-                </p>
-            </div>
-            {/* TODO: Beta, Remove later */}
             {/* Install Modal */}
-            <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>
+            {/* <Modal isOpen={isInstallPromptOpen} onClose={() => setInstallPromptOpen(false)}>
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>Install AdsTrees</ModalHeader>
@@ -131,7 +124,7 @@ const Login = ({ className = '' }) => {
                         <Button variant="ghost" onClick={() => setInstallPromptOpen(false)}>Cancel</Button>
                     </ModalFooter>
                 </ModalContent>
-            </Modal>
+            </Modal> */}
 
             <div className="sign-in-body" >
                 <div className="home-text">
@@ -199,8 +192,7 @@ const Login = ({ className = '' }) => {
                         </form>
                         <div className="call-to-register">
                             <div className="instruction-text">Otherwise, please </div>
-                            {/* <Link to="/signup" className="register-here-link">Register here</Link> */}
-                            {/* TODO: Beta, Remove later */}
+                            <Link to="/signup" className="register-here-link">Register here</Link>
                             <p className="register-here-link">Register here</p>
                         </div>
                     </div>
